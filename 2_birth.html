@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>生日快乐 - peco</title>
+    <meta name="theme-color" content="#ff6b6b" />
+    <link rel="icon" href="https://peco.ink/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="birthday.css" />
+    <style>
+      .page-content {
+        min-height: 100vh;
+        min-height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 20px 80px;
+        text-align: center;
+      }
+      .big-text {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin: 0 0 10px;
+        background: linear-gradient(135deg, #ff6b6b, #fdcb6e, #ff9f43);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: shimmer 3s ease-in-out infinite;
+        background-size: 300% 300%;
+      }
+      .sub-text {
+        font-size: 1.1rem;
+        color: var(--color-text-muted);
+        margin-bottom: 30px;
+      }
+      .friend-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+        background: var(--color-card);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-md);
+        margin-bottom: 12px;
+        transition: transform var(--transition-normal),
+          background var(--transition-normal),
+          box-shadow var(--transition-normal);
+        cursor: default;
+      }
+      .friend-card:hover {
+        transform: translateY(-2px);
+        background: var(--color-card-hover);
+        box-shadow: 0 8px 24px var(--color-shadow);
+      }
+      .friend-avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        object-fit: cover;
+        flex-shrink: 0;
+      }
+      .friend-info {
+        flex: 1;
+        text-align: left;
+      }
+      .friend-name {
+        font-weight: 700;
+        font-size: 1rem;
+        color: var(--color-text);
+        margin: 0;
+      }
+      .friend-desc {
+        font-size: 0.8rem;
+        color: var(--color-text-muted);
+        margin: 2px 0 0;
+      }
+      @media (max-width: 600px) {
+        .big-text {
+          font-size: 1.8rem;
+        }
+        .friend-card {
+          padding: 12px 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-transition" id="pageTransition"></div>
+
+    <div class="page-content">
+      <div class="fade-in" style="margin-bottom: 8px">
+        <span class="birthday-badge">🎂 生日快乐！</span>
+      </div>
+      <h1 class="big-text fade-in fade-in-delay-1">🎉 生日快乐 🎉</h1>
+      <p class="sub-text fade-in fade-in-delay-2">祝小熊猫peco生日快乐！🎈</p>
+
+      <!-- Profile Card -->
+      <div class="fade-in fade-in-delay-3 reveal" style="margin-bottom: 24px">
+        <div
+          class="glass-card"
+          style="
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            max-width: 400px;
+            margin: 0 auto;
+          "
+        >
+          <a href="3_birth.html" class="avatar-wrapper" style="flex-shrink: 0">
+            <img src="0.jpg" alt="peco" width="64" height="64" loading="lazy" />
+          </a>
+          <div style="flex: 1; text-align: left">
+            <p style="margin: 0; font-weight: 700; font-size: 1rem">
+              小熊猫 peco
+            </p>
+            <p
+              style="
+                margin: 2px 0 0;
+                font-size: 0.8rem;
+                color: var(--color-text-muted);
+              "
+            >
+              🎂 生日快乐！
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="birthday-emoji-row fade-in fade-in-delay-3">🎈🎈🎈</div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <nav class="bottom-bar birthday-bottom-bar">
+      <p>🦝 生日快乐</p>
+      <a href="javascript:void(0)" onclick="navigateTo('index_birth.html')"
+        >回到主页</a
+      >
+      <span class="divider">|</span>
+      <a href="javascript:void(0)" onclick="navigateTo('3_birth.html')"
+        >留言板</a
+      >
+    </nav>
+
+    <script src="script.js"></script>
+    <script>
+      window.addEventListener("load", function () {
+        launchBalloons(12);
+        launchConfetti(40);
+        launchSparkles(8);
+      });
+    </script>
+  </body>
+</html>

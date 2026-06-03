@@ -1,0 +1,220 @@
+/* =============================================
+   Peco's Birthday - Special Celebration Styles
+   ============================================= */
+
+:root {
+  --color-primary: #ff6b6b;
+  --color-primary-dark: #e05555;
+  --color-primary-light: #ff8e8e;
+  --color-secondary: #fdcb6e;
+  --color-accent: #ffe66d;
+  --color-warm: #ff9f43;
+  --color-bg: #fce4e4;
+  --color-bg-alt: #fff5f5;
+  --color-card: rgba(255, 255, 255, 0.88);
+  --color-card-hover: rgba(255, 255, 255, 0.97);
+  --color-text: #2d3436;
+  --color-text-muted: #636e72;
+  --color-border: rgba(255, 107, 107, 0.1);
+  --color-shadow: rgba(255, 107, 107, 0.08);
+}
+
+body {
+  background: linear-gradient(
+    160deg,
+    #fce4e4 0%,
+    #fff0e8 25%,
+    #ffe8f0 50%,
+    #fce4ec 75%,
+    #fce4e4 100%
+  );
+  background-attachment: fixed;
+}
+
+/* --- Birthday Hero Badge --- */
+.birthday-badge {
+  display: inline-block;
+  padding: 6px 20px;
+  background: linear-gradient(135deg, #ff6b6b, #fdcb6e);
+  color: white;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  animation: birthdayPulse 2s ease-in-out infinite;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+}
+
+@keyframes birthdayPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 6px 30px rgba(255, 107, 107, 0.5);
+  }
+}
+
+/* --- Birthday Sparkle Text --- */
+.birthday-title span {
+  background: linear-gradient(135deg, #ff6b6b, #fdcb6e, #ff9f43, #ff6b6b);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* --- Birthday Like Button --- */
+.birthday-like-btn {
+  background: linear-gradient(135deg, #fff5f5, #fff0f0) !important;
+  border-color: rgba(255, 107, 107, 0.3) !important;
+}
+.birthday-like-btn:hover {
+  background: linear-gradient(135deg, #ff6b6b, #e05555, #fdcb6e) !important;
+  background-size: 200% 200% !important;
+  animation: shimmer 2s ease infinite !important;
+}
+
+/* --- Bottom Bar Birthday --- */
+.birthday-bottom-bar {
+  background: rgba(255, 240, 240, 0.88) !important;
+  border-top-color: rgba(255, 107, 107, 0.15) !important;
+}
+
+/* --- 🎈 Balloon Animation --- */
+.balloon {
+  position: fixed;
+  bottom: -100px;
+  width: 50px;
+  height: 65px;
+  border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+  z-index: 998;
+  pointer-events: none;
+  animation: flyUp linear forwards;
+  opacity: 0.85;
+  will-change: transform;
+}
+.balloon::after {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  width: 1px;
+  height: 20px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+@keyframes flyUp {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120vh) rotate(12deg);
+    opacity: 0;
+  }
+}
+
+/* --- Confetti --- */
+.confetti-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9997;
+  overflow: hidden;
+}
+.confetti-piece {
+  position: absolute;
+  top: -10px;
+  animation: confettiFall linear forwards;
+}
+
+@keyframes confettiFall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* --- Birthday Quote Items --- */
+.birthday-quote-item {
+  background: rgba(255, 255, 255, 0.92) !important;
+  border-left: 3px solid #fdcb6e !important;
+}
+.birthday-quote-item::before {
+  background: linear-gradient(180deg, #ff6b6b, #fdcb6e) !important;
+}
+
+/* --- Birthday Emoji Row --- */
+.birthday-emoji-row {
+  text-align: center;
+  font-size: 2rem;
+  margin: 20px 0;
+  animation: float 3s ease-in-out infinite;
+  letter-spacing: 8px;
+}
+
+/* --- Sparkle Particle Effect --- */
+.sparkle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9996;
+  animation: sparkleFade 1.2s ease-out forwards;
+}
+.sparkle::before {
+  content: "✦";
+  font-size: 14px;
+  color: #ffe66d;
+  text-shadow: 0 0 6px rgba(255, 230, 109, 0.8);
+}
+
+@keyframes sparkleFade {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-40px) scale(0.3) rotate(180deg);
+  }
+}
+
+/* --- Responsive --- */
+@media (max-width: 600px) {
+  .balloon {
+    width: 40px;
+    height: 52px;
+  }
+  .birthday-badge {
+    font-size: 0.75rem;
+    padding: 4px 14px;
+  }
+  .birthday-emoji-row {
+    font-size: 1.5rem;
+    letter-spacing: 6px;
+  }
+}
+
+/* --- Reduce motion preference --- */
+@media (prefers-reduced-motion: reduce) {
+  .balloon,
+  .confetti-piece,
+  .sparkle {
+    display: none !important;
+  }
+  .birthday-badge {
+    animation: none !important;
+  }
+  .birthday-emoji-row {
+    animation: none !important;
+  }
+}

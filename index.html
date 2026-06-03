@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Peco · 小熊猫</title>
+    <meta name="description" content="这里是peco的个人主页" />
+    <meta name="theme-color" content="#1a1a2e" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://peco.ink/" />
+    <meta property="og:title" content="Peco的个人主页" />
+    <meta property="og:description" content="欢迎来访。" />
+    <meta property="og:image" content="https://peco.ink/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <link rel="icon" href="https://peco.ink/favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://challenges.cloudflare.com" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* =============================================
+         Apple-inspired Minimal Design
+         ============================================= */
+
+      /* Thin scrollbar */
+      ::-webkit-scrollbar {
+        width: 4px;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #ccc;
+        border-radius: 2px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      body {
+        background: #f5f5f7;
+        font-family: -apple-system, "SF Pro Display", "SF Pro Text",
+          "Helvetica Neue", "Noto Sans SC", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overflow-x: hidden;
+      }
+
+      /* --- Navigation Bar --- */
+      .nav-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 48px;
+        background: rgba(255, 255, 255, 0.72);
+        backdrop-filter: blur(20px) saturate(1.4);
+        -webkit-backdrop-filter: blur(20px) saturate(1.4);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 28px;
+        z-index: 1000;
+        padding: 0 20px;
+        transition: background 0.3s;
+      }
+      .nav-bar a {
+        color: #1d1d1f;
+        font-size: 0.78rem;
+        font-weight: 500;
+        letter-spacing: 0.3px;
+        text-decoration: none;
+        padding: 4px 0;
+        border-bottom: 1px solid transparent;
+        transition: color 0.2s, border-color 0.2s;
+      }
+      .nav-bar a:hover {
+        color: #ff6b6b;
+        border-bottom-color: #ff6b6b;
+      }
+      .nav-bar .nav-logo {
+        font-weight: 700;
+        font-size: 0.85rem;
+        color: #1d1d1f;
+        letter-spacing: 1px;
+      }
+
+      /* --- Hero Section --- */
+      .hero {
+        min-height: 100vh;
+        min-height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 100px 24px 60px;
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(180deg, #f5f5f7 0%, #fff 40%, #f5f5f7 100%);
+      }
+
+      /* Subtle ambient gradient orbs */
+      .hero::before {
+        content: "";
+        position: absolute;
+        width: 600px;
+        height: 600px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 107, 107, 0.06) 0%,
+          transparent 70%
+        );
+        top: -200px;
+        right: -200px;
+        pointer-events: none;
+      }
+      .hero::after {
+        content: "";
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(78, 205, 196, 0.05) 0%,
+          transparent 70%
+        );
+        bottom: -200px;
+        left: -200px;
+        pointer-events: none;
+      }
+
+      .hero-avatar {
+        width: 96px;
+        height: 96px;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+        transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+          box-shadow 0.4s ease;
+        cursor: pointer;
+        position: relative;
+        z-index: 1;
+      }
+      .hero-avatar:hover {
+        transform: scale(1.08) rotate(-3deg);
+        box-shadow: 0 12px 50px rgba(255, 107, 107, 0.15);
+      }
+
+      .hero-title {
+        font-size: 3.2rem;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        margin: 28px 0 12px;
+        color: #1d1d1f;
+        position: relative;
+        z-index: 1;
+        line-height: 1.15;
+      }
+      .hero-title .gradient-text {
+        background: linear-gradient(135deg, #ff6b6b, #ff9f43, #ff6b6b);
+        background-size: 200% 200%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: shimmer 4s ease-in-out infinite;
+      }
+
+      .hero-sub {
+        font-size: 1.1rem;
+        color: #86868b;
+        font-weight: 400;
+        margin: 0 0 32px;
+        letter-spacing: 0.2px;
+        position: relative;
+        z-index: 1;
+        max-width: 480px;
+      }
+
+      .hero-badge-row {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+        position: relative;
+        z-index: 1;
+      }
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 16px;
+        border-radius: 20px;
+        background: rgba(0, 0, 0, 0.04);
+        color: #6e6e73;
+        font-size: 0.78rem;
+        font-weight: 500;
+        letter-spacing: 0.3px;
+        transition: background 0.2s, transform 0.2s;
+      }
+      .hero-badge:hover {
+        background: rgba(255, 107, 107, 0.08);
+        transform: translateY(-1px);
+      }
+
+      /* --- Scroll Indicator --- */
+      .scroll-indicator {
+        position: absolute;
+        bottom: 32px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        color: #c7c7cc;
+        font-size: 0.7rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        animation: scrollPulse 2.5s ease-in-out infinite;
+        z-index: 1;
+      }
+      .scroll-indicator .scroll-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #c7c7cc;
+        animation: scrollDot 2.5s ease-in-out infinite;
+      }
+      @keyframes scrollPulse {
+        0%,
+        100% {
+          opacity: 0.5;
+          transform: translateX(-50%) translateY(0);
+        }
+        50% {
+          opacity: 1;
+          transform: translateX(-50%) translateY(4px);
+        }
+      }
+      @keyframes scrollDot {
+        0%,
+        100% {
+          opacity: 0.3;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+
+      /* --- Content Section --- */
+      .content-section {
+        max-width: 680px;
+        margin: 0 auto;
+        padding: 40px 24px 100px;
+      }
+
+      .section-label {
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #c7c7cc;
+        margin: 0 0 20px;
+        text-align: center;
+      }
+
+      /* Apple-style grid of quote cards */
+      .quote-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .quote-card {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        border-radius: 18px;
+        padding: 20px 24px;
+        font-size: 0.95rem;
+        color: #1d1d1f;
+        line-height: 1.5;
+        transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+          box-shadow 0.35s ease, background 0.3s;
+        cursor: default;
+        position: relative;
+        overflow: hidden;
+      }
+      .quote-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #ff6b6b, #ff9f43);
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .quote-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+        background: rgba(255, 255, 255, 0.9);
+      }
+      .quote-card:hover::before {
+        opacity: 1;
+      }
+      .quote-card:active {
+        transform: translateY(-2px) scale(0.98);
+      }
+
+      .quote-card.span-2 {
+        grid-column: span 2;
+      }
+      .quote-card-subtle {
+        opacity: 0.55;
+        font-size: 0.85rem;
+        background: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        transition: opacity 0.5s ease, background 0.3s ease;
+      }
+      .quote-card-subtle:hover {
+        opacity: 0.85;
+        background: rgba(255, 255, 255, 0.7);
+      }
+      .quote-card-subtle .card-emoji {
+        opacity: 0.5;
+        font-size: 1rem;
+        transition: opacity 0.3s ease;
+      }
+      .quote-card-subtle:hover .card-emoji {
+        opacity: 0.8;
+      }
+
+      .quote-card .card-emoji {
+        display: block;
+        font-size: 1.4rem;
+        margin-bottom: 8px;
+      }
+
+      /* --- Like Section (Apple style) --- */
+      .like-wrap {
+        text-align: center;
+        padding: 40px 0 20px;
+      }
+
+      .like-btn-apple {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 32px;
+        background: #1d1d1f;
+        color: white;
+        border: none;
+        border-radius: 980px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        font-family: inherit;
+        cursor: pointer;
+        transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+          box-shadow 0.3s, background 0.3s;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        -webkit-tap-highlight-color: transparent;
+      }
+      .like-btn-apple:hover {
+        transform: scale(1.04);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        background: #2d2d2f;
+      }
+      .like-btn-apple:active {
+        transform: scale(0.96);
+      }
+      .like-btn-apple .like-count {
+        font-variant-numeric: tabular-nums;
+        opacity: 0.7;
+        font-weight: 400;
+      }
+
+      /* --- Footer --- */
+      .page-footer {
+        text-align: center;
+        padding: 20px 24px 48px;
+        color: #c7c7cc;
+        font-size: 0.72rem;
+        letter-spacing: 0.5px;
+      }
+      .page-footer a {
+        color: #6e6e73;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .page-footer a:hover {
+        color: #ff6b6b;
+      }
+
+      /* --- Animations --- */
+      @keyframes heroFadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes heroFadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .hero-fade-in {
+        opacity: 0;
+        animation: heroFadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      }
+      .hero-fade-in-delay-1 {
+        animation-delay: 0.15s;
+      }
+      .hero-fade-in-delay-2 {
+        animation-delay: 0.3s;
+      }
+      .hero-fade-in-delay-3 {
+        animation-delay: 0.5s;
+      }
+      .hero-fade-in-delay-4 {
+        animation-delay: 0.7s;
+      }
+
+      /* Card reveal (Intersection Observer) */
+      .card-reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+          transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .card-reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .card-reveal-delay-1 {
+        transition-delay: 0.05s;
+      }
+      .card-reveal-delay-2 {
+        transition-delay: 0.1s;
+      }
+      .card-reveal-delay-3 {
+        transition-delay: 0.15s;
+      }
+      .card-reveal-delay-4 {
+        transition-delay: 0.2s;
+      }
+      .card-reveal-delay-5 {
+        transition-delay: 0.25s;
+      }
+
+      /* --- Responsive --- */
+      @media (max-width: 600px) {
+        .hero-title {
+          font-size: 2.2rem;
+        }
+        .hero-sub {
+          font-size: 0.95rem;
+        }
+        .quote-grid {
+          grid-template-columns: 1fr;
+        }
+        .quote-card.span-2 {
+          grid-column: span 1;
+        }
+        .hero-avatar {
+          width: 80px;
+          height: 80px;
+        }
+        .nav-bar {
+          gap: 16px;
+        }
+        .nav-bar a {
+          font-size: 0.7rem;
+        }
+        .like-btn-apple {
+          padding: 12px 24px;
+          font-size: 0.85rem;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .hero-fade-in {
+          opacity: 1;
+          animation: none;
+        }
+        .card-reveal {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+        .scroll-indicator {
+          display: none;
+        }
+        .hero-avatar:hover {
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Page Transition Overlay -->
+    <div class="page-transition" id="pageTransition"></div>
+
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+      <span class="nav-logo">Peco</span>
+      <a href="javascript:void(0)" onclick="navigateTo('2.html')">友情链接</a>
+      <a href="javascript:void(0)" onclick="navigateTo('3.html')">留言板</a>
+      <a href="javascript:void(0)" onclick="navigateTo('4.html')">绘画板</a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+      <img
+        src="image1.jpg"
+        alt="peco"
+        class="hero-avatar hero-fade-in"
+        onclick="navigateTo('3.html')"
+        width="96"
+        height="96"
+        loading="eager"
+      />
+
+      <h1 class="hero-title hero-fade-in hero-fade-in-delay-1">
+        <span class="gradient-text">Peco</span>
+      </h1>
+
+      <p class="hero-sub hero-fade-in hero-fade-in-delay-2">
+        一只喜欢竹子、苹果和代码的小熊猫 🐼
+      </p>
+
+      <div class="hero-badge-row hero-fade-in hero-fade-in-delay-3">
+        <span class="hero-badge">🐼 小熊猫</span>
+        <span class="hero-badge">💻 开发者</span>
+        <span class="hero-badge">🎨 画画</span>
+      </div>
+
+      <div class="scroll-indicator">
+        <span>滚动</span>
+        <div class="scroll-dot"></div>
+      </div>
+    </section>
+
+    <!-- Quotes Section -->
+    <div class="content-section">
+      <p class="section-label card-reveal">关于我</p>
+
+      <div class="quote-grid">
+        <div class="quote-card card-reveal card-reveal-delay-1 visible">
+          <span class="card-emoji">\nwn/</span>
+          我是 peco 小熊猫
+        </div>
+        <div class="quote-card card-reveal card-reveal-delay-2 visible">
+          <span class="card-emoji">🌱</span>
+          种一棵树
+        </div>
+        <div class="quote-card card-reveal card-reveal-delay-2 visible">
+          <span class="card-emoji">🕐</span>
+          最好的时间是 10 年前
+        </div>
+        <div class="quote-card card-reveal card-reveal-delay-3 visible">
+          <span class="card-emoji">✨</span>
+          其次是现在
+        </div>
+        <div class="quote-card card-reveal card-reveal-delay-3 visible">
+          <span class="card-emoji">🎋</span>
+          种竹子也是
+        </div>
+        <div class="quote-card card-reveal card-reveal-delay-4 visible">
+          <span class="card-emoji">🍎</span>
+          种苹果也是
+        </div>
+        <div
+          class="quote-card quote-card-subtle card-reveal card-reveal-delay-5 visible span-2"
+        >
+          <span class="card-emoji">💕</span>
+          爱一个人也是
+        </div>
+      </div>
+
+      <!-- Like Button -->
+      <div class="like-wrap">
+        <button id="likeBtn" class="like-btn-apple">
+          <span>🖐️</span>
+          摸摸小熊猫
+          <span class="like-count" id="likeCount">0</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+      <a href="javascript:void(0)" onclick="navigateTo('2.html')">友情链接</a>
+      &nbsp;·&nbsp;
+      <a href="javascript:void(0)" onclick="navigateTo('3.html')">留言板</a>
+      &nbsp;·&nbsp;
+      <a href="javascript:void(0)" onclick="navigateTo('4.html')">绘画板</a>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+      initLikeButton("index");
+
+      // Override card reveal with intersection observer
+      document.addEventListener("DOMContentLoaded", function () {
+        var observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1, rootMargin: "0px 0px -30px 0px" }
+        );
+
+        document.querySelectorAll(".card-reveal").forEach(function (el) {
+          observer.observe(el);
+        });
+
+        // Hide scroll indicator on scroll
+        var indicator = document.querySelector(".scroll-indicator");
+        if (indicator) {
+          window.addEventListener(
+            "scroll",
+            function () {
+              if (window.scrollY > 100) {
+                indicator.style.opacity = "0";
+                indicator.style.pointerEvents = "none";
+              } else {
+                indicator.style.opacity = "";
+                indicator.style.pointerEvents = "";
+              }
+            },
+            { passive: true }
+          );
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>peco留言板 - 生日快乐！</title>
+    <meta name="theme-color" content="#ff6b6b" />
+    <link rel="icon" href="https://peco.ink/favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <link rel="preconnect" href="https://challenges.cloudflare.com" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script
+      src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+      async
+      defer
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="birthday.css" />
+    <style>
+      .page-wrap {
+        max-width: 640px;
+        margin: 0 auto;
+        padding: 20px 16px 80px;
+      }
+      .form-card {
+        background: var(--color-card);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-lg);
+        padding: 24px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 20px var(--color-shadow);
+        transition: background var(--transition-normal),
+          box-shadow var(--transition-normal);
+      }
+      .form-card:hover {
+        background: var(--color-card-hover);
+        box-shadow: 0 8px 32px var(--color-shadow-strong);
+      }
+      .form-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin: 0 0 16px;
+        color: var(--color-text);
+      }
+      .form-title span {
+        background: linear-gradient(
+          135deg,
+          var(--color-primary),
+          var(--color-warm)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      input,
+      textarea {
+        width: 100%;
+        padding: 12px 14px;
+        margin-bottom: 12px;
+        border: 1.5px solid var(--color-border);
+        border-radius: var(--radius-sm);
+        font-family: var(--font-sans);
+        font-size: 0.92rem;
+        background: rgba(255, 255, 255, 0.8);
+        transition: border-color var(--transition-fast),
+          box-shadow var(--transition-fast), background var(--transition-fast);
+        box-sizing: border-box;
+        color: var(--color-text);
+      }
+      input:focus,
+      textarea:focus {
+        outline: none;
+        border-color: var(--color-primary);
+        box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+        background: white;
+      }
+      textarea {
+        resize: vertical;
+        min-height: 60px;
+      }
+      #submitBtn {
+        width: 100%;
+        padding: 12px;
+        background: linear-gradient(
+          135deg,
+          var(--color-primary),
+          var(--color-primary-dark)
+        );
+        color: white;
+        border: none;
+        border-radius: var(--radius-sm);
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform var(--transition-normal),
+          box-shadow var(--transition-normal);
+        font-family: var(--font-sans);
+      }
+      #submitBtn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 6px 20px rgba(255, 107, 107, 0.3);
+      }
+      #submitBtn:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+      }
+      #replyBar {
+        display: none;
+        background: rgba(255, 107, 107, 0.06);
+        padding: 10px 14px;
+        border-radius: var(--radius-sm);
+        margin-bottom: 14px;
+        font-size: 0.85rem;
+        border-left: 3px solid var(--color-primary);
+      }
+      .cf-turnstile {
+        margin-bottom: 14px;
+        display: flex;
+        justify-content: center;
+      }
+      .mode-tabs {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 16px;
+      }
+      .tab-item {
+        flex: 1;
+        padding: 10px;
+        text-align: center;
+        background: var(--color-card);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: var(--color-text-muted);
+        transition: background var(--transition-normal),
+          color var(--transition-normal), border-color var(--transition-normal),
+          box-shadow var(--transition-normal);
+      }
+      .tab-item.active {
+        background: linear-gradient(
+          135deg,
+          var(--color-primary),
+          var(--color-primary-dark)
+        );
+        color: white;
+        border-color: var(--color-primary);
+        box-shadow: 0 4px 12px rgba(255, 107, 107, 0.2);
+      }
+      .tab-item:hover:not(.active) {
+        background: rgba(255, 255, 255, 0.95);
+      }
+      .draw-btn-square {
+        width: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--color-card);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-sm);
+        text-decoration: none;
+        font-size: 1.2rem;
+        transition: background var(--transition-normal),
+          transform var(--transition-normal);
+        flex-shrink: 0;
+      }
+      .draw-btn-square:hover {
+        background: rgba(255, 255, 255, 0.95);
+        transform: scale(1.05);
+      }
+      .section-title {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--color-text);
+        padding-bottom: 10px;
+        margin: 24px 0 16px;
+        border-bottom: 2px solid var(--color-border);
+      }
+      .comment-item {
+        background: var(--color-card);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-sm);
+        padding: 14px 16px;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        transition: background var(--transition-normal),
+          box-shadow var(--transition-normal);
+      }
+      .comment-item:hover {
+        background: var(--color-card-hover);
+        box-shadow: 0 4px 16px var(--color-shadow);
+      }
+      .comment-body {
+        flex: 1;
+        min-width: 0;
+        padding-right: 12px;
+      }
+      .comment-header {
+        margin-bottom: 4px;
+      }
+      .comment-header strong {
+        color: var(--color-text);
+        font-size: 0.92rem;
+      }
+      .comment-header small {
+        color: #aaa;
+        font-size: 0.75rem;
+        margin-left: 6px;
+      }
+      .comment-body p {
+        margin: 4px 0;
+        color: var(--color-text-muted);
+        font-size: 0.88rem;
+        word-wrap: break-word;
+        line-height: 1.5;
+      }
+      .reply-btn {
+        flex-shrink: 0;
+        padding: 4px 12px;
+        background: transparent;
+        color: var(--color-primary);
+        border: 1px solid rgba(255, 107, 107, 0.2);
+        border-radius: 6px;
+        font-size: 0.78rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background var(--transition-fast),
+          color var(--transition-fast), border-color var(--transition-fast);
+        margin-top: 2px;
+      }
+      .reply-btn:hover {
+        background: var(--color-primary);
+        color: white;
+        border-color: var(--color-primary);
+      }
+      .reply-item {
+        margin-left: 36px;
+        margin-top: -4px;
+        margin-bottom: 6px;
+        padding: 10px 14px;
+        background: rgba(255, 255, 255, 0.5);
+        border-left: 2px solid var(--color-border);
+        border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        font-size: 0.85rem;
+      }
+      .admin-badge {
+        background: linear-gradient(135deg, var(--color-accent), #f0c040);
+        color: #7a6200;
+        font-size: 0.65rem;
+        padding: 1px 6px;
+        border-radius: 4px;
+        margin-left: 4px;
+        font-weight: 700;
+      }
+      .delete-btn {
+        color: #ff4757;
+        font-size: 0.7rem;
+        cursor: pointer;
+        margin-left: 8px;
+        text-decoration: underline;
+      }
+      .curated-drawer {
+        margin-top: 16px;
+        background: var(--color-card);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 193, 7, 0.3);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        box-shadow: 0 2px 12px rgba(255, 193, 7, 0.06);
+      }
+      .drawer-bar {
+        padding: 10px 16px;
+        background: rgba(255, 248, 225, 0.6);
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.88rem;
+        font-weight: 700;
+        color: #b8860b;
+        transition: background var(--transition-fast);
+      }
+      .drawer-bar:hover {
+        background: rgba(255, 248, 225, 0.9);
+      }
+      .drawer-bar::after {
+        content: "展开留言 ▼";
+        font-size: 0.75rem;
+        font-weight: normal;
+        opacity: 0.6;
+      }
+      .curated-drawer.open .drawer-bar::after {
+        content: "收起 ▲";
+      }
+      .drawer-content {
+        display: none;
+        padding: 12px;
+        background: rgba(255, 248, 225, 0.3);
+        border-top: 1px dashed rgba(255, 193, 7, 0.3);
+      }
+      .curated-drawer.open .drawer-content {
+        display: block;
+      }
+      .drawer-content .comment-item {
+        border-left: 3px solid #f1c40f;
+        margin-bottom: 8px;
+        font-size: 0.85rem;
+      }
+      .tree-hole-mode body,
+      body.tree-hole-bg {
+        background: linear-gradient(
+          160deg,
+          #f7ede2,
+          #efe2d6,
+          #f0e6d8
+        ) !important;
+      }
+      body.tree-hole-bg {
+        background: linear-gradient(
+          160deg,
+          #f7ede2,
+          #efe2d6,
+          #f0e6d8
+        ) !important;
+      }
+      .tree-hole-mode .tab-item.active {
+        background: linear-gradient(135deg, #8d6e63, #6d4c41) !important;
+        border-color: #8d6e63 !important;
+      }
+      .tree-hole-mode #nicknameInput {
+        display: none;
+      }
+      .tree-hole-mode .reply-btn {
+        display: none !important;
+      }
+      .tree-hole-mode .reply-item {
+        margin-left: 0;
+        border-left: none;
+        background: rgba(255, 255, 255, 0.7);
+      }
+      .emoji-img {
+        max-height: 72px;
+        display: block;
+        margin: 4px 0;
+        border-radius: var(--radius-sm);
+        border: 1px solid var(--color-border);
+      }
+      .empty-state {
+        text-align: center;
+        padding: 30px 20px;
+        color: var(--color-text-muted);
+        font-size: 0.9rem;
+      }
+      .empty-state .empty-icon {
+        font-size: 2.5rem;
+        margin-bottom: 8px;
+        opacity: 0.5;
+      }
+      .loading-state {
+        text-align: center;
+        padding: 20px;
+        color: var(--color-text-muted);
+      }
+      .birthday-form-title span {
+        background: linear-gradient(
+          135deg,
+          #ff6b6b,
+          #fdcb6e,
+          #ff9f43,
+          #ff6b6b
+        ) !important;
+        background-size: 300% 300% !important;
+        animation: shimmer 3s ease-in-out infinite !important;
+      }
+      @media (max-width: 600px) {
+        .page-wrap {
+          padding: 12px 12px 72px;
+        }
+        .form-card {
+          padding: 18px;
+        }
+        .comment-item {
+          padding: 10px 12px;
+        }
+        .reply-item {
+          margin-left: 20px;
+          padding: 8px 10px;
+        }
+        .tab-item {
+          font-size: 0.82rem;
+          padding: 8px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-transition" id="pageTransition"></div>
+
+    <div class="page-wrap" id="mainApp">
+      <!-- Birthday Badge -->
+      <div class="fade-in" style="text-align: center; margin-bottom: 12px">
+        <span class="birthday-badge">🎂 小熊猫生日快乐！🎂</span>
+      </div>
+
+      <!-- Mode Tabs -->
+      <div class="mode-tabs fade-in fade-in-delay-1">
+        <div
+          class="tab-item active"
+          id="tab-page3"
+          onclick="switchMode('page3')"
+        >
+          💬 留言板
+        </div>
+        <div
+          class="tab-item"
+          id="tab-treehole"
+          onclick="switchMode('treehole')"
+        >
+          🌳 树洞区
+        </div>
+        <a
+          href="javascript:void(0)"
+          onclick="navigateTo('4.html')"
+          class="draw-btn-square"
+          title="去画板画画"
+          >🎨</a
+        >
+      </div>
+
+      <!-- Form Card -->
+      <div class="form-card fade-in fade-in-delay-2 reveal">
+        <h3 class="form-title birthday-form-title" id="formTitle">
+          <span>✏️</span> 发表留言
+        </h3>
+        <div id="replyBar">
+          <span>正在回复：<strong id="targetUser"></strong></span>
+          <button
+            onclick="cancelReply()"
+            style="
+              float: right;
+              border: none;
+              background: none;
+              color: #888;
+              cursor: pointer;
+              font-size: 0.82rem;
+            "
+          >
+            [取消]
+          </button>
+        </div>
+        <input type="text" id="nicknameInput" placeholder="您的昵称" />
+        <textarea
+          id="contentInput"
+          placeholder="写下你想说的话..."
+          rows="2"
+        ></textarea>
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAACrmCOS7zoFvCdZS"></div>
+        <button id="submitBtn" onclick="submitComment()">提交留言</button>
+      </div>
+
+      <!-- Drawer (Curated) -->
+      <div id="drawerWrapper" class="fade-in fade-in-delay-3"></div>
+
+      <!-- Comment List -->
+      <section class="reveal fade-in-delay-4">
+        <h3 class="section-title" id="listTitle">📝 留言墙</h3>
+        <div id="commentList">
+          <div class="loading-state">正在加载留言...</div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Bottom Bar -->
+    <nav class="bottom-bar birthday-bottom-bar">
+      <p>🦝</p>
+      <a
+        href="javascript:void(0)"
+        onclick="window.scrollTo({top:0, behavior:'smooth'})"
+        >↑ 回到顶部</a
+      >
+      <span class="divider">|</span>
+      <a href="javascript:void(0)" onclick="navigateTo('index_birth.html')"
+        >回到主页</a
+      >
+    </nav>
+
+    <script src="script.js"></script>
+    <script>
+      let activePage = "page3";
+      const ADMIN_NAMES = ["peco", "小熊猫peco"];
+      const EMOJI_MAP = {
+        YES_IMG: "4.jpg",
+        NO_IMG: "3.jpg",
+        WAIT_IMG: "2.jpg",
+        QUES_IMG: "5.jpg",
+        SAD_IMG: "6.jpg",
+        BIRTH_IMG: "0.jpg",
+      };
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const adminToken = urlParams.get("admin");
+
+      async function getDeviceInfo() {
+        let info = { model: "未知设备", os: "未知系统" };
+        try {
+          if (
+            navigator.userAgentData &&
+            navigator.userAgentData.getHighEntropyValues
+          ) {
+            const hints = await navigator.userAgentData.getHighEntropyValues([
+              "model",
+              "platform",
+              "platformVersion",
+            ]);
+            info.model = hints.model || "通用设备";
+            info.os =
+              `${hints.platform || ""} ${hints.platformVersion || ""}`.trim() ||
+              "未知系统";
+          } else {
+            const ua = navigator.userAgent;
+            if (/iPhone|iPad|iPod/i.test(ua)) info.model = "iOS Device";
+            else if (/Android/i.test(ua)) info.model = "Android Device";
+            info.os = navigator.platform;
+          }
+        } catch (e) {
+          console.warn("抓取设备信息失败:", e);
+        }
+        return info;
+      }
+
+      function switchMode(mode) {
+        activePage = mode;
+        const app = document.getElementById("mainApp");
+        document
+          .querySelectorAll(".tab-item")
+          .forEach((el) => el.classList.remove("active"));
+        document
+          .getElementById("tab-" + (mode === "page3" ? "page3" : "treehole"))
+          .classList.add("active");
+        cancelReply();
+        if (mode === "treehole") {
+          app.classList.add("tree-hole-mode");
+          document.body.classList.add("tree-hole-bg");
+          document.getElementById("formTitle").innerHTML =
+            "<span>🌳</span> 投递树洞 (匿名)";
+          document.getElementById("listTitle").innerText =
+            "🌳 树洞区 (匿名且不可回复)";
+        } else {
+          app.classList.remove("tree-hole-mode");
+          document.body.classList.remove("tree-hole-bg");
+          document.getElementById("formTitle").innerHTML =
+            "<span>✏️</span> 发表留言";
+          document.getElementById("listTitle").innerText = "📝 留言墙";
+        }
+        loadComments();
+      }
+
+      function parseContent(rawStr) {
+        let safeHtml = escapeHtml(rawStr);
+        for (let code in EMOJI_MAP) {
+          if (safeHtml.includes(code)) {
+            safeHtml = safeHtml
+              .split(code)
+              .join(
+                `<img src="${EMOJI_MAP[code]}" class="emoji-img" alt="emoji">`
+              );
+          }
+        }
+        return safeHtml;
+      }
+
+      async function loadComments() {
+        try {
+          const res = await fetch(`/api/comment?page_id=${activePage}`);
+          const data = await res.json();
+          const list = document.getElementById("commentList");
+          const drawerWrapper = document.getElementById("drawerWrapper");
+          drawerWrapper.innerHTML = "";
+
+          if (!data || data.length === 0) {
+            list.innerHTML =
+              '<div class="empty-state"><div class="empty-icon">💭</div>这里暂时空空如也...</div>';
+            return;
+          }
+
+          const drawerNode = data.find((item) =>
+            item.content.startsWith("[抽屉名称:")
+          );
+          if (drawerNode && activePage === "page3") {
+            const drawerName =
+              drawerNode.content.match(/\[抽屉名称:(.*?)\]/)[1] || "精选留言";
+            const drawerUI = document.createElement("div");
+            drawerUI.className = "curated-drawer";
+            drawerUI.innerHTML = `<div class="drawer-bar" onclick="this.parentElement.classList.toggle('open')">✨ ${drawerName}</div><div class="drawer-content" id="drawerInner"></div>`;
+            drawerWrapper.appendChild(drawerUI);
+
+            const inner = drawerUI.querySelector("#drawerInner");
+            const curated = data.filter(
+              (item) => item.parent_id === drawerNode.id
+            );
+            const others = data.filter(
+              (item) =>
+                item.id !== drawerNode.id && item.parent_id !== drawerNode.id
+            );
+
+            curated
+              .sort((a, b) => b.id - a.id)
+              .forEach((item) => renderSingleItem(item, inner, false));
+            list.innerHTML = "";
+            processTree(others, list);
+          } else {
+            list.innerHTML = "";
+            processTree(data, list);
+          }
+        } catch (e) {
+          console.error("加载失败", e);
+        }
+      }
+
+      function processTree(data, container) {
+        const commentMap = {};
+        data.forEach((item) => {
+          item.replies = [];
+          commentMap[item.id] = item;
+        });
+        const roots = [];
+        data.forEach((item) => {
+          if (item.parent_id && commentMap[item.parent_id])
+            commentMap[item.parent_id].replies.push(item);
+          else roots.push(item);
+        });
+        roots.sort((a, b) => b.id - a.id);
+        renderTree(roots, container);
+      }
+
+      function renderSingleItem(item, container, isReply = false) {
+        const div = document.createElement("div");
+        div.className = isReply ? "comment-item reply-item" : "comment-item";
+        const isAdmin = ADMIN_NAMES.includes(item.nickname);
+        const deleteLink = adminToken
+          ? `<span class="delete-btn" onclick="deleteComment(${item.id})">删除</span>`
+          : "";
+
+        div.innerHTML = `<div class="comment-body">
+          <div class="comment-header">
+            <strong>${escapeHtml(item.nickname)}</strong>${
+          isAdmin ? '<span class="admin-badge">小熊猫</span>' : ""
+        }
+            <small>${item.created_at}</small>${deleteLink}
+          </div>
+          <p>${parseContent(item.content)}</p>
+        </div>
+        <button class="reply-btn" onclick="prepareReply(${
+          item.id
+        }, '${escapeHtml(item.nickname)}')">回复</button>`;
+        container.appendChild(div);
+        return div;
+      }
+
+      function renderTree(items, container) {
+        items.forEach((item) => {
+          renderSingleItem(item, container, !!item.parent_id);
+          if (item.replies && item.replies.length > 0) {
+            item.replies.sort((a, b) => a.id - b.id);
+            renderTree(item.replies, container);
+          }
+        });
+      }
+
+      async function submitComment() {
+        const btn = document.getElementById("submitBtn");
+        const nickname =
+          activePage === "treehole"
+            ? "匿名"
+            : document.getElementById("nicknameInput").value.trim();
+        const content = document.getElementById("contentInput").value.trim();
+        const turnstileToken = document.querySelector(
+          '[name="cf-turnstile-response"]'
+        )?.value;
+
+        if (!nickname || !content || !turnstileToken) {
+          return Swal.fire({
+            title: "等一下！",
+            text: "名字内容和验证都得填哦~",
+            imageUrl: EMOJI_MAP.NO_IMG,
+            imageWidth: 150,
+            imageAlt: "Error",
+          });
+        }
+
+        btn.disabled = true;
+        try {
+          const deviceInfo = await getDeviceInfo();
+          const res = await fetch(
+            `/api/comment?page_id=${activePage}${
+              adminToken ? "&admin_token=" + adminToken : ""
+            }`,
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                nickname,
+                content,
+                parent_id: window.currentParentId,
+                cf_token: turnstileToken,
+                device_model: deviceInfo.model,
+                device_os: deviceInfo.os,
+              }),
+            }
+          );
+
+          if (res.ok) {
+            await Swal.fire({
+              title: "提交成功！",
+              text: "留言已经传达给小熊猫啦~",
+              imageUrl: EMOJI_MAP.YES_IMG,
+              imageWidth: 150,
+              timer: 2000,
+              showConfirmButton: false,
+            });
+            document.getElementById("contentInput").value = "";
+            if (typeof turnstile !== "undefined") turnstile.reset();
+            loadComments();
+            cancelReply();
+          } else {
+            const errorText = await res.text();
+            Swal.fire({
+              title: "提交失败",
+              text: errorText,
+              imageUrl: EMOJI_MAP.NO_IMG,
+              imageWidth: 150,
+            });
+          }
+        } catch (e) {
+          Swal.fire({
+            title: "系统错误",
+            text: "请检查网络连接",
+            imageUrl: EMOJI_MAP.NO_IMG,
+            imageWidth: 150,
+          });
+        }
+        btn.disabled = false;
+      }
+
+      function prepareReply(id, name) {
+        if (activePage === "treehole") return;
+        document.getElementById("replyBar").style.display = "block";
+        document.getElementById("targetUser").innerText = name;
+        window.currentParentId = id;
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function cancelReply() {
+        document.getElementById("replyBar").style.display = "none";
+        window.currentParentId = null;
+      }
+
+      async function deleteComment(id) {
+        if (
+          (
+            await Swal.fire({
+              title: "确定删除？",
+              imageUrl: EMOJI_MAP.QUES_IMG || "",
+              imageWidth: 100,
+              showCancelButton: true,
+            })
+          ).isConfirmed
+        ) {
+          await fetch(`/api/comment?id=${id}&admin_token=${adminToken}`, {
+            method: "DELETE",
+          });
+          loadComments();
+        }
+      }
+
+      function escapeHtml(str) {
+        var d = document.createElement("div");
+        d.appendChild(document.createTextNode(str));
+        return d.innerHTML;
+      }
+
+      // Override loadComments to add birthday balloons
+      const originalLoadComments = loadComments;
+      loadComments = async function () {
+        await originalLoadComments();
+        launchBalloons(8);
+      };
+
+      loadComments();
+
+      window.addEventListener("load", function () {
+        launchBalloons(12);
+        launchConfetti(40);
+        launchSparkles(8);
+        setInterval(function () {
+          launchBalloons(4);
+        }, 18000);
+      });
+    </script>
+  </body>
+</html>

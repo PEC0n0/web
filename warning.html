@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>施工中 - peco</title>
+    <meta name="theme-color" content="#ff6b6b" />
+    <link rel="icon" href="https://peco.ink/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .page-content {
+        min-height: 100vh;
+        min-height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 20px;
+        text-align: center;
+      }
+      .construction-icon {
+        font-size: 4rem;
+        margin-bottom: 10px;
+        animation: float 3s ease-in-out infinite;
+      }
+      .big-text {
+        font-size: 2rem;
+        font-weight: 800;
+        margin: 0 0 10px;
+        background: linear-gradient(
+          135deg,
+          var(--color-primary),
+          var(--color-warm)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-transition" id="pageTransition"></div>
+
+    <div class="page-content">
+      <div class="construction-icon fade-in">🚧</div>
+      <h1 class="big-text fade-in fade-in-delay-1">施工中</h1>
+      <p
+        class="reveal"
+        style="color: var(--color-text-muted); margin-bottom: 30px"
+      >
+        这个页面还在建设中...
+      </p>
+
+      <!-- Profile Card -->
+      <div class="reveal fade-in-delay-2">
+        <a href="3.html" class="avatar-wrapper">
+          <img src="2.jpg" alt="peco" width="64" height="64" loading="lazy" />
+        </a>
+        <p
+          style="
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            margin-top: 10px;
+          "
+        >
+          🚀 敬请期待
+        </p>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
