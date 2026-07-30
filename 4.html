@@ -3,610 +3,281 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>像素画板 - Peco</title>
-    <meta name="theme-color" content="#ff6b6b" />
-    <link rel="icon" href="https://peco.ink/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="style.css" />
+    <title>Peco 的涂鸦画板</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
       * {
+        box-sizing: border-box;
         margin: 0;
         padding: 0;
-        box-sizing: border-box;
       }
-
       body {
-        font-family: var(--font-sans);
-        background: linear-gradient(160deg, #f5f5f7 0%, #e8e8ed 100%);
-        min-height: 100vh;
-        min-height: 100dvh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-        -webkit-font-smoothing: antialiased;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background-color: aliceblue;
+        color: #333;
+        padding-bottom: 80px;
+        touch-action: manipulation;
       }
-
-      .board-wrap {
-        background: rgba(255, 255, 255, 0.7);
-        backdrop-filter: blur(14px);
-        -webkit-backdrop-filter: blur(14px);
-        border: 1px solid rgba(0, 0, 0, 0.06);
-        border-radius: 20px;
-        padding: 20px;
-        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.06);
+      .container {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 0 15px;
       }
-
-      .board-header {
+      .card {
+        background: #ffffff;
+        border-radius: 12px;
+        border: 1px solid #e1e4e8;
+        padding: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      }
+      .toolbar {
         display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
         align-items: center;
         justify-content: space-between;
-        margin-bottom: 14px;
+        margin-bottom: 12px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid #eee;
       }
-      .board-title {
-        font-size: 1rem;
-        font-weight: 700;
-        color: #1d1d1f;
-      }
-      .board-title span {
-        background: linear-gradient(135deg, #ff6b6b, #ff9f43);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-
-      canvas#pixelCanvas {
-        border-radius: 12px;
-        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
-        background: white;
-        max-width: 100%;
-        height: auto;
-        touch-action: none;
-        cursor: crosshair;
-        display: block;
-      }
-
-      .controls {
-        margin-top: 16px;
+      .tool-group {
         display: flex;
-        flex-wrap: wrap;
+        align-items: center;
         gap: 8px;
-        align-items: center;
-        justify-content: center;
       }
-
-      .palette {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px;
-        justify-content: center;
+      label {
+        font-size: 13px;
+        font-weight: bold;
+        color: #555;
       }
-      .palette-color {
-        width: 30px;
-        height: 30px;
-        border-radius: 8px;
-        cursor: pointer;
-        border: 2px solid transparent;
-        transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
-        flex-shrink: 0;
-      }
-      .palette-color:hover {
-        transform: scale(1.12);
-      }
-      .palette-color.active {
-        border-color: #1d1d1f;
-        box-shadow: 0 0 0 2px white, 0 0 0 4px #1d1d1f;
-        transform: scale(1.12);
-      }
-      .palette-color.eraser {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 0.8rem;
-        background: white;
-        border-color: var(--color-border);
-        color: #666;
-      }
-
-      .action-buttons {
-        display: flex;
-        gap: 6px;
-      }
-      .action-btn {
-        padding: 6px 14px;
-        border: 1px solid rgba(0, 0, 0, 0.08);
-        border-radius: 8px;
-        background: white;
-        cursor: pointer;
-        font-family: inherit;
-        font-size: 0.78rem;
-        font-weight: 500;
-        color: #1d1d1f;
-        transition: background 0.2s, transform 0.2s, border-color 0.2s;
-      }
-      .action-btn:hover {
-        background: #f0f0f0;
-        border-color: rgba(0, 0, 0, 0.12);
-        transform: translateY(-1px);
-      }
-      .action-btn:active {
-        transform: scale(0.96);
-      }
-      .action-btn.primary {
-        background: #1d1d1f;
-        color: white;
-        border-color: #1d1d1f;
-      }
-      .action-btn.primary:hover {
-        background: #333;
-      }
-      .action-btn.danger {
-        color: #ff4757;
-        border-color: rgba(255, 71, 87, 0.2);
-      }
-      .action-btn.danger:hover {
-        background: #fff5f5;
-        border-color: rgba(255, 71, 87, 0.3);
-      }
-
-      .status-bar {
-        margin-top: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 12px;
-        color: #86868b;
-        font-size: 0.75rem;
-      }
-      .status-dot {
-        width: 6px;
-        height: 6px;
+      input[type="color"] {
+        border: none;
+        width: 32px;
+        height: 32px;
         border-radius: 50%;
-        display: inline-block;
+        cursor: pointer;
+        background: transparent;
       }
-      .status-dot.online {
-        background: #34c759;
+      input[type="range"] {
+        width: 80px;
       }
-      .status-dot.loading {
-        background: #ff9f43;
-        animation: pulse 0.8s ease-in-out infinite;
+      .btn {
+        padding: 6px 12px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        background: #fff;
+        color: #333;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.2s;
       }
-      @keyframes pulse {
-        0%,
-        100% {
-          opacity: 0.4;
-        }
-        50% {
-          opacity: 1;
-        }
+      .btn:hover {
+        background: #f0f2f5;
       }
-
-      .back-link {
-        margin-top: 16px;
-        color: #86868b;
-        text-decoration: none;
-        font-size: 0.78rem;
-        transition: color 0.2s;
-        padding: 6px 14px;
+      .btn-primary {
+        background: #007bff;
+        color: #fff;
+        border-color: #007bff;
+      }
+      .btn-primary:hover {
+        background: #0056b3;
+      }
+      .btn-danger {
+        background: #ff4757;
+        color: #fff;
+        border-color: #ff4757;
+      }
+      .btn-danger:hover {
+        background: #ff6b81;
+      }
+      canvas {
+        width: 100%;
+        height: 380px;
+        background: #ffffff;
+        border: 2px dashed #cbd5e0;
         border-radius: 8px;
+        cursor: crosshair;
+        touch-action: none;
       }
-      .back-link:hover {
-        color: #ff6b6b;
-        background: rgba(255, 107, 107, 0.06);
-      }
-
-      .cooldown-overlay {
-        position: absolute;
-        inset: 0;
-        background: rgba(255, 255, 255, 0.5);
-        backdrop-filter: blur(4px);
-        border-radius: 12px;
-        display: none;
+      .bottom-bar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(10px);
+        border-top: 1px solid #e1e4e8;
+        display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 0.85rem;
-        color: #86868b;
+        z-index: 999;
+      }
+      .bottom-bar a {
+        color: #007bff;
+        text-decoration: none;
+        font-size: 14px;
+        margin: 0 12px;
         font-weight: 500;
       }
-
-      @media (max-width: 600px) {
-        body {
-          padding: 12px;
-        }
-        .board-wrap {
-          padding: 12px;
-          border-radius: 14px;
-        }
-        .palette-color {
-          width: 26px;
-          height: 26px;
-        }
-        .action-btn {
-          font-size: 0.72rem;
-          padding: 5px 10px;
-        }
-        .board-title {
-          font-size: 0.85rem;
-        }
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        .palette-color,
-        .action-btn {
-          transition: none;
-        }
-        .palette-color:hover {
-          transform: none;
-        }
-        .action-btn:hover {
-          transform: none;
-        }
-        .status-dot.loading {
-          animation: none;
-        }
+      .bottom-bar .divider {
+        color: #ddd;
       }
     </style>
   </head>
   <body>
-    <div class="page-transition" id="pageTransition"></div>
+    <div class="container">
+      <div class="card">
+        <h3 style="margin-bottom: 12px; font-size: 18px; color: #222;">🎨 创意涂鸦板</h3>
+        
+        <div class="toolbar">
+          <div class="tool-group">
+            <label for="colorPicker">颜色:</label>
+            <input type="color" id="colorPicker" value="#007bff" />
+          </div>
 
-    <div class="board-wrap">
-      <div class="board-header">
-        <div class="board-title">🎨 <span>像素画板</span></div>
-        <div class="action-buttons">
-          <button class="action-btn danger" onclick="clearAll()">清除</button>
+          <div class="tool-group">
+            <label for="lineWidth">粗细:</label>
+            <input type="range" id="lineWidth" min="1" max="20" value="4" />
+          </div>
+
+          <div class="tool-group">
+            <button class="btn btn-danger" onclick="clearCanvas()">清空</button>
+            <button class="btn btn-primary" onclick="saveImage()">保存画作</button>
+          </div>
         </div>
-      </div>
 
-      <div style="position: relative; display: inline-block; max-width: 100%">
-        <canvas id="pixelCanvas"></canvas>
-        <div class="cooldown-overlay" id="cooldownOverlay">保存冷却中...</div>
-      </div>
-
-      <!-- Palette -->
-      <div class="controls">
-        <div class="palette" id="palette"></div>
-        <div class="action-buttons">
-          <button class="action-btn" onclick="saveBoard()">💾 保存</button>
-          <button class="action-btn" onclick="loadBoard()">🔄 刷新</button>
-        </div>
-      </div>
-
-      <!-- Status -->
-      <div class="status-bar">
-        <span class="status-dot online" id="statusDot"></span>
-        <span id="statusText">已连接</span>
-        <span>·</span>
-        <span>48×48</span>
-        <span>·</span>
-        <span
-          class="action-btn"
-          style="font-size: 0.7rem; padding: 2px 8px"
-          onclick="loadBoard()"
-          >🔄</span
-        >
+        <canvas id="paintCanvas"></canvas>
       </div>
     </div>
 
-    <a
-      href="javascript:void(0)"
-      onclick="navigateTo('index.html')"
-      class="back-link"
-      >← 回到主页</a
-    >
+    <div class="bottom-bar">
+      <a href="index.html">🏠 返回首页</a>
+      <span class="divider">|</span>
+      <a href="3.html">💬 留言墙</a>
+      <span class="divider">|</span>
+      <a href="2.html">📸 个人空间</a>
+    </div>
 
-    <script src="script.js"></script>
     <script>
-      // =============================================
-      // PIXEL ART BOARD - 48x48 Grid
-      // =============================================
-
-      const PIXEL_SIZE = 16; // display pixel size in CSS pixels
-      const GRID_SIZE = 48; // 48x48 = 2304 pixels
-      const CANVAS_SIZE = PIXEL_SIZE * GRID_SIZE;
-
-      const COLORS = [
-        { name: "白", hex: "#ffffff" },
-        { name: "浅灰", hex: "#d1d1d6" },
-        { name: "深灰", hex: "#8e8e93" },
-        { name: "黑", hex: "#1c1c1e" },
-        { name: "红", hex: "#ff3b30" },
-        { name: "橙", hex: "#ff9500" },
-        { name: "黄", hex: "#ffcc00" },
-        { name: "绿", hex: "#34c759" },
-        { name: "青", hex: "#5ac8fa" },
-        { name: "蓝", hex: "#007aff" },
-        { name: "紫", hex: "#af52de" },
-        { name: "粉", hex: "#ff2d55" },
-        { name: "棕", hex: "#a2845e" },
-        { name: "肤", hex: "#fadcbd" },
-      ];
-
-      const canvas = document.getElementById("pixelCanvas");
+      const canvas = document.getElementById("paintCanvas");
       const ctx = canvas.getContext("2d");
-      const paletteEl = document.getElementById("palette");
-      const statusDot = document.getElementById("statusDot");
-      const statusText = document.getElementById("statusText");
-      const cooldownOverlay = document.getElementById("cooldownOverlay");
+      const colorPicker = document.getElementById("colorPicker");
+      const lineWidth = document.getElementById("lineWidth");
 
-      // Set canvas native resolution
-      canvas.width = CANVAS_SIZE;
-      canvas.height = CANVAS_SIZE;
-
-      // Board data: 2D array [row][col] = colorIndex (0-13)
-      let board = [];
-      let selectedColor = 0; // default white
       let isDrawing = false;
-      let isCooldown = false;
-      let dirtyPixels = {}; // changes not yet saved
+      let lastX = 0;
+      let lastY = 0;
 
-      // Initialize palette
-      function initPalette() {
-        COLORS.forEach((c, i) => {
-          const el = document.createElement("div");
-          el.className = "palette-color" + (i === 0 ? " active" : "");
-          el.style.background = c.hex;
-          el.title = c.name;
-          el.dataset.index = i;
-          el.addEventListener("click", function () {
-            document
-              .querySelectorAll(".palette-color")
-              .forEach((e) => e.classList.remove("active"));
-            this.classList.add("active");
-            selectedColor = parseInt(this.dataset.index);
-          });
-          paletteEl.appendChild(el);
-        });
-
-        // Eraser (color index 0 = white)
-        const eraser = document.createElement("div");
-        eraser.className = "palette-color eraser";
-        eraser.textContent = "🧹";
-        eraser.title = "橡皮擦（白色）";
-        eraser.addEventListener("click", function () {
-          document
-            .querySelectorAll(".palette-color")
-            .forEach((e) => e.classList.remove("active"));
-          document
-            .querySelector('.palette-color[data-index="0"]')
-            .classList.add("active");
-          selectedColor = 0;
-        });
-        paletteEl.appendChild(eraser);
-      }
-
-      // Initialize board with empty data
-      function initBoard() {
-        board = [];
-        for (let r = 0; r < GRID_SIZE; r++) {
-          board[r] = [];
-          for (let c = 0; c < GRID_SIZE; c++) {
-            board[r][c] = 0;
-          }
-        }
-      }
-
-      // Render board to canvas
-      function render() {
-        for (let r = 0; r < GRID_SIZE; r++) {
-          for (let c = 0; c < GRID_SIZE; c++) {
-            const colorIdx = board[r] ? board[r][c] : 0;
-            const hex = COLORS[colorIdx] ? COLORS[colorIdx].hex : "#ffffff";
-            ctx.fillStyle = hex;
-            ctx.fillRect(
-              c * PIXEL_SIZE,
-              r * PIXEL_SIZE,
-              PIXEL_SIZE,
-              PIXEL_SIZE
-            );
-          }
-        }
-
-        // Draw subtle grid lines
-        ctx.strokeStyle = "rgba(0,0,0,0.04)";
-        ctx.lineWidth = 0.5;
-        for (let i = 0; i <= GRID_SIZE; i++) {
-          ctx.beginPath();
-          ctx.moveTo(i * PIXEL_SIZE, 0);
-          ctx.lineTo(i * PIXEL_SIZE, CANVAS_SIZE);
-          ctx.stroke();
-          ctx.beginPath();
-          ctx.moveTo(0, i * PIXEL_SIZE);
-          ctx.lineTo(CANVAS_SIZE, i * PIXEL_SIZE);
-          ctx.stroke();
-        }
-      }
-
-      // Set a pixel
-      function setPixel(row, col, colorIdx) {
-        if (row < 0 || row >= GRID_SIZE || col < 0 || col >= GRID_SIZE) return;
-        board[row][col] = colorIdx;
-        dirtyPixels[row * GRID_SIZE + col] = colorIdx;
-
-        // Render just this pixel
-        const hex = COLORS[colorIdx].hex;
-        ctx.fillStyle = hex;
-        ctx.fillRect(
-          col * PIXEL_SIZE,
-          row * PIXEL_SIZE,
-          PIXEL_SIZE,
-          PIXEL_SIZE
-        );
-        // Redraw grid for this pixel
-        ctx.strokeStyle = "rgba(0,0,0,0.04)";
-        ctx.lineWidth = 0.5;
-        ctx.strokeRect(
-          col * PIXEL_SIZE,
-          row * PIXEL_SIZE,
-          PIXEL_SIZE,
-          PIXEL_SIZE
-        );
-      }
-
-      // Get pixel position from mouse/touch event
-      function getPixelPos(e) {
+      // 初始化 Canvas 分辨率（防止高分屏模糊）
+      function initCanvas() {
         const rect = canvas.getBoundingClientRect();
-        const scaleX = canvas.width / rect.width;
-        const scaleY = canvas.height / rect.height;
-        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-        const x = (clientX - rect.left) * scaleX;
-        const y = (clientY - rect.top) * scaleY;
+        canvas.width = rect.width;
+        canvas.height = rect.height;
+        ctx.fillStyle = "#ffffff";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.lineCap = "round";
+        ctx.lineJoin = "round";
+      }
+
+      window.addEventListener("load", initCanvas);
+      window.addEventListener("resize", () => {
+        // 调整大小时备份内容
+        const tempImageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = rect.width;
+        canvas.height = rect.height;
+        ctx.fillStyle = "#ffffff";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.putImageData(tempImageData, 0, 0);
+        ctx.lineCap = "round";
+        ctx.lineJoin = "round";
+      });
+
+      function getPos(e) {
+        const rect = canvas.getBoundingClientRect();
+        if (e.touches && e.touches[0]) {
+          return {
+            x: e.touches[0].clientX - rect.left,
+            y: e.touches[0].clientY - rect.top,
+          };
+        }
         return {
-          row: Math.floor(y / PIXEL_SIZE),
-          col: Math.floor(x / PIXEL_SIZE),
+          x: e.clientX - rect.left,
+          y: e.clientY - rect.top,
         };
       }
 
-      // Drawing handlers
-      function handleStart(e) {
-        e.preventDefault();
+      function startDrawing(e) {
         isDrawing = true;
-        const pos = getPixelPos(e);
-        if (
-          pos.row >= 0 &&
-          pos.row < GRID_SIZE &&
-          pos.col >= 0 &&
-          pos.col < GRID_SIZE
-        ) {
-          setPixel(pos.row, pos.col, selectedColor);
-        }
+        const pos = getPos(e);
+        lastX = pos.x;
+        lastY = pos.y;
       }
 
-      function handleMove(e) {
+      function draw(e) {
         if (!isDrawing) return;
         e.preventDefault();
-        const pos = getPixelPos(e);
-        if (
-          pos.row >= 0 &&
-          pos.row < GRID_SIZE &&
-          pos.col >= 0 &&
-          pos.col < GRID_SIZE
-        ) {
-          setPixel(pos.row, pos.col, selectedColor);
-        }
+        const pos = getPos(e);
+
+        ctx.beginPath();
+        ctx.moveTo(lastX, lastY);
+        ctx.lineTo(pos.x, pos.y);
+        ctx.strokeStyle = colorPicker.value;
+        ctx.lineWidth = lineWidth.value;
+        ctx.stroke();
+
+        lastX = pos.x;
+        lastY = pos.y;
       }
 
-      function handleEnd() {
+      function stopDrawing() {
         isDrawing = false;
       }
 
-      // Load board from server
-      async function loadBoard() {
-        setStatus("loading", "加载中...");
-        try {
-          const res = await fetch("/api/pixel?action=get");
-          const data = await res.json();
-          // data is an array of numbers, length 2304
-          initBoard();
-          if (data && data.length === GRID_SIZE * GRID_SIZE) {
-            for (let i = 0; i < data.length; i++) {
-              const r = Math.floor(i / GRID_SIZE);
-              const c = i % GRID_SIZE;
-              const idx =
-                typeof data[i] === "number" ? data[i] : parseInt(data[i]);
-              board[r][c] = idx >= 0 && idx < COLORS.length ? idx : 0;
-            }
+      // 鼠标事件绑定
+      canvas.addEventListener("mousedown", startDrawing);
+      canvas.addEventListener("mousemove", draw);
+      canvas.addEventListener("mouseup", stopDrawing);
+      canvas.addEventListener("mouseout", stopDrawing);
+
+      // 触摸事件绑定 (移动端支持)
+      canvas.addEventListener("touchstart", startDrawing);
+      canvas.addEventListener("touchmove", draw);
+      canvas.addEventListener("touchend", stopDrawing);
+
+      function clearCanvas() {
+        Swal.fire({
+          title: "清空画板？",
+          text: "画好的图画将会消失哦~",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#ff4757",
+          cancelButtonColor: "#aaa",
+          confirmButtonText: "确定清空",
+          cancelButtonText: "取消"
+        }).then((result) => {
+          if (result.isConfirmed) {
+            ctx.fillStyle = "#ffffff";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
           }
-          render();
-          dirtyPixels = {};
-          setStatus("online", "已加载");
-        } catch (e) {
-          console.error("加载失败:", e);
-          // If failed, show empty board
-          initBoard();
-          render();
-          setStatus("online", "离线模式");
-        }
+        });
       }
 
-      // Save board to server
-      async function saveBoard() {
-        if (isCooldown) {
-          cooldownOverlay.style.display = "flex";
-          setTimeout(() => {
-            cooldownOverlay.style.display = "none";
-          }, 1500);
-          return;
-        }
-        if (Object.keys(dirtyPixels).length === 0) {
-          setStatus("online", "没有更改需要保存");
-          setTimeout(() => setStatus("online", "已就绪"), 1500);
-          return;
-        }
-
-        setStatus("loading", "保存中...");
-        try {
-          const res = await fetch("/api/pixel?action=batch_update", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(dirtyPixels),
-          });
-
-          if (res.ok) {
-            dirtyPixels = {};
-            setStatus("online", "保存成功 ✓");
-            setTimeout(() => setStatus("online", "已就绪"), 2000);
-          } else if (res.status === 429) {
-            isCooldown = true;
-            cooldownOverlay.style.display = "flex";
-            setStatus("online", "冷却中，请稍后");
-            setTimeout(() => {
-              isCooldown = false;
-              cooldownOverlay.style.display = "none";
-            }, 3000);
-          } else {
-            setStatus("online", "保存失败");
-          }
-        } catch (e) {
-          console.error("保存失败:", e);
-          setStatus("online", "保存失败");
-        }
+      function saveImage() {
+        const link = document.createElement("a");
+        link.download = `peco-doodle-${Date.now()}.png`;
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+        Swal.fire({
+          title: "保存成功！",
+          text: "图片已保存到本地设备",
+          icon: "success",
+          timer: 1500,
+          showConfirmButton: false
+        });
       }
-
-      // Clear all (local only, need save to persist)
-      function clearAll() {
-        if (confirm("确定要清除所有像素吗？别忘了保存！")) {
-          initBoard();
-          render();
-          // Mark all as dirty
-          for (let r = 0; r < GRID_SIZE; r++) {
-            for (let c = 0; c < GRID_SIZE; c++) {
-              dirtyPixels[r * GRID_SIZE + c] = board[r][c];
-            }
-          }
-          setStatus("online", "已清除（记得保存）");
-        }
-      }
-
-      // Set status
-      function setStatus(state, text) {
-        statusDot.className = "status-dot " + state;
-        statusText.textContent = text;
-      }
-
-      // Keyboard shortcut: Ctrl+S to save
-      document.addEventListener("keydown", function (e) {
-        if ((e.ctrlKey || e.metaKey) && e.key === "s") {
-          e.preventDefault();
-          saveBoard();
-        }
-      });
-
-      // Set up canvas events
-      canvas.addEventListener("mousedown", handleStart);
-      canvas.addEventListener("mousemove", handleMove);
-      canvas.addEventListener("mouseup", handleEnd);
-      canvas.addEventListener("mouseleave", handleEnd);
-      canvas.addEventListener("touchstart", handleStart, { passive: false });
-      canvas.addEventListener("touchmove", handleMove, { passive: false });
-      canvas.addEventListener("touchend", handleEnd);
-
-      // Init
-      initPalette();
-      initBoard();
-      render();
-      loadBoard();
     </script>
   </body>
 </html>
