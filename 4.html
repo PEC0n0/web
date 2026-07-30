@@ -9,7 +9,7 @@
     <style>
       :root { --grid-size: 48; --primary-color: #007bff; --canvas-raw-size: 500px; }
       
-      /* 解决 100vh 遮挡：使用 dvh (Dynamic Viewport Height) */
+      /* 修复 100vh 遮挡问题 */
       body { 
         font-family: -apple-system, sans-serif; 
         background: #f4f7f9; 
@@ -67,7 +67,7 @@
         max-width: 500px; 
         background: white; 
         padding: 12px 15px; 
-        /* 关键：适配移动端底部安全区（如 iPhone 横条） */
+        /* 适配全面屏底部安全区域 */
         padding-bottom: calc(12px + env(safe-area-inset-bottom)); 
         border-top-left-radius: 16px; 
         border-top-right-radius: 16px; 
@@ -84,8 +84,8 @@
       .color-item.active { border-color: #333; transform: scale(1.1); }
 
       .btn-group { display: flex; gap: 8px; }
-      .sync-btn { flex: 2; padding: 10px; border: none; border-radius: 8px; background: var(--primary-color); color: white; font-weight: bold; font-size: 15px; cursor: pointer; }
-      .save-btn { flex: 1; padding: 10px; border: 1px solid #ff7675; border-radius: 8px; background: #fff5f5; color: #ff7675; font-weight: bold; font-size: 14px; cursor: pointer; }
+      .sync-btn { flex: 2; padding: 10px; border: none; border-radius: 8px; background: var(--primary-color); color: white; font-weight: bold; font-size: 15px; }
+      .save-btn { flex: 1; padding: 10px; border: 1px solid #ff7675; border-radius: 8px; background: #fff5f5; color: #ff7675; font-weight: bold; font-size: 14px; }
       .sync-btn:disabled, .save-btn:disabled { background: #cbd5e0; border-color: #cbd5e0; color: white; }
     </style>
   </head>
@@ -145,7 +145,6 @@
         canvas.style.transform = `translate(${state.pointX - 250}px, ${state.pointY - 250}px) scale(${state.scale})`;
       }
 
-      // 初始化调色盘
       const paletteEl = document.getElementById("palette");
       COLORS.forEach((color, index) => {
         const div = document.createElement("div");
@@ -160,7 +159,6 @@
         paletteEl.appendChild(div);
       });
 
-      // 初始化网格
       for (let i = 0; i < GRID_SIZE * GRID_SIZE; i++) {
         const p = document.createElement("div");
         p.className = "pixel";
@@ -169,21 +167,22 @@
         canvas.appendChild(p);
       }
 
-      // --- 核心交互逻辑 ---
+      // --- 关键交互逻辑 ---
 
       viewport.addEventListener("pointerdown", (e) => {
         evCache.push(e);
 
         if (drawModeToggle.checked) {
-          // 绘画模式：只允许第一根手指绘画，且屏幕上只能有一根手指
+          // 绘画模式逻辑
           if (evCache.length === 1 && e.isPrimary) {
             state.isDrawing = true;
             handleDraw(e.clientX, e.clientY);
           } else {
-            state.isDrawing = false; // 多指按下立即失效
+            // 只要出现多指，立即停止绘画
+            state.isDrawing = false;
           }
         } else {
-          // 漫游模式
+          // 漫游模式逻辑
           if (evCache.length === 1) {
             state.panning = true;
             state.startX = e.clientX - state.pointX;
@@ -202,14 +201,15 @@
         }
 
         if (drawModeToggle.checked) {
-          // 绘画模式：严格禁止位移，且多指状态下禁止绘画
+          // 绘画模式：严格限制单指
           if (evCache.length === 1 && state.isDrawing && e.isPrimary) {
             handleDraw(e.clientX, e.clientY);
           } else {
+            // 严禁绘画模式下的任何位移和多指绘画
             state.isDrawing = false;
           }
         } else {
-          // 漫游模式：支持双指缩放和单指平移
+          // 漫游模式：允许平移和缩放
           if (evCache.length === 2) {
             const curDiff = Math.hypot(evCache[0].clientX - evCache[1].clientX, evCache[0].clientY - evCache[1].clientY);
             if (prevDiff > 0) {
@@ -248,9 +248,9 @@
         removeEv(e);
         prevDiff = -1;
         state.isDrawing = false;
-        state.panning = false;
       });
 
+      // PC 滚轮缩放同样遵循锁定
       viewport.addEventListener("wheel", (e) => {
         if (drawModeToggle.checked) return;
         e.preventDefault();
