@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>peco留言板</title>
+    <title>peco留言板 - 生日快乐！</title>
     <meta name="theme-color" content="#ff6b6b" />
     <link rel="icon" href="https://peco.ink/favicon.ico" type="image/x-icon" />
     <link rel="preconnect" href="https://cdn.jsdelivr.net" />
@@ -15,6 +15,7 @@
       defer
     ></script>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="birthday.css" />
     <style>
       .page-wrap {
         max-width: 640px;
@@ -328,6 +329,14 @@
           #f0e6d8
         ) !important;
       }
+      body.tree-hole-bg {
+        background: linear-gradient(
+          160deg,
+          #f7ede2,
+          #efe2d6,
+          #f0e6d8
+        ) !important;
+      }
       .tree-hole-mode .tab-item.active {
         background: linear-gradient(135deg, #8d6e63, #6d4c41) !important;
         border-color: #8d6e63 !important;
@@ -366,6 +375,17 @@
         padding: 20px;
         color: var(--color-text-muted);
       }
+      .birthday-form-title span {
+        background: linear-gradient(
+          135deg,
+          #ff6b6b,
+          #fdcb6e,
+          #ff9f43,
+          #ff6b6b
+        ) !important;
+        background-size: 300% 300% !important;
+        animation: shimmer 3s ease-in-out infinite !important;
+      }
       @media (max-width: 600px) {
         .page-wrap {
           padding: 12px 12px 72px;
@@ -389,8 +409,15 @@
   </head>
   <body>
     <div class="page-transition" id="pageTransition"></div>
+
     <div class="page-wrap" id="mainApp">
-      <div class="mode-tabs fade-in">
+      <!-- Birthday Badge -->
+      <div class="fade-in" style="text-align: center; margin-bottom: 12px">
+        <span class="birthday-badge">🎂 小熊猫生日快乐！🎂</span>
+      </div>
+
+      <!-- Mode Tabs -->
+      <div class="mode-tabs fade-in fade-in-delay-1">
         <div
           class="tab-item active"
           id="tab-page3"
@@ -413,8 +440,12 @@
           >🎨</a
         >
       </div>
-      <div class="form-card fade-in fade-in-delay-1 reveal">
-        <h3 class="form-title" id="formTitle"><span>✏️</span> 发表留言</h3>
+
+      <!-- Form Card -->
+      <div class="form-card fade-in fade-in-delay-2 reveal">
+        <h3 class="form-title birthday-form-title" id="formTitle">
+          <span>✏️</span> 发表留言
+        </h3>
         <div id="replyBar">
           <span>正在回复：<strong id="targetUser"></strong></span>
           <button
@@ -440,15 +471,21 @@
         <div class="cf-turnstile" data-sitekey="0x4AAAAAACrmCOS7zoFvCdZS"></div>
         <button id="submitBtn" onclick="submitComment()">提交留言</button>
       </div>
-      <div id="drawerWrapper" class="fade-in fade-in-delay-2"></div>
-      <section class="reveal fade-in-delay-3">
+
+      <!-- Drawer (Curated) -->
+      <div id="drawerWrapper" class="fade-in fade-in-delay-3"></div>
+
+      <!-- Comment List -->
+      <section class="reveal fade-in-delay-4">
         <h3 class="section-title" id="listTitle">📝 留言墙</h3>
         <div id="commentList">
           <div class="loading-state">正在加载留言...</div>
         </div>
       </section>
     </div>
-    <nav class="bottom-bar">
+
+    <!-- Bottom Bar -->
+    <nav class="bottom-bar birthday-bottom-bar">
       <p>🦝</p>
       <a
         href="javascript:void(0)"
@@ -456,10 +493,11 @@
         >↑ 回到顶部</a
       >
       <span class="divider">|</span>
-      <a href="javascript:void(0)" onclick="navigateTo('index.html')"
+      <a href="javascript:void(0)" onclick="navigateTo('index_birth.html')"
         >回到主页</a
       >
     </nav>
+
     <script src="script.js"></script>
     <script>
       let activePage = "page3";
@@ -472,6 +510,7 @@
         SAD_IMG: "6.jpg",
         BIRTH_IMG: "0.jpg",
       };
+
       const urlParams = new URLSearchParams(window.location.search);
       const adminToken = urlParams.get("admin");
 
@@ -489,7 +528,7 @@
             ]);
             info.model = hints.model || "通用设备";
             info.os =
-              (hints.platform + " " + (hints.platformVersion || "")).trim() ||
+              `${hints.platform || ""} ${hints.platformVersion || ""}`.trim() ||
               "未知系统";
           } else {
             const ua = navigator.userAgent;
@@ -506,9 +545,9 @@
       function switchMode(mode) {
         activePage = mode;
         const app = document.getElementById("mainApp");
-        document.querySelectorAll(".tab-item").forEach(function (el) {
-          el.classList.remove("active");
-        });
+        document
+          .querySelectorAll(".tab-item")
+          .forEach((el) => el.classList.remove("active"));
         document
           .getElementById("tab-" + (mode === "page3" ? "page3" : "treehole"))
           .classList.add("active");
@@ -530,22 +569,14 @@
         loadComments();
       }
 
-      function escapeHtml(str) {
-        var d = document.createElement("div");
-        d.appendChild(document.createTextNode(str));
-        return d.innerHTML;
-      }
-
       function parseContent(rawStr) {
-        var safeHtml = escapeHtml(rawStr);
-        for (var code in EMOJI_MAP) {
-          if (safeHtml.indexOf(code) !== -1) {
+        let safeHtml = escapeHtml(rawStr);
+        for (let code in EMOJI_MAP) {
+          if (safeHtml.includes(code)) {
             safeHtml = safeHtml
               .split(code)
               .join(
-                '<img src="' +
-                  EMOJI_MAP[code] +
-                  '" class="emoji-img" alt="emoji">'
+                `<img src="${EMOJI_MAP[code]}" class="emoji-img" alt="emoji">`
               );
           }
         }
@@ -554,49 +585,41 @@
 
       async function loadComments() {
         try {
-          var res = await fetch("/api/comment?page_id=" + activePage);
-          var data = await res.json();
-          var list = document.getElementById("commentList");
-          var drawerWrapper = document.getElementById("drawerWrapper");
+          const res = await fetch(`/api/comment?page_id=${activePage}`);
+          const data = await res.json();
+          const list = document.getElementById("commentList");
+          const drawerWrapper = document.getElementById("drawerWrapper");
           drawerWrapper.innerHTML = "";
+
           if (!data || data.length === 0) {
             list.innerHTML =
               '<div class="empty-state"><div class="empty-icon">💭</div>这里暂时空空如也...</div>';
             return;
           }
-          var drawerNode = null;
-          for (var i = 0; i < data.length; i++) {
-            if (data[i].content.indexOf("[抽屉名称:") === 0) {
-              drawerNode = data[i];
-              break;
-            }
-          }
+
+          const drawerNode = data.find((item) =>
+            item.content.startsWith("[抽屉名称:")
+          );
           if (drawerNode && activePage === "page3") {
-            var match = drawerNode.content.match(/\[抽屉名称:(.*?)\]/);
-            var drawerName = match ? match[1] : "精选留言";
-            var drawerUI = document.createElement("div");
+            const drawerName =
+              drawerNode.content.match(/\[抽屉名称:(.*?)\]/)[1] || "精选留言";
+            const drawerUI = document.createElement("div");
             drawerUI.className = "curated-drawer";
-            drawerUI.innerHTML =
-              '<div class="drawer-bar" onclick="this.parentElement.classList.toggle(\'open\')">✨ ' +
-              drawerName +
-              '</div><div class="drawer-content" id="drawerInner"></div>';
+            drawerUI.innerHTML = `<div class="drawer-bar" onclick="this.parentElement.classList.toggle('open')">✨ ${drawerName}</div><div class="drawer-content" id="drawerInner"></div>`;
             drawerWrapper.appendChild(drawerUI);
-            var inner = drawerUI.querySelector("#drawerInner");
-            var curated = data.filter(function (item) {
-              return item.parent_id === drawerNode.id;
-            });
-            var others = data.filter(function (item) {
-              return (
+
+            const inner = drawerUI.querySelector("#drawerInner");
+            const curated = data.filter(
+              (item) => item.parent_id === drawerNode.id
+            );
+            const others = data.filter(
+              (item) =>
                 item.id !== drawerNode.id && item.parent_id !== drawerNode.id
-              );
-            });
+            );
+
             curated
-              .sort(function (a, b) {
-                return b.id - a.id;
-              })
-              .forEach(function (item) {
-                renderSingleItem(item, inner, false);
-              });
+              .sort((a, b) => b.id - a.id)
+              .forEach((item) => renderSingleItem(item, inner, false));
             list.innerHTML = "";
             processTree(others, list);
           } else {
@@ -609,101 +632,97 @@
       }
 
       function processTree(data, container) {
-        var commentMap = {};
-        data.forEach(function (item) {
+        const commentMap = {};
+        data.forEach((item) => {
           item.replies = [];
           commentMap[item.id] = item;
         });
-        var roots = [];
-        data.forEach(function (item) {
+        const roots = [];
+        data.forEach((item) => {
           if (item.parent_id && commentMap[item.parent_id])
             commentMap[item.parent_id].replies.push(item);
           else roots.push(item);
         });
-        roots.sort(function (a, b) {
-          return b.id - a.id;
-        });
+        roots.sort((a, b) => b.id - a.id);
         renderTree(roots, container);
       }
 
-      function renderSingleItem(item, container, isReply) {
-        var div = document.createElement("div");
+      function renderSingleItem(item, container, isReply = false) {
+        const div = document.createElement("div");
         div.className = isReply ? "comment-item reply-item" : "comment-item";
-        var isAdmin = ADMIN_NAMES.indexOf(item.nickname) !== -1;
-        var deleteLink = adminToken
-          ? '<span class="delete-btn" onclick="deleteComment(' +
-            item.id +
-            ')">删除</span>'
+        const isAdmin = ADMIN_NAMES.includes(item.nickname);
+        const deleteLink = adminToken
+          ? `<span class="delete-btn" onclick="deleteComment(${item.id})">删除</span>`
           : "";
-        var badge = isAdmin ? '<span class="admin-badge">小熊猫</span>' : "";
-        div.innerHTML =
-          '<div class="comment-body"><div class="comment-header"><strong>' +
-          escapeHtml(item.nickname) +
-          "</strong>" +
-          badge +
-          "<small> " +
-          item.created_at +
-          "</small>" +
-          deleteLink +
-          "</div><p>" +
-          parseContent(item.content) +
-          '</p></div><button class="reply-btn" onclick="prepareReply(' +
-          item.id +
-          ", '" +
-          escapeHtml(item.nickname) +
-          "')" +
-          '">回复</button>';
+
+        div.innerHTML = `<div class="comment-body">
+          <div class="comment-header">
+            <strong>${escapeHtml(item.nickname)}</strong>${
+          isAdmin ? '<span class="admin-badge">小熊猫</span>' : ""
+        }
+            <small>${item.created_at}</small>${deleteLink}
+          </div>
+          <p>${parseContent(item.content)}</p>
+        </div>
+        <button class="reply-btn" onclick="prepareReply(${
+          item.id
+        }, '${escapeHtml(item.nickname)}')">回复</button>`;
         container.appendChild(div);
+        return div;
       }
 
       function renderTree(items, container) {
-        items.forEach(function (item) {
+        items.forEach((item) => {
           renderSingleItem(item, container, !!item.parent_id);
           if (item.replies && item.replies.length > 0) {
-            item.replies.sort(function (a, b) {
-              return a.id - b.id;
-            });
+            item.replies.sort((a, b) => a.id - b.id);
             renderTree(item.replies, container);
           }
         });
       }
 
       async function submitComment() {
-        var btn = document.getElementById("submitBtn");
-        var nickname =
+        const btn = document.getElementById("submitBtn");
+        const nickname =
           activePage === "treehole"
             ? "匿名"
             : document.getElementById("nicknameInput").value.trim();
-        var content = document.getElementById("contentInput").value.trim();
-        var turnstileToken = document.querySelector(
+        const content = document.getElementById("contentInput").value.trim();
+        const turnstileToken = document.querySelector(
           '[name="cf-turnstile-response"]'
-        );
-        turnstileToken = turnstileToken ? turnstileToken.value : null;
+        )?.value;
+
         if (!nickname || !content || !turnstileToken) {
           return Swal.fire({
             title: "等一下！",
             text: "名字内容和验证都得填哦~",
             imageUrl: EMOJI_MAP.NO_IMG,
             imageWidth: 150,
+            imageAlt: "Error",
           });
         }
+
         btn.disabled = true;
         try {
-          var deviceInfo = await getDeviceInfo();
-          var url = "/api/comment?page_id=" + activePage;
-          if (adminToken) url += "&admin_token=" + adminToken;
-          var res = await fetch(url, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              nickname: nickname,
-              content: content,
-              parent_id: window.currentParentId,
-              cf_token: turnstileToken,
-              device_model: deviceInfo.model,
-              device_os: deviceInfo.os,
-            }),
-          });
+          const deviceInfo = await getDeviceInfo();
+          const res = await fetch(
+            `/api/comment?page_id=${activePage}${
+              adminToken ? "&admin_token=" + adminToken : ""
+            }`,
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                nickname,
+                content,
+                parent_id: window.currentParentId,
+                cf_token: turnstileToken,
+                device_model: deviceInfo.model,
+                device_os: deviceInfo.os,
+              }),
+            }
+          );
+
           if (res.ok) {
             await Swal.fire({
               title: "提交成功！",
@@ -718,9 +737,10 @@
             loadComments();
             cancelReply();
           } else {
+            const errorText = await res.text();
             Swal.fire({
               title: "提交失败",
-              text: await res.text(),
+              text: errorText,
               imageUrl: EMOJI_MAP.NO_IMG,
               imageWidth: 150,
             });
@@ -750,21 +770,46 @@
       }
 
       async function deleteComment(id) {
-        var result = await Swal.fire({
-          title: "确定删除？",
-          imageUrl: EMOJI_MAP.QUES_IMG || "",
-          imageWidth: 100,
-          showCancelButton: true,
-        });
-        if (result.isConfirmed) {
-          await fetch("/api/comment?id=" + id + "&admin_token=" + adminToken, {
+        if (
+          (
+            await Swal.fire({
+              title: "确定删除？",
+              imageUrl: EMOJI_MAP.QUES_IMG || "",
+              imageWidth: 100,
+              showCancelButton: true,
+            })
+          ).isConfirmed
+        ) {
+          await fetch(`/api/comment?id=${id}&admin_token=${adminToken}`, {
             method: "DELETE",
           });
           loadComments();
         }
       }
 
+      function escapeHtml(str) {
+        var d = document.createElement("div");
+        d.appendChild(document.createTextNode(str));
+        return d.innerHTML;
+      }
+
+      // Override loadComments to add birthday balloons
+      const originalLoadComments = loadComments;
+      loadComments = async function () {
+        await originalLoadComments();
+        launchBalloons(8);
+      };
+
       loadComments();
+
+      window.addEventListener("load", function () {
+        launchBalloons(12);
+        launchConfetti(40);
+        launchSparkles(8);
+        setInterval(function () {
+          launchBalloons(4);
+        }, 18000);
+      });
     </script>
   </body>
 </html>
