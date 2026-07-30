@@ -3,10 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>广告位招租 - peco</title>
+    <title>生日快乐 - peco</title>
     <meta name="theme-color" content="#ff6b6b" />
     <link rel="icon" href="https://peco.ink/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="birthday.css" />
     <style>
       .page-content {
         min-height: 100vh;
@@ -22,23 +23,17 @@
         font-size: 2.5rem;
         font-weight: 800;
         margin: 0 0 10px;
-        background: linear-gradient(
-          135deg,
-          var(--color-primary),
-          var(--color-warm)
-        );
+        background: linear-gradient(135deg, #ff6b6b, #fdcb6e, #ff9f43);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
+        animation: shimmer 3s ease-in-out infinite;
+        background-size: 300% 300%;
       }
       .sub-text {
         font-size: 1.1rem;
         color: var(--color-text-muted);
         margin-bottom: 30px;
-      }
-      .friends-section {
-        max-width: 500px;
-        width: 100%;
       }
       .friend-card {
         display: flex;
@@ -83,23 +78,6 @@
         color: var(--color-text-muted);
         margin: 2px 0 0;
       }
-      .friend-link {
-        color: var(--color-primary);
-        font-size: 0.8rem;
-        font-weight: 600;
-        padding: 4px 12px;
-        border-radius: 20px;
-        border: 1px solid rgba(255, 107, 107, 0.2);
-        transition: background var(--transition-fast),
-          color var(--transition-fast), border-color var(--transition-fast);
-        text-decoration: none;
-        white-space: nowrap;
-      }
-      .friend-link:hover {
-        background: var(--color-primary);
-        color: white;
-        border-color: var(--color-primary);
-      }
       @media (max-width: 600px) {
         .big-text {
           font-size: 1.8rem;
@@ -114,11 +92,14 @@
     <div class="page-transition" id="pageTransition"></div>
 
     <div class="page-content">
-      <h1 class="big-text fade-in">Oops！</h1>
-      <p class="sub-text fade-in fade-in-delay-1">这里还没有友情链接呢</p>
+      <div class="fade-in" style="margin-bottom: 8px">
+        <span class="birthday-badge">🎂 生日快乐！</span>
+      </div>
+      <h1 class="big-text fade-in fade-in-delay-1">🎉 生日快乐 🎉</h1>
+      <p class="sub-text fade-in fade-in-delay-2">祝小熊猫peco生日快乐！🎈</p>
 
       <!-- Profile Card -->
-      <div class="fade-in fade-in-delay-2 reveal" style="margin-bottom: 24px">
+      <div class="fade-in fade-in-delay-3 reveal" style="margin-bottom: 24px">
         <div
           class="glass-card"
           style="
@@ -130,8 +111,8 @@
             margin: 0 auto;
           "
         >
-          <a href="3.html" class="avatar-wrapper" style="flex-shrink: 0">
-            <img src="2.jpg" alt="peco" width="64" height="64" loading="lazy" />
+          <a href="3_birth.html" class="avatar-wrapper" style="flex-shrink: 0">
+            <img src="0.jpg" alt="peco" width="64" height="64" loading="lazy" />
           </a>
           <div style="flex: 1; text-align: left">
             <p style="margin: 0; font-weight: 700; font-size: 1rem">
@@ -144,37 +125,34 @@
                 color: var(--color-text-muted);
               "
             >
-              🐾 在竹林中写代码
+              🎂 生日快乐！
             </p>
           </div>
         </div>
       </div>
 
-      <!-- Friends Placeholder -->
-      <div class="friends-section">
-        <p
-          class="reveal"
-          style="
-            color: var(--color-text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 16px;
-          "
-        >
-          💭 未来可能会有...
-        </p>
-      </div>
+      <div class="birthday-emoji-row fade-in fade-in-delay-3">🎈🎈🎈</div>
     </div>
 
     <!-- Bottom Bar -->
-    <nav class="bottom-bar">
-      <p>🦝 友情链接</p>
-      <a href="javascript:void(0)" onclick="navigateTo('index.html')"
+    <nav class="bottom-bar birthday-bottom-bar">
+      <p>🦝 生日快乐</p>
+      <a href="javascript:void(0)" onclick="navigateTo('index_birth.html')"
         >回到主页</a
       >
       <span class="divider">|</span>
-      <a href="javascript:void(0)" onclick="navigateTo('3.html')">留言板</a>
+      <a href="javascript:void(0)" onclick="navigateTo('3_birth.html')"
+        >留言板</a
+      >
     </nav>
 
     <script src="script.js"></script>
+    <script>
+      window.addEventListener("load", function () {
+        launchBalloons(12);
+        launchConfetti(40);
+        launchSparkles(8);
+      });
+    </script>
   </body>
 </html>
