@@ -3,10 +3,19 @@ import { $, node, api, renderBlocks } from './ui.js';
 export function createEditor({ isOwner, confirm, onPublished, onSaved, onPhoto }) {
   const dialog = $('blog-editor');
   let documentState = null, dirty = false, busy = false, uploading = 0, preview = false;
+  const disabledBeforeSave = new WeakMap();
   const block = (type, content = {}) => ({ key: crypto.randomUUID(), type, ...content });
   function changed() { dirty = true; $('save-status').textContent = '有新的想法，还未保存'; }
   function controls() {
-    dialog.querySelectorAll('.editor-scroll input,.editor-scroll textarea,.editor-scroll select,.editor-scroll button').forEach(control => { control.disabled = busy; });
+    dialog.querySelectorAll('.editor-scroll input,.editor-scroll textarea,.editor-scroll select,.editor-scroll button').forEach(control => {
+      if (busy) {
+        if (!disabledBeforeSave.has(control)) disabledBeforeSave.set(control, control.disabled);
+        control.disabled = true;
+      } else if (disabledBeforeSave.has(control)) {
+        control.disabled = disabledBeforeSave.get(control);
+        disabledBeforeSave.delete(control);
+      }
+    });
     $('close-editor').disabled = $('preview-post').disabled = busy;
     $('save-draft').disabled = $('publish-post').disabled = busy || uploading > 0;
     $('add-images').disabled = busy || uploading > 0;
@@ -39,7 +48,9 @@ export function createEditor({ isOwner, confirm, onPublished, onSaved, onPhoto }
         const button = node('button', '', glyph); button.type = 'button'; button.setAttribute('aria-label', label); button.title = label;
         button.disabled = index + delta < 0 || index + delta >= documentState.blocks.length;
         button.addEventListener('click', () => {
-          const swap = index + delta; [documentState.blocks[index], documentState.blocks[swap]] = [documentState.blocks[swap], documentState.blocks[index]]; changed(); render();
+          const swap = index + delta;
+          if (busy || swap < 0 || swap >= documentState.blocks.length) return;
+          [documentState.blocks[index], documentState.blocks[swap]] = [documentState.blocks[swap], documentState.blocks[index]]; changed(); render();
         }); actions.append(button);
       }
       const remove = node('button', '', '×'); remove.type = 'button'; remove.setAttribute('aria-label', '移除这一段'); remove.title = '移除这一段';
