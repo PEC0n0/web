@@ -1,73 +1,54 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>施工中 - peco</title>
-    <meta name="theme-color" content="#ff6b6b" />
-    <link rel="icon" href="https://peco.ink/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="style.css" />
-    <style>
-      .page-content {
-        min-height: 100vh;
-        min-height: 100dvh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 40px 20px;
-        text-align: center;
-      }
-      .construction-icon {
-        font-size: 4rem;
-        margin-bottom: 10px;
-        animation: float 3s ease-in-out infinite;
-      }
-      .big-text {
-        font-size: 2rem;
-        font-weight: 800;
-        margin: 0 0 10px;
-        background: linear-gradient(
-          135deg,
-          var(--color-primary),
-          var(--color-warm)
-        );
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="page-transition" id="pageTransition"></div>
-
-    <div class="page-content">
-      <div class="construction-icon fade-in">🚧</div>
-      <h1 class="big-text fade-in fade-in-delay-1">施工中</h1>
-      <p
-        class="reveal"
-        style="color: var(--color-text-muted); margin-bottom: 30px"
-      >
-        这个页面还在建设中...
-      </p>
-
-      <!-- Profile Card -->
-      <div class="reveal fade-in-delay-2">
-        <a href="3.html" class="avatar-wrapper">
-          <img src="2.jpg" alt="peco" width="64" height="64" loading="lazy" />
-        </a>
-        <p
-          style="
-            font-size: 0.85rem;
-            color: var(--color-text-muted);
-            margin-top: 10px;
-          "
-        >
-          🚀 敬请期待
-        </p>
-      </div>
-    </div>
-
-    <script src="script.js"></script>
-  </body>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>还在慢慢生长 · Peco
+</title>
+<meta name="description" content="这片小角落正在整理中，先去别处坐坐吧。">
+<meta name="theme-color" content="#315bd6">
+<meta property="og:type" content="website">
+<meta property="og:title" content="还在慢慢生长 · Peco">
+<meta property="og:description" content="这片小角落正在整理中，先去别处坐坐吧。">
+<meta property="og:url" content="https://peco.ink/warning.html">
+<meta property="og:image" content="https://peco.ink/og-image.png">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/site.css">
+<script src="/site.js" defer>
+</script>
+</head>
+<body class=""><a class="skip-link" href="#main">跳到正文</a>
+<header class="site-header">
+<div class="site-width header-inner"><a href="/" aria-label="Peco 首页"><span class="brand">peco<span>.</span><i aria-hidden="true"></i></span></a>
+<nav class="site-nav" id="site-nav" aria-label="主导航"><a href="/">首页</a><a href="/2.html">朋友们</a><a href="/3.html">留言板</a><a href="/4.html">共创画板</a>
+</nav>
+<a class="private-link" href="/chat/"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="5" y="9" width="10" height="8" rx="2"/><path d="M7 9V6a3 3 0 0 1 6 0v3m-3 4v1"/></svg>私人聊天</a><button class="menu-toggle" type="button" aria-label="展开导航" aria-expanded="false" aria-controls="site-nav"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 6h12M4 10h12M4 14h12"/></svg></button>
+</div>
+</header>
+<main id="main" class="construction">
+<div>
+<div class="construction-mark"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m3 16 7-13 7 13H3Z"/><path d="M10 7v4m0 2v.5"/></svg>
+</div>
+<p class="eyebrow">SOMETHING NICE IS GROWING
+</p>
+<h1>这里，还在慢慢生长。
+</h1>
+<p>这片小角落正在整理中，先去别处坐坐吧。
+</p>
+<a class="button" href="/">回到首页 <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 15 15 5M5 5h10v10"/></svg></a>
+</div>
+</main>
+<footer class="site-footer">
+<div class="site-width footer-inner">
+<div><a href="/" aria-label="Peco 首页"><span class="brand footer-wordmark">peco<span>.</span><i aria-hidden="true"></i></span></a>
+<p class="footer-copy">竹子、苹果，还有一点天马行空。<br>© Peco · 留一点空间，给喜欢的事。
+</p>
+</div>
+<nav class="footer-links" aria-label="页脚导航"><a href="/2.html">朋友们</a><a href="/3.html">留句话</a><a href="/index_birth.html">生日特别页</a><a href="/chat/">私人聊天 ↗</a>
+</nav>
+</div>
+</footer>
+<div class="toast" id="site-toast" role="status" hidden>
+</div>
+</body>
 </html>

@@ -1,362 +1,85 @@
 <!DOCTYPE html>
+
 <html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-    <title>pecoの共创艺术馆</title>
-    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <style>
-      :root { --grid-size: 48; --primary-color: #007bff; --canvas-raw-size: 500px; }
-      
-      /* 修复 100vh 遮挡问题 */
-      body { 
-        font-family: -apple-system, sans-serif; 
-        background: #f4f7f9; 
-        margin: 0; 
-        display: flex; 
-        flex-direction: column; 
-        align-items: center; 
-        height: 100vh; 
-        height: 100dvh; 
-        overflow: hidden; 
-      }
-
-      .header { 
-        width: 100%; 
-        background: white; 
-        padding: 10px 15px; 
-        display: flex; 
-        justify-content: space-between; 
-        align-items: center; 
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); 
-        box-sizing: border-box; 
-        z-index: 100; 
-      }
-      .back-btn { padding: 5px 12px; border: 1px solid #ddd; border-radius: 6px; background: white; cursor: pointer; color: #666; font-size: 13px; text-decoration: none; }
-      .time-display { flex: 1; text-align: center; font-family: monospace; font-size: 13px; color: #333; }
-      #pendingCount { font-size: 11px; color: #ff4757; font-weight: bold; background: #fff1f2; padding: 2px 6px; border-radius: 10px; }
-
-      #viewport { 
-        width: 100vw; 
-        flex: 1; 
-        overflow: hidden; 
-        background: #dbdbdb; 
-        position: relative; 
-        touch-action: none; 
-        user-select: none; 
-      }
-      #canvasContainer { 
-        width: var(--canvas-raw-size); 
-        height: var(--canvas-raw-size); 
-        background: #fff; 
-        display: grid; 
-        grid-template-columns: repeat(var(--grid-size), 1fr); 
-        grid-template-rows: repeat(var(--grid-size), 1fr); 
-        border: 2px solid #333; 
-        position: absolute; 
-        top: 0; 
-        left: 0; 
-        transform-origin: center; 
-        will-change: transform; 
-      }
-      .pixel { border-right: 0.1px solid #f0f0f0; border-bottom: 0.1px solid #f0f0f0; box-sizing: border-box; }
-
-      .controls { 
-        width: 100%; 
-        max-width: 500px; 
-        background: white; 
-        padding: 12px 15px; 
-        /* 适配全面屏底部安全区域 */
-        padding-bottom: calc(12px + env(safe-area-inset-bottom)); 
-        border-top-left-radius: 16px; 
-        border-top-right-radius: 16px; 
-        box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.1); 
-        box-sizing: border-box; 
-        display: flex; 
-        flex-direction: column; 
-        gap: 8px; 
-        z-index: 110; 
-      }
-      .mode-switch { display: flex; align-items: center; justify-content: space-between; background: #f8f9fa; padding: 6px 12px; border-radius: 8px; border: 1px solid #eee; }
-      .palette { display: flex; justify-content: space-between; gap: 4px; flex-wrap: wrap; }
-      .color-item { width: 30px; height: 30px; border-radius: 6px; cursor: pointer; border: 2px solid transparent; }
-      .color-item.active { border-color: #333; transform: scale(1.1); }
-
-      .btn-group { display: flex; gap: 8px; }
-      .sync-btn { flex: 2; padding: 10px; border: none; border-radius: 8px; background: var(--primary-color); color: white; font-weight: bold; font-size: 15px; }
-      .save-btn { flex: 1; padding: 10px; border: 1px solid #ff7675; border-radius: 8px; background: #fff5f5; color: #ff7675; font-weight: bold; font-size: 14px; }
-      .sync-btn:disabled, .save-btn:disabled { background: #cbd5e0; border-color: #cbd5e0; color: white; }
-    </style>
-  </head>
-  <body>
-    <div class="header">
-      <a class="back-btn" href="3.html">返回</a>
-      <div id="currentTime" class="time-display">加载中...</div>
-      <div id="pendingCount">待同步: 0</div>
-    </div>
-
-    <div id="viewport">
-      <div id="canvasContainer"></div>
-    </div>
-
-    <div class="controls">
-      <div class="mode-switch">
-        <span style="font-size: 13px; font-weight: bold">🎨 绘画模式 (勾选后多指将锁定)</span>
-        <input type="checkbox" id="drawModeToggle" style="width: 20px; height: 20px" />
-      </div>
-      <div class="palette" id="palette"></div>
-      <div class="btn-group">
-        <button id="syncBtn" class="sync-btn" onclick="syncData()">上传并刷新</button>
-        <button id="saveBtn" class="save-btn" onclick="savePixelArt()">保存图片</button>
-      </div>
-    </div>
-
-    <script>
-      const GRID_SIZE = 48;
-      const COLORS = ["#ffffff", "#000000", "#ff4757", "#2ed573", "#1e90ff", "#ffa502", "#5352ed", "#747d8c", "#eccc68", "#ff7f50"];
-      const API_BASE = window.location.origin + "/api/pixel";
-      const EMOJI_MAP = { YES_IMG: "4.jpg", NO_IMG: "3.jpg" };
-
-      let selectedColorIdx = 1;
-      let localChanges = {};
-      const viewport = document.getElementById("viewport");
-      const canvas = document.getElementById("canvasContainer");
-      const drawModeToggle = document.getElementById("drawModeToggle");
-
-      let state = { scale: 1, pointX: 0, pointY: 0, startX: 0, startY: 0, panning: false, isDrawing: false };
-      let evCache = []; 
-      let prevDiff = -1;
-
-      function updateClock() {
-        const now = new Date();
-        document.getElementById("currentTime").textContent = now.toLocaleString();
-      }
-
-      function initCanvasPos() {
-        state.pointX = viewport.clientWidth / 2;
-        state.pointY = viewport.clientHeight / 2;
-        if (viewport.clientWidth < 500) state.scale = (viewport.clientWidth * 0.88) / 500;
-        updateTransform();
-      }
-
-      function updateTransform() {
-        state.scale = Math.min(Math.max(0.1, state.scale), 10);
-        canvas.style.transform = `translate(${state.pointX - 250}px, ${state.pointY - 250}px) scale(${state.scale})`;
-      }
-
-      const paletteEl = document.getElementById("palette");
-      COLORS.forEach((color, index) => {
-        const div = document.createElement("div");
-        div.className = "color-item" + (index === selectedColorIdx ? " active" : "");
-        div.style.backgroundColor = color;
-        div.addEventListener("pointerdown", (e) => {
-          e.stopPropagation();
-          document.querySelectorAll(".color-item").forEach((el) => el.classList.remove("active"));
-          div.classList.add("active");
-          selectedColorIdx = index;
-        });
-        paletteEl.appendChild(div);
-      });
-
-      for (let i = 0; i < GRID_SIZE * GRID_SIZE; i++) {
-        const p = document.createElement("div");
-        p.className = "pixel";
-        p.id = `p-${i}`;
-        p.dataset.colorIdx = "0";
-        canvas.appendChild(p);
-      }
-
-      // --- 关键交互逻辑 ---
-
-      viewport.addEventListener("pointerdown", (e) => {
-        evCache.push(e);
-
-        if (drawModeToggle.checked) {
-          // 绘画模式逻辑
-          if (evCache.length === 1 && e.isPrimary) {
-            state.isDrawing = true;
-            handleDraw(e.clientX, e.clientY);
-          } else {
-            // 只要出现多指，立即停止绘画
-            state.isDrawing = false;
-          }
-        } else {
-          // 漫游模式逻辑
-          if (evCache.length === 1) {
-            state.panning = true;
-            state.startX = e.clientX - state.pointX;
-            state.startY = e.clientY - state.pointY;
-          }
-        }
-        viewport.setPointerCapture(e.pointerId);
-      });
-
-      viewport.addEventListener("pointermove", (e) => {
-        for (let i = 0; i < evCache.length; i++) {
-          if (e.pointerId === evCache[i].pointerId) {
-            evCache[i] = e;
-            break;
-          }
-        }
-
-        if (drawModeToggle.checked) {
-          // 绘画模式：严格限制单指
-          if (evCache.length === 1 && state.isDrawing && e.isPrimary) {
-            handleDraw(e.clientX, e.clientY);
-          } else {
-            // 严禁绘画模式下的任何位移和多指绘画
-            state.isDrawing = false;
-          }
-        } else {
-          // 漫游模式：允许平移和缩放
-          if (evCache.length === 2) {
-            const curDiff = Math.hypot(evCache[0].clientX - evCache[1].clientX, evCache[0].clientY - evCache[1].clientY);
-            if (prevDiff > 0) {
-              const delta = curDiff / prevDiff;
-              state.scale *= delta;
-              updateTransform();
-            }
-            prevDiff = curDiff;
-          } else if (evCache.length === 1 && state.panning) {
-            state.pointX = e.clientX - state.startX;
-            state.pointY = e.clientY - state.startY;
-            updateTransform();
-          }
-        }
-      });
-
-      function removeEv(e) {
-        for (let i = 0; i < evCache.length; i++) {
-          if (evCache[i].pointerId === e.pointerId) {
-            evCache.splice(i, 1);
-            break;
-          }
-        }
-      }
-
-      window.addEventListener("pointerup", (e) => {
-        removeEv(e);
-        if (evCache.length < 2) prevDiff = -1;
-        if (evCache.length === 0) {
-          state.isDrawing = false;
-          state.panning = false;
-        }
-      });
-
-      window.addEventListener("pointercancel", (e) => {
-        removeEv(e);
-        prevDiff = -1;
-        state.isDrawing = false;
-      });
-
-      // PC 滚轮缩放同样遵循锁定
-      viewport.addEventListener("wheel", (e) => {
-        if (drawModeToggle.checked) return;
-        e.preventDefault();
-        const delta = e.deltaY > 0 ? 0.9 : 1.1;
-        const oldScale = state.scale;
-        state.scale *= delta;
-        state.pointX -= (e.clientX - state.pointX) * (state.scale / oldScale - 1);
-        state.pointY -= (e.clientY - state.pointY) * (state.scale / oldScale - 1);
-        updateTransform();
-      }, { passive: false });
-
-      function handleDraw(clientX, clientY) {
-        const target = document.elementFromPoint(clientX, clientY);
-        if (target && target.classList.contains("pixel")) {
-          const id = target.id.split("-")[1];
-          paint(id);
-        }
-      }
-
-      function paint(index) {
-        const pixel = document.getElementById(`p-${index}`);
-        if (!pixel || pixel.dataset.colorIdx == selectedColorIdx) return;
-        pixel.style.backgroundColor = COLORS[selectedColorIdx];
-        pixel.dataset.colorIdx = selectedColorIdx;
-        localChanges[index] = selectedColorIdx;
-        document.getElementById("pendingCount").innerText = `待同步: ${Object.keys(localChanges).length}`;
-      }
-
-      async function getDeviceInfo() {
-        let info = { model: "Web Browser", os: navigator.platform };
-        const ua = navigator.userAgent;
-        if (/iPhone/i.test(ua)) info.model = "iPhone";
-        else if (/Android/i.test(ua)) info.model = "Android Device";
-        return info;
-      }
-
-      async function savePixelArt() {
-        const btn = document.getElementById("saveBtn");
-        btn.disabled = true;
-        try {
-          const tempCanvas = await html2canvas(canvas, { scale: 2, backgroundColor: "#ffffff" });
-          const link = document.createElement("a");
-          link.download = `PecoArt_${Date.now()}.png`;
-          link.href = tempCanvas.toDataURL("image/png");
-          link.click();
-        } catch (e) {}
-        btn.disabled = false;
-      }
-
-      async function syncData() {
-        const btn = document.getElementById("syncBtn");
-        btn.disabled = true;
-        try {
-          if (Object.keys(localChanges).length > 0) {
-            await fetch(`${API_BASE}?action=batch_update`, {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(localChanges),
-            });
-          }
-          let pixelDataStr = "";
-          for (let i = 0; i < GRID_SIZE * GRID_SIZE; i++) {
-            const p = document.getElementById(`p-${i}`);
-            pixelDataStr += (p.dataset.colorIdx || "0");
-          }
-          const dev = await getDeviceInfo();
-          await fetch(`${API_BASE}?action=snapshot`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              page_id: "pixel_main",
-              pixel_data: pixelDataStr,
-              device_model: dev.model,
-              device_os: dev.os,
-            }),
-          });
-          const res = await fetch(`${API_BASE}?action=get`);
-          const fullBoard = await res.json();
-          fullBoard.forEach((colorIdx, i) => {
-            const p = document.getElementById(`p-${i}`);
-            if (p) {
-              p.style.backgroundColor = COLORS[colorIdx];
-              p.dataset.colorIdx = colorIdx;
-            }
-          });
-          localChanges = {};
-          document.getElementById("pendingCount").innerText = `待同步: 0`;
-          Swal.fire({ title: "同步成功！", icon: "success", imageUrl: EMOJI_MAP.YES_IMG, imageWidth: 100, timer: 1000, showConfirmButton: false });
-        } catch (e) {
-          Swal.fire({ title: "同步失败", imageUrl: EMOJI_MAP.NO_IMG, imageWidth: 100 });
-        }
-        btn.disabled = false;
-      }
-
-      window.onload = () => {
-        initCanvasPos();
-        syncData();
-        updateClock();
-        setInterval(updateClock, 1000);
-      };
-
-      drawModeToggle.onchange = () => {
-        canvas.style.cursor = drawModeToggle.checked ? "crosshair" : "grab";
-        evCache = [];
-        prevDiff = -1;
-      };
-    </script>
-  </body>
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
+<title>共创画板 · Peco
+</title>
+<meta content="一张共享的 48 × 48 像素画布，等你添上一格颜色。" name="description"/>
+<meta content="#315bd6" name="theme-color"/>
+<meta content="website" property="og:type"/>
+<meta content="共创画板 · Peco" property="og:title"/>
+<meta content="一张共享的 48 × 48 像素画布，等你添上一格颜色。" property="og:description"/>
+<meta content="https://peco.ink/4.html" property="og:url"/>
+<meta content="https://peco.ink/og-image.png" property="og:image"/>
+<link href="/assets/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="/site.css" rel="stylesheet"/>
+<script defer="" src="/site.js">
+</script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/sweetalert2@11">
+</script>
+<script defer="" src="/pixel.js">
+</script>
+</head>
+<body class="studio-page"><a class="skip-link" href="#main">跳到正文</a>
+<header class="site-header">
+<div class="site-width header-inner"><a aria-label="Peco 首页" href="/"><span class="brand">peco<span>.</span><i aria-hidden="true"></i></span></a>
+<nav aria-label="主导航" class="site-nav" id="site-nav"><a href="/">首页</a><a href="/2.html">朋友们</a><a href="/3.html">留言板</a><a aria-current="page" href="/4.html">共创画板</a>
+</nav>
+<a class="private-link" href="/chat/"><svg aria-hidden="true" viewbox="0 0 20 20"><rect height="8" rx="2" width="10" x="5" y="9"></rect><path d="M7 9V6a3 3 0 0 1 6 0v3m-3 4v1"></path></svg>私人聊天</a><button aria-controls="site-nav" aria-expanded="false" aria-label="展开导航" class="menu-toggle" type="button"><svg aria-hidden="true" viewbox="0 0 20 20"><path d="M4 6h12M4 10h12M4 14h12"></path></svg></button>
+</div>
+</header>
+<main class="studio-main" id="main">
+<header class="studio-heading site-width">
+<div>
+<p class="eyebrow">A CANVAS WE SHARE
+</p>
+<h1>一起，添一点颜色。
+</h1>
+</div>
+<p>48 × 48 的小小世界，<br/>每一格都是一次相遇。
+</p>
+</header>
+<div class="studio-shell site-width">
+<section aria-label="共享像素画布" class="studio-stage">
+<div class="studio-stage-top"><span class="stage-name"><svg aria-hidden="true" viewbox="0 0 20 20"><rect height="14" rx="3" width="14" x="3" y="3"></rect><path d="M3 10h14M10 3v14"></path></svg>共创画布</span><time class="time-display" id="currentTime">正在校准时间…</time><span class="pending-count" id="pendingCount" role="status">待同步: 0</span>
+</div>
+<div aria-label="画布区域，开启绘画模式后可以落笔" id="viewport">
+<div id="canvasContainer">
+</div>
+</div>
+<div class="stage-zoom"><span>给想象力，留一格位置。</span>
+<div class="zoom-buttons"><button aria-label="缩小画布" onclick="zoomCanvas(.85)" type="button">−</button><button aria-label="放大画布" onclick="zoomCanvas(1.18)" type="button">+</button><button onclick="resetCanvasView()" type="button">适合窗口</button>
+</div>
+</div>
+</section>
+<aside aria-label="绘画工具" class="controls">
+<section class="mode-switch">
+<p class="tool-heading">01 / DRAWING MODE
+</p>
+<label class="draw-toggle" for="drawModeToggle">绘画模式<input id="drawModeToggle" role="switch" type="checkbox"/></label>
+<p class="mode-help" id="modeHint">拖动画布，滚轮或双指缩放。
+</p>
+</section>
+<div class="studio-rule">
+</div>
+<section class="palette-section">
+<p class="tool-heading">02 / PICK A COLOR
+</p>
+<div aria-label="调色板" class="palette" id="palette">
+</div>
+</section>
+<div class="studio-rule">
+</div>
+<div class="btn-group"><button class="button sync-btn" id="syncBtn" onclick="syncData()" type="button"><svg aria-hidden="true" viewbox="0 0 20 20"><path d="M16 7A6.5 6.5 0 1 0 16 13M16 3v4h-4"></path></svg><span><span class="wide-label">上传并</span>同步</span></button><button class="button secondary save-btn" id="saveBtn" onclick="savePixelArt()" type="button"><svg aria-hidden="true" viewbox="0 0 20 20"><path d="M10 3v10m-4-4 4 4 4-4M3 14v3h14v-3"></path></svg>保存图片</button>
+</div>
+<p class="canvas-note"><strong>一起画，也请一起爱护。</strong>这是大家共享的画布。完成后点击同步，把你的颜色留给下一位路过的人。
+</p>
+</aside>
+</div>
+</main>
+<div class="toast" hidden="" id="site-toast" role="status">
+</div>
+</body>
 </html>
