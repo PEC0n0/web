@@ -166,6 +166,16 @@ if (process.argv[1] && pathToFileURL(resolve(process.argv[1])).href === import.m
   try {
     const config = JSON.parse(await readFile(configPath, 'utf8'));
     const { server } = await createBridge({ config, local: dirname(configPath) });
+    await new Promise((resolve, reject) => {
+      const onError = error => reject(error);
+      server.once('error', onError);
+      server.listen(config.port || 8787, '127.0.0.1', () => {
+        server.off('error', onError);
+        resolve();
+      });
+    });
+    console.log(`Peco 私人聊天已启动：http://127.0.0.1:${server.address().port}/chat/`);
+    console.log('电脑需要保持开机；按 Ctrl+C 停止。');
     const tokenFile = join(dirname(configPath), 'tunnel-token.txt');
     try {
       if ((await readFile(tokenFile, 'utf8')).trim()) {
@@ -174,10 +184,11 @@ if (process.argv[1] && pathToFileURL(resolve(process.argv[1])).href === import.m
         server.on('close', () => tunnel.kill());
       }
     } catch (error) { if (error.code !== 'ENOENT') console.error('隧道尚未启动：' + error.message); }
-    server.listen(config.port || 8787, '127.0.0.1', () => {
-      console.log(`Peco 私人聊天已启动：http://127.0.0.1:${server.address().port}/chat/`);
-      console.log('电脑需要保持开机；按 Ctrl+C 停止。');
-    });
     for (const signal of ['SIGINT', 'SIGTERM']) process.on(signal, () => { server.close(); server.closeAllConnections(); });
-  } catch (error) { console.error(error.code === 'ENOENT' ? '请先运行 npm run chat:setup' : error.message); process.exitCode = 1; }
+  } catch (error) {
+    console.error(error.code === 'ENOENT' ? '请先运行 npm run chat:setup'
+      : error.code === 'EADDRINUSE' ? '本机端口已有服务在运行，请复用现有服务，或先停止后重新启动。'
+      : error.message);
+    process.exitCode = 1;
+  }
 }

@@ -4,6 +4,9 @@ import { EventEmitter } from 'node:events';
 import { mkdtemp, rm, writeFile, realpath } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { spawn } from 'node:child_process';
+import { createServer } from 'node:http';
+import { fileURLToPath } from 'node:url';
 import { createBridge } from '../server.mjs';
 import { hashPassword, Sessions, secret } from '../lib/security.mjs';
 
@@ -115,4 +118,28 @@ test('会话使用随机令牌、生产 cookie 开启 Secure，过期立即失�
   assert.equal(sessions.read('peco_chat=' + token), null);
   assert.match(sessions.cookie(token), /; Secure$/);
   assert.equal(sessions.read('peco_chat=forged'), null);
+});
+
+test('重复启动服务时退出并提示，不会额外启动隧道', async t => {
+  const local = await mkdtemp(join(tmpdir(), 'peco-startup-test-'));
+  const occupied = createServer();
+  await new Promise(resolve => occupied.listen(0, '127.0.0.1', resolve));
+  t.after(async () => { await new Promise(resolve => occupied.close(resolve)); await rm(local, { recursive: true, force: true }); });
+  const configPath = join(local, 'config.json');
+  await writeFile(configPath, JSON.stringify({
+    port: occupied.address().port, origins: ['https://peco.ink'],
+    proxyToken: secret(), password: await hashPassword('test-only-password'),
+  }));
+  await writeFile(join(local, 'tunnel-token.txt'), 'A'.repeat(80));
+  const child = spawn(process.execPath, [fileURLToPath(new URL('../server.mjs', import.meta.url))], {
+    env: { ...process.env, PECO_CHAT_CONFIG: configPath, CLOUDFLARED_BIN: process.execPath },
+    stdio: ['ignore', 'pipe', 'pipe'], windowsHide: true,
+  });
+  let stdout = '', stderr = '';
+  child.stdout.on('data', data => { stdout += data; });
+  child.stderr.on('data', data => { stderr += data; });
+  const code = await new Promise((resolve, reject) => { child.on('exit', resolve); child.on('error', reject); });
+  assert.equal(code, 1);
+  assert.match(stderr, /本机端口已有服务在运行/);
+  assert.doesNotMatch(stdout, /正在连接电脑隧道/);
 });
