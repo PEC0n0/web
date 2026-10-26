@@ -7,6 +7,6 @@
     "chat:setup": "node bridge/setup.mjs",
     "chat:start": "node bridge/server.mjs",
     "chat:doctor": "node bridge/doctor.mjs",
-    "test": "node --test bridge/test/*.test.mjs"
+    "test": "node --test bridge/test/*.test.mjs test/*.test.mjs"
   }
 }

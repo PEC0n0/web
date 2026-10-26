@@ -1,3 +1,5 @@
+import { adminSecret } from "../_lib/admin.js";
+
 export async function onRequest(context) {
   const { env, request } = context;
   const url = new URL(request.url);
@@ -8,7 +10,7 @@ export async function onRequest(context) {
   const comment_id = url.searchParams.get("id");
 
   // 2. 配置区
-  const MY_SECRET_TOKEN = "Þɵc09"; // 你的管理暗号
+  const MY_SECRET_TOKEN = adminSecret(env); // 你的管理暗号
   const ADMIN_NAMES = ["peco", "小熊猫peco"]; // 受保护的站长昵称列表
 
   // --- 处理 DELETE 请求 ---

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#315bd6">
+  <meta name="description" content="Peco 的小小博客。记一点日常，留一点灵感。">
+  <meta name="referrer" content="no-referrer">
+  <meta property="og:title" content="小小博客 · Peco">
+  <meta property="og:description" content="一些日常、灵感，以及想慢慢说的话。">
+  <meta property="og:image" content="https://peco.ink/og-image.png">
+  <link rel="canonical" href="https://peco.ink/blog/">
+  <title>小小博客 · Peco</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/site.css">
+  <link rel="stylesheet" href="/blog/blog.css">
+  <script src="/site.js" defer></script>
+  <script src="/blog/blog.js" type="module"></script>
+</head>
+<body class="blog-page">
+  <a class="skip-link" href="#main">跳到正文</a>
+  <header class="site-header"><div class="site-width header-inner">
+    <a href="/" aria-label="Peco 首页"><span class="brand">peco<span>.</span><i aria-hidden="true"></i></span></a>
+    <nav class="site-nav" id="site-nav" aria-label="主导航"><a href="/">首页</a><a href="/blog/" aria-current="page">博客</a><a href="/2.html">朋友们</a><a href="/3.html">留言板</a><a href="/4.html">共创画板</a></nav>
+    <a class="private-link" href="/chat/"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="5" y="9" width="10" height="8" rx="2"/><path d="M7 9V6a3 3 0 0 1 6 0v3m-3 4v1"/></svg>私人聊天</a>
+    <button class="menu-toggle" type="button" aria-label="展开导航" aria-expanded="false" aria-controls="site-nav"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 6h12M4 10h12M4 14h12"/></svg></button>
+  </div></header>
+  <main id="main" class="site-width blog-main">
+    <header id="blog-intro" class="blog-intro">
+      <div><p class="eyebrow">NOTES FROM MY LITTLE WORLD</p><h1>把日子，写成<span>一页。</span></h1><p class="blog-description">一些日常、灵感，以及想慢慢说的话。<br>不赶路的时候，就在这里停一停。</p></div>
+      <div class="notebook-art" aria-hidden="true"><svg viewBox="0 0 130 140"><rect x="18" y="17" width="85" height="108" rx="8" fill="#e8effc" stroke="#9cb2db"/><path d="M31 17v108M48 45h35M48 57h26M48 69h32" stroke="#6685ba"/><path d="m85 91 8-8 12 13-8 8Z" fill="#f2cd58" stroke="#b59a42"/><path d="m89 109 8-5-12-13-5 9Z" fill="#fff9e0" stroke="#b59a42"/><circle cx="110" cy="24" r="15" fill="#f2cd58" stroke="none"/></svg><span>A LITTLE NOTEBOOK<br>BY PECO.</span></div>
+    </header>
+    <div id="owner-toolbar" class="owner-toolbar" hidden><span class="owner-mode"><span></span>管理模式</span><span class="owner-toolbar-note">记得给今天，留一点位置。</span><button class="text-button" id="admin-logout" type="button">退出管理</button><button class="button" id="new-post" type="button">写一篇 <span aria-hidden="true">＋</span></button></div>
+    <div id="list-view">
+      <div class="blog-list-heading"><div class="blog-list-tabs" id="blog-list-tabs"><button class="active" id="published-tab" type="button" aria-pressed="true">写下的日子</button><button id="draft-tab" type="button" aria-pressed="false" hidden>草稿箱</button></div><span class="blog-list-caption" id="list-caption">ONE PAGE AT A TIME</span></div>
+      <div id="blog-list" class="blog-grid" aria-live="polite"><div class="blog-loading">正在翻开这本小小的日记…</div></div>
+      <button id="load-more" class="button secondary load-more" type="button" hidden>再翻几页 ↓</button>
+    </div>
+    <article id="article-view" class="article-view" hidden></article>
+  </main>
+  <dialog id="blog-editor" class="blog-editor" aria-labelledby="editor-heading">
+    <div class="editor-header"><div><p class="eyebrow">YOUR OWN LITTLE NOTEBOOK</p><h2 id="editor-heading">写下这一页。</h2></div><button id="close-editor" type="button" class="editor-close" aria-label="关闭编辑器">×</button></div>
+    <div class="editor-scroll"><div class="editor-fields"><label for="post-title">文章标题</label><input id="post-title" maxlength="120" placeholder="给这一页，取一个名字。" autocomplete="off"><div class="editor-meta"><div><label for="post-category">放在哪一页</label><select id="post-category"><option>随笔</option><option>日常</option><option>灵感</option><option>记录</option></select></div><div class="editor-excerpt"><label for="post-excerpt">小小摘要 <span>选填</span></label><textarea id="post-excerpt" maxlength="240" rows="2" placeholder="用一两句话，介绍这一篇。"></textarea></div></div></div>
+      <div class="editor-body-heading"><h3>正文</h3><span id="upload-status" role="status">文字和图片，都可以慢慢放进来。</span></div>
+      <div id="editor-blocks" class="editor-blocks"></div>
+      <div class="editor-add"><button type="button" id="add-paragraph">＋ 文字段落</button><button type="button" id="add-heading">＋ 小标题</button><button type="button" id="add-quote">＋ 一段引用</button><button type="button" id="add-images">＋ 插入图片</button><input type="file" id="blog-files" accept="image/png,image/jpeg,image/webp" multiple hidden></div>
+      <div id="editor-preview" class="article-prose editor-preview" hidden></div>
+      <p class="editor-error" id="editor-error" role="alert" hidden></p>
+    </div>
+    <div class="editor-footer"><span id="save-status" role="status">还未保存</span><button type="button" id="preview-post" class="button secondary">预览</button><button type="button" id="save-draft" class="button secondary">存为草稿</button><button type="button" id="publish-post" class="button">发布这篇 ↗</button></div>
+  </dialog>
+  <dialog id="blog-photo" class="blog-photo" aria-label="查看文章图片"><button id="close-blog-photo" type="button" class="editor-close" aria-label="关闭图片">×</button><img id="blog-photo-image" alt=""><p id="blog-photo-caption"></p></dialog>
+  <dialog id="blog-confirm" class="blog-confirm" aria-labelledby="confirm-title"><p class="eyebrow">A LITTLE MOMENT</p><h2 id="confirm-title"></h2><p id="confirm-description"></p><div><button class="button secondary" id="confirm-cancel" type="button">再想想</button><button class="button" id="confirm-ok" type="button">确认</button></div></dialog>
+  <footer class="site-footer"><div class="site-width footer-inner"><div><a href="/" aria-label="Peco 首页"><span class="brand footer-wordmark">peco<span>.</span><i aria-hidden="true"></i></span></a><p class="footer-copy">竹子、苹果，还有一点天马行空。<br>© Peco · 留一点空间，给喜欢的事。</p></div><nav class="footer-links" aria-label="页脚导航"><a href="/blog/">博客</a><a href="/2.html">朋友们</a><a href="/3.html">留句话</a><a href="/index_birth.html">生日特别页</a><a href="/chat/">私人聊天 ↗</a></nav></div></footer>
+  <div class="toast" id="site-toast" role="status" hidden></div>
+</body>
+</html>

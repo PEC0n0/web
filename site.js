@@ -71,6 +71,14 @@ function launchBalloons(count = 7) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Carry the existing administrator entry into the blog, never into public share links.
+  const admin = new URLSearchParams(location.search).get('admin');
+  if (admin != null && !location.pathname.startsWith('/blog')) {
+    document.querySelectorAll('a[href]').forEach(link => {
+      const url = new URL(link.href, location.href);
+      if (url.origin === location.origin && url.pathname.startsWith('/blog/')) { url.searchParams.set('admin', admin); link.href = url.href; }
+    });
+  }
   const menu = document.querySelector('.menu-toggle');
   const nav = document.getElementById('site-nav');
   const closeMenu = () => {
