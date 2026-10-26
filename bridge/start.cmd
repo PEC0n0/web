@@ -1,7 +1,2 @@
 @echo off
-cd /d "%~dp0.."
-node bridge\setup.mjs
-if errorlevel 1 goto done
-node bridge\server.mjs
-:done
-pause
+powershell.exe -NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File "%~dp0start-background.ps1"

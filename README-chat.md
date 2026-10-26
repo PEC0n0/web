@@ -19,6 +19,24 @@ npm run chat:setup
 npm run chat:start
 ```
 
+### 登录 Windows 后自动启动
+
+此电脑已为当前 Windows 用户配置自动启动。登录后，聊天服务和 Cloudflare Tunnel 会静默在后台运行；重复双击 `bridge/start.cmd` 会复用已经运行的服务。自动启动不需要打开 Codex 桌面窗口，但仍需要此电脑已登录 Codex、保持开机联网。
+
+重新安装自动启动，或将仓库移动后更新快捷方式：
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File bridge/autostart.ps1
+```
+
+关闭自动启动（保留当前正在运行的服务）：
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File bridge/autostart.ps1 -Uninstall
+```
+
+当前用户的 Windows 启动文件夹中对应快捷方式为 `Peco Private Chat`，也可在任务管理器的「启动应用」中禁用。启动日志在 `.bridge-local/server.log`，错误日志在 `.bridge-local/server-error.log` 或 `.bridge-local/startup-error.log`。自动启动在登录 Windows 后生效。
+
 没有额外 npm 依赖。需要 Node.js 22 或更新版本。`npm run chat:doctor` 可检查电脑登录、图片生成和会话读取。Windows 默认优先选择桌面应用自带的 Codex，避免旧版 npm CLI 读不到桌面会话；桌面应用升级后会自动查找新版本。
 
 ## 2. 在 Cloudflare 建立电脑连接
@@ -64,6 +82,7 @@ npm run chat:start
 
 - 电脑需要保持开机、联网，电脑中转服务与 Cloudflare Tunnel 都需要运行。手机关闭网页后，正在进行的任务仍在电脑上继续。
 - 已有 Codex 会话可读取和继续。不要在电脑和手机上同时向同一段对话发送指令。
+- 网页选择已有对话时，继续原对话及其原工作目录；点击「新对话」时，创建独立的 Codex 对话，默认工作目录是 `.bridge-local/workspace`。目前网页新对话不会自动加入某个已有项目。
 - 新对话默认只允许写入中转目录中的独立工作区；已有会话沿用原会话设置。需要确认的操作会显示在网页，网页不会自动批准。
 - 参考图支持 PNG、JPEG、WebP，每张最多 12 MB、每次最多 4 张。生成图片点击预览，下方可下载原图。
 - 登录会话最长 12 小时。点击退出立即撤销本次登录；重启电脑中转服务会使所有网页登录失效。密码连续错误 5 次后，该来源需等待 15 分钟。
