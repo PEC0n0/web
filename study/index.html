@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Peco 的电力系统分析学习站：七天路线、逐步例题、电路实验与自测。">
+  <meta name="theme-color" content="#235f4b">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <title>电分课堂 · 一周学会计算主线</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="engine.js"></script>
+  <script defer src="course.js"></script>
+  <script defer src="labs.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#content">跳到正文</a>
+  <aside class="sidebar" aria-label="课程目录">
+    <a class="brand" href="#plan"><span class="brand-mark">∿</span><span>电分课堂<small>从电路到潮流</small></span></a>
+    <nav class="main-nav" aria-label="学习工具">
+      <a href="#plan">七天学习路线<span>01</span></a>
+      <a href="#lab/power">交互实验室<span>07</span></a>
+      <a href="#formulas">公式与使用条件<span>∑</span></a>
+      <a href="#mistakes">我的错题<span id="wrong-count">0</span></a>
+      <a href="/">返回 Peco 首页<span>↗</span></a>
+    </nav>
+    <div class="nav-label">按顺序学习</div>
+    <nav id="lesson-nav" class="lesson-nav" aria-label="逐节课堂"></nav>
+    <div class="sidebar-foot">按提供的 131 页课件整理<br>另含 Ybus 基础预习</div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar"><button id="menu-toggle" class="small-button" aria-label="展开或收起课程目录" aria-expanded="false">目录</button><span id="breadcrumb">七天学习路线</span><span id="progress">已学 0 / 15 节</span><button class="small-button" data-action="export">导出学习记录</button></header>
+    <main id="content" tabindex="-1"></main>
+    <footer class="page-foot">电力系统分析互动课堂 · 例题和练习为自编 · 阅读进度与答题结果保存在当前浏览器</footer>
+  </div>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <noscript>请用启用 JavaScript 的浏览器打开本页。</noscript>
+</body>
+</html>
