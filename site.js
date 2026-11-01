@@ -105,8 +105,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
   }
   document.querySelectorAll('[data-copy]').forEach(button => button.addEventListener('click', async () => {
-    try { await navigator.clipboard.writeText(button.dataset.copy); showToast('本站名片已复制，期待与你相遇。'); }
-    catch { showToast('浏览器没有允许复制，可以手动复制上方名片。'); }
+    try { await navigator.clipboard.writeText(button.dataset.copy); showToast(button.dataset.copySuccess || '本站名片已复制，期待与你相遇。'); }
+    catch { showToast(button.dataset.copyFailure || '浏览器没有允许复制，可以手动复制上方名片。'); }
   }));
   document.querySelectorAll('[data-celebrate]').forEach(button => button.addEventListener('click', () => {
     launchConfetti(); launchBalloons(); showToast('生日快乐，愿每一天都有小小的好事。');
