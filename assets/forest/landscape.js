@@ -59,12 +59,12 @@ export function getMotionState(elapsedSeconds, reducedMotion = false) {
     y: Math.sin(at * 5.6) * .48 + Math.sin(at * 11.2) * .12
   };
   const distances = {
-    clouds: time * .45,
-    far: time * 1.1,
-    middle: time * 3.4,
-    valley: time * 6.2,
-    bridge: time * 14,
-    foreground: time * 20
+    clouds: time * .75,
+    far: time * 4.2,
+    middle: time * 12,
+    valley: time * 22,
+    bridge: time * 48,
+    foreground: time * 68
   };
   const offsets = Object.fromEntries(Object.entries(distances).map(([key, value]) => [key, wrap(value)]));
   const smokeLifetime = 4.4, smokeInterval = .2, count = 22;
