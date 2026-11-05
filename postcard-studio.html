@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#142f2c">
-<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/favicon.svg?v=20261105-painted" type="image/svg+xml">
 <title>小龙邮局 · 明信片工坊</title>
 <meta name="description" content="用毫米排一张好心情。154×104mm 明信片，上传人物与印章，自由定位，导出 PNG、SVG 或实际尺寸打印。">
 <style>
@@ -19,49 +19,54 @@
 .brand{color:inherit;text-decoration:none}.brand:focus-visible{outline:3px solid #82b99a;outline-offset:5px;border-radius:6px}.brand:hover .brand-sub{color:var(--green)}.brand-sub{white-space:nowrap}@media(max-width:720px){.brand{gap:8px}.brand-sub{letter-spacing:.6px}}
 </style>
 <style media="screen">
+body{--ink:#4b3f52;--muted:#796b7b;--line:#ddc7d2;--green:#80647e;--green-light:#efdee7;--paper:#f6ece5}
+
 /* Station furniture only; the postcard SVG, export and print colors are unchanged. */
-body{background:#142f2c;color:#294236}
-.app-header{background:#142f2c;border-color:#c4d1ab30;color:#f8efdb}
+body{background:#352e43;color:#4b3f52}
+.app-header{background:#352e43;border-color:#d3b4cb30;color:#fff0e4}
 .brand-symbol{border:0;border-radius:0;background:transparent;transform:none;width:30px;height:36px}
-.tool-tree{position:relative;display:block;width:27px;height:28px;color:#e7cb92}
-.tool-tree i{position:absolute;bottom:3px;left:12px;width:3px;height:23px;background:currentColor}
-.tool-tree i:before,.tool-tree i:after{content:"";position:absolute;background:currentColor;height:3px;left:-3px;top:4px;width:9px;box-shadow:-3px 4px 0 currentColor,3px 4px 0 currentColor,-6px 8px 0 currentColor,6px 8px 0 currentColor}
-.tool-tree i:after{top:15px;left:-9px;width:21px;box-shadow:none}
+.tool-tree{position:relative;display:block;width:27px;height:28px;color:#f4d3a0}
+.tool-tree i{position:absolute;bottom:3px;left:12px;width:2px;height:24px;background:currentColor;transform:rotate(-8deg);border-radius:5px}
+.tool-tree i:before,.tool-tree i:after{content:"";position:absolute;left:-8px;top:3px;width:10px;height:16px;background:currentColor;clip-path:polygon(8% 2%,100% 25%,85% 88%,36% 100%,0 49%);transform:rotate(-28deg);box-shadow:none}
+.tool-tree i:after{left:1px;top:9px;width:10px;height:14px;transform:rotate(148deg);box-shadow:none}
 .brand-name{font-family:"Noto Serif SC","Songti SC","STSong",SimSun,serif;font-size:23px;font-weight:400;letter-spacing:2px}
-.brand-sub,.save-state{color:#b4c4ab}
-.brand:hover .brand-sub{color:#e7cb92}
-.app-header .btn{border-color:#b7c4a73b;background:#25473c;border-radius:3px;color:#f6ebd1}
-.app-header .btn:hover{background:#355848}
-.app-header .btn-primary{background:#e7cb92;border-color:#e7cb92;color:#2b4434}
-.app-header .btn-primary:hover{background:#f0d7a7}
-.menu{border-color:#cbd2b8;border-radius:4px;background:#f8f4e7}
-.menu button{background:#f8f4e7;border-radius:2px}
-.menu button:hover{background:#e6e9d6}
-.app>aside{background:#f5f1e5;border-color:#ced4bd}
+.brand-sub,.save-state{color:#ceb9ca}
+.brand:hover .brand-sub{color:#f4d3a0}
+.app-header .btn{border-color:#b996b43b;background:#56445f;border-radius:7px;color:#f9e8dd}
+.app-header .btn:hover{background:#705671}
+.app-header .btn-primary{background:#f4d3a0;border-color:#f4d3a0;color:#513b51}
+.app-header .btn-primary:hover{background:#f8ddba}
+.menu{border-color:#ddc5d2;border-radius:8px;background:#f8ece6}
+.menu button{background:#f8ece6;border-radius:5px}
+.menu button:hover{background:#eedee7}
+.app>aside{background:#f6ece5;border-color:#ddc7d2}
 .panel-title h1{font-family:"Noto Serif SC","Songti SC","STSong",SimSun,serif;font-size:18px;font-weight:400}
-.tiny-tag{background:#e5e8d6;color:#526c45;border-radius:2px}
-.tabs{background:#e6e8d8;border-radius:3px}
-.tabs button{border-radius:2px}
-.tabs button[aria-selected=true]{background:#fffcf2;color:#31593f}
-.size-card{background:#e8ebdc;border-radius:3px}
-.text-input,.number-control,.number-control input{border-radius:3px}
-.upload-card{border-color:#b7c4a1;background:#f2f1e2;border-radius:3px}
-.upload-card:hover,.upload-card.dragover{background:#e7ecda;border-color:#789864}
-.upload-icon{border-radius:3px;background:#fffdf3;color:#6b8054}
-.asset-actions button{border-radius:2px;background:#e2e7d3;color:#536943}
-.workspace{background:radial-gradient(ellipse at 75% 0%,#70855c20,transparent 60%),#183b32;color:#f4e9cf}
+.tiny-tag{background:#efdee5;color:#85647d;border-radius:5px}
+.tabs{background:#eddee6;border-radius:7px}
+.tabs button{border-radius:5px}
+.tabs button[aria-selected=true]{background:#fff8f1;color:#765871}
+.size-card{background:#efdee7;border-radius:7px}
+.text-input,.number-control,.number-control input{border-radius:7px}
+.upload-card{border-color:#cbaabb;background:#f7e6e2;border-radius:7px}
+.upload-card:hover,.upload-card.dragover{background:#f2dcdf;border-color:#b18399}
+.upload-icon{border-radius:7px;background:#fff8f2;color:#99738c}
+.asset-actions button{border-radius:5px;background:#eed8e3;color:#8c637f}
+.workspace{background:radial-gradient(ellipse at 75% 0%,#b586a420,transparent 60%),#40364c;color:#fae5d8}
 .workspace-heading h2{font-family:"Noto Serif SC","Songti SC","STSong",SimSun,serif;font-weight:400;letter-spacing:1px;font-size:27px}
-.workspace-heading p,.workspace-bottom{color:#b4c5ac}
-.view-btn{border-color:#b5c49c44;color:#dfdfc2;background:#274b3d;border-radius:3px}
-.view-btn:hover,.view-btn[aria-pressed=true]{background:#e5cd99;color:#304632;border-color:#e5cd99}
-.stage-shell{border-color:#b7c6a333;border-radius:4px}
-.stage-zoom{border-color:#d5d8c4;border-radius:3px}
-.stage-zoom button{border-radius:2px}
-.toast{background:#183b32;color:#f8edcf;border:1px solid #b5c49c55;border-radius:3px}
-.workspace-bottom kbd{border-color:#9eb68f44;background:#284b3c;color:#d6dfc5}
-.privacy{color:#7b886d}
-@media(max-width:720px){.brand-name{font-size:18px}.brand-symbol{width:25px;height:30px}.tool-tree{transform:scale(.85)}.workspace-heading h2{font-size:20px}.workspace-heading p{font-size:10px}.app>aside{border-color:#a5b88940}.stage-shell{border-radius:4px}.workspace-bottom{font-size:9px}.app-header{padding-inline:12px}}
+.workspace-heading p,.workspace-bottom{color:#d0b8cd}
+.view-btn{border-color:#cda9c544;color:#e4cddd;background:#5b4562;border-radius:7px}
+.view-btn:hover,.view-btn[aria-pressed=true]{background:#ecc0ad;color:#65465e;border-color:#ecc0ad}
+.stage-shell{border-color:#caa8c233;border-radius:8px}
+.stage-zoom{border-color:#deccd6;border-radius:7px}
+.stage-zoom button{border-radius:5px}
+.toast{background:#40364c;color:#ffeadc;border:1px solid #cda9c555;border-radius:7px}
+.workspace-bottom kbd{border-color:#ba95b244;background:#5a425f;color:#d8bdd2}
+.privacy{color:#94768b}
+@media(max-width:720px){.brand-name{font-size:18px}.brand-symbol{width:25px;height:30px}.tool-tree{transform:scale(.85)}.workspace-heading h2{font-size:20px}.workspace-heading p{font-size:10px}.app>aside{border-color:#bf9cba40}.stage-shell{border-radius:8px}.workspace-bottom{font-size:9px}.app-header{padding-inline:12px}}
 @media(max-width:360px){.brand{gap:5px}.brand-name{font-size:16px;letter-spacing:1px}.brand-sub{font-size:7px}.workspace-heading h2{font-size:18px;letter-spacing:.2px}.app-header .btn-primary{padding-inline:7px;font-size:10px}.header-actions{gap:4px}.workspace{padding-inline:12px}}
+
+.stage-shell{background-color:#e8d9df;background-image:radial-gradient(#ad8ea244 .7px,transparent .7px)}
+.ruler-top,.ruler-left{color:#96798d}.ruler-top:before,.ruler-top:after,.ruler-left:before,.ruler-left:after{background:#c8a9bd}.stage-badge{color:#97768c}.stage-zoom button,.stage-zoom span{color:#8a637e}.stage-zoom button:hover{background:#eedbe5}.inspector-empty{background:#efdee7}.field-label,.check-row{color:#8a6c82}.upload-card .plus{color:#b493a9}.text-input:focus,.number-control:focus-within{border-color:#ad849f}.status-detail{color:#cfa4b7}
 </style>
 </head>
 <body>

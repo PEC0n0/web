@@ -1,52 +1,52 @@
-/* The forest station classroom. Circuit and answer colors keep their meaning. */
+/* The painted railway classroom. Circuit and answer colors keep their meaning. */
 @media screen{
-:root{--paper:#f1eee2;--white:#fffcf3;--ink:#253e34;--muted:#657260;--line:#d4d8c5;--green:#315f4a;--green-light:#e5e9d8;--radius:4px;--serif:"Iowan Old Style","Palatino Linotype","Noto Serif SC","Source Han Serif SC","Songti SC","STSong",SimSun,serif}
-body{background:radial-gradient(ellipse at 95% 0%,#dbe1c63b,transparent 45%),var(--paper)}
-::selection{background:#e8d3a2;color:#233c2d}
-button{border-radius:3px}
-button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline-color:#a78a4b}
-.sidebar{background:linear-gradient(180deg,#183b32,#142f2c);color:#dce3cd;border-right:1px solid #e5dbb028}
-.brand{font-family:var(--serif);font-size:26px;font-weight:400;letter-spacing:1px;color:#f7ebd0;gap:14px}
-.brand small{font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;font-size:10px;color:#b2c2a9;letter-spacing:3px}
-.brand-mark{position:relative;width:33px;height:39px;flex-shrink:0;display:block}
-.brand-mark i{position:absolute;bottom:3px;left:15px;width:3px;height:23px;background:#e7cb92}
-.brand-mark i:before,.brand-mark i:after{content:"";position:absolute;background:#e7cb92;height:3px;left:-3px;top:4px;width:9px;box-shadow:-3px 4px 0 #e7cb92,3px 4px 0 #e7cb92,-6px 8px 0 #e7cb92,6px 8px 0 #e7cb92}
-.brand-mark i:after{top:15px;left:-9px;width:21px;box-shadow:none}
-.main-nav{border-color:#d8dcab30}
-.main-nav a{color:#e3e7d3;border-radius:2px}
-.main-nav span{color:#b6c4a7}
-.main-nav a:hover,.main-nav a.active,.lesson-nav a:hover,.lesson-nav a.active{background:#355440;color:#f7e7bd}
-.nav-label,.sidebar-foot{color:#afc1a5}
-.lesson-nav a{border-radius:2px;color:#c9d5bc}
-.lesson-nav .lesson-number{color:#9eb48e}
-.lesson-nav .done .lesson-number{color:#e7cb92}
-.topbar{background:#f3f0e4ed;border-color:#d4d8c5}
-.small-button{background:#fffaf0;border-radius:2px}
+:root{--paper:#f6ece5;--white:#fff8f0;--ink:#4b3f52;--muted:#796b7b;--line:#dfcdd7;--green:#80647e;--green-light:#eddee6;--radius:4px;--serif:"Iowan Old Style","Palatino Linotype","Noto Serif SC","Source Han Serif SC","Songti SC","STSong",SimSun,serif}
+body{background:radial-gradient(ellipse at 95% 0%,#f0c1b03b,transparent 45%),var(--paper)}
+::selection{background:#efd0c4;color:#503e53}
+button{border-radius:7px}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline-color:#aa7a91}
+.sidebar{background:linear-gradient(180deg,#40364c,#352e43);color:#e8d9e4;border-right:1px solid #d8b8cf28}
+.brand{font-family:var(--serif);font-size:26px;font-weight:400;letter-spacing:1px;color:#ffeddd;gap:14px}
+.brand small{font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;font-size:10px;color:#cbb5c8;letter-spacing:3px}
+.brand-mark{color:#f4d3a0;position:relative;width:33px;height:39px;flex-shrink:0;display:block}
+.brand-mark i{position:absolute;bottom:3px;left:12px;width:2px;height:24px;background:currentColor;transform:rotate(-8deg);border-radius:2px}
+.brand-mark i:before,.brand-mark i:after{content:"";position:absolute;left:-8px;top:3px;width:10px;height:16px;background:currentColor;clip-path:polygon(8% 2%,100% 25%,85% 88%,36% 100%,0 49%);transform:rotate(-28deg);box-shadow:none}
+.brand-mark i:after{left:1px;top:9px;width:10px;height:14px;transform:rotate(148deg);box-shadow:none}
+.main-nav{border-color:#d8b8cf30}
+.main-nav a{color:#ecdee8;border-radius:5px}
+.main-nav span{color:#c8b2c7}
+.main-nav a:hover,.main-nav a.active,.lesson-nav a:hover,.lesson-nav a.active{background:#66506b;color:#f5d7be}
+.nav-label,.sidebar-foot{color:#c5adc3}
+.lesson-nav a{border-radius:10px;color:#dcc5d6}
+.lesson-nav .lesson-number{color:#b49ab1}
+.lesson-nav .done .lesson-number{color:#f4d3a0}
+.topbar{background:#f7ede7ed;border-color:#dfcdd7}
+.small-button{background:#fff7ef;border-radius:5px}
 main{position:relative}
 h1,h2,h3,.day h3{font-family:var(--serif);font-weight:400;letter-spacing:.3px}
 h1{font-size:40px;line-height:1.55}
 h2{font-size:27px}
-.hero{border-bottom-color:#c9cfb7;padding-bottom:39px}
-.hero h1{color:#244c38}
+.hero{border-bottom-color:#dbc3cf;padding-bottom:39px}
+.hero h1{color:#6e526e}
 .eyebrow{letter-spacing:2.5px;font-size:10px}
 .hero-symbol{opacity:.88}
-.actions a,.button-link{border-radius:3px}
-.study-stats{border-color:#ccd2bd}
-.study-stats strong{color:#3b6145}
-.day{border-color:#d4d8c5}
-.day-label{color:#63774d;font-size:12px;letter-spacing:1px}
-.topic-links a{text-decoration-color:#aebf92}
-.note,.lab-prompt{background:#e8e8d5;border-color:#9ba76d;border-radius:2px}
-.formula{border-radius:3px;background:#e5e9d8;border-left-color:#789764}
-.example,.controls,.formula-sheet{background:#fffcf3;border-color:#cfd5bf;border-radius:4px;box-shadow:0 4px 16px #30473103}
-.option{border-color:#d2d8c1;border-radius:3px}
-.option:has(input:checked){background:#e6e9d6;border-color:#6b8b55}
-.answer-input,.control select,.lab-tabs a{border-radius:3px}
-.lab-tabs a.active{background:#315f4a}
-.readout{border-bottom-color:#cbd3b8}
-.empty-state{background:#e6e9d6;border-radius:4px}
-.page-foot{color:#7b856d}
-#toast{background:#183b32;border:1px solid #c4c69c50;border-radius:3px;color:#f8edcf}
-@media(max-width:800px){h1{font-size:31px}h2{font-size:25px}.topbar{padding-inline:13px;gap:8px}.brand{font-size:25px}.menu-open .sidebar{box-shadow:10px 0 50px #10271f66}}
+.actions a,.button-link{border-radius:7px}
+.study-stats{border-color:#dcc8d3}
+.study-stats strong{color:#8b667f}
+.day{border-color:#dfcdd7}
+.day-label{color:#97718a;font-size:12px;letter-spacing:1px}
+.topic-links a{text-decoration-color:#c8a6ba}
+.note,.lab-prompt{background:#f0dedc;border-color:#c89eaa;border-radius:5px}
+.formula{border-radius:7px;background:#eddee6;border-left-color:#b48b9e}
+.example,.controls,.formula-sheet{background:#fff8f0;border-color:#ddc7d3;border-radius:8px;box-shadow:0 4px 16px #5b3f5703}
+.option{border-color:#ddc7d3;border-radius:7px}
+.option:has(input:checked){background:#eedee7;border-color:#b28b9e}
+.answer-input,.control select,.lab-tabs a{border-radius:7px}
+.lab-tabs a.active{background:#80647e}
+.readout{border-bottom-color:#d8c1d0}
+.empty-state{background:#eedee7;border-radius:8px}
+.page-foot{color:#967b8e}
+#toast{background:#40364c;border:1px solid #cda9c150;border-radius:7px;color:#ffeadc}
+@media(max-width:800px){h1{font-size:31px}h2{font-size:25px}.topbar{padding-inline:13px;gap:8px}.brand{font-size:25px}.menu-open .sidebar{box-shadow:10px 0 50px #2d233b66}}
 @media(max-width:360px){main{padding-inline:18px}.topbar{font-size:10px;gap:7px}#progress{font-size:9px}.small-button{font-size:11px;padding-inline:8px}.study-stats{gap:22px}.study-stats strong{font-size:23px}.study-stats span{font-size:10px}.day{grid-template-columns:53px 1fr;gap:11px}.day h3{font-size:18px}.controls{gap:12px;padding:14px}.control label{font-size:12px}}
 }

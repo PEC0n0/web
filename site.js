@@ -34,7 +34,7 @@ function initLikeButton(pageId) {
   });
 }
 
-const celebrationColors = ['#416b56', '#dfc28b', '#a5bca2', '#f1e6c9', '#bc9771'];
+const celebrationColors = ['#80647e', '#f4d3a0', '#dfa38d', '#f6ece5', '#b89bb0'];
 const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 function launchConfetti(count = 45) {
   if (reducedMotion()) return;

@@ -1,44 +1,44 @@
 @charset "UTF-8";
-/* Forest railway — shared public pages. Scene and illustration colours stay separate. */
+/* Painted railway — plum shadows, rose-gold light and quiet paper. */
 body.forest-site {
   color-scheme: light;
-  --canvas: #f4f1e7;
-  --paper: #fffdf5;
-  --ink: #25473b;
-  --muted: #6f8273;
-  --blue: #416b56;
-  --blue-dark: #2b4c3d;
-  --blue-pale: #e8eee1;
-  --yellow: #dfc28b;
-  --yellow-pale: #f6efd9;
-  --line: #d8decd;
-  --forest: #142f2c;
-  --cream: #f8efdb;
-  --gold: #e7cb92;
+  --canvas: #f6ece5;
+  --paper: #fff9f2;
+  --ink: #4b3f52;
+  --muted: #7f6e7e;
+  --blue: #80647e;
+  --blue-dark: #665168;
+  --blue-pale: #eee0e3;
+  --yellow: #dfa38d;
+  --yellow-pale: #fae9dc;
+  --line: #e3d3d5;
+  --forest: #352e43;
+  --cream: #fff2e7;
+  --gold: #f4d3a0;
   --serif: "Iowan Old Style", "Palatino Linotype", "Noto Serif SC", "Source Han Serif SC", "Songti SC", "STSong", SimSun, serif;
   --mono: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
-  background: radial-gradient(ellipse at 12% 35%, #e5e8d866, transparent 55%), var(--canvas);
+  background: radial-gradient(ellipse at 12% 8%, #efd3ca66, transparent 48%), radial-gradient(ellipse at 95% 70%, #dfcadb33, transparent 55%), var(--canvas);
   color: var(--ink);
 }
 body.forest-site::selection { background: var(--yellow); color: var(--forest); }
-body.forest-site :focus-visible { outline-color: #6a8566; outline-width: 2px; }
+body.forest-site :focus-visible { outline-color: #7c6b80; outline-width: 2px; }
 body.forest-site .skip-link { background: var(--cream); color: var(--forest); border-radius: 2px; }
 body.forest-site :is(h1,h2,h3) { font-family: var(--serif); font-weight: 500; }
 body.forest-site :is(.eyebrow,.section-index,.tool-heading,.wall-heading > span) { font-family: var(--mono); }
-body.forest-site .eyebrow { color: #7a896c; letter-spacing: 2px; }
-body.forest-site .eyebrow::before { background: #a69162; border-radius: 0; width: 4px; height: 4px; }
-body.forest-site .section-index { color: #85917d; }
+body.forest-site .eyebrow { color: #817085; letter-spacing: 2px; }
+body.forest-site .eyebrow::before { background: #a17d67; border-radius: 0; width: 4px; height: 4px; }
+body.forest-site .section-index { color: #8b808e; }
 body.forest-site .section-heading h2 { letter-spacing: .4px; }
 body.forest-site .inner-main { padding-top: 48px; }
 body.forest-site .page-intro h1 { letter-spacing: .4px; font-weight: 400; }
 body.forest-site .page-intro p:not(.eyebrow) { line-height: 2.1; }
 
-/* The same dark tree line frames every public destination. */
+/* A dark painted frame joins every destination to the same journey. */
 body.forest-site .site-header {
   height: 88px;
-  background: var(--forest);
+  background: linear-gradient(110deg, #352e43, #40364c);
   color: var(--cream);
-  border-bottom: 1px solid #dce8db20;
+  border-bottom: 1px solid #e6dde520;
 }
 body.forest-site .header-inner { gap: 27px; }
 body.forest-site .brand {
@@ -55,36 +55,37 @@ body.forest-site .brand {
 body.forest-site .brand::before {
   content: "";
   position: absolute;
-  width: 3px;
-  height: 23px;
-  left: 10px;
-  bottom: 4px;
+  width: 20px;
+  height: 25px;
+  left: 0;
+  bottom: 3px;
   background: var(--gold);
+  clip-path: polygon(50% 0,61% 36%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 36%);
 }
 body.forest-site .brand::after {
   content: "";
   position: absolute;
-  width: 9px;
-  height: 3px;
-  left: 7px;
-  bottom: 19px;
-  background: var(--gold);
-  box-shadow: -3px 4px 0 var(--gold), 3px 4px 0 var(--gold), -6px 8px 0 var(--gold), 6px 8px 0 var(--gold), -6px 12px 0 var(--gold), 0 12px 0 var(--gold), 6px 12px 0 var(--gold);
+  width: 4px;
+  height: 4px;
+  left: 22px;
+  bottom: 24px;
+  background: #dfa38d;
+  border-radius: 50%;
 }
 body.forest-site .brand span { color: var(--gold); }
 body.forest-site .site-nav { gap: 29px; margin-right: 21px; }
-body.forest-site .site-nav a { color: #d9e2cf; font-size: 11px; letter-spacing: .7px; }
+body.forest-site .site-nav a { color: #dfd2dd; font-size: 11px; letter-spacing: .7px; }
 body.forest-site .site-nav a:hover,
 body.forest-site .site-nav a[aria-current="page"] { color: var(--gold); }
 body.forest-site .site-nav a[aria-current="page"]::after { background: var(--gold); border-radius: 0; }
-body.forest-site .private-link { color: #dfdfc6; background: transparent; border: 1px solid #c2c9a63b; border-radius: 2px; }
-body.forest-site .private-link:hover { color: var(--gold); background: #e7cb920c; border-color: #d7c08a70; }
+body.forest-site .private-link { color: #dbcad9; background: transparent; border: 1px solid #bfabc43b; border-radius: 2px; }
+body.forest-site .private-link:hover { color: var(--gold); background: #f4d3a00c; border-color: #d2a98f70; }
 body.forest-site .menu-toggle { color: var(--cream); border-radius: 2px; }
-body.forest-site .site-footer { background: var(--forest); border-color: #c9d4b52b; margin-top: 76px; color: var(--cream); }
+body.forest-site .site-footer { background: linear-gradient(120deg, #40364c, #352e43); border-color: #cfbacc2b; margin-top: 76px; color: var(--cream); }
 body.forest-site .footer-inner { min-height: 148px; padding-block: 31px 33px; }
 body.forest-site .footer-wordmark { font-size: 28px; }
-body.forest-site .footer-copy { color: #a9b9a6; font-size: 9px; line-height: 2; margin-top: 12px; }
-body.forest-site .footer-links { color: #c2cdb5; font-size: 10px; gap: 21px; }
+body.forest-site .footer-copy { color: #b3a9b6; font-size: 9px; line-height: 2; margin-top: 12px; }
+body.forest-site .footer-links { color: #c9b9c7; font-size: 10px; gap: 21px; }
 body.forest-site .footer-links a:hover { color: var(--gold); }
 
 /* A narrow window onto the train's journey; content remains on quiet paper. */
@@ -93,16 +94,16 @@ body.forest-site .forest-banner {
   isolation: isolate;
   height: 220px;
   overflow: hidden;
-  background: linear-gradient(180deg, #48645b, #b5bea2 63%, #264837);
+  background: linear-gradient(180deg, #84728d, #d5aaad 63%, #55445d);
   color: var(--cream);
-  border-bottom: 1px solid #315440;
+  border-bottom: 1px solid #4a364f;
 }
 body.forest-site .forest-banner::after {
   content: "";
   position: absolute;
   z-index: -1;
   inset: 0;
-  background: linear-gradient(90deg,#122f2dc9,#102d2d5c 51%,#0c2b2921), linear-gradient(0deg,#102d2947,transparent 60%);
+  background: linear-gradient(90deg,#26172ac9,#2415285c 51%,#20132421), linear-gradient(0deg,#24152847,transparent 60%);
   pointer-events: none;
 }
 body.forest-site .forest-banner canvas {
@@ -112,7 +113,7 @@ body.forest-site .forest-banner canvas {
   inset: 0;
   width: 100%;
   height: 100%;
-  image-rendering: pixelated;
+  image-rendering: auto;
   pointer-events: none;
 }
 body.forest-site .forest-banner-copy {
@@ -126,66 +127,66 @@ body.forest-site .forest-banner-copy {
   align-items: flex-start;
   padding-bottom: 4px;
 }
-body.forest-site .forest-banner-kicker { margin: 0 0 13px; color: #e4cea2; font: 8px/1.8 var(--mono); letter-spacing: 2.3px; }
-body.forest-site .forest-banner-title { margin: 0 0 12px; color: #fff4dd; font: 400 36px/1.5 var(--serif); letter-spacing: 3px; text-shadow: 0 2px 16px #122e2e60; }
-body.forest-site .forest-banner-note { font-size: 10px; line-height: 2; color: #e6e6d0; letter-spacing: .8px; }
-body.forest-site .forest-banner-home { position: absolute; right: max(48px,calc((100% - 1120px) / 2)); bottom: 28px; color: #f2dfb8; font-size: 10px; letter-spacing: .4px; padding-block: 6px; }
-body.forest-site .forest-banner-home:hover { color: #fff5dc; }
-body.forest-site .forest-banner-clock { position: absolute; right: max(48px,calc((100% - 1120px) / 2)); top: 25px; padding: 5px 8px; background: #173c2c52; border: 1px solid #d6d4b62e; color: #f0e3c5; font: 8px/1.6 var(--mono); letter-spacing: 1px; }
+body.forest-site .forest-banner-kicker { margin: 0 0 13px; color: #dfbca7; font: 8px/1.8 var(--mono); letter-spacing: 2.3px; }
+body.forest-site .forest-banner-title { margin: 0 0 12px; color: #fdebdf; font: 400 36px/1.5 var(--serif); letter-spacing: 3px; text-shadow: 0 2px 16px #26162a60; }
+body.forest-site .forest-banner-note { font-size: 10px; line-height: 2; color: #e3d3e1; letter-spacing: .8px; }
+body.forest-site .forest-banner-home { position: absolute; right: max(48px,calc((100% - 1120px) / 2)); bottom: 28px; color: #eecfbc; font-size: 10px; letter-spacing: .4px; padding-block: 6px; }
+body.forest-site .forest-banner-home:hover { color: #fdeade; }
+body.forest-site .forest-banner-clock { position: absolute; right: max(48px,calc((100% - 1120px) / 2)); top: 25px; padding: 5px 8px; background: #311d3652; border: 1px solid #d4c3b82e; color: #edd6c8; font: 8px/1.6 var(--mono); letter-spacing: 1px; }
 
-/* Paper notes and small brass controls. */
-body.forest-site .button { border-radius: 3px; background: var(--blue); box-shadow: 2px 2px 0 #25473b14; letter-spacing: .5px; }
+/* Paper notes and small rose-gold controls. */
+body.forest-site .button { border-radius: 3px; background: var(--blue); box-shadow: 2px 2px 0 #4b3f5214; letter-spacing: .5px; }
 body.forest-site .button:hover { background: var(--blue-dark); }
-body.forest-site .button.secondary { color: var(--ink); border-color: #becbb7; background: #fffdf566; }
-body.forest-site .button.secondary:hover { background: #e9eddf; }
-body.forest-site .button.sunshine { background: var(--yellow); color: #3f503a; }
-body.forest-site .button.sunshine:hover { background: #e8cc96; }
+body.forest-site .button.secondary { color: var(--ink); border-color: #c8bac6; background: #fff9f266; }
+body.forest-site .button.secondary:hover { background: #ebe1ea; }
+body.forest-site .button.sunshine { background: var(--yellow); color: #4a3d4d; }
+body.forest-site .button.sunshine:hover { background: #e2b79c; }
 body.forest-site .text-link { color: var(--blue); }
-body.forest-site .pill { background: #fffdf580; border-color: var(--line); border-radius: 3px; }
-body.forest-site .pill.blue { background: #e8eee1; border-color: #cdd9c6; }
-body.forest-site .pill.yellow { background: #f6efd9; border-color: #e1d2ac; color: #7e6840; }
-body.forest-site .toast { color: var(--cream); background: var(--forest); border: 1px solid #7a8d74; border-radius: 3px; box-shadow: 3px 4px 0 #163d3224; }
-body.forest-site .intro-art { border-radius: 6px; color: #8c7952; background: #eee7d3; border-color: #d8cba9; transform: rotate(5deg); }
+body.forest-site .pill { background: #fff9f280; border-color: var(--line); border-radius: 3px; }
+body.forest-site .pill.blue { background: #eee0e3; border-color: #d6c9d4; }
+body.forest-site .pill.yellow { background: #fae9dc; border-color: #ddc1b0; color: #7a5944; }
+body.forest-site .toast { color: var(--cream); background: var(--forest); border: 1px solid #867889; border-radius: 3px; box-shadow: 3px 4px 0 #311d3624; }
+body.forest-site .intro-art { border-radius: 6px; color: #886956; background: #ecded5; border-color: #d5bcac; transform: rotate(5deg); }
 body.forest-site .friends-empty,
 body.forest-site .form-card,
 body.forest-site .studio-stage,
 body.forest-site .controls { background: var(--paper); border-color: var(--line); border-radius: 6px; }
-body.forest-site .friends-empty { box-shadow: 5px 5px 0 #cdd4bc26; }
-body.forest-site .empty-symbol span { border-color: #c9d6c0; background: #eaf0e2; border-radius: 3px; }
-body.forest-site .empty-symbol span + span { color: #947a46; background: var(--yellow-pale); border-color: #dbcca7; }
+body.forest-site .friends-empty { box-shadow: 5px 5px 0 #d0c0ce26; }
+body.forest-site .empty-symbol span { border-color: #d3c3d1; background: #eee4ed; border-radius: 3px; }
+body.forest-site .empty-symbol span + span { color: #8f654b; background: var(--yellow-pale); border-color: #d7bcab; }
 body.forest-site .friends-empty h2 { font-size: 23px; letter-spacing: .4px; }
-body.forest-site .calling-card { background: #e8eddf; border-color: #cfd9c3; border-radius: 6px; }
-body.forest-site .calling-profile img { border-color: #fffdf0; border-radius: 5px; }
-body.forest-site .calling-card dl > div { border-color: #ccd7c1; }
-body.forest-site .copy-button { color: var(--blue); border-color: #bacbae; border-radius: 3px; background: #fffdf58c; }
-body.forest-site .copy-button:hover { background: #fffdf5; }
+body.forest-site .calling-card { background: #ebe1ea; border-color: #d6c6d4; border-radius: 6px; }
+body.forest-site .calling-profile img { border-color: #fef6f1; border-radius: 5px; }
+body.forest-site .calling-card dl > div { border-color: #d4c4d2; }
+body.forest-site .copy-button { color: var(--blue); border-color: #c7b2c4; border-radius: 3px; background: #fff9f28c; }
+body.forest-site .copy-button:hover { background: #fff9f2; }
 
 /* Leave a note, or whisper to the forest. */
-body.forest-site .mode-tabs { background: #e7eadf; border-color: #d0dac3; border-radius: 4px; }
+body.forest-site .mode-tabs { background: #e8e1e7; border-color: #d7c6d4; border-radius: 4px; }
 body.forest-site .tab-item { border-radius: 2px; }
-body.forest-site .tab-item.active { background: var(--paper); color: var(--blue); box-shadow: 1px 2px 0 #445e3512; }
+body.forest-site .tab-item.active { background: var(--paper); color: var(--blue); box-shadow: 1px 2px 0 #523b5812; }
 body.forest-site .form-title { letter-spacing: .2px; font-size: 18px; }
 body.forest-site .form-card input:not([type="hidden"]),
-body.forest-site .form-card textarea { border-radius: 3px; border-color: #d5ddca; background: #faf9f2; }
+body.forest-site .form-card textarea { border-radius: 3px; border-color: #dacdd8; background: #f9f5f3; }
 body.forest-site .form-card input:focus,
-body.forest-site .form-card textarea:focus { border-color: #7f9970; box-shadow: 0 0 0 3px #7f997012; }
+body.forest-site .form-card textarea:focus { border-color: #8d7693; box-shadow: 0 0 0 3px #8d769312; }
 body.forest-site .form-card input::placeholder,
-body.forest-site .form-card textarea::placeholder { color: #8b9984; }
-body.forest-site :is(.field-caption,.form-note) { color: #839079; }
-body.forest-site .reply-bar { background: var(--yellow-pale); border-color: #ddd1aa; border-radius: 3px; }
-body.forest-site .reply-bar button { color: #7a704b; }
+body.forest-site .form-card textarea::placeholder { color: #938796; }
+body.forest-site :is(.field-caption,.form-note) { color: #897c8d; }
+body.forest-site .reply-bar { background: var(--yellow-pale); border-color: #d9beae; border-radius: 3px; }
+body.forest-site .reply-bar button { color: #775e4e; }
 body.forest-site .wall-heading h2 { font-size: 17px; letter-spacing: .5px; }
-body.forest-site .comment-header strong::before { background: #a6b691; border-radius: 0; width: 4px; height: 4px; }
-body.forest-site .comment-header small { color: #839079; }
-body.forest-site .comment-body p { color: #536b56; }
-body.forest-site .reply-btn { border-radius: 3px; border-color: #cdd9c3; }
-body.forest-site .reply-item { border-left-color: #d0dbc3; }
-body.forest-site .admin-badge { background: #eee2bd; color: #7b653b; border-radius: 2px; }
-body.forest-site .curated-drawer { background: #f6f0dc; border-color: #ddd0a9; border-radius: 4px; }
-body.forest-site .drawer-bar { color: #7b6b44; }
-body.forest-site.tree-hole-bg { background: #edf0e5; }
-body.forest-site .tree-hole-mode .form-card { background: #e8eedf; border-color: #cbd8bc; }
-body.forest-site .tree-hole-mode .wall-heading { border-color: #cdd8c1; }
+body.forest-site .comment-header strong::before { background: #ab97b0; border-radius: 0; width: 4px; height: 4px; }
+body.forest-site .comment-header small { color: #897c8d; }
+body.forest-site .comment-body p { color: #645767; }
+body.forest-site .reply-btn { border-radius: 3px; border-color: #d6c6d4; }
+body.forest-site .reply-item { border-left-color: #d7c7d5; }
+body.forest-site .admin-badge { background: #ebd1c0; color: #77553f; border-radius: 2px; }
+body.forest-site .curated-drawer { background: #f4e6de; border-color: #d9bead; border-radius: 4px; }
+body.forest-site .drawer-bar { color: #775a48; }
+body.forest-site.tree-hole-bg { background: #eee7ed; }
+body.forest-site .tree-hole-mode .form-card { background: #ece1ea; border-color: #d4c0d1; }
+body.forest-site .tree-hole-mode .wall-heading { border-color: #d5c4d2; }
 body.forest-site .swal2-popup { background: var(--paper); }
 body.forest-site .swal2-title { font-family: var(--serif); }
 
@@ -201,35 +202,35 @@ body.forest-site.studio-page .forest-banner-clock { display: none; }
 body.forest-site.studio-page .forest-banner-home { bottom: 22px; font-size: 9px; }
 body.forest-site .studio-heading h1 { font-size: 26px; letter-spacing: .6px; }
 body.forest-site .studio-stage-top,
-body.forest-site .stage-zoom { background: #faf9f0; }
-body.forest-site .pending-count { background: #f0e7ca; color: #7c6b3f; border-color: #dfd1a8; border-radius: 3px; }
-body.forest-site #viewport { background-color: #e6ebde; background-image: radial-gradient(#bdcbb1 .8px,transparent .8px); }
-body.forest-site .zoom-buttons button { border-color: #c9d5bd; border-radius: 2px; }
-body.forest-site .draw-toggle input { background: #dde5d5; border-color: #bdcdb2; }
+body.forest-site .stage-zoom { background: #f9f4f1; }
+body.forest-site .pending-count { background: #edd9cd; color: #785743; border-color: #dbbeac; border-radius: 3px; }
+body.forest-site #viewport { background-color: #e9e0e8; background-image: radial-gradient(#c7b5c5 .8px,transparent .8px); }
+body.forest-site .zoom-buttons button { border-color: #d1c1cf; border-radius: 2px; }
+body.forest-site .draw-toggle input { background: #e3d7e1; border-color: #c9b6c6; }
 body.forest-site .draw-toggle input:checked { background: var(--blue); border-color: var(--blue); }
-body.forest-site .canvas-note strong { color: #50684c; }
+body.forest-site .canvas-note strong { color: #605064; }
 body.forest-site .color-item { border-color: var(--paper); }
 
 /* The birthday pages remain keepsakes, now wrapped in forest stationery. */
 body.forest-site .birthday-hero { padding-top: 48px; }
 body.forest-site .birthday-hero h1 { font-family: var(--serif); font-weight: 400; line-height: 1.45; font-size: clamp(37px,4.5vw,56px); letter-spacing: -.3px; }
-body.forest-site .birthday-hero .garden { background: #e1e6ce; border-radius: 6px; border: 1px solid #d1d9bf; }
-body.forest-site .birthday-hero .garden-art { filter: sepia(.22) hue-rotate(24deg) saturate(.55); }
-body.forest-site .birthday-hero .garden-photo { border-color: #fff9e7; border-radius: 5px; }
-body.forest-site .birthday-hero .garden-topline { color: #6d8066; }
-body.forest-site .birthday-hero .garden-caption { color: #698064; }
-body.forest-site .birthday-hero .garden-sticker { background: #dfc58e; color: #6e643e; border-radius: 5px; }
-body.forest-site .birthday-hero .garden-note { background: #fff9e8; color: #455b40; border-color: #d5cdae; box-shadow: 3px 5px 0 #304a3212; }
-body.forest-site .birthday-hero .garden-note small { color: #879078; }
-body.forest-site .hero-caption { color: #87917b; }
-body.forest-site .birthday-band { background: #ede7ce; border-color: #d9cda7; border-radius: 5px; }
-body.forest-site .birthday-band p { color: #85764f; }
-body.forest-site .birthday-note { padding: 27px 34px 31px; background: #fffaf0; border: 1px solid #ddd6b9; box-shadow: 5px 6px 0 #c6ceb222; }
+body.forest-site .birthday-hero .garden { background: #e2d2e0; border-radius: 6px; border: 1px solid #d5c3d3; }
+body.forest-site .birthday-hero .garden-art { filter: none; }
+body.forest-site .birthday-hero .garden-photo { border-color: #fdf1e9; border-radius: 5px; }
+body.forest-site .birthday-hero .garden-topline { color: #786a7c; }
+body.forest-site .birthday-hero .garden-caption { color: #78687c; }
+body.forest-site .birthday-hero .garden-sticker { background: #ecb69b; color: #6b5141; border-radius: 5px; }
+body.forest-site .birthday-hero .garden-note { background: #fdf1ea; color: #534457; border-color: #d2beb1; box-shadow: 3px 5px 0 #42344612; }
+body.forest-site .birthday-hero .garden-note small { color: #897c8c; }
+body.forest-site .hero-caption { color: #8b7e8e; }
+body.forest-site .birthday-band { background: #ebdad0; border-color: #d6bbaa; border-radius: 5px; }
+body.forest-site .birthday-band p { color: #816553; }
+body.forest-site .birthday-note { padding: 27px 34px 31px; background: #fef6f1; border: 1px solid #dac7bc; box-shadow: 5px 6px 0 #cab6c722; }
 body.forest-site .birthday-note h1 { letter-spacing: .5px; font-weight: 400; }
-body.forest-site .birthday-note p:not(.eyebrow) { color: #65745b; }
-body.forest-site .birthday-note img { border-color: #e8dfc1; border-radius: 4px; box-shadow: none; }
+body.forest-site .birthday-note p:not(.eyebrow) { color: #6d5f70; }
+body.forest-site .birthday-note img { border-color: #e5d1c4; border-radius: 4px; box-shadow: none; }
 body.forest-site .construction { min-height: calc(100dvh - 450px); }
-body.forest-site .construction-mark { color: #9b8455; border-color: #d7cba6; background: #f0e8cd; border-radius: 5px; }
+body.forest-site .construction-mark { color: #96715a; border-color: #d4baa9; background: #eedbcf; border-radius: 5px; }
 body.forest-site .construction h1 { font-family: var(--serif); font-weight: 400; letter-spacing: 1px; }
 
 @media (min-width:1600px) {
@@ -249,8 +250,8 @@ body.forest-site .construction h1 { font-family: var(--serif); font-weight: 400;
   body.forest-site .header-inner { gap: 10px; }
   body.forest-site .brand { font-size: 31px; padding-left: 27px; }
   body.forest-site .brand::before { bottom: 2px; transform: scale(.85); transform-origin: bottom; }
-  body.forest-site .brand::after { bottom: 17px; transform: scale(.85); }
-  body.forest-site .site-nav { top: 74px; background: #142f2cf7; border-color: #dce8db24; padding: 14px 20px 18px; box-shadow: 0 8px 18px #102b2826; gap: 0 12px; }
+  body.forest-site .brand::after { bottom: 22px; left: 20px; transform: scale(.85); }
+  body.forest-site .site-nav { top: 74px; background: #352e43f7; border-color: #e6dde524; padding: 14px 20px 18px; box-shadow: 0 8px 18px #23152626; gap: 0 12px; }
   body.forest-site .site-nav.open { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); }
   body.forest-site .site-nav a { padding: 12px 0; font-size: 11px; }
   body.forest-site .private-link { margin-left: auto; padding: 8px 10px; font-size: 9px; }

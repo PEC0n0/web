@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#142f2c">
-<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/favicon.svg?v=20261105-painted" type="image/svg+xml">
 <title>小龙邮局 · 双卡 3D 展示</title>
 <meta name="description" content="两张明信片的独立离线 3D 动态展陈。拖动旋转、滚轮缩放、点击聚焦。">
 <style>
@@ -13,21 +13,21 @@
 </style>
 <style media="screen">
 /* Interface furniture only: the renderer, textures and neutral viewing light stay intact. */
-.showcase-home{display:flex;align-items:center;gap:11px;padding:11px 17px;border:1px solid #d5c28b77;border-radius:3px;background:#183b32ed;color:#f8efdb;box-shadow:0 5px 25px #17382c16;font-size:11px;letter-spacing:.5px}
-.showcase-home:hover{background:#28503f;color:#f5da9d}
-.showcase-home:focus-visible{outline-color:#b19c60}
-.tool-tree{position:relative;display:block;width:22px;height:26px;color:#e7cb92;flex-shrink:0}
-.tool-tree i{position:absolute;bottom:2px;left:10px;width:3px;height:23px;background:currentColor}
-.tool-tree i:before,.tool-tree i:after{content:"";position:absolute;background:currentColor;height:3px;left:-3px;top:4px;width:9px;box-shadow:-3px 4px 0 currentColor,3px 4px 0 currentColor,-6px 8px 0 currentColor,6px 8px 0 currentColor}
-.tool-tree i:after{top:15px;left:-9px;width:21px;box-shadow:none}
-.controls{border:1px solid #b6bf9755;border-radius:4px;background:#183b32ed;box-shadow:0 8px 36px #17382c20}
-.controls button{border-radius:3px;color:#d6dfc1}
-.controls button:hover{background:#315441;color:#f1dfae}
-.controls button[aria-pressed=true]{background:#e5cb94;color:#294331}
-.controls .separator{background:#b4c09440}
-.controls button:after{background:#f4efdf;border-color:#c9c8a6;border-radius:3px;color:#3e5d40}
-.controls .progress span{background:#e7cb92}
-@media(max-width:480px){.controls{border-radius:3px;gap:0;padding:5px}.controls button{width:35px;height:38px}.controls .separator{margin-inline:2px}.showcase-home{font-size:10px;padding:8px 12px;left:max(14px,env(safe-area-inset-left));top:max(14px,env(safe-area-inset-top));gap:9px}}
+.showcase-home{display:flex;align-items:center;gap:11px;padding:11px 17px;border:1px solid #d4a6b977;border-radius:7px;background:#40364ced;color:#fff0e4;box-shadow:0 5px 25px #392b4316;font-size:11px;letter-spacing:.5px}
+.showcase-home:hover{background:#70536f;color:#f7d3b0}
+.showcase-home:focus-visible{outline-color:#d3a8ba}
+.tool-tree{position:relative;display:block;width:22px;height:26px;color:#f4d3a0;flex-shrink:0}
+.tool-tree i{position:absolute;bottom:3px;left:12px;width:2px;height:24px;background:currentColor;transform:rotate(-8deg);border-radius:5px}
+.tool-tree i:before,.tool-tree i:after{content:"";position:absolute;left:-8px;top:3px;width:10px;height:16px;background:currentColor;clip-path:polygon(8% 2%,100% 25%,85% 88%,36% 100%,0 49%);transform:rotate(-28deg);box-shadow:none}
+.tool-tree i:after{left:1px;top:9px;width:10px;height:14px;transform:rotate(148deg);box-shadow:none}
+.controls{border:1px solid #cba5be55;border-radius:8px;background:#40364ced;box-shadow:0 8px 36px #392b4320}
+.controls button{border-radius:7px;color:#dec8da}
+.controls button:hover{background:#735571;color:#f8dcc4}
+.controls button[aria-pressed=true]{background:#edbdab;color:#5a3d55}
+.controls .separator{background:#bd96b540}
+.controls button:after{background:#faeae3;border-color:#d8bac9;border-radius:7px;color:#805e79}
+.controls .progress span{background:#f4d3a0}
+@media(max-width:480px){.controls{border-radius:7px;gap:0;padding:5px}.controls button{width:35px;height:38px}.controls .separator{margin-inline:2px}.showcase-home{font-size:10px;padding:8px 12px;left:max(14px,env(safe-area-inset-left));top:max(14px,env(safe-area-inset-top));gap:9px}}
 @media(max-width:360px){.controls button{width:34px}.controls{padding:4px}.controls .separator{margin-inline:1px}.showcase-home{font-size:9px}}
 </style>
 </head>

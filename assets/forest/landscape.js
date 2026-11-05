@@ -1,19 +1,20 @@
-/* An original, code-painted little world. No images, fonts or network requests. */
+/* An original, code-painted little world. No images, fonts or network requests.
+ * Broad, seeded paint facets are cached; only the camera and steam move. */
 const STOPS = [
-  [0, ['#080f25','#152944','#466379','#283954','#33475d','#294955','#203f48','#173b3c','#102f33','#102b2c','#263c43','#3c525a','#1c343d','#526e7b','#97b6c7','#d7d9bd'], 0, 0],
-  [4.3, ['#101a36','#293956','#777b91','#454b6a','#48586e','#405d65','#31515c','#23494e','#183d43','#163338','#40545c','#53656c','#2e4650','#75868e','#bcc8d1','#e8d8b7'], .05, .08],
-  [5.8, ['#687aab','#c9a0b0','#efc8aa','#8b87a2','#81899d','#6c8791','#527a7d','#3f6b6e','#2c545b','#23484d','#9b9d99','#b9b9a6','#677e84','#b8bcc2','#eed7be','#ffe4ad'], .44, .75],
-  [7.8, ['#82adc6','#b3cbd0','#eee1b6','#99aebb','#839fa9','#6c9199','#517f83','#3c7070','#2b565b','#234b4d','#999d8d','#bdc0aa','#697e7b','#bdcfd1','#fff1d2','#fff4c9'], .85, .2],
-  [10, ['#79afc9','#b0cfd5','#e5e5c8','#9bafb7','#7f9ea7','#638c95','#4c7b7d','#376d66','#24534c','#214841','#9ba08a','#c0c4ac','#697a69','#b8d1ce','#f9f1d7','#fff4cb'], 1, 0],
-  [14.5, ['#73a7c4','#afc9d1','#e8dec0','#9baab0','#849ca3','#6d8e91','#567b77','#3c6b5d','#2a5345','#234636','#a7a28b','#cbc5a9','#75806c','#c0cfbf','#fff0ce','#fff0b4'], 1, .12],
-  [16.5, ['#8296b2','#c6b3bb','#f3d1ab','#ac9da8','#97959e','#828d91','#687e7b','#4e7163','#36564b','#2b493e','#b0a18c','#d5c3a6','#7e8171','#d3cec5','#ffe2b9','#ffdf9d'], .88, .5],
-  [18, ['#76799e','#cda0ac','#f0bb95','#a491a3','#8b879b','#797c8b','#626c79','#4c6465','#354c50','#2c4041','#9c8e85','#b7a596','#657277','#c2acac','#f6c2a4','#ffd79d'], .57, 1],
-  [19.8, ['#343d69','#786b8c','#c18c9b','#696780','#5c637a','#4e606e','#3d5264','#314b53','#233b42','#1b3338','#667078','#80858a','#414f5f','#9296aa','#e1c1bc','#f6d1a1'], .16, .55],
-  [21.5, ['#111c39','#2a3b58','#68768b','#414e6a','#3c5168','#344d5d','#2b4654','#224249','#19353c','#153035','#3c515b','#54646b','#2b424c','#7b8fa0','#c3cbd0','#e1d9b4'], .02, .08],
-  [24, ['#080f25','#152944','#466379','#283954','#33475d','#294955','#203f48','#173b3c','#102f33','#102b2c','#263c43','#3c525a','#1c343d','#526e7b','#97b6c7','#d7d9bd'], 0, 0]
+  [0, ['#17162e','#33324d','#79708a','#55516c','#44455f','#353e52','#343e4d','#293b40','#243039','#1c252f','#4a4254','#6c5b6b','#332e43','#847b98','#9f93b2','#ebe0c8'], 0, 0],
+  [4.3, ['#34304e','#76617d','#c29aaf','#8f7d9e','#776e8b','#5e647d','#575e6a','#424f54','#333e47','#29323d','#736172','#a28592','#4c4056','#bba4be','#ccafc3','#f7d4ad'], .08, .28],
+  [5.8, ['#776f9b','#d49aae','#ffe1ad','#b7a4bd','#9d93ac','#82899e','#74848b','#597573','#435d60','#354b4d','#a18391','#e5b5a2','#6b6277','#ddbec7','#f6b8b4','#fff1bd'], .48, .92],
+  [7.8, ['#82afc5','#b9d8d5','#f7ead1','#b3bbc7','#91a5b6','#7596a5','#708e91','#557c78','#3d6263','#304d50','#9e9c9c','#d0c8b3','#6b7886','#cbd8d9','#f5e6d8','#fff5ce'], .9, .15],
+  [10, ['#77abc4','#b7d6d8','#f0e9d3','#acbcca','#91a9b8','#7799a7','#6e8f92','#537e77','#3f625f','#304c4a','#9b9c9b','#d2cdbb','#697985','#d0dedb','#f6eee1','#fff6d5'], 1, 0],
+  [14.5, ['#7fabc5','#bbd0d7','#f0e4cf','#afbac6','#94a6b3','#7d96a0','#758d8a','#5a7b6e','#436155','#354e45','#a09b9a','#d4c9b3','#6b7680','#d5dcd3','#f7e8d5','#fff0c5'], 1, .1],
+  [16.5, ['#796f91','#bb8da4','#f6cba9','#b39aaf','#97869f','#827b91','#7b7887','#62696f','#4b535c','#373f4a','#a18a94','#dbb09b','#62596f','#d0b2c6','#edb1b5','#ffe2aa'], .85, .7],
+  [18, ['#57455f','#b77c96','#ffcf9b','#af90aa','#94809c','#7b718c','#77717d','#5d5d68','#48454f','#34333e','#8d737f','#dba392','#56495e','#d3a5bb','#ec8f94','#ffe7a5'], .55, 1],
+  [19.8, ['#39324e','#83617f','#d99ba6','#8f779a','#77678c','#625d79','#5a586e','#494b5b','#383946','#2a2c3b','#745d73','#a9818c','#494056','#b593b0','#c895b2','#f7d3ab'], .14, .65],
+  [21.5, ['#201e38','#46415f','#8b7b96','#615770','#504e68','#41465d','#3d4556','#303f48','#28333e','#202a35','#55495d','#7d657b','#393449','#9987a6','#b5a4c3','#e8ddc8'], .02, .08],
+  [24, ['#17162e','#33324d','#79708a','#55516c','#44455f','#353e52','#343e4d','#293b40','#243039','#1c252f','#4a4254','#6c5b6b','#332e43','#847b98','#9f93b2','#ebe0c8'], 0, 0]
 ];
 const COLOR_KEYS = ['skyTop','skyMiddle','skyHorizon','farMountain','middleMountain','nearMountain','farForest','forest','nearForest','foreground','stone','stoneLight','stoneShadow','mist','cloud','sun'];
-const RGB = hex => hex.match(/[\da-f]{2}/gi).map(value => parseInt(value, 16));
+const RGB = color => color[0] === '#' ? color.match(/[\da-f]{2}/gi).map(value => parseInt(value, 16)) : color.match(/[\d.]+/g).slice(0, 3).map(Number);
 const mix = (a, b, t) => {
   const x = RGB(a), y = RGB(b);
   return `rgb(${x.map((v, i) => Math.round(v + (y[i] - v) * t)).join(',')})`;
@@ -140,19 +141,33 @@ function startLandscape(canvas) {
   };
   const rect = (ctx, x, y, w, h, color) => {
     if (color) ctx.fillStyle = color;
-    ctx.fillRect(Math.round(x), Math.round(y), Math.max(1, Math.round(w)), Math.max(1, Math.round(h)));
+    ctx.fillRect(x, y, Math.max(.25, w), Math.max(.25, h));
   };
   const circle = (ctx, x, y, radius, color) => {
     if (color) ctx.fillStyle = color;
-    const r = Math.max(1, Math.round(radius));
-    for (let row = -r; row <= r; row++) {
-      const span = Math.floor(Math.sqrt(r * r - row * row));
-      ctx.fillRect(Math.round(x) - span, Math.round(y) + row, span * 2 + 1, 1);
-    }
+    ctx.beginPath(); ctx.arc(x, y, Math.max(.25, radius), 0, Math.PI * 2); ctx.fill();
   };
   const alpha = (ctx, opacity, draw) => {
     ctx.save(); ctx.globalAlpha = Math.max(0, Math.min(1, opacity)); draw(); ctx.restore();
   };
+  const polygon = (ctx, points, color) => {
+    ctx.fillStyle = color; ctx.beginPath();
+    points.forEach(([x, y], index) => index ? ctx.lineTo(x, y) : ctx.moveTo(x, y));
+    ctx.closePath(); ctx.fill();
+  };
+  const stroke = (ctx, points, color, thickness = 1) => {
+    ctx.strokeStyle = color; ctx.lineWidth = thickness; ctx.lineJoin = 'round';
+    ctx.beginPath(); points.forEach(([x, y], i) => i ? ctx.lineTo(x, y) : ctx.moveTo(x, y)); ctx.stroke();
+  };
+  // Ragged, broad strokes rather than pixel dither. A fixed seed means the
+  // painting never shimmers between animation frames or clock updates.
+  function daub(ctx, x, y, w, h, color, seed, opacity = 1) {
+    const random = randomSource(seed);
+    const edge = [];
+    for (let i = 0; i <= 6; i++) edge.push([x + w * i / 6, y + h * (.08 + random() * .23)]);
+    for (let i = 6; i >= 0; i--) edge.push([x + w * i / 6, y + h * (.65 + random() * .29)]);
+    alpha(ctx, opacity, () => polygon(ctx, edge, color));
+  }
   // Integer harmonics and matched endpoints make both ridge height and slope
   // continuous at the tile boundary; no crossfade or duplicated hard edge.
   const noise = (x, seed) => {
@@ -173,23 +188,30 @@ function startLandscape(canvas) {
     const seamHeight = (points[0][1] + points[points.length - 1][1]) * .5;
     periodicPoints[0][1] = seamHeight;
     periodicPoints[periodicPoints.length - 1][1] = seamHeight;
-    const heights = [];
-    for (let x = 0; x < width; x++) {
-      const y = Math.round(base - interpolate(periodicPoints, x / width) * amplitude + noise(x / unit, seed) * 4 * unit);
-      heights[x] = y;
-      rect(ctx, x, y, 1, height - y, color);
-    }
+    const heights = [], edge = [];
+    const step = Math.max(2, Math.round(7 * unit));
+    for (let x = 0; x <= width; x++) heights[x] = base - interpolate(periodicPoints, x / width) * amplitude + noise(x / unit, seed) * 3.2 * unit;
+    for (let x = 0; x < width; x += step) edge.push([x, heights[x]]);
+    edge.push([width, heights[width]], [width, height], [0, height]);
+    polygon(ctx, edge, color);
     if (detail) {
+      ctx.save(); ctx.beginPath(); edge.forEach(([x, y], i) => i ? ctx.lineTo(x, y) : ctx.moveTo(x, y)); ctx.closePath(); ctx.clip();
       const random = randomSource(seed * 193);
-      alpha(ctx, .16, () => {
-        for (let i = 0; i < width * 1.6; i++) {
-          const x = Math.floor(random() * width);
-          const y = heights[x] + random() * amplitude * .65;
-          const span = (2 + random() * 7) * unit;
-          rect(ctx, x, y, span, unit, palette.mist);
-          if (x + span >= width) rect(ctx, x - width, y, span, unit, palette.mist);
-        }
-      });
+      // Large slanted facets suggest rock planes under a soft painted glaze.
+      for (let i = 0; i < 38; i++) {
+        const x = random() * width, y = heights[Math.floor(x)] - random() * amplitude * .18;
+        const w = (30 + random() * 105) * unit, h = amplitude * (.24 + random() * .85);
+        const face = [[x - w * .15,y],[x + w * .30,y - h * .08],[x + w,y + h],[x - w * .6,y + h * .7]];
+        const tone = i % 3 ? mix(color, palette.mist, .24) : mix(color, palette.skyTop, .22);
+        const opacity=.27+random()*.17;
+        [-width, 0, width].forEach(tile => alpha(ctx, opacity, () => polygon(ctx, face.map(([px, py]) => [px + tile, py]), tone)));
+      }
+      for (let i = 0; i < 46; i++) {
+        const x = random() * width, y = heights[Math.floor(x)] + random() * amplitude * .8;
+        const w=(14+random()*52)*unit,h=(2+random()*7)*unit;
+        [-width, 0, width].forEach(tile => daub(ctx, x + tile, y, w, h, palette.mist, seed + i, .075));
+      }
+      ctx.restore();
     }
     return heights;
   }
@@ -201,25 +223,20 @@ function startLandscape(canvas) {
       if (x > width - size) pine(ctx, x - width, ground, size, color, seed, light);
     }
     const random = randomSource(seed);
-    const h = Math.max(4, Math.round(size));
-    const half = h * (.19 + random() * .08);
-    const lean = (random() - .5) * h * .06;
-    rect(ctx, x, ground - h * .7, Math.max(1, h * .035), h * .73, color);
-    for (let y = 0; y < h * .9; y++) {
-      const t = y / h;
-      const tier = .62 + .38 * Math.pow((t * 5.1) % 1, .6);
-      const span = Math.max(.5, Math.pow(t, .83) * half * tier);
-      const jitter = random() * Math.max(1, h * .025);
-      rect(ctx, x + lean * (1 - t) - span - jitter, ground - h + y, span * 2 + jitter, 1, color);
-    }
-    if (light && h > 12) {
-      alpha(ctx, .30, () => {
-        for (let i = 0; i < h * .30; i++) {
-          const t = .22 + random() * .57;
-          const spread = t * half * .72;
-          rect(ctx, x - spread + random() * spread, ground - h + t * h, 1 + random() * 3 * unit, 1, palette.farForest);
-        }
-      });
+    const h = Math.max(4, size), half = h * (.21 + random() * .075);
+    const lean = (random() - .5) * h * .12;
+    const lit = mix(color, palette.stoneLight, .20 + palette.warmth * .12);
+    const shade = mix(color, palette.skyTop, .29);
+    polygon(ctx, [[x - h*.022,ground],[x + h*.018,ground],[x+lean,ground-h*.91]], shade);
+    // Asymmetric, overlapping boughs have torn edges and distinct lit planes.
+    for (let tier = 0; tier < 5; tier++) {
+      const t = .2 + tier * .145, y = ground - h + h * t;
+      const spread = half * (.32 + tier * .19), cx = x + lean * (1-t);
+      const branch = [[cx,y-h*.20],[cx+spread*.42,y-h*.045],[cx+spread*.65,y+h*.025],[cx+spread*.51,y+h*.045],[cx+spread,y+h*.11],[cx+spread*.61,y+h*.105],[cx+spread*.77,y+h*.14],[cx+spread*.25,y+h*.12],[cx-spread*.18,y+h*.16],[cx-spread*.77,y+h*.14],[cx-spread*.56,y+h*.10],[cx-spread,y+h*.11],[cx-spread*.49,y-h*.015]];
+      polygon(ctx, branch, color);
+      polygon(ctx, [[cx,y-h*.20],[cx-spread*.49,y-h*.015],[cx-spread,y+h*.11],[cx-spread*.25,y+h*.07],[cx+spread*.09,y+h*.06]], light ? lit : mix(color, palette.mist, .13));
+      polygon(ctx, [[cx+spread*.09,y-h*.06],[cx+spread,y+h*.11],[cx+spread*.25,y+h*.12],[cx-spread*.12,y+h*.13]], shade);
+      if (light && h > 16) daub(ctx, cx-spread*.68, y+h*.08, spread*.57, h*.035, lit, seed+tier, .7);
     }
   }
 
@@ -229,29 +246,28 @@ function startLandscape(canvas) {
       if (x > width - size) broadleaf(ctx, x - width, ground, size, color, seed);
     }
     const random = randomSource(seed);
-    rect(ctx, x - size * .035, ground - size * .76, size * .07, size * .79, color);
-    for (let i = 0; i < 9; i++) {
-      const cx = x + (random() - .5) * size * .60;
-      const cy = ground - size * (.44 + random() * .43);
-      circle(ctx, cx, cy, size * (.16 + random() * .1), color);
-    }
-    alpha(ctx, .15, () => {
-      for (let i = 0; i < size * .36; i++) {
-        rect(ctx, x + (random() - .5) * size * .65, ground - size * (.46 + random() * .38), unit * (1 + random() * 4), unit, palette.mist);
-      }
+    polygon(ctx, [[x-size*.035,ground],[x+size*.03,ground],[x+size*.08,ground-size*.81],[x-size*.04,ground-size*.75]], mix(color, palette.skyTop, .32));
+    const crowns=[];
+    for (let i = 0; i < 8; i++) crowns.push({cx:x+(random()-.5)*size*.60,cy:ground-size*(.43+random()*.42),r:size*(.16+random()*.12)});
+    crowns.sort((a,b)=>a.cy-b.cy);
+    crowns.forEach((c,i)=>{
+      const outline=[];
+      for(let j=0;j<10;j++){const angle=j/10*Math.PI*2,r=c.r*(.75+random()*.30);outline.push([c.cx+Math.cos(angle)*r,c.cy+Math.sin(angle)*r*.77]);}
+      polygon(ctx,outline,i%3?color:mix(color,palette.skyTop,.17));
+      polygon(ctx,[outline[5],outline[6],outline[7],outline[8],[c.cx+c.r*.22,c.cy-c.r*.17],[c.cx-c.r*.28,c.cy+c.r*.04]],mix(color,palette.stoneLight,.22+palette.warmth*.12));
     });
   }
 
   function drawSky() {
     const ctx = sky.ctx;
-    // Deliberate two-pixel bands keep the gradient part of the pixel painting.
-    const rgbColor = color => color.match(/\d+/g).map(Number);
-    const a = rgbColor(palette.skyTop), b = rgbColor(palette.skyMiddle), c = rgbColor(palette.skyHorizon);
-    for (let y = 0; y < height; y += 2) {
-      const t = Math.min(1, y / (height * .78));
-      const lo = t < .58 ? a : b, hi = t < .58 ? b : c;
-      const amount = t < .58 ? t / .58 : (t - .58) / .42;
-      rect(ctx, 0, y, width, 2, `rgb(${lo.map((value, i) => Math.round(value + (hi[i] - value) * amount)).join(',')})`);
+    const wash = ctx.createLinearGradient(0, 0, width*.13, height*.83);
+    wash.addColorStop(0,palette.skyTop);wash.addColorStop(.47,palette.skyMiddle);wash.addColorStop(1,palette.skyHorizon);
+    rect(ctx,0,0,width,height,wash);
+    // Thin, uneven glazes keep the sky painterly without raster bands.
+    const washRandom = randomSource(1271);
+    for(let i=0;i<26;i++){
+      const x=washRandom()*width,y=washRandom()*height*.64;
+      daub(ctx,x-width*.15,y,width*(.12+washRandom()*.36),height*(.015+washRandom()*.06),i%2?palette.skyMiddle:palette.mist,2300+i,.035);
     }
     const hour = getCurrentHour();
     const daylight = Math.max(0, Math.min(1, (hour - 5) / 15));
@@ -259,9 +275,11 @@ function startLandscape(canvas) {
     const sunY = height * .57 - Math.sin(daylight * Math.PI) * Math.min(height * .44, width * .28);
     if (hour > 4.7 && hour < 20.3) {
       const strength = Math.min(1, palette.daylight * 1.7) * Math.max(0, Math.min(1, (hour - 4.7) / .9, (20.3 - hour) / 1.1));
-      for (let i = 5; i > 0; i--) alpha(ctx, strength * .024, () => circle(ctx, sunX, sunY, (21 + i * 10) * unit, palette.sun));
-      alpha(ctx, strength * .91, () => circle(ctx, sunX, sunY, 18 * unit, palette.sun));
-      alpha(ctx, strength * .22, () => rect(ctx, sunX - 26 * unit, sunY + 7 * unit, 53 * unit, unit, palette.skyMiddle));
+      const glow=ctx.createRadialGradient(sunX,sunY,2*unit,sunX,sunY,160*unit);
+      glow.addColorStop(0,palette.sun);glow.addColorStop(1,'rgba(255,220,170,0)');
+      alpha(ctx,strength*(.14+palette.warmth*.20),()=>rect(ctx,sunX-160*unit,sunY-160*unit,320*unit,320*unit,glow));
+      alpha(ctx, strength * .83, () => circle(ctx, sunX, sunY, 16 * unit, palette.sun));
+      daub(ctx,sunX-25*unit,sunY+9*unit,58*unit,5*unit,palette.skyMiddle,92,.3);
     }
     const random = randomSource(7924);
     if (palette.night > 0) {
@@ -269,8 +287,8 @@ function startLandscape(canvas) {
         for (let i = 0; i < 115; i++) {
           const x = random() * width;
           const y = height * (.025 + random() * .49);
-          const size = random() > .93 ? 2 : 1;
-          alpha(ctx, .20 + random() * .63, () => rect(ctx, x, y, size, size, '#d7e3e4'));
+          const size = (random() > .93 ? 1.15 : .5)*Math.max(.8,unit);
+          alpha(ctx, .20 + random() * .63, () => circle(ctx, x, y, size, '#eee3ec'));
         }
       });
       const mx = width * .79, my = height * .17, mr = 15 * unit;
@@ -284,19 +302,33 @@ function startLandscape(canvas) {
 
   function drawClouds() {
     const ctx = clouds.ctx;
-    const cloudsData = [[.09,.19,135],[.42,.12,148],[.73,.30,155],[.91,.10,100],[.31,.37,98]];
-    cloudsData.forEach(([cx, cy, size], index) => {
+    const cloudsData = [[.08,.045,474,1.3],[.55,.035,540,1.12],[.98,.19,375,.83],[.68,.255,225,.42]];
+    const shadow=mix(palette.skyTop,palette.nearMountain,.25);
+    const coral=mix(palette.cloud,'#f28a6d',palette.warmth*.86);
+    const peach=mix(palette.cloud,palette.sun,.48+palette.warmth*.30);
+    cloudsData.forEach(([cx, cy, size, mass], index) => {
       [-width, 0, width].forEach(tile => {
         const random = randomSource(4467 + index);
-        const x = cx * width + tile, y = cy * height, w = size * unit;
-        alpha(ctx, (.16 + palette.daylight * .17) * (index === 3 ? .6 : 1), () => {
-          for (let j = 0; j < 8; j++) {
-            const offset = (j / 7 - .5) * w;
-            const top = y - Math.sin(j / 7 * Math.PI) * w * .10 - random() * 5 * unit;
-            rect(ctx, x + offset, top, w * (.23 + random() * .16), (2 + random() * 5) * unit, palette.cloud);
-          }
-          rect(ctx, x - w * .48, y + 5 * unit, w * 1.05, unit, palette.cloud);
-        });
+        const x = cx * width + tile, y = cy * height, w = size * unit,h=w*.35*mass;
+        // Broad shoulders and flat, broken ends: these are brush masses, not
+        // repeated triangular peaks or thin horizontal cloud underlines.
+        const outline=[[-.58,.08],[-.49,-.02],[-.40,-.045],[-.37,-.24],[-.22,-.29],[-.10,-.22],[.025,-.25],[.12,-.10],[.26,-.13],[.33,-.015],[.49,.02],[.58,.14],[.44,.23],[.32,.205],[.18,.34],[.025,.29],[-.08,.37],[-.24,.24],[-.37,.27],[-.44,.16]];
+        const convert=(points)=>points.map(([px,py])=>[x+px*w,y+py*h]);
+        alpha(ctx,.80+palette.daylight*.11,()=>polygon(ctx,convert(outline),shadow));
+        const warmAmount=.15+palette.daylight*.22+palette.warmth*.57;
+        polygon(ctx,convert([[-.53,.10],[-.36,.07],[-.32,-.045],[-.17,.01],[-.07,-.035],[.04,.07],[.19,.02],[.27,.105],[.45,.08],[.56,.15],[.43,.235],[.31,.20],[.17,.32],[.025,.27],[-.08,.35],[-.24,.22],[-.37,.25],[-.43,.15]]),mix(shadow,coral,warmAmount));
+        // Three irregular broad lit planes sit within the warm mass. Their
+        // different widths/heights avoid the mechanical equal-spaced rhythm.
+        const planes=[
+          [[-.39,.14],[-.27,.12],[-.23,.04],[-.12,.085],[-.055,.055],[.025,.17],[-.045,.24],[-.16,.19],[-.24,.23]],
+          [[-.025,.17],[.055,.105],[.20,.12],[.245,.20],[.36,.155],[.46,.18],[.34,.23],[.23,.22],[.15,.29],[.02,.245]],
+          [[-.22,.26],[-.12,.20],[-.045,.23],[.02,.205],[.075,.25],[-.025,.30],[-.08,.33],[-.17,.28]]
+        ];
+        planes.forEach((points,j)=>alpha(ctx,(.24+palette.warmth*.54)*(j===2?.75:1),()=>polygon(ctx,convert(points),j===1?peach:mix(coral,peach,.44))));
+        // Violet strokes over the lit edge imply paint laid in several passes.
+        daub(ctx,x-w*.21,y-h*.15,w*.27,h*.16,mix(shadow,palette.skyMiddle,.30),884+index,.56);
+        daub(ctx,x+w*.19,y+h*.045,w*.20,h*.10,mix(shadow,palette.skyMiddle,.18),784+index,.53);
+        if(index<3)daub(ctx,x+w*.35,y+h*.29,w*.19,h*.085,coral,981+index,.20+palette.warmth*.45);
       });
     });
   }
@@ -325,10 +357,10 @@ function startLandscape(canvas) {
       const y = middle[Math.floor(x)] + random() * 23 * unit;
       pine(ctx, x, y + 5 * unit, (8 + random() * 16) * unit, palette.nearMountain, 1600 + i);
     }
-    // Low strips of translucent mist let the distant ridges breathe.
-    for (let i = 0; i < 20; i++) {
-      alpha(ctx, .013 + (i / 20) * .013, () => rect(ctx, 0, bridgeY - 13 * unit + i * 3 * unit, width, 2 * unit, palette.mist));
-    }
+    // A soft glaze, not horizontal pixel stripes, separates the distant ridge.
+    const ridgeMist=ctx.createLinearGradient(0,bridgeY-28*unit,0,bridgeY+80*unit);
+    ridgeMist.addColorStop(0,'rgba(0,0,0,0)');ridgeMist.addColorStop(.48,palette.mist);ridgeMist.addColorStop(1,'rgba(0,0,0,0)');
+    alpha(ctx,.18,()=>rect(ctx,0,bridgeY-28*unit,width,108*unit,ridgeMist));
     ctx = valleyTerrain.ctx;
     const floor = Math.max(bridgeY + 190 * unit, height * .94);
     const frontPoints = [[0,.84],[.1,.75],[.21,.47],[.35,.19],[.47,.02],[.56,.08],[.68,.25],[.81,.54],[.92,.87],[1,.95]];
@@ -355,12 +387,9 @@ function startLandscape(canvas) {
         rect(ctx, x, y, (2 + progress * 11) * unit, 1, palette.mist);
       }
     });
-    alpha(ctx, .23 + (1 - palette.daylight) * .12, () => {
-      for (let i = 0; i < 22; i++) {
-        const half = (55 + i * 8) * unit;
-        rect(ctx, width * .51 - half, bridgeY + 102 * unit + i * 2 * unit, half * 2, unit, palette.mist);
-      }
-    });
+    const valleyMist=ctx.createLinearGradient(0,bridgeY+70*unit,0,bridgeY+180*unit);
+    valleyMist.addColorStop(0,'rgba(0,0,0,0)');valleyMist.addColorStop(.5,palette.mist);valleyMist.addColorStop(1,'rgba(0,0,0,0)');
+    alpha(ctx,.16+(1-palette.daylight)*.09,()=>rect(ctx,0,bridgeY+70*unit,width,110*unit,valleyMist));
   }
 
   function drawBridge() {
@@ -372,59 +401,59 @@ function startLandscape(canvas) {
     const spring = bridgeY + 66 * unit;
     const base = Math.max(bridgeY + 170 * unit, height * .96);
     const start = 0;
-    // Arched openings are unpainted: the valley remains visible through them.
-    for (let x = 0; x < width; x++) {
-      const bay = Math.floor((x - start) / span);
-      const center = start + (bay + .5) * span;
-      const dx = Math.abs(x - center);
-      const bottom = dx <= innerRadius ? spring - Math.sqrt(Math.max(0, innerRadius * innerRadius - dx * dx)) : base;
-      rect(ctx, x, bridgeY + 5 * unit, 1, bottom - bridgeY - 5 * unit, palette.stone);
-      if (dx <= innerRadius) rect(ctx, x, bottom - 4 * unit, 1, 4 * unit, palette.stoneShadow);
+    // A real arch path keeps the side-view structure elegant at every density.
+    // Empty openings reveal the moving painted valley behind the viaduct.
+    ctx.beginPath();ctx.rect(0,bridgeY+5*unit,width,height+12*unit-bridgeY);
+    for(let i=0;i<8;i++){
+      const center=(i+.5)*span;
+      ctx.moveTo(center-innerRadius,height+12*unit);ctx.lineTo(center-innerRadius,spring);
+      ctx.arc(center,spring,innerRadius,Math.PI,Math.PI*2);
+      ctx.lineTo(center+innerRadius,height+12*unit);ctx.closePath();
     }
+    ctx.fillStyle=palette.stone;ctx.fill('evenodd');
     ctx.save(); ctx.globalCompositeOperation = 'source-atop';
     const random = randomSource(1723);
-    // Small masonry, irregular mineral stains, and a quiet side-lit face.
-    for (let y = bridgeY + 9 * unit, row = 0; y < base; y += Math.max(2, 11 * unit), row++) {
-      alpha(ctx, .24, () => rect(ctx, 0, y, width, unit, palette.stoneShadow));
-      const brick = span / 5;
-      for (let x = -brick + (row % 2) * brick * .5; x < width; x += brick) {
-        alpha(ctx, .19, () => rect(ctx, x, y, unit, 10 * unit, palette.stoneShadow));
-        if (random() > .66) alpha(ctx, .12, () => rect(ctx, x + 2 * unit, y + 2 * unit, 16 * unit, unit, palette.stoneLight));
-      }
+    // Quiet uneven blocks and large mineral planes replace a regular brick grid.
+    for(let i=0;i<76;i++){
+      const x=random()*width,y=bridgeY+(12+random()*195)*unit,w=(10+random()*28)*unit,h=(9+random()*26)*unit;
+      const face=[[x,y],[x+w*.84,y-h*.08],[x+w,y+h*.62],[x+w*.71,y+h],[x-w*.1,y+h*.82]];
+      const tone=i%3?palette.stoneLight:palette.stoneShadow;
+      const opacity=.07+random()*.12;
+      [-width,0,width].forEach(tile=>alpha(ctx,opacity,()=>polygon(ctx,face.map(([px,py])=>[px+tile,py]),tone)));
     }
     for (let i = -1; i <= 8; i++) {
       const center = start + i * span;
-      rect(ctx, center + 9 * unit, bridgeY + 10 * unit, 4 * unit, base - bridgeY, palette.stoneShadow);
-      alpha(ctx, .5, () => rect(ctx, center - 11 * unit, bridgeY + 12 * unit, 2 * unit, base - bridgeY, palette.stoneLight));
-      alpha(ctx, .3, () => rect(ctx, center - 3 * unit, bridgeY + 91 * unit, 2 * unit, 69 * unit, palette.forest));
+      polygon(ctx,[[center+span*.035,bridgeY+9*unit],[center+span*.12,bridgeY+12*unit],[center+span*.12,base],[center+span*.035,base]],palette.stoneShadow);
+      alpha(ctx,.62,()=>polygon(ctx,[[center-span*.12,bridgeY+13*unit],[center-span*.085,bridgeY+16*unit],[center-span*.075,base],[center-span*.12,base]],palette.stoneLight));
+      daub(ctx,center-span*.07,bridgeY+92*unit,span*.07,61*unit,palette.nearForest,919+i,.19);
     }
     ctx.restore();
-    // Individual pale voussoirs follow the rounded arches.
+    // Voussoirs are broad hand-cut wedges, with a darker inset arch face.
     for (let i = -1; i <= 8; i++) {
       const center = start + (i + .5) * span;
-      for (let j = 0; j <= 12; j++) {
-        const theta = Math.PI * (j / 12);
-        const x = center + Math.cos(theta) * (innerRadius + 4 * unit);
-        const y = spring - Math.sin(theta) * (innerRadius + 4 * unit);
-        rect(ctx, x, y, unit, 3 * unit, palette.stoneLight);
+      ctx.strokeStyle=palette.stoneShadow;ctx.lineWidth=5*unit;
+      ctx.beginPath();ctx.arc(center,spring,innerRadius+1.5*unit,Math.PI,Math.PI*2);ctx.stroke();
+      for (let j = 0; j < 11; j++) {
+        const a=Math.PI+j/11*Math.PI+.014,b=Math.PI+(j+1)/11*Math.PI-.014;
+        const r=innerRadius+2.5*unit,R=innerRadius+(8+(j%3)*.7)*unit;
+        const wedge=[[center+Math.cos(a)*r,spring+Math.sin(a)*r],[center+Math.cos(a)*R,spring+Math.sin(a)*R],[center+Math.cos(b)*R,spring+Math.sin(b)*R],[center+Math.cos(b)*r,spring+Math.sin(b)*r]];
+        polygon(ctx,wedge,mix(palette.stone,palette.stoneLight,j<6?.56:.24));
       }
     }
-    rect(ctx, 0, bridgeY + 3 * unit, width, 4 * unit, palette.stoneLight);
-    rect(ctx, 0, bridgeY, width, 3 * unit, palette.stoneShadow);
-    rect(ctx, 0, bridgeY - 3 * unit, width, unit, palette.stoneLight);
+    rect(ctx, 0, bridgeY + 4 * unit, width, 4.4 * unit, palette.stoneShadow);
+    rect(ctx, 0, bridgeY + 1 * unit, width, 3.5 * unit, palette.stoneLight);
+    rect(ctx, 0, bridgeY - 1.4 * unit, width, 2.4 * unit, mix(palette.stoneLight,palette.sun,.28));
     // Two rails, sleepers, a low parapet, and widely spaced telegraph poles.
     for (let i = 0; i < 80; i++) rect(ctx, i * width / 80, bridgeY - 4 * unit, 3 * unit, 4 * unit, palette.stoneShadow);
     rect(ctx, 0, bridgeY - 5 * unit, width, unit, palette.stoneShadow);
     for (let i = 0; i < 4; i++) {
       const x = (i * 2 + .6) * span;
-      rect(ctx, x, bridgeY - 27 * unit, unit, 25 * unit, palette.stoneShadow);
-      rect(ctx, x - 5 * unit, bridgeY - 25 * unit, 11 * unit, unit, palette.stoneShadow);
+      stroke(ctx,[[x,bridgeY-27*unit],[x+.5*unit,bridgeY-2*unit]],palette.stoneShadow,.95*unit);
+      stroke(ctx,[[x-5*unit,bridgeY-25*unit],[x+6*unit,bridgeY-25*unit]],palette.stoneShadow,.9*unit);
     }
     alpha(ctx, .32, () => {
-      for (let x = 0; x < width; x++) {
-        const wireY = bridgeY - (23 - Math.sin((x / span - .6) * Math.PI) ** 2 * 3) * unit;
-        rect(ctx, x, wireY, 1, 1, palette.stoneShadow);
-      }
+      const wire=[];for(let x=0;x<=width;x+=3)wire.push([x,bridgeY-(23-Math.sin((x/span-.6)*Math.PI)**2*3)*unit]);
+      stroke(ctx,wire,palette.stoneShadow,.65*unit);
     });
   }
 
@@ -465,32 +494,43 @@ function startLandscape(canvas) {
     ctx.save();
     ctx.translate(motion.train.x * vibrationUnit, motion.train.y * vibrationUnit);
     const night = 1 - palette.daylight;
-    const windowColor = mix('#9cbac0', '#f5d59c', Math.max(0, Math.min(1, (night - .1) / .75)));
-    const blue = mix('#314b59', '#496f76', palette.daylight);
-    const rust = mix('#594947', '#ad7060', palette.daylight);
+    const windowColor = mix('#f8e6c2', '#ffdc98', Math.max(0, Math.min(1, (night - .1) / .75)));
+    const blue = mix('#3f394c', '#52626d', palette.daylight);
+    const rust = mix('#5b3d50', '#a86b68', palette.daylight);
     const wheel = palette.stoneShadow;
     for (let i = 0; i < 4; i++) {
       const x = left + i * 29 * unit;
-      rect(ctx, x + 2 * unit, ground - 14 * unit, 25 * unit, 11 * unit, i === 1 ? rust : blue);
-      rect(ctx, x + 1 * unit, ground - 16 * unit, 27 * unit, 3 * unit, palette.stoneShadow);
-      rect(ctx, x + 3 * unit, ground - 4 * unit, 23 * unit, unit, palette.stoneLight);
+      const body=i===1?rust:blue;
+      polygon(ctx,[[x+2*unit,ground-14*unit],[x+26*unit,ground-14.5*unit],[x+27*unit,ground-3*unit],[x+2*unit,ground-3*unit]],body);
+      polygon(ctx,[[x+unit,ground-15*unit],[x+3*unit,ground-17*unit],[x+24*unit,ground-17*unit],[x+28*unit,ground-15*unit],[x+27*unit,ground-13.5*unit],[x+unit,ground-13.5*unit]],palette.stoneShadow);
+      polygon(ctx,[[x+3*unit,ground-17*unit],[x+24*unit,ground-17*unit],[x+27*unit,ground-15.5*unit],[x+2*unit,ground-15.5*unit]],mix(body,palette.stoneLight,.39));
+      polygon(ctx,[[x+22*unit,ground-13.5*unit],[x+26*unit,ground-14*unit],[x+27*unit,ground-3*unit],[x+22*unit,ground-3*unit]],mix(body,palette.skyTop,.25));
+      rect(ctx, x + 3 * unit, ground - 5 * unit, 22 * unit, .85*unit, mix(body,palette.stoneLight,.52));
       for (let j = 0; j < 4; j++) {
-        alpha(ctx, .70 + night * .30, () => rect(ctx, x + (5 + j * 5) * unit, ground - 12 * unit, 3 * unit, 4 * unit, windowColor));
+        const wx=x+(5+j*5)*unit;
+        rect(ctx,wx-.35*unit,ground-12.3*unit,3.7*unit,4.8*unit,mix(body,palette.skyTop,.4));
+        alpha(ctx, .78 + night * .22, () => polygon(ctx,[[wx,ground-12*unit],[wx+2.8*unit,ground-12*unit],[wx+3*unit,ground-8*unit],[wx,ground-8*unit]],windowColor));
       }
       rect(ctx, x, ground - 3 * unit, 29 * unit, unit, wheel);
-      rect(ctx, x + 5 * unit, ground - 2 * unit, 4 * unit, 3 * unit, wheel);
-      rect(ctx, x + 21 * unit, ground - 2 * unit, 4 * unit, 3 * unit, wheel);
+      circle(ctx,x+7*unit,ground-.8*unit,2.5*unit,wheel);
+      circle(ctx,x+23*unit,ground-.8*unit,2.5*unit,wheel);
     }
     const x = left + 116 * unit;
     rect(ctx, x, ground - 13 * unit, 25 * unit, 10 * unit, rust);
+    polygon(ctx,[[x+11*unit,ground-13*unit],[x+22*unit,ground-14.2*unit],[x+25*unit,ground-11*unit],[x+25*unit,ground-8.5*unit],[x+11*unit,ground-9*unit]],mix(rust,palette.stoneLight,.32));
     rect(ctx, x + 1 * unit, ground - 18 * unit, 11 * unit, 15 * unit, blue);
-    rect(ctx, x, ground - 20 * unit, 14 * unit, 3 * unit, palette.stoneShadow);
+    polygon(ctx,[[x-unit,ground-19*unit],[x+2*unit,ground-21*unit],[x+12*unit,ground-21*unit],[x+15*unit,ground-19*unit],[x+14*unit,ground-17*unit],[x,ground-17*unit]],palette.stoneShadow);
+    stroke(ctx,[[x+unit,ground-20*unit],[x+12*unit,ground-20*unit],[x+14*unit,ground-19*unit]],mix(blue,palette.stoneLight,.47),.7*unit);
     rect(ctx, x + 4 * unit, ground - 16 * unit, 5 * unit, 5 * unit, windowColor);
     rect(ctx, x + 20 * unit, ground - 20 * unit, 4 * unit, 9 * unit, palette.stoneShadow);
     rect(ctx, x + 19 * unit, ground - 22 * unit, 6 * unit, 3 * unit, palette.stoneShadow);
     rect(ctx, x + 24 * unit, ground - 9 * unit, 4 * unit, 7 * unit, palette.stoneLight);
     rect(ctx, x - unit, ground - 3 * unit, 29 * unit, 2 * unit, wheel);
-    for (let i = 0; i < 3; i++) circle(ctx, x + (5 + i * 8) * unit, ground - unit, 3 * unit, wheel);
+    for (let i = 0; i < 3; i++) {
+      circle(ctx, x + (5 + i * 8) * unit, ground - unit, 3 * unit, wheel);
+      circle(ctx,x+(5+i*8)*unit,ground-unit,1.25*unit,mix(wheel,palette.stoneLight,.36));
+    }
+    stroke(ctx,[[x+5*unit,ground-unit],[x+21*unit,ground-unit]],mix(wheel,palette.stoneLight,.5),.65*unit);
     if (night > .25) alpha(ctx, (night - .25) / .75 * .18, () => {
       for (let i = 5; i > 0; i--) circle(ctx, x + 27 * unit, ground - 8 * unit, i * 2 * unit, '#ffda9e');
     });
@@ -508,9 +548,11 @@ function startLandscape(canvas) {
       const x = chimneyX + puff.x * unit + puff.birthX * (vibrationUnit - unit);
       const y = chimneyY + puff.y * unit + puff.birthY * (vibrationUnit - unit);
       const radius = puff.radius * unit;
-      alpha(ctx, puff.opacity, () => {
-        if (radius < 1.1) rect(ctx, x, y, 1, 1, palette.cloud);
-        else circle(ctx, x, y, radius, palette.cloud);
+      alpha(ctx, puff.opacity*.72, () => {
+        const smokeColor=mix(palette.cloud,palette.mist,.38);
+        circle(ctx,x,y,radius,smokeColor);
+        circle(ctx,x-radius*.48,y-radius*.14,radius*.68,smokeColor);
+        circle(ctx,x+radius*.32,y-radius*.42,radius*.72,smokeColor);
       });
     });
   }
@@ -531,12 +573,13 @@ function startLandscape(canvas) {
     if (bounds.width < 1 || bounds.height < 1) return false;
     // Responsive composition, never a cropped desktop bitmap. A phone sees
     // the entire small train, more sky, and taller bridge piers below it.
-    width = Math.max(320, Math.min(960, Math.round(bounds.width / 1.5)));
+    width = Math.max(480, Math.min(1440, Math.round(bounds.width)));
     height = Math.max(260, Math.round(width * bounds.height / bounds.width));
     unit = width / 960;
     bridgeY = Math.round(height * (bounds.width / bounds.height < .8 ? .685 : .625));
     canvas.width = width; canvas.height = height;
-    context.imageSmoothingEnabled = false;
+    context.imageSmoothingEnabled = true;
+    context.imageSmoothingQuality = 'high';
     resizePending = false;
     return true;
   }
@@ -544,9 +587,8 @@ function startLandscape(canvas) {
   function render() {
     const motion = getMotionState(elapsed, reducedMotion);
     const scroll = (surface, name) => {
-      // Integer raster translations retain crisp pixels. Identical periodic
-      // boundaries mean the wrap at width is visually just another step.
-      const offset = Math.floor(motion.offsets[name] * unit);
+      // Fractional camera motion lets painted edges glide without pixel steps.
+      const offset = motion.offsets[name] * unit;
       context.drawImage(surface.canvas, -offset, 0);
       if (offset > 0) context.drawImage(surface.canvas, width - offset, 0);
     };
