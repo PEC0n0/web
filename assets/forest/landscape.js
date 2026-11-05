@@ -1,237 +1,647 @@
-/* Peco's colour railway. Smooth, resolution-independent shapes; no image downloads. */
-const KEYS = ['skyTop','skyMiddle','skyHorizon','farMountain','middleMountain','nearMountain','farForest','forest','nearForest','foreground','stone','stoneLight','stoneShadow','mist','cloud','sun'];
+/* An original, code-painted little world. No images, fonts or network requests. */
 const STOPS = [
-  [0, ['#181447','#3b347c','#b47aaf','#594393','#674c9d','#423786','#4255a2','#335d90','#33336c','#24234e','#9273b6','#c99dca','#554776','#bdb1e3','#d1bfea','#fff2cc'],0],
-  [5, ['#493779','#aa6da3','#f3b6a0','#a568aa','#c57bb3','#845bb2','#6579b1','#418c9a','#384f87','#2b315f','#cc8ca9','#ffd3bd','#8f6293','#f5b7ca','#ffd8d1','#fff2bc'],.25],
-  [7, ['#6974bb','#e1a7ce','#ffdab0','#ce9bd6','#b88ad3','#8a83cb','#70a8b7','#4a9a96','#3d6289','#2a3e65','#dfa3a3','#ffe1b8','#a87091','#fce0de','#fff0df','#fff6c5'],.8],
-  [11.5, ['#607ec4','#adc9e8','#ffe0c5','#bda5dd','#9a8ed4','#798bd2','#61a9bd','#4ba89e','#377d8b','#254d67','#dc9da0','#ffe2ba','#9a7093','#daecf0','#fff2e4','#fff5c7'],1],
-  [15, ['#7c77c0','#d9acda','#ffccac','#bb8dce','#ab71bb','#7774b9','#65a7ad','#4f9693','#416689','#35365f','#eaa09e','#ffd8b2','#a2648b','#f1c6e4','#ffe5d9','#fff0ba'],.9],
-  [17.5, ['#6957ad','#ed98ce','#ffc184','#d77ebb','#a15ab4','#795bb9','#7185bf','#4e83a5','#464c87','#2e2859','#e886a2','#ffbf9c','#975982','#f6adcf','#ffe2d1','#ffe3a0'],.65],
-  [19.5, ['#39337b','#9264a9','#f8a29b','#ad68ab','#82519d','#5b4895','#536ba7','#3d6894','#363a78','#24214e','#b775a9','#eda9b6','#674985','#d299d0','#f5c5de','#ffeac0'],.2],
-  [22, ['#201b56','#53458e','#c886af','#74549f','#7655ab','#50408d','#4561a0','#395b8d','#32386c','#25224e','#9d79b7','#d5a4cd','#5e4a82','#b4a1d4','#dcc7ec','#fff3d4'],0],
-  [24, ['#181447','#3b347c','#b47aaf','#594393','#674c9d','#423786','#4255a2','#335d90','#33336c','#24234e','#9273b6','#c99dca','#554776','#bdb1e3','#d1bfea','#fff2cc'],0]
+  [0, ['#080f25','#152944','#466379','#283954','#33475d','#294955','#203f48','#173b3c','#102f33','#102b2c','#263c43','#3c525a','#1c343d','#526e7b','#97b6c7','#d7d9bd'], 0, 0],
+  [4.3, ['#101a36','#293956','#777b91','#454b6a','#48586e','#405d65','#31515c','#23494e','#183d43','#163338','#40545c','#53656c','#2e4650','#75868e','#bcc8d1','#e8d8b7'], .05, .08],
+  [5.8, ['#687aab','#c9a0b0','#efc8aa','#8b87a2','#81899d','#6c8791','#527a7d','#3f6b6e','#2c545b','#23484d','#9b9d99','#b9b9a6','#677e84','#b8bcc2','#eed7be','#ffe4ad'], .44, .75],
+  [7.8, ['#82adc6','#b3cbd0','#eee1b6','#99aebb','#839fa9','#6c9199','#517f83','#3c7070','#2b565b','#234b4d','#999d8d','#bdc0aa','#697e7b','#bdcfd1','#fff1d2','#fff4c9'], .85, .2],
+  [10, ['#79afc9','#b0cfd5','#e5e5c8','#9bafb7','#7f9ea7','#638c95','#4c7b7d','#376d66','#24534c','#214841','#9ba08a','#c0c4ac','#697a69','#b8d1ce','#f9f1d7','#fff4cb'], 1, 0],
+  [14.5, ['#73a7c4','#afc9d1','#e8dec0','#9baab0','#849ca3','#6d8e91','#567b77','#3c6b5d','#2a5345','#234636','#a7a28b','#cbc5a9','#75806c','#c0cfbf','#fff0ce','#fff0b4'], 1, .12],
+  [16.5, ['#8296b2','#c6b3bb','#f3d1ab','#ac9da8','#97959e','#828d91','#687e7b','#4e7163','#36564b','#2b493e','#b0a18c','#d5c3a6','#7e8171','#d3cec5','#ffe2b9','#ffdf9d'], .88, .5],
+  [18, ['#76799e','#cda0ac','#f0bb95','#a491a3','#8b879b','#797c8b','#626c79','#4c6465','#354c50','#2c4041','#9c8e85','#b7a596','#657277','#c2acac','#f6c2a4','#ffd79d'], .57, 1],
+  [19.8, ['#343d69','#786b8c','#c18c9b','#696780','#5c637a','#4e606e','#3d5264','#314b53','#233b42','#1b3338','#667078','#80858a','#414f5f','#9296aa','#e1c1bc','#f6d1a1'], .16, .55],
+  [21.5, ['#111c39','#2a3b58','#68768b','#414e6a','#3c5168','#344d5d','#2b4654','#224249','#19353c','#153035','#3c515b','#54646b','#2b424c','#7b8fa0','#c3cbd0','#e1d9b4'], .02, .08],
+  [24, ['#080f25','#152944','#466379','#283954','#33475d','#294955','#203f48','#173b3c','#102f33','#102b2c','#263c43','#3c525a','#1c343d','#526e7b','#97b6c7','#d7d9bd'], 0, 0]
 ];
-const rgb = value => value.match(/[\da-f]{2}/gi).map(v => parseInt(v,16));
-const blend = (a,b,t) => { const x=rgb(a),y=rgb(b); return `rgb(${x.map((v,i)=>Math.round(v+(y[i]-v)*t)).join(',')})`; };
-const normalize = value => ((Number(value)%24)+24)%24;
-let previewHour=null, requestPaint=()=>{};
-export function getShanghaiHour(date=new Date()) { return (date.getUTCHours()+8+date.getUTCMinutes()/60+date.getUTCSeconds()/3600+date.getUTCMilliseconds()/3600000)%24; }
-export function getCurrentHour() { return previewHour??getShanghaiHour(); }
-export function getPalette(hour) {
-  const h=normalize(hour); let right=STOPS.findIndex(stop=>stop[0]>h); if(right<1)right=STOPS.length-1;
-  const a=STOPS[right-1],b=STOPS[right],t=(h-a[0])/(b[0]-a[0]);
-  const p=Object.fromEntries(KEYS.map((key,i)=>[key,blend(a[1][i],b[1][i],t)]));
-  p.daylight=a[2]+(b[2]-a[2])*t; p.night=Math.max(0,1-p.daylight*1.7); p.warmth=Math.sin(h/24*Math.PI)**2;
-  return p;
-}
-export function getMotionState(elapsedSeconds,reducedMotion=false) {
-  const elapsed=Number.isFinite(Number(elapsedSeconds))?Math.max(0,Number(elapsedSeconds)):0;
-  const time=reducedMotion?0:elapsed,tileWidth=1440;
-  const distances={clouds:time*3,far:time*6,middle:time*14,valley:time*26,bridge:time*60,foreground:time*95};
-  const offsets=Object.fromEntries(Object.entries(distances).map(([k,v])=>[k,v%tileWidth]));
-  const smokeLifetime=7.2,smokeInterval=.3;
-  const smoke=Array.from({length:24},(_,i)=>{
-    const age=((time-i*smokeInterval)%smokeLifetime+smokeLifetime)%smokeLifetime;
-    return {age,x:-age*19-age*age*1.6,y:-age*17-age*age*1.8,radius:5+age*6.8,
-      opacity:Math.min(1,age/.2)*Math.pow(1-age/smokeLifetime,.65)*.94};
-  });
-  return {elapsed,time,tileWidth,distances,offsets,smoke,smokeLifetime,smokeInterval,
-    train:{x:0,y:reducedMotion?0:Math.sin(time*6)*.55+Math.sin(time*13)*.15}};
-}
-const timeLabel=h=>h<4.8||h>=23?'深夜':h<8?'黎明':h<16.5?'白昼':h<20?'黄昏':'夜晚';
-function announceTime() { if(typeof window!=='undefined')window.dispatchEvent(new CustomEvent('landscape-time',{detail:{hour:getCurrentHour(),label:timeLabel(getCurrentHour()),manual:previewHour!==null}})); }
-export function setPreviewHour(value) { if(value!==null&&!Number.isFinite(Number(value)))return; previewHour=value===null?null:normalize(value); requestPaint(true); announceTime(); }
-function seeded(seed) { let n=seed;return()=>{n=(n*1664525+1013904223)>>>0;return n/4294967296;}; }
+const COLOR_KEYS = ['skyTop','skyMiddle','skyHorizon','farMountain','middleMountain','nearMountain','farForest','forest','nearForest','foreground','stone','stoneLight','stoneShadow','mist','cloud','sun'];
+const RGB = hex => hex.match(/[\da-f]{2}/gi).map(value => parseInt(value, 16));
+const mix = (a, b, t) => {
+  const x = RGB(a), y = RGB(b);
+  return `rgb(${x.map((v, i) => Math.round(v + (y[i] - v) * t)).join(',')})`;
+};
+const normalizeHour = value => ((Number(value) % 24) + 24) % 24;
+let previewHour = null;
+let requestPaint = () => {};
 
-if(typeof document!=='undefined') {
-  const canvas=document.getElementById('landscape');
-  if(canvas&&!canvas.dataset.forestStarted){canvas.dataset.forestStarted='true';startLandscape(canvas);}
+/** UTC+8, independent of the device's own timezone. */
+export function getShanghaiHour(date = new Date()) {
+  return (date.getUTCHours() + 8 + date.getUTCMinutes() / 60 + date.getUTCSeconds() / 3600 + date.getUTCMilliseconds() / 3600000) % 24;
+}
+
+/** Every color is interpolated continuously; labels do not control the artwork. */
+export function getPalette(hour) {
+  const h = normalizeHour(hour);
+  let right = STOPS.findIndex(stop => stop[0] > h);
+  if (right < 1) right = STOPS.length - 1;
+  const a = STOPS[right - 1], b = STOPS[right];
+  const t = (h - a[0]) / (b[0] - a[0]);
+  const palette = {};
+  COLOR_KEYS.forEach((key, index) => { palette[key] = mix(a[1][index], b[1][index], t); });
+  palette.daylight = a[2] + (b[2] - a[2]) * t;
+  palette.warmth = a[3] + (b[3] - a[3]) * t;
+  palette.night = Math.max(0, 1 - palette.daylight * 2.2);
+  return palette;
+}
+
+export function getCurrentHour() { return previewHour ?? getShanghaiHour(); }
+
+/** Design-space motion, independent of frame rate, canvas size and wall clock.
+ * Every tile is 960 design pixels wide. Distances never reset, while the
+ * bounded offsets can wrap because the cached landscapes are truly periodic.
+ */
+export function getMotionState(elapsedSeconds, reducedMotion = false) {
+  const input = Number(elapsedSeconds);
+  const elapsed = Number.isFinite(input) ? Math.max(0, input) : 0;
+  const time = reducedMotion ? 0 : elapsed;
+  const tileWidth = 960;
+  const wrap = value => ((value % tileWidth) + tileWidth) % tileWidth;
+  const wobble = at => reducedMotion ? { x: 0, y: 0 } : {
+    x: Math.sin(at * 2.7) * .52 + Math.sin(at * 7.1) * .18,
+    y: Math.sin(at * 5.6) * .48 + Math.sin(at * 11.2) * .12
+  };
+  const distances = {
+    clouds: time * .75,
+    far: time * 4.2,
+    middle: time * 12,
+    valley: time * 22,
+    bridge: time * 48,
+    foreground: time * 68
+  };
+  const offsets = Object.fromEntries(Object.entries(distances).map(([key, value]) => [key, wrap(value)]));
+  const smokeLifetime = 4.4, smokeInterval = .2, count = 22;
+  const smoke = Array.from({ length: count }, (_, index) => {
+    const phase = time - index * smokeInterval;
+    const age = ((phase % smokeLifetime) + smokeLifetime) % smokeLifetime;
+    const id = Math.floor(phase / smokeLifetime) * count + index;
+    const variation = Math.sin(id * 91.71 + 2.3);
+    const birth = wobble(time - age);
+    return {
+      age,
+      birthX: birth.x,
+      birthY: birth.y,
+      x: birth.x - age * (9.5 + variation * .6) - age * age * 1.05,
+      y: birth.y - age * (8.1 + variation * .45) - age * age * 1.1,
+      radius: .55 + age * 1.55,
+      opacity: Math.min(1, age / .16) * Math.pow(1 - age / smokeLifetime, 1.4) * .64
+    };
+  });
+  return { elapsed, time, tileWidth, train: wobble(time), distances, offsets, smoke, smokeLifetime, smokeInterval };
+}
+
+const timeLabel = hour => hour < 4.8 || hour >= 23 ? '深夜' : hour < 8 ? '黎明' : hour < 16.5 ? '白昼' : hour < 20 ? '黄昏' : '夜晚';
+
+function announceTime() {
+  if (typeof window !== 'undefined') window.dispatchEvent(new CustomEvent('landscape-time', {
+    detail: { hour: getCurrentHour(), label: timeLabel(getCurrentHour()), manual: previewHour !== null }
+  }));
+}
+
+export function setPreviewHour(value) {
+  if (value !== null && !Number.isFinite(Number(value))) return;
+  previewHour = value === null ? null : normalizeHour(value);
+  requestPaint(true);
+  announceTime();
+}
+
+function randomSource(seed) {
+  let n = seed >>> 0;
+  return () => {
+    n = (n + 0x6D2B79F5) >>> 0;
+    let value = Math.imul(n ^ n >>> 15, 1 | n);
+    value ^= value + Math.imul(value ^ value >>> 7, 61 | value);
+    return ((value ^ value >>> 14) >>> 0) / 4294967296;
+  };
+}
+
+if (typeof document !== 'undefined') {
+  const canvas = document.getElementById('landscape');
+  if (canvas && !canvas.dataset.forestStarted) {
+    canvas.dataset.forestStarted = 'true';
+    startLandscape(canvas);
+  }
 }
 
 function startLandscape(canvas) {
-  const ctx=canvas.getContext('2d',{alpha:false}); if(!ctx)return;
-  const media=matchMedia('(prefers-reduced-motion: reduce)');
-  let reducedMotion=media.matches,visible=true,ready=false,dirty=true,resizePending=true;
-  let w=1440,h=900,dpr=1,mobile=false,banner=false,bridgeY=620,trainScale=1,trainX=800;
-  let frameId=0,timer=0,last=0,lastFrame=0,lastPalette=0,elapsed=0,frames=0,staticRenders=0;
-  let p=getPalette(getCurrentHour()),layers=[];
-  const TAU=Math.PI*2;
-  const ellipse=(c,x,y,rx,ry,color,angle=0)=>{c.fillStyle=color;c.beginPath();c.ellipse(x,y,Math.max(.01,rx),Math.max(.01,ry),angle,0,TAU);c.fill();};
-  const round=(c,x,y,ww,hh,r,color)=>{c.fillStyle=color;c.beginPath();c.roundRect(x,y,ww,hh,r);c.fill();};
-  const path=(c,color,draw)=>{c.fillStyle=color;c.beginPath();draw(c);c.closePath();c.fill();};
-  function surface() { const s=document.createElement('canvas');s.width=Math.round(w*dpr);s.height=Math.round(h*dpr);const c=s.getContext('2d');c.scale(dpr,dpr);return {canvas:s,ctx:c}; }
-  function cloud(c,x,y,size,color) {
-    path(c,color,g=>{g.moveTo(x-size*1.7,y+size*.22);g.bezierCurveTo(x-size*2.3,y-size*.13,x-size*1.2,y-size*.6,x-size*.85,y-size*.4);g.bezierCurveTo(x-size*.7,y-size*1.08,x+size*.3,y-size*1.06,x+size*.55,y-size*.5);g.bezierCurveTo(x+size*1.1,y-size*.78,x+size*1.55,y-size*.1,x+size*1.2,y+size*.1);g.bezierCurveTo(x+size*2,y+size*.09,x+size*2.5,y+size*.5,x+size*1.4,y+size*.5);g.bezierCurveTo(x+size*.5,y+size*.52,x-size*1.2,y+size*.55,x-size*1.7,y+size*.22);});
-  }
-  function drawSky(c) {
-    const sky=c.createLinearGradient(0,0,0,h*.8);sky.addColorStop(0,p.skyTop);sky.addColorStop(.56,p.skyMiddle);sky.addColorStop(1,p.skyHorizon);c.fillStyle=sky;c.fillRect(0,0,w,h);
-    const x=w*(mobile?.94:.77),y=h*(banner?.32:mobile?.49:.32),r=banner?Math.min(w*.105,h*.4):w*(mobile?.225:.105);
-    // Oversized concentric bands make the sun feel like a printed colour field.
-    [2.05,1.67,1.32].forEach((k,i)=>{c.globalAlpha=.055+i*.017;ellipse(c,x,y,r*k,r*k,p.sun);});c.globalAlpha=1;
-    ellipse(c,x,y,r,r,p.sun);
-    if(p.night>.35){c.save();c.beginPath();c.ellipse(x,y,r,r,0,0,TAU);c.clip();c.globalAlpha=(p.night-.35)/.65;ellipse(c,x+r*.35,y-r*.27,r*.88,r*.88,sky);c.restore();}
-    const random=seeded(317);
-    for(let i=0;i<52;i++){
-      const sx=random()*w,sy=h*(.08+random()*.46),s=(.8+random()*1.8)*(mobile?.65:1);
-      c.globalAlpha=p.night*(.3+random()*.6);ellipse(c,sx,sy,s,s,'#fff4df');
-      if(i%9===0){c.fillStyle='#fff4df';c.fillRect(sx-s*3,sy-.45,s*6,.9);c.fillRect(sx-.45,sy-s*3,.9,s*6);}
-    }c.globalAlpha=1;
-    // Broad, tapering cloud ribbons, with no pixel texture or noise.
-    c.globalAlpha=.32;
-    path(c,p.cloud,g=>{g.moveTo(-w*.1,h*.15);g.bezierCurveTo(w*.13,h*.08,w*.31,h*.31,w*.64,h*.16);g.bezierCurveTo(w*.78,h*.1,w*.88,h*.1,w*1.1,h*.14);g.bezierCurveTo(w*.83,h*.12,w*.73,h*.18,w*.65,h*.21);g.bezierCurveTo(w*.4,h*.38,w*.18,h*.14,-w*.1,h*.2);});
-    c.globalAlpha=.18;
-    path(c,p.sun,g=>{g.moveTo(w*.38,h*.4);g.bezierCurveTo(w*.63,h*.29,w*.78,h*.48,w*1.1,h*.29);g.lineTo(w*1.1,h*.34);g.bezierCurveTo(w*.81,h*.52,w*.63,h*.35,w*.38,h*.4);});c.globalAlpha=1;
-  }
-  function ridgeY(x,base,amplitude,phase) {
-    return h*base+amplitude*(Math.sin(x/w*TAU+phase)*.6+Math.sin(x/w*TAU*2+phase*.6)*.25+Math.cos(x/w*TAU*3+phase)*.15);
-  }
-  function ridge(c,base,amplitude,phase,color) {
-    path(c,color,g=>{g.moveTo(0,h+1);g.lineTo(0,ridgeY(0,base,amplitude,phase));for(let x=0;x<=w+5;x+=5)g.lineTo(x,ridgeY(x,base,amplitude,phase));g.lineTo(w+5,h+1);});
-  }
-  function terrain(c,index) {
-    const base=[.52,.62,.75][index]+(mobile?.07:0),amp=h*[.13,.105,.08][index];
-    ridge(c,base,amp,1.8+index*1.6,[p.farMountain,p.nearMountain,p.forest][index]);
-    ridge(c,base+.035,amp*.85,2+index*1.6,[p.middleMountain,p.farForest,p.nearForest][index]);
-    // Sweeping secondary slopes keep each mountain a large, deliberate shape.
-    ridge(c,base+.12,amp*.7,4.2+index*1.9,[p.nearMountain,p.forest,p.foreground][index]);
-    if(index===1){
-      c.globalAlpha=.5;
-      path(c,p.mist,g=>{g.moveTo(w*.8,h*.64);g.bezierCurveTo(w*.51,h*.72,w*.89,h*.8,w*.35,h);g.lineTo(w*.74,h);g.bezierCurveTo(w*1.08,h*.79,w*.63,h*.71,w*.8,h*.64);});c.globalAlpha=1;
+  const context = canvas.getContext('2d', { alpha: false });
+  if (!context) return;
+  const motionQuery = matchMedia('(prefers-reduced-motion: reduce)');
+  let reducedMotion = motionQuery.matches;
+  let width = 960, height = 540, unit = 1, bridgeY = 335;
+  let palette = getPalette(getCurrentHour());
+  let sky, farTerrain, middleTerrain, valleyTerrain, foreground, clouds, bridge;
+  let ready = false, visible = true, frameId = 0, stillTimer = 0, forcePalette = false;
+  let lastFrame = -Infinity, lastPalette = -Infinity, lastAnnouncement = -Infinity;
+  let staticRenders = 0, frames = 0, elapsed = 0, previousTime = 0;
+  let resizePending = true;
+
+  const layer = () => {
+    const surface = document.createElement('canvas');
+    surface.width = width; surface.height = height;
+    return { canvas: surface, ctx: surface.getContext('2d') };
+  };
+  const rect = (ctx, x, y, w, h, color) => {
+    if (color) ctx.fillStyle = color;
+    ctx.fillRect(Math.round(x), Math.round(y), Math.max(1, Math.round(w)), Math.max(1, Math.round(h)));
+  };
+  const circle = (ctx, x, y, radius, color) => {
+    if (color) ctx.fillStyle = color;
+    const r = Math.max(1, Math.round(radius));
+    for (let row = -r; row <= r; row++) {
+      const span = Math.floor(Math.sqrt(r * r - row * row));
+      ctx.fillRect(Math.round(x) - span, Math.round(y) + row, span * 2 + 1, 1);
     }
-    if(index===2){
-      const random=seeded(62),count=mobile?14:27;
-      for(let i=0;i<count;i++){
-        const x=random()*w,y=ridgeY(x,.78+(mobile?.07:0),amp*.6,7),sz=w*(.012+random()*.013);
-        for(const xx of [x-w,x,x+w]){ellipse(c,xx,y,sz*.55,sz*1.8,i%2?p.nearForest:p.farForest,-.1);round(c,xx-sz*.055,y,sz*.11,sz*2,2,p.nearForest);}
+  };
+  const alpha = (ctx, opacity, draw) => {
+    ctx.save(); ctx.globalAlpha = Math.max(0, Math.min(1, opacity)); draw(); ctx.restore();
+  };
+  // Integer harmonics and matched endpoints make both ridge height and slope
+  // continuous at the tile boundary; no crossfade or duplicated hard edge.
+  const noise = (x, seed) => {
+    const phase = x / 960 * Math.PI * 2;
+    return Math.sin(phase * 4 + seed) * .48 + Math.sin(phase * 11 + seed * 3) * .25 + Math.sin(phase * 29 + seed * 7) * .11;
+  };
+  const interpolate = (points, x) => {
+    let i = 1;
+    while (i < points.length - 1 && x > points[i][0]) i++;
+    const a = points[i - 1], b = points[i];
+    const t = Math.max(0, Math.min(1, (x - a[0]) / (b[0] - a[0])));
+    const ease = t * t * (3 - 2 * t);
+    return a[1] + (b[1] - a[1]) * ease;
+  };
+
+  function mountain(ctx, points, base, amplitude, color, seed, detail = false) {
+    const periodicPoints = points.map(point => [...point]);
+    const seamHeight = (points[0][1] + points[points.length - 1][1]) * .5;
+    periodicPoints[0][1] = seamHeight;
+    periodicPoints[periodicPoints.length - 1][1] = seamHeight;
+    const heights = [];
+    for (let x = 0; x < width; x++) {
+      const y = Math.round(base - interpolate(periodicPoints, x / width) * amplitude + noise(x / unit, seed) * 4 * unit);
+      heights[x] = y;
+      rect(ctx, x, y, 1, height - y, color);
+    }
+    if (detail) {
+      const random = randomSource(seed * 193);
+      alpha(ctx, .16, () => {
+        for (let i = 0; i < width * 1.6; i++) {
+          const x = Math.floor(random() * width);
+          const y = heights[x] + random() * amplitude * .65;
+          const span = (2 + random() * 7) * unit;
+          rect(ctx, x, y, span, unit, palette.mist);
+          if (x + span >= width) rect(ctx, x - width, y, span, unit, palette.mist);
+        }
+      });
+    }
+    return heights;
+  }
+
+  function pine(ctx, x, ground, size, color, seed, light = false) {
+    // Draw the same edge-crossing tree into both sides of its periodic tile.
+    if (x >= 0 && x < width) {
+      if (x < size) pine(ctx, x + width, ground, size, color, seed, light);
+      if (x > width - size) pine(ctx, x - width, ground, size, color, seed, light);
+    }
+    const random = randomSource(seed);
+    const h = Math.max(4, Math.round(size));
+    const half = h * (.19 + random() * .08);
+    const lean = (random() - .5) * h * .06;
+    rect(ctx, x, ground - h * .7, Math.max(1, h * .035), h * .73, color);
+    for (let y = 0; y < h * .9; y++) {
+      const t = y / h;
+      const tier = .62 + .38 * Math.pow((t * 5.1) % 1, .6);
+      const span = Math.max(.5, Math.pow(t, .83) * half * tier);
+      const jitter = random() * Math.max(1, h * .025);
+      rect(ctx, x + lean * (1 - t) - span - jitter, ground - h + y, span * 2 + jitter, 1, color);
+    }
+    if (light && h > 12) {
+      alpha(ctx, .30, () => {
+        for (let i = 0; i < h * .30; i++) {
+          const t = .22 + random() * .57;
+          const spread = t * half * .72;
+          rect(ctx, x - spread + random() * spread, ground - h + t * h, 1 + random() * 3 * unit, 1, palette.farForest);
+        }
+      });
+    }
+  }
+
+  function broadleaf(ctx, x, ground, size, color, seed) {
+    if (x >= 0 && x < width) {
+      if (x < size) broadleaf(ctx, x + width, ground, size, color, seed);
+      if (x > width - size) broadleaf(ctx, x - width, ground, size, color, seed);
+    }
+    const random = randomSource(seed);
+    rect(ctx, x - size * .035, ground - size * .76, size * .07, size * .79, color);
+    for (let i = 0; i < 9; i++) {
+      const cx = x + (random() - .5) * size * .60;
+      const cy = ground - size * (.44 + random() * .43);
+      circle(ctx, cx, cy, size * (.16 + random() * .1), color);
+    }
+    alpha(ctx, .15, () => {
+      for (let i = 0; i < size * .36; i++) {
+        rect(ctx, x + (random() - .5) * size * .65, ground - size * (.46 + random() * .38), unit * (1 + random() * 4), unit, palette.mist);
+      }
+    });
+  }
+
+  function drawSky() {
+    const ctx = sky.ctx;
+    // Deliberate two-pixel bands keep the gradient part of the pixel painting.
+    const rgbColor = color => color.match(/\d+/g).map(Number);
+    const a = rgbColor(palette.skyTop), b = rgbColor(palette.skyMiddle), c = rgbColor(palette.skyHorizon);
+    for (let y = 0; y < height; y += 2) {
+      const t = Math.min(1, y / (height * .78));
+      const lo = t < .58 ? a : b, hi = t < .58 ? b : c;
+      const amount = t < .58 ? t / .58 : (t - .58) / .42;
+      rect(ctx, 0, y, width, 2, `rgb(${lo.map((value, i) => Math.round(value + (hi[i] - value) * amount)).join(',')})`);
+    }
+    const hour = getCurrentHour();
+    const daylight = Math.max(0, Math.min(1, (hour - 5) / 15));
+    const sunX = width * (.13 + daylight * .74);
+    const sunY = height * .57 - Math.sin(daylight * Math.PI) * Math.min(height * .44, width * .28);
+    if (hour > 4.7 && hour < 20.3) {
+      const strength = Math.min(1, palette.daylight * 1.7) * Math.max(0, Math.min(1, (hour - 4.7) / .9, (20.3 - hour) / 1.1));
+      for (let i = 5; i > 0; i--) alpha(ctx, strength * .024, () => circle(ctx, sunX, sunY, (21 + i * 10) * unit, palette.sun));
+      alpha(ctx, strength * .91, () => circle(ctx, sunX, sunY, 18 * unit, palette.sun));
+      alpha(ctx, strength * .22, () => rect(ctx, sunX - 26 * unit, sunY + 7 * unit, 53 * unit, unit, palette.skyMiddle));
+    }
+    const random = randomSource(7924);
+    if (palette.night > 0) {
+      alpha(ctx, palette.night, () => {
+        for (let i = 0; i < 115; i++) {
+          const x = random() * width;
+          const y = height * (.025 + random() * .49);
+          const size = random() > .93 ? 2 : 1;
+          alpha(ctx, .20 + random() * .63, () => rect(ctx, x, y, size, size, '#d7e3e4'));
+        }
+      });
+      const mx = width * .79, my = height * .17, mr = 15 * unit;
+      for (let i = 4; i > 0; i--) alpha(ctx, palette.night * .024, () => circle(ctx, mx, my, mr + 7 * unit * i, '#c6dbe1'));
+      alpha(ctx, palette.night * .95, () => {
+        circle(ctx, mx, my, mr, '#d6dfd3');
+        circle(ctx, mx - mr * .24, my - mr * .21, mr * .73, palette.skyTop);
+      });
+    }
+  }
+
+  function drawClouds() {
+    const ctx = clouds.ctx;
+    const cloudsData = [[.09,.19,135],[.42,.12,148],[.73,.30,155],[.91,.10,100],[.31,.37,98]];
+    cloudsData.forEach(([cx, cy, size], index) => {
+      [-width, 0, width].forEach(tile => {
+        const random = randomSource(4467 + index);
+        const x = cx * width + tile, y = cy * height, w = size * unit;
+        alpha(ctx, (.16 + palette.daylight * .17) * (index === 3 ? .6 : 1), () => {
+          for (let j = 0; j < 8; j++) {
+            const offset = (j / 7 - .5) * w;
+            const top = y - Math.sin(j / 7 * Math.PI) * w * .10 - random() * 5 * unit;
+            rect(ctx, x + offset, top, w * (.23 + random() * .16), (2 + random() * 5) * unit, palette.cloud);
+          }
+          rect(ctx, x - w * .48, y + 5 * unit, w * 1.05, unit, palette.cloud);
+        });
+      });
+    });
+  }
+
+  function drawTerrain() {
+    let ctx = farTerrain.ctx;
+    const mountainHeight = Math.min(height * .32, width * .29);
+    const far = mountain(ctx, [[0,.46],[.08,.74],[.13,1],[.20,.83],[.28,.47],[.34,.74],[.39,.68],[.47,.35],[.55,.56],[.61,.91],[.67,.81],[.75,.49],[.83,1.1],[.89,.98],[1,.55]], bridgeY + 28 * unit, mountainHeight, palette.farMountain, 12, true);
+    alpha(ctx, .18, () => {
+      for (let x = 0; x < width; x += Math.max(1, Math.round(8 * unit))) {
+        pine(ctx, x, far[Math.min(width - 1, x)] + 9 * unit, (5 + Math.sin(x) * 2) * unit, palette.middleMountain, 1090 + x);
+      }
+    });
+    ctx = middleTerrain.ctx;
+    const middle = mountain(ctx, [[0,.78],[.1,.64],[.24,.25],[.37,.44],[.51,.08],[.68,.29],[.81,.7],[.94,.89],[1,.68]], bridgeY + 89 * unit, mountainHeight * .92, palette.middleMountain, 21, true);
+    const random = randomSource(5212);
+    alpha(ctx, .32, () => {
+      for (let i = 0; i < width * .68; i++) {
+        const x = random() * width;
+        const ground = middle[Math.floor(x)] + (12 + random() * 107) * unit;
+        pine(ctx, x, ground, (9 + random() * 17) * unit, palette.nearMountain, 5900 + i);
+      }
+    });
+    for (let i = 0; i < width * .62; i++) {
+      const x = random() * width;
+      const y = middle[Math.floor(x)] + random() * 23 * unit;
+      pine(ctx, x, y + 5 * unit, (8 + random() * 16) * unit, palette.nearMountain, 1600 + i);
+    }
+    // Low strips of translucent mist let the distant ridges breathe.
+    for (let i = 0; i < 20; i++) {
+      alpha(ctx, .013 + (i / 20) * .013, () => rect(ctx, 0, bridgeY - 13 * unit + i * 3 * unit, width, 2 * unit, palette.mist));
+    }
+    ctx = valleyTerrain.ctx;
+    const floor = Math.max(bridgeY + 190 * unit, height * .94);
+    const frontPoints = [[0,.84],[.1,.75],[.21,.47],[.35,.19],[.47,.02],[.56,.08],[.68,.25],[.81,.54],[.92,.87],[1,.95]];
+    const slopeHeight = Math.min(height * .29, width * .235);
+    const slope = mountain(ctx, frontPoints, floor, slopeHeight, palette.farForest, 47, true);
+    const trees = [];
+    for (let i = 0; i < 330; i++) {
+      const x = random() * width;
+      const ground = slope[Math.floor(x)] + random() * (height - slope[Math.floor(x)]);
+      const depth = Math.max(0, Math.min(1, (ground - bridgeY) / (height - bridgeY)));
+      trees.push({ x, ground, size: (11 + random() * 32 + depth * 18) * unit, seed: 843 + i, depth });
+    }
+    trees.sort((a, b) => a.ground - b.ground);
+    trees.forEach(tree => {
+      const color = tree.depth > .55 ? palette.forest : palette.farForest;
+      if (tree.seed % 7 === 0) broadleaf(ctx, tree.x, tree.ground, tree.size * .85, color, tree.seed);
+      else pine(ctx, tree.x, tree.ground, tree.size, color, tree.seed, true);
+    });
+    // A winding river catches a sliver of the changing sky at the valley floor.
+    alpha(ctx, .43, () => {
+      for (let y = Math.round(floor - 10 * unit); y < height; y++) {
+        const progress = (y - (floor - 10 * unit)) / Math.max(1, height - floor + 10 * unit);
+        const x = width * .49 + Math.sin(progress * 5 + .9) * width * .065;
+        rect(ctx, x, y, (2 + progress * 11) * unit, 1, palette.mist);
+      }
+    });
+    alpha(ctx, .23 + (1 - palette.daylight) * .12, () => {
+      for (let i = 0; i < 22; i++) {
+        const half = (55 + i * 8) * unit;
+        rect(ctx, width * .51 - half, bridgeY + 102 * unit + i * 2 * unit, half * 2, unit, palette.mist);
+      }
+    });
+  }
+
+  function drawBridge() {
+    const ctx = bridge.ctx;
+    // Eight complete bays per tile: arches, mortar, poles and sleepers all
+    // share a common period instead of cutting through an arbitrary picture.
+    const span = width / 8;
+    const innerRadius = span * 44 / 112;
+    const spring = bridgeY + 66 * unit;
+    const base = Math.max(bridgeY + 170 * unit, height * .96);
+    const start = 0;
+    // Arched openings are unpainted: the valley remains visible through them.
+    for (let x = 0; x < width; x++) {
+      const bay = Math.floor((x - start) / span);
+      const center = start + (bay + .5) * span;
+      const dx = Math.abs(x - center);
+      const bottom = dx <= innerRadius ? spring - Math.sqrt(Math.max(0, innerRadius * innerRadius - dx * dx)) : base;
+      rect(ctx, x, bridgeY + 5 * unit, 1, bottom - bridgeY - 5 * unit, palette.stone);
+      if (dx <= innerRadius) rect(ctx, x, bottom - 4 * unit, 1, 4 * unit, palette.stoneShadow);
+    }
+    ctx.save(); ctx.globalCompositeOperation = 'source-atop';
+    const random = randomSource(1723);
+    // Small masonry, irregular mineral stains, and a quiet side-lit face.
+    for (let y = bridgeY + 9 * unit, row = 0; y < base; y += Math.max(2, 11 * unit), row++) {
+      alpha(ctx, .24, () => rect(ctx, 0, y, width, unit, palette.stoneShadow));
+      const brick = span / 5;
+      for (let x = -brick + (row % 2) * brick * .5; x < width; x += brick) {
+        alpha(ctx, .19, () => rect(ctx, x, y, unit, 10 * unit, palette.stoneShadow));
+        if (random() > .66) alpha(ctx, .12, () => rect(ctx, x + 2 * unit, y + 2 * unit, 16 * unit, unit, palette.stoneLight));
       }
     }
-  }
-  function drawBridge(c) {
-    const span=w/(mobile?3:7),deck=mobile?12:15,depth=Math.min(h*.29,span*1.18);
-    const archTop=bridgeY+deck+12,radius=span*.34,archBottom=archTop+depth;
-    c.fillStyle=p.stoneShadow;c.fillRect(0,bridgeY+5,w,depth+deck);
-    // Piers are cut out of this separate layer, so the valley shows through.
-    c.globalCompositeOperation='destination-out';
-    for(let i=-1;i<(mobile?4:8);i++){
-      const x=i*span+span*.5;c.beginPath();c.moveTo(x-radius,h+1);c.lineTo(x-radius,archTop+radius);c.arc(x,archTop+radius,radius,Math.PI,0);c.lineTo(x+radius,h+1);c.closePath();c.fill();
-    }c.globalCompositeOperation='source-over';
-    c.strokeStyle=p.stone;c.lineWidth=mobile?10:17;
-    for(let i=-1;i<(mobile?4:8);i++){
-      const x=i*span+span*.5;c.beginPath();c.moveTo(x-radius-6,archBottom);c.lineTo(x-radius-6,archTop+radius);c.arc(x,archTop+radius,radius+6,Math.PI,0);c.lineTo(x+radius+6,archBottom);c.stroke();
+    for (let i = -1; i <= 8; i++) {
+      const center = start + i * span;
+      rect(ctx, center + 9 * unit, bridgeY + 10 * unit, 4 * unit, base - bridgeY, palette.stoneShadow);
+      alpha(ctx, .5, () => rect(ctx, center - 11 * unit, bridgeY + 12 * unit, 2 * unit, base - bridgeY, palette.stoneLight));
+      alpha(ctx, .3, () => rect(ctx, center - 3 * unit, bridgeY + 91 * unit, 2 * unit, 69 * unit, palette.forest));
     }
-    c.fillStyle=p.stone;c.fillRect(0,bridgeY,w,deck+8);c.fillStyle=p.stoneLight;c.fillRect(0,bridgeY,w,5);
-    c.fillStyle=p.stoneShadow;c.fillRect(0,bridgeY-5,w,4);
-    c.strokeStyle=p.stoneLight;c.lineWidth=1.1;c.beginPath();c.moveTo(0,bridgeY-12);c.lineTo(w,bridgeY-12);c.stroke();
-    for(let x=0;x<w;x+=span/8){c.fillStyle=p.stoneLight;c.fillRect(x,bridgeY-12,1,7);}
-  }
-  function botanical(c,x,y,s,flip,color,flower) {
-    c.save();c.translate(x,y);c.scale(s*flip,s);c.strokeStyle=color;c.lineWidth=2;
-    c.beginPath();c.moveTo(0,0);c.bezierCurveTo(5,-45,-7,-88,12,-130);c.stroke();
-    [[3,-35,-.8],[-1,-65,.85],[1,-92,-.65]].forEach(([xx,yy,a])=>ellipse(c,xx+(a<0?-11:11),yy-9,8,23,color,a));
-    if(flower){for(let i=0;i<5;i++){const angle=i*TAU/5;ellipse(c,12+Math.sin(angle)*10,-133+Math.cos(angle)*10,9,15,flower,-angle);}ellipse(c,12,-133,5,5,p.sun);}
-    else ellipse(c,12,-133,6,20,color,.16);
-    c.restore();
-  }
-  function drawForeground(c) {
-    ridge(c,.955,h*.04,2.4,p.foreground);
-    const wrapped=(x,y,size,flip,color,flower)=>{for(const xx of [x-w,x,x+w])botanical(c,xx,y,size,flip,color,flower);};
-    const random=seeded(421),scale=banner?Math.min(.42,h/620):mobile?.64:1;
-    for(let i=0;i<(mobile?18:42);i++){
-      const x=random()*w,y=h*(1.02+random()*.04),size=(.36+random()*.6)*scale;
-      wrapped(x,y,size,i%2?1:-1,i%3===0?p.farForest:p.nearForest,i%3===0?p.cloud:i%3===1?p.stone:null);
+    ctx.restore();
+    // Individual pale voussoirs follow the rounded arches.
+    for (let i = -1; i <= 8; i++) {
+      const center = start + (i + .5) * span;
+      for (let j = 0; j <= 12; j++) {
+        const theta = Math.PI * (j / 12);
+        const x = center + Math.cos(theta) * (innerRadius + 4 * unit);
+        const y = spring - Math.sin(theta) * (innerRadius + 4 * unit);
+        rect(ctx, x, y, unit, 3 * unit, palette.stoneLight);
+      }
     }
-    // Large corner leaves frame the picture without covering controls or copy.
-    for(let i=0;i<4;i++){
-      wrapped(-8+i*10,h*.99,(banner?.4:mobile?.8:1.45)+i*.08,1,i%2?p.nearForest:p.foreground,i===1?p.stone:null);
-      wrapped(w+10-i*9,h*1.02,(banner?.35:mobile?.7:1.2)+i*.09,-1,i%2?p.nearForest:p.foreground,i===2?p.cloud:null);
+    rect(ctx, 0, bridgeY + 3 * unit, width, 4 * unit, palette.stoneLight);
+    rect(ctx, 0, bridgeY, width, 3 * unit, palette.stoneShadow);
+    rect(ctx, 0, bridgeY - 3 * unit, width, unit, palette.stoneLight);
+    // Two rails, sleepers, a low parapet, and widely spaced telegraph poles.
+    for (let i = 0; i < 80; i++) rect(ctx, i * width / 80, bridgeY - 4 * unit, 3 * unit, 4 * unit, palette.stoneShadow);
+    rect(ctx, 0, bridgeY - 5 * unit, width, unit, palette.stoneShadow);
+    for (let i = 0; i < 4; i++) {
+      const x = (i * 2 + .6) * span;
+      rect(ctx, x, bridgeY - 27 * unit, unit, 25 * unit, palette.stoneShadow);
+      rect(ctx, x - 5 * unit, bridgeY - 25 * unit, 11 * unit, unit, palette.stoneShadow);
     }
-  }
-  function rebuild() {
-    p=getPalette(getCurrentHour());layers.forEach(s=>{s.canvas.width=1;s.canvas.height=1;});layers=Array.from({length:7},surface);
-    drawSky(layers[0].ctx);
-    const cc=layers[1].ctx;cc.globalAlpha=.7;
-    cloud(cc,w*.74,h*(mobile?.47:.36),w*(mobile?.065:.038),p.cloud);
-    cloud(cc,w*.2,h*.47,w*.035,p.cloud);cc.globalAlpha=1;
-    [2,3,4].forEach((i)=>terrain(layers[i].ctx,i-2));drawBridge(layers[5].ctx);drawForeground(layers[6].ctx);
-    staticRenders++;dirty=false;ready=true;
-  }
-  function train(c,motion) {
-    c.save();c.translate(trainX,bridgeY-7+motion.train.y);c.scale(trainScale,trainScale);
-    const body='#f7c6b2',roof='#3e365f',accent='#d96c86',trim='#ffe5b1',glass=p.night>.3?'#ffe6ad':'#7e9db9';
-    c.strokeStyle=roof;c.lineWidth=3;c.beginPath();c.moveTo(0,-8);c.lineTo(380,-8);c.stroke();
-    for(let car=0;car<3;car++){
-      const x=car*87;round(c,x,-52,79,40,6,body);round(c,x-3,-58,85,10,5,roof);round(c,x,-24,79,10,0,accent);
-      c.fillStyle=trim;c.fillRect(x+2,-28,75,3);
-      for(let j=0;j<4;j++){round(c,x+8+j*17,-46,12,17,3,glass);c.fillStyle='#fff5dd88';c.fillRect(x+10+j*17,-44,2,12);}
-      [17,62].forEach(xx=>{ellipse(c,x+xx,-7,8,8,roof);ellipse(c,x+xx,-7,4,4,'#ce9cab');ellipse(c,x+xx,-7,1.6,1.6,trim);});
-    }
-    const x=265;round(c,x,-69,46,55,5,accent);round(c,x-5,-75,56,10,5,roof);round(c,x+8,-61,25,24,4,glass);
-    round(c,x+40,-48,59,32,12,accent);round(c,x+37,-46,12,30,3,body);round(c,x+89,-46,13,29,6,roof);
-    round(c,x+70,-76,12,31,3,roof);round(c,x+66,-81,20,8,3,roof);round(c,x+46,-57,15,14,7,trim);
-    c.fillStyle=trim;c.fillRect(x+3,-25,92,4);round(c,x-5,-17,110,7,3,roof);
-    [15,47,77].forEach((xx,i)=>{
-      const rad=i===0?12:10;ellipse(c,x+xx,-8,rad,rad,roof);ellipse(c,x+xx,-8,rad-3,rad-3,body);
-      c.strokeStyle=accent;c.lineWidth=2;for(let k=0;k<4;k++){const a=motion.time*4+k*Math.PI/2;c.beginPath();c.moveTo(x+xx,-8);c.lineTo(x+xx+Math.cos(a)*(rad-4),-8+Math.sin(a)*(rad-4));c.stroke();}
+    alpha(ctx, .32, () => {
+      for (let x = 0; x < width; x++) {
+        const wireY = bridgeY - (23 - Math.sin((x / span - .6) * Math.PI) ** 2 * 3) * unit;
+        rect(ctx, x, wireY, 1, 1, palette.stoneShadow);
+      }
     });
-    c.strokeStyle=trim;c.lineWidth=3;c.beginPath();c.moveTo(x+15,-8);c.lineTo(x+77,-8);c.stroke();
-    path(c,roof,g=>{g.moveTo(x+98,-16);g.lineTo(x+113,0);g.lineTo(x+96,0);});
-    ellipse(c,x+102,-36,4,5,trim);
-    if(p.night>.1){c.globalAlpha=.13*p.night;path(c,trim,g=>{g.moveTo(x+104,-36);g.lineTo(x+210,-60);g.quadraticCurveTo(x+230,-35,x+210,-12);});c.globalAlpha=1;}
-    c.restore();
   }
-  function smoke(c,motion) {
-    c.save();c.translate(trainX+341*trainScale,bridgeY-88*trainScale-7);c.scale(trainScale*(mobile?.65:1),trainScale);
-    [...motion.smoke].sort((a,b)=>b.age-a.age).forEach(puff=>{
-      c.globalAlpha=puff.opacity;
-      const r=puff.radius,shift=Math.sin(puff.age*2.3)*r*.16;
-      ellipse(c,puff.x+shift,puff.y,r,r*.84,p.cloud,-.35);
-      ellipse(c,puff.x-r*.5,puff.y-r*.38,r*.65,r*.6,p.cloud);
-      ellipse(c,puff.x+r*.44,puff.y-r*.3,r*.6,r*.58,p.cloud);
-    });c.restore();
-  }
-  function resize() {
-    const bounds=canvas.getBoundingClientRect();if(!bounds.width||!bounds.height)return false;
-    w=bounds.width;h=bounds.height;mobile=w<700;banner=h<350;
-    dpr=Math.min(window.devicePixelRatio||1,2,Math.sqrt(4000000/(w*h)));
-    canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);ctx.imageSmoothingEnabled=true;
-    bridgeY=h*(banner?.76:mobile?.755:.745);
-    trainScale=Math.min(w*(mobile?.64:.29)/380,banner?.64:1.3);trainX=w*(mobile?.3:.61);
-    if(trainX+380*trainScale>w*.95)trainX=w*.95-380*trainScale;
-    resizePending=false;dirty=true;return true;
-  }
-  function render() {
-    const motion=getMotionState(elapsed,reducedMotion);
-    const draw=(s,x=0)=>ctx.drawImage(s.canvas,0,0,s.canvas.width,s.canvas.height,x,0,w,h);
-    const scroll=(s,name)=>{const offset=motion.offsets[name]/1440*w;draw(s,-offset);if(offset>0)draw(s,w-offset);};
-    draw(layers[0]);scroll(layers[1],'clouds');scroll(layers[2],'far');scroll(layers[3],'middle');scroll(layers[4],'valley');scroll(layers[5],'bridge');smoke(ctx,motion);train(ctx,motion);scroll(layers[6],'foreground');
-    // A few drifting petals add scale without making a busy particle field.
-    for(let i=0;i<(mobile?7:12);i++){
-      const x=((w*(i*.173+1)-motion.time*(12+i%4*5))%w+w)%w,y=h*(.79+(i%4)*.045)+Math.sin(motion.time*.6+i)*8;
-      ctx.globalAlpha=.45;ellipse(ctx,x,y,mobile?2:3.5,mobile?1:1.6,i%2?p.cloud:p.sun,-.5+Math.sin(i+motion.time*.3));
-    }ctx.globalAlpha=1;frames++;
-  }
-  function tick(now) {
-    frameId=0;if(document.hidden||!visible){last=0;return;}
-    if(resizePending||dirty||now-lastFrame>=1000/30){
-      if(!reducedMotion&&last)elapsed+=Math.min(now-last,150)/1000;last=now;
-      if(resizePending&&!resize())return;
-      if(!ready||dirty||(previewHour===null&&now-lastPalette>15000)){rebuild();lastPalette=now;announceTime();}
-      render();lastFrame=now;
+
+  function drawForeground() {
+    const ctx = foreground.ctx;
+    const random = randomSource(1351);
+    // Near slopes leave the center open, framing the height of the viaduct.
+    const floor = height * 1.08;
+    const ridgeHeight = Math.min(height * .24, width * .21);
+    const edges = mountain(ctx, [[0,1],[.08,.8],[.2,.4],[.31,.13],[.44,0],[.57,0],[.72,.2],[.86,.66],[1,1]], floor, ridgeHeight, palette.nearForest, 91);
+    const trees = [];
+    for (let i = 0; i < 72; i++) {
+      const left = i < 36;
+      const x = left ? random() * width * .32 : width * (.73 + random() * .27);
+      const ground = Math.max(height * .90, edges[Math.min(width - 1, Math.floor(x))]) + random() * height * .10;
+      trees.push({ x, ground, size: (40 + random() * 62) * unit, seed: 700 + i });
     }
-    if(reducedMotion){if(previewHour===null)timer=setTimeout(()=>{timer=0;requestPaint(true);},15000);}
-    else frameId=requestAnimationFrame(tick);
+    trees.sort((a, b) => a.ground - b.ground);
+    trees.forEach(tree => {
+      if (tree.seed % 4 === 0) broadleaf(ctx, tree.x, tree.ground, tree.size * .83, palette.foreground, tree.seed);
+      else pine(ctx, tree.x, tree.ground, tree.size, palette.foreground, tree.seed, true);
+    });
+    // A few grass blades and fernlike tips make the nearest silhouette tactile.
+    for (let i = 0; i < 125; i++) {
+      const x = random() * width, y = height - random() * 7 * unit;
+      const h = (2 + random() * 11) * unit;
+      rect(ctx, x, y - h, unit, h, palette.foreground);
+      if (i % 3 === 0) rect(ctx, x - 2 * unit, y - h * .62, 5 * unit, unit, palette.foreground);
+    }
   }
-  requestPaint=force=>{if(force)dirty=true;if(timer){clearTimeout(timer);timer=0;}if(!frameId&&!document.hidden&&visible)frameId=requestAnimationFrame(tick);};
-  const pause=()=>{cancelAnimationFrame(frameId);clearTimeout(timer);frameId=0;timer=0;last=0;};
-  new ResizeObserver(()=>{resizePending=true;requestPaint();}).observe(canvas);
-  new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(visible)requestPaint();else pause();},{rootMargin:'80px'}).observe(canvas);
-  document.addEventListener('visibilitychange',()=>{if(document.hidden)pause();else requestPaint(true);});
-  media.addEventListener('change',event=>{reducedMotion=event.matches;pause();requestPaint();});
-  window.addEventListener('landscape-preview',event=>setPreviewHour(event.detail?.hour??null));
-  Object.defineProperty(window,'__landscapeDebug',{configurable:true,value:Object.freeze({
-    get ready(){return ready;},get hour(){return getCurrentHour();},get manual(){return previewHour!==null;},get label(){return timeLabel(getCurrentHour());},
-    get width(){return w;},get height(){return h;},get bridgeY(){return bridgeY;},get trainWidth(){return 380*trainScale;},get trainAnchor(){return{x:trainX,y:bridgeY-7};},
-    get frames(){return frames;},get staticRenders(){return staticRenders;},get reducedMotion(){return reducedMotion;},get visible(){return visible&&!document.hidden;},
-    get elapsed(){return elapsed;},get motion(){return getMotionState(elapsed,reducedMotion);},get tileWidth(){return w;},get dpr(){return dpr;}
-  })});requestPaint();
+
+  function paintTrain(ctx, motion) {
+    const left = width * .405;
+    const ground = bridgeY - 6 * unit;
+    // A following camera holds the little train in place. Keep even a phone's
+    // subpixel bounce visible without moving the entire landscape or the UI.
+    const vibrationUnit = Math.max(unit, .62);
+    ctx.save();
+    ctx.translate(motion.train.x * vibrationUnit, motion.train.y * vibrationUnit);
+    const night = 1 - palette.daylight;
+    const windowColor = mix('#9cbac0', '#f5d59c', Math.max(0, Math.min(1, (night - .1) / .75)));
+    const blue = mix('#314b59', '#496f76', palette.daylight);
+    const rust = mix('#594947', '#ad7060', palette.daylight);
+    const wheel = palette.stoneShadow;
+    for (let i = 0; i < 4; i++) {
+      const x = left + i * 29 * unit;
+      rect(ctx, x + 2 * unit, ground - 14 * unit, 25 * unit, 11 * unit, i === 1 ? rust : blue);
+      rect(ctx, x + 1 * unit, ground - 16 * unit, 27 * unit, 3 * unit, palette.stoneShadow);
+      rect(ctx, x + 3 * unit, ground - 4 * unit, 23 * unit, unit, palette.stoneLight);
+      for (let j = 0; j < 4; j++) {
+        alpha(ctx, .70 + night * .30, () => rect(ctx, x + (5 + j * 5) * unit, ground - 12 * unit, 3 * unit, 4 * unit, windowColor));
+      }
+      rect(ctx, x, ground - 3 * unit, 29 * unit, unit, wheel);
+      rect(ctx, x + 5 * unit, ground - 2 * unit, 4 * unit, 3 * unit, wheel);
+      rect(ctx, x + 21 * unit, ground - 2 * unit, 4 * unit, 3 * unit, wheel);
+    }
+    const x = left + 116 * unit;
+    rect(ctx, x, ground - 13 * unit, 25 * unit, 10 * unit, rust);
+    rect(ctx, x + 1 * unit, ground - 18 * unit, 11 * unit, 15 * unit, blue);
+    rect(ctx, x, ground - 20 * unit, 14 * unit, 3 * unit, palette.stoneShadow);
+    rect(ctx, x + 4 * unit, ground - 16 * unit, 5 * unit, 5 * unit, windowColor);
+    rect(ctx, x + 20 * unit, ground - 20 * unit, 4 * unit, 9 * unit, palette.stoneShadow);
+    rect(ctx, x + 19 * unit, ground - 22 * unit, 6 * unit, 3 * unit, palette.stoneShadow);
+    rect(ctx, x + 24 * unit, ground - 9 * unit, 4 * unit, 7 * unit, palette.stoneLight);
+    rect(ctx, x - unit, ground - 3 * unit, 29 * unit, 2 * unit, wheel);
+    for (let i = 0; i < 3; i++) circle(ctx, x + (5 + i * 8) * unit, ground - unit, 3 * unit, wheel);
+    if (night > .25) alpha(ctx, (night - .25) / .75 * .18, () => {
+      for (let i = 5; i > 0; i--) circle(ctx, x + 27 * unit, ground - 8 * unit, i * 2 * unit, '#ffda9e');
+    });
+    rect(ctx, x + 26 * unit, ground - 9 * unit, 2 * unit, 3 * unit, windowColor);
+    ctx.restore();
+  }
+
+  function paintSmoke(ctx, motion) {
+    const chimneyX = width * .405 + 138 * unit;
+    const chimneyY = bridgeY - 28 * unit;
+    const vibrationUnit = Math.max(unit, .62);
+    // Old puffs retain their birth position rather than following the train's
+    // latest vibration. Small at the actual chimney lip, then soft and airy.
+    [...motion.smoke].sort((a, b) => b.age - a.age).forEach(puff => {
+      const x = chimneyX + puff.x * unit + puff.birthX * (vibrationUnit - unit);
+      const y = chimneyY + puff.y * unit + puff.birthY * (vibrationUnit - unit);
+      const radius = puff.radius * unit;
+      alpha(ctx, puff.opacity, () => {
+        if (radius < 1.1) rect(ctx, x, y, 1, 1, palette.cloud);
+        else circle(ctx, x, y, radius, palette.cloud);
+      });
+    });
+  }
+
+  function rebuild() {
+    palette = getPalette(getCurrentHour());
+    if (!sky || sky.canvas.width !== width || sky.canvas.height !== height) {
+      sky = layer(); farTerrain = layer(); middleTerrain = layer(); valleyTerrain = layer(); foreground = layer(); clouds = layer(); bridge = layer();
+    } else {
+      [sky, farTerrain, middleTerrain, valleyTerrain, foreground, clouds, bridge].forEach(surface => surface.ctx.clearRect(0, 0, width, height));
+    }
+    drawSky(); drawClouds(); drawTerrain(); drawBridge(); drawForeground();
+    staticRenders++; ready = true;
+  }
+
+  function resize() {
+    const bounds = canvas.getBoundingClientRect();
+    if (bounds.width < 1 || bounds.height < 1) return false;
+    // Responsive composition, never a cropped desktop bitmap. A phone sees
+    // the entire small train, more sky, and taller bridge piers below it.
+    width = Math.max(320, Math.min(960, Math.round(bounds.width / 1.5)));
+    height = Math.max(260, Math.round(width * bounds.height / bounds.width));
+    unit = width / 960;
+    bridgeY = Math.round(height * (bounds.width / bounds.height < .8 ? .685 : .625));
+    canvas.width = width; canvas.height = height;
+    context.imageSmoothingEnabled = false;
+    resizePending = false;
+    return true;
+  }
+
+  function render() {
+    const motion = getMotionState(elapsed, reducedMotion);
+    const scroll = (surface, name) => {
+      // Integer raster translations retain crisp pixels. Identical periodic
+      // boundaries mean the wrap at width is visually just another step.
+      const offset = Math.floor(motion.offsets[name] * unit);
+      context.drawImage(surface.canvas, -offset, 0);
+      if (offset > 0) context.drawImage(surface.canvas, width - offset, 0);
+    };
+    context.drawImage(sky.canvas, 0, 0);
+    scroll(clouds, 'clouds');
+    scroll(farTerrain, 'far');
+    scroll(middleTerrain, 'middle');
+    scroll(valleyTerrain, 'valley');
+    scroll(bridge, 'bridge');
+    paintSmoke(context, motion);
+    paintTrain(context, motion);
+    scroll(foreground, 'foreground');
+    // Fireflies are a handful of quiet pixels, never a full-screen effect.
+    if (palette.night > .15) {
+      const random = randomSource(380);
+      for (let i = 0; i < 13; i++) {
+        const x = width * (.08 + random() * .83) + Math.sin(elapsed * .3 + i) * 3 * unit;
+        const y = height * (.84 + random() * .14) + Math.cos(elapsed * .2 + i) * 2 * unit;
+        alpha(context, (palette.night - .15) / .85 * (.2 + Math.sin(elapsed * .65 + i * 7) * .18), () => rect(context, x, y, 1, 1, '#d8e5a5'));
+      }
+    }
+    frames++;
+  }
+
+  function tick(time) {
+    frameId = 0;
+    if (document.hidden || !visible) { previousTime = 0; return; }
+    const interval = reducedMotion ? 0 : width < 600 ? 1000 / 18 : 1000 / 24;
+    if (time - lastFrame >= interval || resizePending || !ready || forcePalette) {
+      if (!reducedMotion && previousTime) elapsed += Math.min(100, time - previousTime) / 1000;
+      previousTime = time;
+      if (resizePending || !ready) {
+        if (!resize()) return;
+        rebuild(); lastPalette = time;
+      } else if (forcePalette || (previewHour === null && time - lastPalette >= 15000)) {
+        rebuild(); lastPalette = time;
+      }
+      forcePalette = false;
+      render(); lastFrame = time;
+      if (time - lastAnnouncement >= 60000) { announceTime(); lastAnnouncement = time; }
+    }
+    if (reducedMotion) {
+      // A still painting needs no animation-frame loop. Realtime colors alone
+      // are revisited every 15 seconds; manual previews sleep until an event.
+      if (previewHour === null) stillTimer = setTimeout(() => { stillTimer = 0; requestPaint(); }, 15000);
+    } else frameId = requestAnimationFrame(tick);
+  }
+
+  requestPaint = force => {
+    if (force) forcePalette = true;
+    if (stillTimer) { clearTimeout(stillTimer); stillTimer = 0; }
+    if (!frameId && !document.hidden && visible) frameId = requestAnimationFrame(tick);
+  };
+  new ResizeObserver(() => { resizePending = true; requestPaint(); }).observe(canvas);
+  const observer = new IntersectionObserver(entries => {
+    visible = entries[0].isIntersecting;
+    if (visible) requestPaint();
+    else { cancelAnimationFrame(frameId); clearTimeout(stillTimer); frameId = 0; stillTimer = 0; previousTime = 0; }
+  }, { rootMargin: '80px' });
+  observer.observe(canvas);
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) { cancelAnimationFrame(frameId); clearTimeout(stillTimer); frameId = 0; stillTimer = 0; previousTime = 0; }
+    else { lastPalette = -Infinity; requestPaint(); }
+  });
+  motionQuery.addEventListener('change', event => {
+    reducedMotion = event.matches; previousTime = 0;
+    cancelAnimationFrame(frameId); clearTimeout(stillTimer); frameId = 0; stillTimer = 0;
+    requestPaint();
+  });
+  window.addEventListener('landscape-preview', event => setPreviewHour(event.detail?.hour ?? null));
+  Object.defineProperty(window, '__landscapeDebug', { configurable: true, value: Object.freeze({
+    get ready() { return ready; },
+    get hour() { return getCurrentHour(); },
+    get manual() { return previewHour !== null; },
+    get label() { return timeLabel(getCurrentHour()); },
+    get width() { return width; },
+    get height() { return height; },
+    get bridgeY() { return bridgeY; },
+    get trainWidth() { return 145 * unit; },
+    get frames() { return frames; },
+    get staticRenders() { return staticRenders; },
+    get reducedMotion() { return reducedMotion; },
+    get visible() { return visible && !document.hidden; },
+    get elapsed() { return elapsed; },
+    get motion() { return getMotionState(elapsed, reducedMotion); },
+    get offsets() {
+      const motion = getMotionState(elapsed, reducedMotion);
+      return Object.fromEntries(Object.entries(motion.offsets).map(([key, offset]) => [key, Math.floor(offset * unit)]));
+    },
+    get trainAnchor() { return { x: width * .405, y: bridgeY - 6 * unit }; },
+    get trainOffset() {
+      const motion = getMotionState(elapsed, reducedMotion);
+      return { x: motion.train.x * Math.max(unit, .62), y: motion.train.y * Math.max(unit, .62) };
+    },
+    get tileWidth() { return width; }
+  }) });
+  requestPaint();
 }

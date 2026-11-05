@@ -1,58 +1,52 @@
 /* The forest station classroom. Circuit and answer colors keep their meaning. */
 @media screen{
-:root{--paper:#f1eee2;--white:#fffcf3;--ink:#36273c;--muted:#6c577b;--line:#cec6d7;--green:#50345c;--green-light:#e0d9e8;--radius:4px;--serif:"Iowan Old Style","Palatino Linotype","Noto Serif SC","Source Han Serif SC","Songti SC","STSong",SimSun,serif}
-body{background:radial-gradient(ellipse at 95% 0%,#d3c8df3b,transparent 45%),var(--paper)}
-::selection{background:#e8d3a2;color:#33253a}
+:root{--paper:#f1eee2;--white:#fffcf3;--ink:#253e34;--muted:#657260;--line:#d4d8c5;--green:#315f4a;--green-light:#e5e9d8;--radius:4px;--serif:"Iowan Old Style","Palatino Linotype","Noto Serif SC","Source Han Serif SC","Songti SC","STSong",SimSun,serif}
+body{background:radial-gradient(ellipse at 95% 0%,#dbe1c63b,transparent 45%),var(--paper)}
+::selection{background:#e8d3a2;color:#233c2d}
 button{border-radius:3px}
 button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline-color:#a78a4b}
-.sidebar{background:linear-gradient(180deg,#311b38,#28162d);color:#d8cfe1;border-right:1px solid #e5dbb028}
+.sidebar{background:linear-gradient(180deg,#183b32,#142f2c);color:#dce3cd;border-right:1px solid #e5dbb028}
 .brand{font-family:var(--serif);font-size:26px;font-weight:400;letter-spacing:1px;color:#f7ebd0;gap:14px}
-.brand small{font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;font-size:10px;color:#b7a9c2;letter-spacing:3px}
+.brand small{font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;font-size:10px;color:#b2c2a9;letter-spacing:3px}
 .brand-mark{position:relative;width:33px;height:39px;flex-shrink:0;display:block}
 .brand-mark i{position:absolute;bottom:3px;left:15px;width:3px;height:23px;background:#e7cb92}
 .brand-mark i:before,.brand-mark i:after{content:"";position:absolute;background:#e7cb92;height:3px;left:-3px;top:4px;width:9px;box-shadow:-3px 4px 0 #e7cb92,3px 4px 0 #e7cb92,-6px 8px 0 #e7cb92,6px 8px 0 #e7cb92}
 .brand-mark i:after{top:15px;left:-9px;width:21px;box-shadow:none}
-.main-nav{border-color:#c2afd830}
-.main-nav a{color:#ddd4e6;border-radius:2px}
-.main-nav span{color:#b6a9c2}
-.main-nav a:hover,.main-nav a.active,.lesson-nav a:hover,.lesson-nav a.active{background:#493752;color:#f7e7bd}
-.nav-label,.sidebar-foot{color:#b5a6c0}
-.lesson-nav a{border-radius:2px;color:#c9bed3}
-.lesson-nav .lesson-number{color:#a391b1}
+.main-nav{border-color:#d8dcab30}
+.main-nav a{color:#e3e7d3;border-radius:2px}
+.main-nav span{color:#b6c4a7}
+.main-nav a:hover,.main-nav a.active,.lesson-nav a:hover,.lesson-nav a.active{background:#355440;color:#f7e7bd}
+.nav-label,.sidebar-foot{color:#afc1a5}
+.lesson-nav a{border-radius:2px;color:#c9d5bc}
+.lesson-nav .lesson-number{color:#9eb48e}
 .lesson-nav .done .lesson-number{color:#e7cb92}
-.topbar{background:#f3f0e4ed;border-color:#cec6d7}
+.topbar{background:#f3f0e4ed;border-color:#d4d8c5}
 .small-button{background:#fffaf0;border-radius:2px}
 main{position:relative}
 h1,h2,h3,.day h3{font-family:var(--serif);font-weight:400;letter-spacing:.3px}
 h1{font-size:40px;line-height:1.55}
 h2{font-size:27px}
-.hero{border-bottom-color:#c3b9cd;padding-bottom:39px}
-.hero h1{color:#3f2749}
+.hero{border-bottom-color:#c9cfb7;padding-bottom:39px}
+.hero h1{color:#244c38}
 .eyebrow{letter-spacing:2.5px;font-size:10px}
 .hero-symbol{opacity:.88}
 .actions a,.button-link{border-radius:3px}
-.study-stats{border-color:#c7bed1}
-.study-stats strong{color:#533e5e}
-.day{border-color:#cec6d7}
-.day-label{color:#635074;font-size:12px;letter-spacing:1px}
-.topic-links a{text-decoration-color:#a995bc}
-.note,.lab-prompt{background:#ded6e7;border-color:#8971a3;border-radius:2px}
-.formula{border-radius:3px;background:#e0d9e8;border-left-color:#806893}
-.example,.controls,.formula-sheet{background:#fffcf3;border-color:#cac1d3;border-radius:4px;box-shadow:0 4px 16px #3e314603}
-.option{border-color:#ccc3d6;border-radius:3px}
-.option:has(input:checked){background:#dfd7e8;border-color:#725987}
+.study-stats{border-color:#ccd2bd}
+.study-stats strong{color:#3b6145}
+.day{border-color:#d4d8c5}
+.day-label{color:#63774d;font-size:12px;letter-spacing:1px}
+.topic-links a{text-decoration-color:#aebf92}
+.note,.lab-prompt{background:#e8e8d5;border-color:#9ba76d;border-radius:2px}
+.formula{border-radius:3px;background:#e5e9d8;border-left-color:#789764}
+.example,.controls,.formula-sheet{background:#fffcf3;border-color:#cfd5bf;border-radius:4px;box-shadow:0 4px 16px #30473103}
+.option{border-color:#d2d8c1;border-radius:3px}
+.option:has(input:checked){background:#e6e9d6;border-color:#6b8b55}
 .answer-input,.control select,.lab-tabs a{border-radius:3px}
-.lab-tabs a.active{background:#50345c}
-.readout{border-bottom-color:#c5bad1}
-.empty-state{background:#dfd7e8;border-radius:4px}
-.page-foot{color:#7a648e}
-#toast{background:#311b38;border:1px solid #af9fc350;border-radius:3px;color:#f8edcf}
-@media(max-width:800px){h1{font-size:31px}h2{font-size:25px}.topbar{padding-inline:13px;gap:8px}.brand{font-size:25px}.menu-open .sidebar{box-shadow:10px 0 50px #20122566}}
+.lab-tabs a.active{background:#315f4a}
+.readout{border-bottom-color:#cbd3b8}
+.empty-state{background:#e6e9d6;border-radius:4px}
+.page-foot{color:#7b856d}
+#toast{background:#183b32;border:1px solid #c4c69c50;border-radius:3px;color:#f8edcf}
+@media(max-width:800px){h1{font-size:31px}h2{font-size:25px}.topbar{padding-inline:13px;gap:8px}.brand{font-size:25px}.menu-open .sidebar{box-shadow:10px 0 50px #10271f66}}
 @media(max-width:360px){main{padding-inline:18px}.topbar{font-size:10px;gap:7px}#progress{font-size:9px}.small-button{font-size:11px;padding-inline:8px}.study-stats{gap:22px}.study-stats strong{font-size:23px}.study-stats span{font-size:10px}.day{grid-template-columns:53px 1fr;gap:11px}.day h3{font-size:18px}.controls{gap:12px;padding:14px}.control label{font-size:12px}}
-}
-
-@media screen{
-:root{--paper:#fcf5ed;--white:#fffaf4;--ink:#493750;--muted:#85758b;--line:#e5d9e2;--green:#826193;--green-light:#eee1f1;--radius:12px}
-.sidebar{background:#33284f}.brand-mark i{display:none}.brand-mark:before,.brand-mark:after{content:"";position:absolute;left:10px;top:7px;width:13px;height:28px;background:#ffd5ad;border-radius:70% 30% 65% 35%;transform:rotate(-37deg)}.brand-mark:after{background:#ecb6ce;transform:rotate(37deg);mix-blend-mode:screen}
-.main-nav a,.lesson-nav a,.small-button,.actions a,.button-link,.option{border-radius:9px}.main-nav a:hover,.main-nav a.active,.lesson-nav a:hover,.lesson-nav a.active{background:#5f4978;color:#fff0df}.topbar{background:#fcf5edf5}.hero h1{color:#654879}.example,.controls,.formula-sheet{border-radius:14px}.note,.lab-prompt,.formula{border-radius:10px}
 }

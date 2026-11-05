@@ -1,4 +1,4 @@
-import {getShanghaiHour, setPreviewHour} from './landscape.js?v=20261105-color-fields';
+import {getShanghaiHour, setPreviewHour} from './landscape.js?v=20261105-motion-fast';
 
 const $ = selector => document.querySelector(selector);
 const nav = $('#forest-nav');
