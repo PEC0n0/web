@@ -4,11 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="robots" content="noindex,nofollow,noarchive">
-  <meta name="theme-color" content="#315bd6">
+  <meta name="theme-color" content="#142f2c">
   <meta name="description" content="Peco 的私人聊天空间">
   <title>私人聊天 · Peco</title>
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/chat/chat.css">
+  <link rel="stylesheet" href="/chat/forest.css">
   <script type="module" src="/chat/chat.js"></script>
 </head>
 <body>
@@ -25,7 +26,7 @@
   </svg>
 
   <main id="login-view" class="login-view">
-    <a class="wordmark login-brand" href="/">peco<span>.</span></a>
+    <a class="wordmark login-brand" href="/"><span class="pixel-mark" aria-hidden="true"><i></i></span>peco<span>.</span></a>
     <div class="login-card">
       <div class="lock-emblem"><svg><use href="#i-lock"/></svg></div>
       <p class="eyebrow">YOUR PRIVATE CORNER</p>
@@ -48,7 +49,7 @@
   <div id="app-view" class="app" hidden>
     <button id="drawer-backdrop" class="drawer-backdrop" aria-label="关闭对话列表" hidden></button>
     <aside id="sidebar" class="sidebar" aria-label="对话列表">
-      <div class="sidebar-brand"><a class="wordmark" href="/">peco<span>.</span></a><span class="private-tag"><svg><use href="#i-lock"/></svg>私人空间</span><button id="close-drawer" class="icon-button mobile-only" aria-label="关闭对话列表"><svg><use href="#i-close"/></svg></button></div>
+      <div class="sidebar-brand"><a class="wordmark" href="/"><span class="pixel-mark" aria-hidden="true"><i></i></span>peco<span>.</span></a><span class="private-tag"><svg><use href="#i-lock"/></svg>私人空间</span><button id="close-drawer" class="icon-button mobile-only" aria-label="关闭对话列表"><svg><use href="#i-close"/></svg></button></div>
       <button id="new-chat" class="new-chat"><svg><use href="#i-plus"/></svg>开启新对话<span>↗</span></button>
       <label class="search-label" for="thread-search">电脑上的对话</label>
       <input id="thread-search" class="thread-search" type="search" placeholder="搜索对话…" autocomplete="off" maxlength="100">

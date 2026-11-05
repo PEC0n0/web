@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#315bd6">
+  <meta name="theme-color" content="#193a38">
   <meta name="description" content="Peco 的小小博客。记一点日常，留一点灵感。">
   <meta name="referrer" content="no-referrer">
   <meta property="og:title" content="小小博客 · Peco">
@@ -12,12 +12,15 @@
   <link rel="canonical" href="https://peco.ink/blog/">
   <title>小小博客 · Peco</title>
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/site.css">
+  <link rel="stylesheet" href="/site.css?v=20261105">
   <link rel="stylesheet" href="/blog/blog.css">
-  <script src="/site.js" defer></script>
+  <link rel="stylesheet" href="/forest-theme.css?v=20261105">
+<script type="module" src="/forest-scene.js?v=20261105"></script>
+<link rel="stylesheet" href="/forest-content.css?v=20261105">
+  <script src="/site.js?v=20261105-forest" defer></script>
   <script src="/blog/blog.js" type="module"></script>
 </head>
-<body class="blog-page">
+<body class="blog-page forest-site">
   <a class="skip-link" href="#main">跳到正文</a>
   <header class="site-header"><div class="site-width header-inner">
     <a href="/" aria-label="Peco 首页"><span class="brand">peco<span>.</span><i aria-hidden="true"></i></span></a>
@@ -28,7 +31,7 @@
   <main id="main" class="site-width blog-main">
     <header id="blog-intro" class="blog-intro">
       <div><p class="eyebrow">NOTES FROM MY LITTLE WORLD</p><h1>把日子，写成<span>一页。</span></h1><p class="blog-description">一些日常、灵感，以及想慢慢说的话。<br>不赶路的时候，就在这里停一停。</p></div>
-      <div class="notebook-art" aria-hidden="true"><svg viewBox="0 0 130 140"><rect x="18" y="17" width="85" height="108" rx="8" fill="#e8effc" stroke="#9cb2db"/><path d="M31 17v108M48 45h35M48 57h26M48 69h32" stroke="#6685ba"/><path d="m85 91 8-8 12 13-8 8Z" fill="#f2cd58" stroke="#b59a42"/><path d="m89 109 8-5-12-13-5 9Z" fill="#fff9e0" stroke="#b59a42"/><circle cx="110" cy="24" r="15" fill="#f2cd58" stroke="none"/></svg><span>A LITTLE NOTEBOOK<br>BY PECO.</span></div>
+      <div class="notebook-art" aria-hidden="true"><svg viewBox="0 0 130 140"><rect x="18" y="17" width="85" height="108" rx="3" fill="#e0e7d2" stroke="#91a77b"/><path d="M31 17v108M48 45h35M48 57h26M48 69h32" stroke="#6c8757"/><path d="m85 91 8-8 12 13-8 8Z" fill="#dfc28b" stroke="#a18b55"/><path d="m89 109 8-5-12-13-5 9Z" fill="#fff6dc" stroke="#a18b55"/><circle cx="110" cy="24" r="15" fill="#dfc28b" stroke="none"/></svg><span>A LITTLE NOTEBOOK<br>BY PECO.</span></div>
     </header>
     <div id="owner-toolbar" class="owner-toolbar" hidden><span class="owner-mode"><span></span>管理模式</span><span class="owner-toolbar-note">记得给今天，留一点位置。</span><button class="text-button" id="admin-logout" type="button">退出管理</button><button class="button" id="new-post" type="button">写一篇 <span aria-hidden="true">＋</span></button></div>
     <div id="list-view">

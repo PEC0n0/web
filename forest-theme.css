@@ -1,0 +1,307 @@
+@charset "UTF-8";
+/* Forest railway — shared public pages. Scene and illustration colours stay separate. */
+body.forest-site {
+  color-scheme: light;
+  --canvas: #f4f1e7;
+  --paper: #fffdf5;
+  --ink: #25473b;
+  --muted: #6f8273;
+  --blue: #416b56;
+  --blue-dark: #2b4c3d;
+  --blue-pale: #e8eee1;
+  --yellow: #dfc28b;
+  --yellow-pale: #f6efd9;
+  --line: #d8decd;
+  --forest: #142f2c;
+  --cream: #f8efdb;
+  --gold: #e7cb92;
+  --serif: "Iowan Old Style", "Palatino Linotype", "Noto Serif SC", "Source Han Serif SC", "Songti SC", "STSong", SimSun, serif;
+  --mono: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+  background: radial-gradient(ellipse at 12% 35%, #e5e8d866, transparent 55%), var(--canvas);
+  color: var(--ink);
+}
+body.forest-site::selection { background: var(--yellow); color: var(--forest); }
+body.forest-site :focus-visible { outline-color: #6a8566; outline-width: 2px; }
+body.forest-site .skip-link { background: var(--cream); color: var(--forest); border-radius: 2px; }
+body.forest-site :is(h1,h2,h3) { font-family: var(--serif); font-weight: 500; }
+body.forest-site :is(.eyebrow,.section-index,.tool-heading,.wall-heading > span) { font-family: var(--mono); }
+body.forest-site .eyebrow { color: #7a896c; letter-spacing: 2px; }
+body.forest-site .eyebrow::before { background: #a69162; border-radius: 0; width: 4px; height: 4px; }
+body.forest-site .section-index { color: #85917d; }
+body.forest-site .section-heading h2 { letter-spacing: .4px; }
+body.forest-site .inner-main { padding-top: 48px; }
+body.forest-site .page-intro h1 { letter-spacing: .4px; font-weight: 400; }
+body.forest-site .page-intro p:not(.eyebrow) { line-height: 2.1; }
+
+/* The same dark tree line frames every public destination. */
+body.forest-site .site-header {
+  height: 88px;
+  background: var(--forest);
+  color: var(--cream);
+  border-bottom: 1px solid #dce8db20;
+}
+body.forest-site .header-inner { gap: 27px; }
+body.forest-site .brand {
+  display: inline-flex;
+  align-items: baseline;
+  position: relative;
+  font-family: var(--serif);
+  font-size: 35px;
+  font-weight: 600;
+  letter-spacing: -1.7px;
+  color: var(--cream);
+  padding-left: 30px;
+}
+body.forest-site .brand::before {
+  content: "";
+  position: absolute;
+  width: 3px;
+  height: 23px;
+  left: 10px;
+  bottom: 4px;
+  background: var(--gold);
+}
+body.forest-site .brand::after {
+  content: "";
+  position: absolute;
+  width: 9px;
+  height: 3px;
+  left: 7px;
+  bottom: 19px;
+  background: var(--gold);
+  box-shadow: -3px 4px 0 var(--gold), 3px 4px 0 var(--gold), -6px 8px 0 var(--gold), 6px 8px 0 var(--gold), -6px 12px 0 var(--gold), 0 12px 0 var(--gold), 6px 12px 0 var(--gold);
+}
+body.forest-site .brand span { color: var(--gold); }
+body.forest-site .site-nav { gap: 29px; margin-right: 21px; }
+body.forest-site .site-nav a { color: #d9e2cf; font-size: 11px; letter-spacing: .7px; }
+body.forest-site .site-nav a:hover,
+body.forest-site .site-nav a[aria-current="page"] { color: var(--gold); }
+body.forest-site .site-nav a[aria-current="page"]::after { background: var(--gold); border-radius: 0; }
+body.forest-site .private-link { color: #dfdfc6; background: transparent; border: 1px solid #c2c9a63b; border-radius: 2px; }
+body.forest-site .private-link:hover { color: var(--gold); background: #e7cb920c; border-color: #d7c08a70; }
+body.forest-site .menu-toggle { color: var(--cream); border-radius: 2px; }
+body.forest-site .site-footer { background: var(--forest); border-color: #c9d4b52b; margin-top: 76px; color: var(--cream); }
+body.forest-site .footer-inner { min-height: 148px; padding-block: 31px 33px; }
+body.forest-site .footer-wordmark { font-size: 28px; }
+body.forest-site .footer-copy { color: #a9b9a6; font-size: 9px; line-height: 2; margin-top: 12px; }
+body.forest-site .footer-links { color: #c2cdb5; font-size: 10px; gap: 21px; }
+body.forest-site .footer-links a:hover { color: var(--gold); }
+
+/* A narrow window onto the train's journey; content remains on quiet paper. */
+body.forest-site .forest-banner {
+  position: relative;
+  isolation: isolate;
+  height: 220px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #48645b, #b5bea2 63%, #264837);
+  color: var(--cream);
+  border-bottom: 1px solid #315440;
+}
+body.forest-site .forest-banner::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(90deg,#122f2dc9,#102d2d5c 51%,#0c2b2921), linear-gradient(0deg,#102d2947,transparent 60%);
+  pointer-events: none;
+}
+body.forest-site .forest-banner canvas {
+  display: block;
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+  pointer-events: none;
+}
+body.forest-site .forest-banner-copy {
+  position: relative;
+  width: min(1120px,calc(100% - 96px));
+  height: 100%;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-bottom: 4px;
+}
+body.forest-site .forest-banner-kicker { margin: 0 0 13px; color: #e4cea2; font: 8px/1.8 var(--mono); letter-spacing: 2.3px; }
+body.forest-site .forest-banner-title { margin: 0 0 12px; color: #fff4dd; font: 400 36px/1.5 var(--serif); letter-spacing: 3px; text-shadow: 0 2px 16px #122e2e60; }
+body.forest-site .forest-banner-note { font-size: 10px; line-height: 2; color: #e6e6d0; letter-spacing: .8px; }
+body.forest-site .forest-banner-home { position: absolute; right: max(48px,calc((100% - 1120px) / 2)); bottom: 28px; color: #f2dfb8; font-size: 10px; letter-spacing: .4px; padding-block: 6px; }
+body.forest-site .forest-banner-home:hover { color: #fff5dc; }
+body.forest-site .forest-banner-clock { position: absolute; right: max(48px,calc((100% - 1120px) / 2)); top: 25px; padding: 5px 8px; background: #173c2c52; border: 1px solid #d6d4b62e; color: #f0e3c5; font: 8px/1.6 var(--mono); letter-spacing: 1px; }
+
+/* Paper notes and small brass controls. */
+body.forest-site .button { border-radius: 3px; background: var(--blue); box-shadow: 2px 2px 0 #25473b14; letter-spacing: .5px; }
+body.forest-site .button:hover { background: var(--blue-dark); }
+body.forest-site .button.secondary { color: var(--ink); border-color: #becbb7; background: #fffdf566; }
+body.forest-site .button.secondary:hover { background: #e9eddf; }
+body.forest-site .button.sunshine { background: var(--yellow); color: #3f503a; }
+body.forest-site .button.sunshine:hover { background: #e8cc96; }
+body.forest-site .text-link { color: var(--blue); }
+body.forest-site .pill { background: #fffdf580; border-color: var(--line); border-radius: 3px; }
+body.forest-site .pill.blue { background: #e8eee1; border-color: #cdd9c6; }
+body.forest-site .pill.yellow { background: #f6efd9; border-color: #e1d2ac; color: #7e6840; }
+body.forest-site .toast { color: var(--cream); background: var(--forest); border: 1px solid #7a8d74; border-radius: 3px; box-shadow: 3px 4px 0 #163d3224; }
+body.forest-site .intro-art { border-radius: 6px; color: #8c7952; background: #eee7d3; border-color: #d8cba9; transform: rotate(5deg); }
+body.forest-site .friends-empty,
+body.forest-site .form-card,
+body.forest-site .studio-stage,
+body.forest-site .controls { background: var(--paper); border-color: var(--line); border-radius: 6px; }
+body.forest-site .friends-empty { box-shadow: 5px 5px 0 #cdd4bc26; }
+body.forest-site .empty-symbol span { border-color: #c9d6c0; background: #eaf0e2; border-radius: 3px; }
+body.forest-site .empty-symbol span + span { color: #947a46; background: var(--yellow-pale); border-color: #dbcca7; }
+body.forest-site .friends-empty h2 { font-size: 23px; letter-spacing: .4px; }
+body.forest-site .calling-card { background: #e8eddf; border-color: #cfd9c3; border-radius: 6px; }
+body.forest-site .calling-profile img { border-color: #fffdf0; border-radius: 5px; }
+body.forest-site .calling-card dl > div { border-color: #ccd7c1; }
+body.forest-site .copy-button { color: var(--blue); border-color: #bacbae; border-radius: 3px; background: #fffdf58c; }
+body.forest-site .copy-button:hover { background: #fffdf5; }
+
+/* Leave a note, or whisper to the forest. */
+body.forest-site .mode-tabs { background: #e7eadf; border-color: #d0dac3; border-radius: 4px; }
+body.forest-site .tab-item { border-radius: 2px; }
+body.forest-site .tab-item.active { background: var(--paper); color: var(--blue); box-shadow: 1px 2px 0 #445e3512; }
+body.forest-site .form-title { letter-spacing: .2px; font-size: 18px; }
+body.forest-site .form-card input:not([type="hidden"]),
+body.forest-site .form-card textarea { border-radius: 3px; border-color: #d5ddca; background: #faf9f2; }
+body.forest-site .form-card input:focus,
+body.forest-site .form-card textarea:focus { border-color: #7f9970; box-shadow: 0 0 0 3px #7f997012; }
+body.forest-site .form-card input::placeholder,
+body.forest-site .form-card textarea::placeholder { color: #8b9984; }
+body.forest-site :is(.field-caption,.form-note) { color: #839079; }
+body.forest-site .reply-bar { background: var(--yellow-pale); border-color: #ddd1aa; border-radius: 3px; }
+body.forest-site .reply-bar button { color: #7a704b; }
+body.forest-site .wall-heading h2 { font-size: 17px; letter-spacing: .5px; }
+body.forest-site .comment-header strong::before { background: #a6b691; border-radius: 0; width: 4px; height: 4px; }
+body.forest-site .comment-header small { color: #839079; }
+body.forest-site .comment-body p { color: #536b56; }
+body.forest-site .reply-btn { border-radius: 3px; border-color: #cdd9c3; }
+body.forest-site .reply-item { border-left-color: #d0dbc3; }
+body.forest-site .admin-badge { background: #eee2bd; color: #7b653b; border-radius: 2px; }
+body.forest-site .curated-drawer { background: #f6f0dc; border-color: #ddd0a9; border-radius: 4px; }
+body.forest-site .drawer-bar { color: #7b6b44; }
+body.forest-site.tree-hole-bg { background: #edf0e5; }
+body.forest-site .tree-hole-mode .form-card { background: #e8eedf; border-color: #cbd8bc; }
+body.forest-site .tree-hole-mode .wall-heading { border-color: #cdd8c1; }
+body.forest-site .swal2-popup { background: var(--paper); }
+body.forest-site .swal2-title { font-family: var(--serif); }
+
+/* The shared artwork keeps its exact pixels and its existing palette. */
+body.forest-site.studio-page .site-header { height: 74px; }
+body.forest-site.studio-page .site-nav { gap: 25px; }
+body.forest-site.studio-page .forest-banner { height: 84px; flex-shrink: 0; }
+body.forest-site.studio-page .forest-banner-copy { padding-bottom: 0; }
+body.forest-site.studio-page .forest-banner-kicker { margin-bottom: 4px; font-size: 6px; }
+body.forest-site.studio-page .forest-banner-title { font-size: 23px; line-height: 1.4; margin-bottom: 0; letter-spacing: 1.5px; }
+body.forest-site.studio-page .forest-banner-note { display: none; }
+body.forest-site.studio-page .forest-banner-clock { display: none; }
+body.forest-site.studio-page .forest-banner-home { bottom: 22px; font-size: 9px; }
+body.forest-site .studio-heading h1 { font-size: 26px; letter-spacing: .6px; }
+body.forest-site .studio-stage-top,
+body.forest-site .stage-zoom { background: #faf9f0; }
+body.forest-site .pending-count { background: #f0e7ca; color: #7c6b3f; border-color: #dfd1a8; border-radius: 3px; }
+body.forest-site #viewport { background-color: #e6ebde; background-image: radial-gradient(#bdcbb1 .8px,transparent .8px); }
+body.forest-site .zoom-buttons button { border-color: #c9d5bd; border-radius: 2px; }
+body.forest-site .draw-toggle input { background: #dde5d5; border-color: #bdcdb2; }
+body.forest-site .draw-toggle input:checked { background: var(--blue); border-color: var(--blue); }
+body.forest-site .canvas-note strong { color: #50684c; }
+body.forest-site .color-item { border-color: var(--paper); }
+
+/* The birthday pages remain keepsakes, now wrapped in forest stationery. */
+body.forest-site .birthday-hero { padding-top: 48px; }
+body.forest-site .birthday-hero h1 { font-family: var(--serif); font-weight: 400; line-height: 1.45; font-size: clamp(37px,4.5vw,56px); letter-spacing: -.3px; }
+body.forest-site .birthday-hero .garden { background: #e1e6ce; border-radius: 6px; border: 1px solid #d1d9bf; }
+body.forest-site .birthday-hero .garden-art { filter: sepia(.22) hue-rotate(24deg) saturate(.55); }
+body.forest-site .birthday-hero .garden-photo { border-color: #fff9e7; border-radius: 5px; }
+body.forest-site .birthday-hero .garden-topline { color: #6d8066; }
+body.forest-site .birthday-hero .garden-caption { color: #698064; }
+body.forest-site .birthday-hero .garden-sticker { background: #dfc58e; color: #6e643e; border-radius: 5px; }
+body.forest-site .birthday-hero .garden-note { background: #fff9e8; color: #455b40; border-color: #d5cdae; box-shadow: 3px 5px 0 #304a3212; }
+body.forest-site .birthday-hero .garden-note small { color: #879078; }
+body.forest-site .hero-caption { color: #87917b; }
+body.forest-site .birthday-band { background: #ede7ce; border-color: #d9cda7; border-radius: 5px; }
+body.forest-site .birthday-band p { color: #85764f; }
+body.forest-site .birthday-note { padding: 27px 34px 31px; background: #fffaf0; border: 1px solid #ddd6b9; box-shadow: 5px 6px 0 #c6ceb222; }
+body.forest-site .birthday-note h1 { letter-spacing: .5px; font-weight: 400; }
+body.forest-site .birthday-note p:not(.eyebrow) { color: #65745b; }
+body.forest-site .birthday-note img { border-color: #e8dfc1; border-radius: 4px; box-shadow: none; }
+body.forest-site .construction { min-height: calc(100dvh - 450px); }
+body.forest-site .construction-mark { color: #9b8455; border-color: #d7cba6; background: #f0e8cd; border-radius: 5px; }
+body.forest-site .construction h1 { font-family: var(--serif); font-weight: 400; letter-spacing: 1px; }
+
+@media (min-width:1600px) {
+  body.forest-site .forest-banner-copy { width: min(1180px,calc(100% - 120px)); }
+  body.forest-site .forest-banner-home { right: max(60px,calc((100% - 1180px) / 2)); }
+  body.forest-site .forest-banner-clock { right: max(60px,calc((100% - 1180px) / 2)); }
+}
+@media (max-width:1000px) {
+  body.forest-site .forest-banner-copy { width: calc(100% - 64px); }
+  body.forest-site .forest-banner-home { right: 32px; }
+  body.forest-site .forest-banner-clock { right: 32px; }
+  body.forest-site .site-nav { gap: 22px; margin-right: 5px; }
+  body.forest-site .header-inner { gap: 19px; }
+}
+@media (max-width:700px) {
+  body.forest-site .site-header { height: 75px; }
+  body.forest-site .header-inner { gap: 10px; }
+  body.forest-site .brand { font-size: 31px; padding-left: 27px; }
+  body.forest-site .brand::before { bottom: 2px; transform: scale(.85); transform-origin: bottom; }
+  body.forest-site .brand::after { bottom: 17px; transform: scale(.85); }
+  body.forest-site .site-nav { top: 74px; background: #142f2cf7; border-color: #dce8db24; padding: 14px 20px 18px; box-shadow: 0 8px 18px #102b2826; gap: 0 12px; }
+  body.forest-site .site-nav.open { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); }
+  body.forest-site .site-nav a { padding: 12px 0; font-size: 11px; }
+  body.forest-site .private-link { margin-left: auto; padding: 8px 10px; font-size: 9px; }
+  body.forest-site .forest-banner { height: 180px; }
+  body.forest-site .forest-banner-copy { width: calc(100% - 40px); justify-content: center; padding-bottom: 15px; }
+  body.forest-site .forest-banner-kicker { font-size: 6px; letter-spacing: 1.5px; margin-bottom: 9px; }
+  body.forest-site .forest-banner-title { font-size: 29px; line-height: 1.5; letter-spacing: 2px; margin-bottom: 7px; }
+  body.forest-site .forest-banner-note { font-size: 9px; letter-spacing: .3px; max-width: calc(100% - 16px); }
+  body.forest-site .forest-banner-home { font-size: 8px; right: 20px; bottom: 9px; }
+  body.forest-site .forest-banner-clock { right: 20px; top: 10px; font-size: 6px; letter-spacing: .5px; padding: 3px 5px; }
+  body.forest-site .inner-main { padding-top: 34px; }
+  body.forest-site .page-intro h1 { font-size: 30px; letter-spacing: 0; }
+  body.forest-site .message-page .page-intro h1 { font-size: 30px; }
+  body.forest-site .intro-art { border-radius: 4px; }
+  body.forest-site .friends-empty h2 { font-size: 22px; }
+  body.forest-site .form-title { font-size: 18px; }
+  body.forest-site .site-footer { margin-top: 48px; }
+  body.forest-site .footer-inner { min-height: 150px; padding: 27px 0 30px; gap: 20px; }
+  body.forest-site .footer-wordmark { font-size: 26px; }
+  body.forest-site .footer-copy { font-size: 8px; line-height: 2; max-width: 165px; }
+  body.forest-site .footer-links { max-width: 145px; font-size: 9px; gap: 13px 14px; padding-top: 5px; }
+  body.forest-site.studio-page .site-header { height: 66px; }
+  body.forest-site.studio-page .site-nav { top: 65px; gap: 0 12px; }
+  body.forest-site.studio-page .brand { font-size: 27px; }
+  body.forest-site.studio-page .forest-banner { height: 58px; }
+  body.forest-site.studio-page .forest-banner-copy { padding-bottom: 0; }
+  body.forest-site.studio-page .forest-banner-kicker { display: none; }
+  body.forest-site.studio-page .forest-banner-title { font-size: 19px; letter-spacing: 1px; }
+  body.forest-site.studio-page .forest-banner-home { bottom: 17px; font-size: 7px; }
+  body.forest-site.studio-page .forest-banner-clock { display: none; }
+  body.forest-site .studio-heading h1 { font-size: 22px; }
+  body.forest-site .studio-stage { min-height: 150px; }
+  body.forest-site .birthday-hero { padding-top: 33px; }
+  body.forest-site .birthday-hero h1 { font-size: 42px; letter-spacing: -.5px; }
+  body.forest-site .birthday-note { padding: 25px 19px; }
+  body.forest-site .birthday-note h1 { font-size: 29px; }
+  body.forest-site .birthday-note p:not(.eyebrow) { font-size: 17px; }
+  body.forest-site .construction { min-height: calc(100dvh - 400px); padding-block: 48px; }
+}
+@media (max-width:380px) {
+  body.forest-site .forest-banner-copy { width: calc(100% - 28px); }
+  body.forest-site .forest-banner-home { right: 14px; }
+  body.forest-site .forest-banner-clock { right: 14px; }
+  body.forest-site .header-inner { gap: 8px; }
+  body.forest-site .brand { font-size: 28px; }
+  body.forest-site .private-link { font-size: 8px; padding-inline: 8px; gap: 4px; }
+  body.forest-site .footer-links { max-width: 115px; font-size: 8px; gap: 11px 10px; }
+  body.forest-site .birthday-hero h1 { font-size: 36px; }
+  body.forest-site .birthday-note { padding-inline: 16px; }
+  body.forest-site .birthday-note p:not(.eyebrow) { font-size: 16px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  body.forest-site .button:hover { transform: none; }
+}

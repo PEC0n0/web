@@ -2,9 +2,9 @@
 
 现有 GitHub 仓库通过 Cloudflare Pages 自动部署，无需构建命令或新增依赖。
 
-2026-11-05 的「林间慢车」首页风格预览位于 `/preview/forest-railway/`，正式首页与其他页面暂时保留蓝黄版，待首页风格确认后再统一换肤。场景由 Canvas 实时绘制，按 UTC+8 连续插值天色；右下角可预览五个时段、拖动时间滑块或恢复实时。支持减少动态效果，动画在页面隐藏或场景离屏时暂停。旧版完整快照为提交 `13f5bd2`，备份标签 `backup-blue-yellow-20261105`；源码 ZIP、完整 Git bundle 和恢复说明另外保存在工作区的 `backups/blue-yellow-2026-11-05/`。
+2026-11-05 已将确认过的「林间慢车」风格应用到全站。正式首页使用 `assets/forest/home.css`、`home.js` 与原创 Canvas 场景 `landscape.js`；原始首页预览保留在 `/preview/forest-railway/`。场景按 UTC+8 连续插值天色，首页右下角可预览五个时段、拖动时间滑块或恢复实时。支持减少动态效果，动画在页面隐藏或场景离屏时暂停。蓝黄旧版完整快照为提交 `13f5bd2`，备份标签 `backup-blue-yellow-20261105`；源码 ZIP、完整 Git bundle 和恢复说明另外保存在工作区的 `backups/blue-yellow-2026-11-05/`。
 
-新版以纸白、蓝色和奶油黄为主色。公共页面共享 `site.css` 与 `site.js`；私人聊天使用独立的 `chat/chat.css`，会话与密码验证逻辑保持在原来的聊天服务中。
+新版以森林绿、奶油纸色与旧金色为主色，使用宋体标题与像素树标志。公共子页保留 `site.css` 布局与 `site.js` 交互，通过 `forest-theme.css` 统一导航、页脚与组件，`forest-scene.js` 添加随天色变化的景观条；公开信息和博客另由 `forest-content.css` 统一长文、奖状、编辑器。学习站和私人聊天分别加载 `study/forest.css`、`chat/forest.css`，两张明信片工具使用只作用于屏幕界面的主题，作品导出与打印保持原样。
 
 | 页面 | 用途 |
 | --- | --- |
@@ -37,7 +37,7 @@ iCAN「菲尼克斯杯」的竞赛记录与奖状卡片均提供「查看技术�
 
 `pixel.js` 保留原来的 48 × 48 棋盘和颜色索引。访问页面只读取棋盘；点击同步才写入颜色并保存 PNG 快照。导出图片使用浏览器 Canvas，以 960 × 960 PNG 保存，不依赖截图脚本。快照字段与现有 `/api/pixel?action=snapshot` 的 `image` 参数一致。
 
-`assets/garden.svg` 是页面内的花园插画，`assets/favicon.svg` 是站点图标；小熊猫照片继续使用原来的 `image1.jpg`，生日头像使用原来的 `0.jpg`。`og-image.png` 是蓝黄配色的分享封面。
+`assets/garden.svg` 在生日页保留为纪念插画，`assets/favicon.svg` 是森林绿和金色的站点图标；小熊猫照片继续使用原来的 `image1.jpg`，生日头像使用原来的 `0.jpg`。`og-image.png` 使用林间铁路主题的分享封面。
 
 私人配置、启动日志、测试脚本和浏览器截图保留在 Git 忽略的 `.bridge-local` 中，不随仓库部署。
 
@@ -45,4 +45,4 @@ iCAN「菲尼克斯杯」的竞赛记录与奖状卡片均提供「查看技术�
 
 旁边的「预览官方明信片」打开 `postcard-3d-showcase-matte.html`，展示未盖章与盖章两版明信片，可拖动旋转、缩放、暂停或切换聚焦。图片和 Three.js 已内嵌，无法使用 WebGL 时切换为兼容展示；左上角可返回首页。
 
-博客使用蓝黄主题下的独立样式与编辑器，发布权限沿用现有管理员入口。使用方式与数据库说明见 [README-blog.md](README-blog.md)。
+博客使用森林纸面主题下的独立样式与编辑器，发布权限沿用现有管理员入口。使用方式与数据库说明见 [README-blog.md](README-blog.md)。
