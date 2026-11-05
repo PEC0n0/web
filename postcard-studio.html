@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#142f2c">
+<meta name="theme-color" content="#33284f">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <title>小龙邮局 · 明信片工坊</title>
 <meta name="description" content="用毫米排一张好心情。154×104mm 明信片，上传人物与印章，自由定位，导出 PNG、SVG 或实际尺寸打印。">
@@ -20,48 +20,52 @@
 </style>
 <style media="screen">
 /* Station furniture only; the postcard SVG, export and print colors are unchanged. */
-body{background:#142f2c;color:#294236}
-.app-header{background:#142f2c;border-color:#c4d1ab30;color:#f8efdb}
+body{background:#28162d;color:#3a2b40}
+.app-header{background:#28162d;border-color:#beaece30;color:#f8efdb}
 .brand-symbol{border:0;border-radius:0;background:transparent;transform:none;width:30px;height:36px}
 .tool-tree{position:relative;display:block;width:27px;height:28px;color:#e7cb92}
 .tool-tree i{position:absolute;bottom:3px;left:12px;width:3px;height:23px;background:currentColor}
 .tool-tree i:before,.tool-tree i:after{content:"";position:absolute;background:currentColor;height:3px;left:-3px;top:4px;width:9px;box-shadow:-3px 4px 0 currentColor,3px 4px 0 currentColor,-6px 8px 0 currentColor,6px 8px 0 currentColor}
 .tool-tree i:after{top:15px;left:-9px;width:21px;box-shadow:none}
 .brand-name{font-family:"Noto Serif SC","Songti SC","STSong",SimSun,serif;font-size:23px;font-weight:400;letter-spacing:2px}
-.brand-sub,.save-state{color:#b4c4ab}
+.brand-sub,.save-state{color:#b9abc4}
 .brand:hover .brand-sub{color:#e7cb92}
-.app-header .btn{border-color:#b7c4a73b;background:#25473c;border-radius:3px;color:#f6ebd1}
-.app-header .btn:hover{background:#355848}
-.app-header .btn-primary{background:#e7cb92;border-color:#e7cb92;color:#2b4434}
+.app-header .btn{border-color:#b6a9c23b;background:#3d2844;border-radius:3px;color:#f6ebd1}
+.app-header .btn:hover{background:#4d3855}
+.app-header .btn-primary{background:#e7cb92;border-color:#e7cb92;color:#3b2d42}
 .app-header .btn-primary:hover{background:#f0d7a7}
-.menu{border-color:#cbd2b8;border-radius:4px;background:#f8f4e7}
+.menu{border-color:#c5bad0;border-radius:4px;background:#f8f4e7}
 .menu button{background:#f8f4e7;border-radius:2px}
-.menu button:hover{background:#e6e9d6}
-.app>aside{background:#f5f1e5;border-color:#ced4bd}
+.menu button:hover{background:#dfd7e8}
+.app>aside{background:#f5f1e5;border-color:#c8bfd2}
 .panel-title h1{font-family:"Noto Serif SC","Songti SC","STSong",SimSun,serif;font-size:18px;font-weight:400}
-.tiny-tag{background:#e5e8d6;color:#526c45;border-radius:2px}
-.tabs{background:#e6e8d8;border-radius:3px}
+.tiny-tag{background:#dfd7e7;color:#5b4869;border-radius:2px}
+.tabs{background:#e0d9e7;border-radius:3px}
 .tabs button{border-radius:2px}
-.tabs button[aria-selected=true]{background:#fffcf2;color:#31593f}
-.size-card{background:#e8ebdc;border-radius:3px}
+.tabs button[aria-selected=true]{background:#fffcf2;color:#4b3456}
+.size-card{background:#e3ddea;border-radius:3px}
 .text-input,.number-control,.number-control input{border-radius:3px}
-.upload-card{border-color:#b7c4a1;background:#f2f1e2;border-radius:3px}
-.upload-card:hover,.upload-card.dragover{background:#e7ecda;border-color:#789864}
-.upload-icon{border-radius:3px;background:#fffdf3;color:#6b8054}
-.asset-actions button{border-radius:2px;background:#e2e7d3;color:#536943}
-.workspace{background:radial-gradient(ellipse at 75% 0%,#70855c20,transparent 60%),#183b32;color:#f4e9cf}
+.upload-card{border-color:#b3a4c1;background:#e9e3f1;border-radius:3px}
+.upload-card:hover,.upload-card.dragover{background:#e3dbeb;border-color:#806894}
+.upload-icon{border-radius:3px;background:#fffdf3;color:#6b577d}
+.asset-actions button{border-radius:2px;background:#ddd4e6;color:#584666}
+.workspace{background:radial-gradient(ellipse at 75% 0%,#725d8420,transparent 60%),#311b38;color:#f4e9cf}
 .workspace-heading h2{font-family:"Noto Serif SC","Songti SC","STSong",SimSun,serif;font-weight:400;letter-spacing:1px;font-size:27px}
-.workspace-heading p,.workspace-bottom{color:#b4c5ac}
-.view-btn{border-color:#b5c49c44;color:#dfdfc2;background:#274b3d;border-radius:3px}
-.view-btn:hover,.view-btn[aria-pressed=true]{background:#e5cd99;color:#304632;border-color:#e5cd99}
-.stage-shell{border-color:#b7c6a333;border-radius:4px}
-.stage-zoom{border-color:#d5d8c4;border-radius:3px}
+.workspace-heading p,.workspace-bottom{color:#baadc4}
+.view-btn{border-color:#b09fc144;color:#cfc4dd;background:#402a48;border-radius:3px}
+.view-btn:hover,.view-btn[aria-pressed=true]{background:#e5cd99;color:#3e3145;border-color:#e5cd99}
+.stage-shell{border-color:#b5a6c333;border-radius:4px}
+.stage-zoom{border-color:#cec6d6;border-radius:3px}
 .stage-zoom button{border-radius:2px}
-.toast{background:#183b32;color:#f8edcf;border:1px solid #b5c49c55;border-radius:3px}
-.workspace-bottom kbd{border-color:#9eb68f44;background:#284b3c;color:#d6dfc5}
-.privacy{color:#7b886d}
-@media(max-width:720px){.brand-name{font-size:18px}.brand-symbol{width:25px;height:30px}.tool-tree{transform:scale(.85)}.workspace-heading h2{font-size:20px}.workspace-heading p{font-size:10px}.app>aside{border-color:#a5b88940}.stage-shell{border-radius:4px}.workspace-bottom{font-size:9px}.app-header{padding-inline:12px}}
+.toast{background:#311b38;color:#f8edcf;border:1px solid #b09fc155;border-radius:3px}
+.workspace-bottom kbd{border-color:#a492b344;background:#402b48;color:#d2c7dd}
+.privacy{color:#7c668f}
+@media(max-width:720px){.brand-name{font-size:18px}.brand-symbol{width:25px;height:30px}.tool-tree{transform:scale(.85)}.workspace-heading h2{font-size:20px}.workspace-heading p{font-size:10px}.app>aside{border-color:#a18db440}.stage-shell{border-radius:4px}.workspace-bottom{font-size:9px}.app-header{padding-inline:12px}}
 @media(max-width:360px){.brand{gap:5px}.brand-name{font-size:16px;letter-spacing:1px}.brand-sub{font-size:7px}.workspace-heading h2{font-size:18px;letter-spacing:.2px}.app-header .btn-primary{padding-inline:7px;font-size:10px}.header-actions{gap:4px}.workspace{padding-inline:12px}}
+
+/* Rounded colour-field identity; postcard art remains untouched. */
+.tool-tree i{display:none}.tool-tree:before,.tool-tree:after{content:"";position:absolute;left:6px;top:3px;width:11px;height:24px;background:#ffd5ad;border-radius:70% 30% 65% 35%;transform:rotate(-37deg)}.tool-tree:after{background:#edb9cf;transform:rotate(37deg);mix-blend-mode:screen}
+body,.app-header{background:#33284f}.workspace{background:#665481}.app>aside{background:#fcf5ed}.app-header .btn,.view-btn,.tabs,.tabs button,.text-input,.number-control,.upload-card,.stage-zoom,.menu{border-radius:10px}.size-card,.stage-shell{border-radius:13px}
 </style>
 </head>
 <body>
