@@ -28,7 +28,7 @@ if (info && !document.querySelector('.forest-banner')) {
   const clock = document.createElement('span'); clock.className = 'forest-banner-clock';
   banner.append(canvas,copy,home,clock);
   document.querySelector('.site-header')?.after(banner);
-  const landscape = await import('/assets/forest/landscape.js');
+  const landscape = await import('/assets/forest/landscape.js?v=20261105-motion');
   const stamp = () => {
     const hour = landscape.getShanghaiHour();
     const phase = hour<4.5 || hour>=23 ? '深夜' : hour<8 ? '黎明' : hour<16.5 ? '白昼' : hour<20 ? '黄昏' : '夜晚';

@@ -44,6 +44,49 @@ export function getPalette(hour) {
 
 export function getCurrentHour() { return previewHour ?? getShanghaiHour(); }
 
+/** Design-space motion, independent of frame rate, canvas size and wall clock.
+ * Every tile is 960 design pixels wide. Distances never reset, while the
+ * bounded offsets can wrap because the cached landscapes are truly periodic.
+ */
+export function getMotionState(elapsedSeconds, reducedMotion = false) {
+  const input = Number(elapsedSeconds);
+  const elapsed = Number.isFinite(input) ? Math.max(0, input) : 0;
+  const time = reducedMotion ? 0 : elapsed;
+  const tileWidth = 960;
+  const wrap = value => ((value % tileWidth) + tileWidth) % tileWidth;
+  const wobble = at => reducedMotion ? { x: 0, y: 0 } : {
+    x: Math.sin(at * 2.7) * .52 + Math.sin(at * 7.1) * .18,
+    y: Math.sin(at * 5.6) * .48 + Math.sin(at * 11.2) * .12
+  };
+  const distances = {
+    clouds: time * .45,
+    far: time * 1.1,
+    middle: time * 3.4,
+    valley: time * 6.2,
+    bridge: time * 14,
+    foreground: time * 20
+  };
+  const offsets = Object.fromEntries(Object.entries(distances).map(([key, value]) => [key, wrap(value)]));
+  const smokeLifetime = 4.4, smokeInterval = .2, count = 22;
+  const smoke = Array.from({ length: count }, (_, index) => {
+    const phase = time - index * smokeInterval;
+    const age = ((phase % smokeLifetime) + smokeLifetime) % smokeLifetime;
+    const id = Math.floor(phase / smokeLifetime) * count + index;
+    const variation = Math.sin(id * 91.71 + 2.3);
+    const birth = wobble(time - age);
+    return {
+      age,
+      birthX: birth.x,
+      birthY: birth.y,
+      x: birth.x - age * (9.5 + variation * .6) - age * age * 1.05,
+      y: birth.y - age * (8.1 + variation * .45) - age * age * 1.1,
+      radius: .55 + age * 1.55,
+      opacity: Math.min(1, age / .16) * Math.pow(1 - age / smokeLifetime, 1.4) * .64
+    };
+  });
+  return { elapsed, time, tileWidth, train: wobble(time), distances, offsets, smoke, smokeLifetime, smokeInterval };
+}
+
 const timeLabel = hour => hour < 4.8 || hour >= 23 ? '深夜' : hour < 8 ? '黎明' : hour < 16.5 ? '白昼' : hour < 20 ? '黄昏' : '夜晚';
 
 function announceTime() {
@@ -71,7 +114,10 @@ function randomSource(seed) {
 
 if (typeof document !== 'undefined') {
   const canvas = document.getElementById('landscape');
-  if (canvas) startLandscape(canvas);
+  if (canvas && !canvas.dataset.forestStarted) {
+    canvas.dataset.forestStarted = 'true';
+    startLandscape(canvas);
+  }
 }
 
 function startLandscape(canvas) {
@@ -81,7 +127,7 @@ function startLandscape(canvas) {
   let reducedMotion = motionQuery.matches;
   let width = 960, height = 540, unit = 1, bridgeY = 335;
   let palette = getPalette(getCurrentHour());
-  let sky, terrain, foreground, clouds, bridge;
+  let sky, farTerrain, middleTerrain, valleyTerrain, foreground, clouds, bridge;
   let ready = false, visible = true, frameId = 0, stillTimer = 0, forcePalette = false;
   let lastFrame = -Infinity, lastPalette = -Infinity, lastAnnouncement = -Infinity;
   let staticRenders = 0, frames = 0, elapsed = 0, previousTime = 0;
@@ -107,7 +153,12 @@ function startLandscape(canvas) {
   const alpha = (ctx, opacity, draw) => {
     ctx.save(); ctx.globalAlpha = Math.max(0, Math.min(1, opacity)); draw(); ctx.restore();
   };
-  const noise = (x, seed) => Math.sin(x * .029 + seed) * .48 + Math.sin(x * .071 + seed * 3) * .25 + Math.sin(x * .193 + seed * 7) * .11;
+  // Integer harmonics and matched endpoints make both ridge height and slope
+  // continuous at the tile boundary; no crossfade or duplicated hard edge.
+  const noise = (x, seed) => {
+    const phase = x / 960 * Math.PI * 2;
+    return Math.sin(phase * 4 + seed) * .48 + Math.sin(phase * 11 + seed * 3) * .25 + Math.sin(phase * 29 + seed * 7) * .11;
+  };
   const interpolate = (points, x) => {
     let i = 1;
     while (i < points.length - 1 && x > points[i][0]) i++;
@@ -118,9 +169,13 @@ function startLandscape(canvas) {
   };
 
   function mountain(ctx, points, base, amplitude, color, seed, detail = false) {
+    const periodicPoints = points.map(point => [...point]);
+    const seamHeight = (points[0][1] + points[points.length - 1][1]) * .5;
+    periodicPoints[0][1] = seamHeight;
+    periodicPoints[periodicPoints.length - 1][1] = seamHeight;
     const heights = [];
     for (let x = 0; x < width; x++) {
-      const y = Math.round(base - interpolate(points, x / width) * amplitude + noise(x / unit, seed) * 4 * unit);
+      const y = Math.round(base - interpolate(periodicPoints, x / width) * amplitude + noise(x / unit, seed) * 4 * unit);
       heights[x] = y;
       rect(ctx, x, y, 1, height - y, color);
     }
@@ -130,7 +185,9 @@ function startLandscape(canvas) {
         for (let i = 0; i < width * 1.6; i++) {
           const x = Math.floor(random() * width);
           const y = heights[x] + random() * amplitude * .65;
-          rect(ctx, x, y, (2 + random() * 7) * unit, unit, palette.mist);
+          const span = (2 + random() * 7) * unit;
+          rect(ctx, x, y, span, unit, palette.mist);
+          if (x + span >= width) rect(ctx, x - width, y, span, unit, palette.mist);
         }
       });
     }
@@ -138,6 +195,11 @@ function startLandscape(canvas) {
   }
 
   function pine(ctx, x, ground, size, color, seed, light = false) {
+    // Draw the same edge-crossing tree into both sides of its periodic tile.
+    if (x >= 0 && x < width) {
+      if (x < size) pine(ctx, x + width, ground, size, color, seed, light);
+      if (x > width - size) pine(ctx, x - width, ground, size, color, seed, light);
+    }
     const random = randomSource(seed);
     const h = Math.max(4, Math.round(size));
     const half = h * (.19 + random() * .08);
@@ -162,6 +224,10 @@ function startLandscape(canvas) {
   }
 
   function broadleaf(ctx, x, ground, size, color, seed) {
+    if (x >= 0 && x < width) {
+      if (x < size) broadleaf(ctx, x + width, ground, size, color, seed);
+      if (x > width - size) broadleaf(ctx, x - width, ground, size, color, seed);
+    }
     const random = randomSource(seed);
     rect(ctx, x - size * .035, ground - size * .76, size * .07, size * .79, color);
     for (let i = 0; i < 9; i++) {
@@ -218,23 +284,25 @@ function startLandscape(canvas) {
 
   function drawClouds() {
     const ctx = clouds.ctx;
-    const random = randomSource(4467);
     const cloudsData = [[.09,.19,135],[.42,.12,148],[.73,.30,155],[.91,.10,100],[.31,.37,98]];
     cloudsData.forEach(([cx, cy, size], index) => {
-      const x = cx * width, y = cy * height, w = size * unit;
-      alpha(ctx, (.16 + palette.daylight * .17) * (index === 3 ? .6 : 1), () => {
-        for (let j = 0; j < 8; j++) {
-          const offset = (j / 7 - .5) * w;
-          const top = y - Math.sin(j / 7 * Math.PI) * w * .10 - random() * 5 * unit;
-          rect(ctx, x + offset, top, w * (.23 + random() * .16), (2 + random() * 5) * unit, palette.cloud);
-        }
-        rect(ctx, x - w * .48, y + 5 * unit, w * 1.05, unit, palette.cloud);
+      [-width, 0, width].forEach(tile => {
+        const random = randomSource(4467 + index);
+        const x = cx * width + tile, y = cy * height, w = size * unit;
+        alpha(ctx, (.16 + palette.daylight * .17) * (index === 3 ? .6 : 1), () => {
+          for (let j = 0; j < 8; j++) {
+            const offset = (j / 7 - .5) * w;
+            const top = y - Math.sin(j / 7 * Math.PI) * w * .10 - random() * 5 * unit;
+            rect(ctx, x + offset, top, w * (.23 + random() * .16), (2 + random() * 5) * unit, palette.cloud);
+          }
+          rect(ctx, x - w * .48, y + 5 * unit, w * 1.05, unit, palette.cloud);
+        });
       });
     });
   }
 
   function drawTerrain() {
-    const ctx = terrain.ctx;
+    let ctx = farTerrain.ctx;
     const mountainHeight = Math.min(height * .32, width * .29);
     const far = mountain(ctx, [[0,.46],[.08,.74],[.13,1],[.20,.83],[.28,.47],[.34,.74],[.39,.68],[.47,.35],[.55,.56],[.61,.91],[.67,.81],[.75,.49],[.83,1.1],[.89,.98],[1,.55]], bridgeY + 28 * unit, mountainHeight, palette.farMountain, 12, true);
     alpha(ctx, .18, () => {
@@ -242,6 +310,7 @@ function startLandscape(canvas) {
         pine(ctx, x, far[Math.min(width - 1, x)] + 9 * unit, (5 + Math.sin(x) * 2) * unit, palette.middleMountain, 1090 + x);
       }
     });
+    ctx = middleTerrain.ctx;
     const middle = mountain(ctx, [[0,.78],[.1,.64],[.24,.25],[.37,.44],[.51,.08],[.68,.29],[.81,.7],[.94,.89],[1,.68]], bridgeY + 89 * unit, mountainHeight * .92, palette.middleMountain, 21, true);
     const random = randomSource(5212);
     alpha(ctx, .32, () => {
@@ -260,6 +329,7 @@ function startLandscape(canvas) {
     for (let i = 0; i < 20; i++) {
       alpha(ctx, .013 + (i / 20) * .013, () => rect(ctx, 0, bridgeY - 13 * unit + i * 3 * unit, width, 2 * unit, palette.mist));
     }
+    ctx = valleyTerrain.ctx;
     const floor = Math.max(bridgeY + 190 * unit, height * .94);
     const frontPoints = [[0,.84],[.1,.75],[.21,.47],[.35,.19],[.47,.02],[.56,.08],[.68,.25],[.81,.54],[.92,.87],[1,.95]];
     const slopeHeight = Math.min(height * .29, width * .235);
@@ -295,11 +365,13 @@ function startLandscape(canvas) {
 
   function drawBridge() {
     const ctx = bridge.ctx;
-    const span = 112 * unit;
-    const innerRadius = 44 * unit;
+    // Eight complete bays per tile: arches, mortar, poles and sleepers all
+    // share a common period instead of cutting through an arbitrary picture.
+    const span = width / 8;
+    const innerRadius = span * 44 / 112;
     const spring = bridgeY + 66 * unit;
     const base = Math.max(bridgeY + 170 * unit, height * .96);
-    const start = width * .5 - span * 4;
+    const start = 0;
     // Arched openings are unpainted: the valley remains visible through them.
     for (let x = 0; x < width; x++) {
       const bay = Math.floor((x - start) / span);
@@ -314,13 +386,13 @@ function startLandscape(canvas) {
     // Small masonry, irregular mineral stains, and a quiet side-lit face.
     for (let y = bridgeY + 9 * unit, row = 0; y < base; y += Math.max(2, 11 * unit), row++) {
       alpha(ctx, .24, () => rect(ctx, 0, y, width, unit, palette.stoneShadow));
-      const brick = 23 * unit;
-      for (let x = (row % 2) * brick * .5; x < width; x += brick) {
+      const brick = span / 5;
+      for (let x = -brick + (row % 2) * brick * .5; x < width; x += brick) {
         alpha(ctx, .19, () => rect(ctx, x, y, unit, 10 * unit, palette.stoneShadow));
         if (random() > .66) alpha(ctx, .12, () => rect(ctx, x + 2 * unit, y + 2 * unit, 16 * unit, unit, palette.stoneLight));
       }
     }
-    for (let i = -1; i < 11; i++) {
+    for (let i = -1; i <= 8; i++) {
       const center = start + i * span;
       rect(ctx, center + 9 * unit, bridgeY + 10 * unit, 4 * unit, base - bridgeY, palette.stoneShadow);
       alpha(ctx, .5, () => rect(ctx, center - 11 * unit, bridgeY + 12 * unit, 2 * unit, base - bridgeY, palette.stoneLight));
@@ -328,7 +400,7 @@ function startLandscape(canvas) {
     }
     ctx.restore();
     // Individual pale voussoirs follow the rounded arches.
-    for (let i = -1; i < 10; i++) {
+    for (let i = -1; i <= 8; i++) {
       const center = start + (i + .5) * span;
       for (let j = 0; j <= 12; j++) {
         const theta = Math.PI * (j / 12);
@@ -341,15 +413,16 @@ function startLandscape(canvas) {
     rect(ctx, 0, bridgeY, width, 3 * unit, palette.stoneShadow);
     rect(ctx, 0, bridgeY - 3 * unit, width, unit, palette.stoneLight);
     // Two rails, sleepers, a low parapet, and widely spaced telegraph poles.
-    for (let x = 0; x < width; x += Math.max(3, Math.round(11 * unit))) rect(ctx, x, bridgeY - 4 * unit, 3 * unit, 4 * unit, palette.stoneShadow);
+    for (let i = 0; i < 80; i++) rect(ctx, i * width / 80, bridgeY - 4 * unit, 3 * unit, 4 * unit, palette.stoneShadow);
     rect(ctx, 0, bridgeY - 5 * unit, width, unit, palette.stoneShadow);
-    for (const x of [.08, .29, .72, .94]) {
-      rect(ctx, width * x, bridgeY - 27 * unit, unit, 25 * unit, palette.stoneShadow);
-      rect(ctx, width * x - 5 * unit, bridgeY - 25 * unit, 11 * unit, unit, palette.stoneShadow);
+    for (let i = 0; i < 4; i++) {
+      const x = (i * 2 + .6) * span;
+      rect(ctx, x, bridgeY - 27 * unit, unit, 25 * unit, palette.stoneShadow);
+      rect(ctx, x - 5 * unit, bridgeY - 25 * unit, 11 * unit, unit, palette.stoneShadow);
     }
     alpha(ctx, .32, () => {
       for (let x = 0; x < width; x++) {
-        const wireY = bridgeY - (23 - Math.sin(x / width * Math.PI * 4) * 3) * unit;
+        const wireY = bridgeY - (23 - Math.sin((x / span - .6) * Math.PI) ** 2 * 3) * unit;
         rect(ctx, x, wireY, 1, 1, palette.stoneShadow);
       }
     });
@@ -383,10 +456,14 @@ function startLandscape(canvas) {
     }
   }
 
-  function paintTrain(ctx) {
-    const total = 145 * unit;
-    const left = ((width * .405 + total + elapsed * width / 600) % (width + total)) - total;
+  function paintTrain(ctx, motion) {
+    const left = width * .405;
     const ground = bridgeY - 6 * unit;
+    // A following camera holds the little train in place. Keep even a phone's
+    // subpixel bounce visible without moving the entire landscape or the UI.
+    const vibrationUnit = Math.max(unit, .62);
+    ctx.save();
+    ctx.translate(motion.train.x * vibrationUnit, motion.train.y * vibrationUnit);
     const night = 1 - palette.daylight;
     const windowColor = mix('#9cbac0', '#f5d59c', Math.max(0, Math.min(1, (night - .1) / .75)));
     const blue = mix('#314b59', '#496f76', palette.daylight);
@@ -418,23 +495,32 @@ function startLandscape(canvas) {
       for (let i = 5; i > 0; i--) circle(ctx, x + 27 * unit, ground - 8 * unit, i * 2 * unit, '#ffda9e');
     });
     rect(ctx, x + 26 * unit, ground - 9 * unit, 2 * unit, 3 * unit, windowColor);
-    for (let i = 0; i < 9; i++) {
-      const age = ((elapsed * .22 + i * .13) % 1);
-      const sx = x + 22 * unit - age * 61 * unit;
-      const sy = ground - 25 * unit - age * 40 * unit + Math.sin(age * 9 + i) * 3 * unit;
-      alpha(ctx, (1 - age) * (.17 + palette.daylight * .14), () => {
-        circle(ctx, sx, sy, (2 + age * 7) * unit, palette.cloud);
-        rect(ctx, sx - 2 * unit, sy, (3 + age * 7) * unit, 2 * unit, palette.cloud);
+    ctx.restore();
+  }
+
+  function paintSmoke(ctx, motion) {
+    const chimneyX = width * .405 + 138 * unit;
+    const chimneyY = bridgeY - 28 * unit;
+    const vibrationUnit = Math.max(unit, .62);
+    // Old puffs retain their birth position rather than following the train's
+    // latest vibration. Small at the actual chimney lip, then soft and airy.
+    [...motion.smoke].sort((a, b) => b.age - a.age).forEach(puff => {
+      const x = chimneyX + puff.x * unit + puff.birthX * (vibrationUnit - unit);
+      const y = chimneyY + puff.y * unit + puff.birthY * (vibrationUnit - unit);
+      const radius = puff.radius * unit;
+      alpha(ctx, puff.opacity, () => {
+        if (radius < 1.1) rect(ctx, x, y, 1, 1, palette.cloud);
+        else circle(ctx, x, y, radius, palette.cloud);
       });
-    }
+    });
   }
 
   function rebuild() {
     palette = getPalette(getCurrentHour());
     if (!sky || sky.canvas.width !== width || sky.canvas.height !== height) {
-      sky = layer(); terrain = layer(); foreground = layer(); clouds = layer(); bridge = layer();
+      sky = layer(); farTerrain = layer(); middleTerrain = layer(); valleyTerrain = layer(); foreground = layer(); clouds = layer(); bridge = layer();
     } else {
-      [sky, terrain, foreground, clouds, bridge].forEach(surface => surface.ctx.clearRect(0, 0, width, height));
+      [sky, farTerrain, middleTerrain, valleyTerrain, foreground, clouds, bridge].forEach(surface => surface.ctx.clearRect(0, 0, width, height));
     }
     drawSky(); drawClouds(); drawTerrain(); drawBridge(); drawForeground();
     staticRenders++; ready = true;
@@ -456,14 +542,23 @@ function startLandscape(canvas) {
   }
 
   function render() {
+    const motion = getMotionState(elapsed, reducedMotion);
+    const scroll = (surface, name) => {
+      // Integer raster translations retain crisp pixels. Identical periodic
+      // boundaries mean the wrap at width is visually just another step.
+      const offset = Math.floor(motion.offsets[name] * unit);
+      context.drawImage(surface.canvas, -offset, 0);
+      if (offset > 0) context.drawImage(surface.canvas, width - offset, 0);
+    };
     context.drawImage(sky.canvas, 0, 0);
-    const drift = Math.round(elapsed * 1.8 * unit);
-    context.drawImage(clouds.canvas, drift % width, 0);
-    if (drift) context.drawImage(clouds.canvas, drift % width - width, 0);
-    context.drawImage(terrain.canvas, 0, 0);
-    context.drawImage(bridge.canvas, 0, 0);
-    paintTrain(context);
-    context.drawImage(foreground.canvas, 0, 0);
+    scroll(clouds, 'clouds');
+    scroll(farTerrain, 'far');
+    scroll(middleTerrain, 'middle');
+    scroll(valleyTerrain, 'valley');
+    scroll(bridge, 'bridge');
+    paintSmoke(context, motion);
+    paintTrain(context, motion);
+    scroll(foreground, 'foreground');
     // Fireflies are a handful of quiet pixels, never a full-screen effect.
     if (palette.night > .15) {
       const random = randomSource(380);
@@ -534,7 +629,19 @@ function startLandscape(canvas) {
     get frames() { return frames; },
     get staticRenders() { return staticRenders; },
     get reducedMotion() { return reducedMotion; },
-    get visible() { return visible && !document.hidden; }
+    get visible() { return visible && !document.hidden; },
+    get elapsed() { return elapsed; },
+    get motion() { return getMotionState(elapsed, reducedMotion); },
+    get offsets() {
+      const motion = getMotionState(elapsed, reducedMotion);
+      return Object.fromEntries(Object.entries(motion.offsets).map(([key, offset]) => [key, Math.floor(offset * unit)]));
+    },
+    get trainAnchor() { return { x: width * .405, y: bridgeY - 6 * unit }; },
+    get trainOffset() {
+      const motion = getMotionState(elapsed, reducedMotion);
+      return { x: motion.train.x * Math.max(unit, .62), y: motion.train.y * Math.max(unit, .62) };
+    },
+    get tileWidth() { return width; }
   }) });
   requestPaint();
 }
