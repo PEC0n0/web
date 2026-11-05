@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#193a38">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="Peco 的林间小站。山野、慢车，和一点日常。">
+  <title>林间慢车 · Peco 首页风格预览</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./forest.css">
+  <script type="module" src="./page.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+  <section class="landscape-hero" aria-label="林间高桥上，一列小火车缓缓行进，天色随北京时间变化">
+    <canvas id="landscape" aria-hidden="true"></canvas>
+    <div class="scene-shade" aria-hidden="true"></div>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="wordmark" href="./" aria-label="Peco 林间小站首页"><span class="pixel-mark" aria-hidden="true"><i></i><i></i><i></i></span>peco<span class="wordmark-dot">.</span><span class="brand-note">林间小站</span></a>
+        <nav class="site-nav" id="forest-nav" aria-label="主导航">
+          <a href="./" aria-current="page">首页</a><a href="/about/">公开信息</a><a href="/blog/">博客</a><a href="/3.html">留言板</a>
+        </nav>
+        <div class="header-actions"><a class="private-link" href="/chat/"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="5" y="8" width="10" height="9" rx="1"></rect><path d="M7 8V5a3 3 0 0 1 6 0v3m-3 5v1"></path></svg><span>私人车厢</span></a><button class="menu-button" type="button" aria-controls="forest-nav" aria-expanded="false" aria-label="展开导航"><span></span><span></span></button></div>
+      </div>
+    </header>
+    <main id="main" class="hero-main">
+      <div class="hero-copy">
+        <p class="eyebrow"><span></span> SOMEWHERE BETWEEN THE TREES</p>
+        <h1>下一站，<br><em>慢慢生活。</em></h1>
+        <p class="hero-description">你好，我是 Peco。<br>喜欢竹子、苹果，还有偶尔的天马行空。<br>在这里，收集日常，也看看沿途的风景。</p>
+        <div class="hero-actions"><a class="primary-button" href="#destinations">随便逛逛 <span aria-hidden="true">↓</span></a><a class="quiet-link" href="/3.html">留一句话 <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </main>
+    <div class="scene-caption" aria-hidden="true"><span class="caption-line"></span><span>山野很远，日子很长。<br><small>LET THE LITTLE THINGS TAKE THEIR TIME.</small></span></div>
+    <div class="hero-foot">
+      <a class="preview-note" href="/" title="返回目前正式使用的蓝黄版首页"><span class="preview-dot"></span>首页风格预览 <span class="original-link">返回原版 ↗</span></a>
+      <div class="time-station">
+        <button id="time-toggle" class="time-toggle" type="button" aria-expanded="false" aria-controls="time-panel"><span class="time-orbit" aria-hidden="true">☼</span><span class="time-text"><span id="scene-label">林间此刻</span><span class="time-readout"><time id="scene-clock">--:--</time><span>UTC+8</span></span></span><span class="time-adjust">调一调天色 <span aria-hidden="true">⌃</span></span></button>
+        <div id="time-panel" class="time-panel" hidden>
+          <div class="time-panel-heading"><span>去一天里的别处看看</span><span id="time-mode">跟随北京时间</span></div>
+          <div class="time-presets" aria-label="预览不同时刻"><button type="button" data-hour="6.25">黎明</button><button type="button" data-hour="11.5">白昼</button><button type="button" data-hour="17.5">黄昏</button><button type="button" data-hour="20.5">夜晚</button><button type="button" data-hour="1.5">深夜</button></div>
+          <label class="time-range-label" for="time-range"><span>沿着时间慢慢走</span><output id="time-value" for="time-range">--:--</output></label>
+          <input id="time-range" type="range" min="0" max="1439" step="1" value="720" aria-label="预览时间，UTC+8，单位为从零点起的分钟数">
+          <div class="time-panel-bottom"><span>00:00 <span aria-hidden="true">────</span> 23:59</span><button type="button" id="time-live">回到此刻 ↗</button></div>
+        </div>
+      </div>
+    </div>
+    <a class="scroll-cue" href="#destinations" aria-label="向下探索小站"><span></span></a>
+    <noscript><p class="no-script">这片森林会在开启 JavaScript 后随天色变化。下方的小站入口依然可以使用。</p></noscript>
+  </section>
+
+  <div class="below-scene">
+    <section class="destinations section-width" id="destinations" aria-labelledby="destinations-title">
+      <div class="section-topline"><span class="eyebrow">A FEW PLACES TO STOP</span><span class="section-coordinate">PECO · PERSONAL STATION</span></div>
+      <div class="section-intro"><h2 id="destinations-title">不赶路，<span>去逛逛。</span></h2><p>一些正在记录的日常，<br>一些等你一起完成的小事。</p></div>
+      <div class="station-map">
+        <a class="station-stop" href="/about/"><span class="stop-number">01</span><span class="stop-icon" aria-hidden="true">✦</span><div><h3>认识 Peco</h3><p>关于我、走过的路，和一些小小的肯定。</p></div><span class="stop-arrow" aria-hidden="true">↗</span></a>
+        <a class="station-stop" href="/blog/"><span class="stop-number">02</span><span class="stop-icon" aria-hidden="true">▤</span><div><h3>日常手记</h3><p>把转瞬即逝的想法，留在一页文字里。</p></div><span class="stop-arrow" aria-hidden="true">↗</span></a>
+        <a class="station-stop" href="/study/"><span class="stop-number">03</span><span class="stop-icon" aria-hidden="true">▱</span><div><h3>我的学习站</h3><p>电力系统分析，一点点学懂。</p></div><span class="stop-arrow" aria-hidden="true">↗</span></a>
+        <a class="station-stop" href="/4.html"><span class="stop-number">04</span><span class="stop-icon pixel-grid" aria-hidden="true"><i></i><i></i><i></i><i></i></span><div><h3>一起画点什么</h3><p>一张共享的小画布，等你添上一格颜色。</p></div><span class="stop-arrow" aria-hidden="true">↗</span></a>
+      </div>
+      <div class="side-tracks"><span>也可以在这里停一停</span><a href="/2.html">拜访朋友 <span aria-hidden="true">↗</span></a><a href="/3.html">留言与树洞 <span aria-hidden="true">↗</span></a><a href="/index_birth.html">生日特别页 <span aria-hidden="true">↗</span></a></div>
+    </section>
+
+    <section class="post-office section-width" aria-labelledby="post-office-title">
+      <div class="postcard-art" aria-hidden="true"><div class="pixel-sun"></div><div class="postcard-hill hill-back"></div><div class="postcard-hill hill-front"></div><div class="postcard-tree"></div><span class="postcard-stamp">P</span><span class="postcard-airmail"></span></div>
+      <div class="post-office-copy"><p class="eyebrow">A POSTCARD FROM THE JOURNEY</p><h2 id="post-office-title">把沿途的好心情，<br>寄给你。</h2><p>小龙邮局 · 制作一张属于你的明信片。</p></div>
+      <div class="post-office-actions"><a class="paper-button" href="/postcard-studio.html">制作明信片 <span aria-hidden="true">↗</span></a><a class="quiet-link" href="/postcard-3d-showcase-matte.html">预览官方明信片 <span aria-hidden="true">↗</span></a></div>
+    </section>
+
+    <section class="journal section-width" aria-labelledby="journal-title">
+      <div class="journal-heading"><div><p class="eyebrow">NOTES ALONG THE WAY</p><h2 id="journal-title">沿途，记一点。</h2></div><a class="quiet-link" href="/blog/">翻开全部手记 <span aria-hidden="true">↗</span></a></div>
+      <div id="journal-posts" class="journal-posts" aria-live="polite"><a class="journal-empty" href="/blog/"><span class="journal-date">LITTLE THOUGHTS</span><div><h3>记一点日常，留一点灵感。</h3><p>有空的时候，来翻翻我的小小博客。</p></div><span aria-hidden="true">↗</span></a></div>
+    </section>
+    <section class="closing-note section-width"><span class="tiny-tree" aria-hidden="true">♠</span><p>种一棵树，最好的时间是十年前。<br>其次，是<em>现在。</em></p><span>竹子和苹果也是。</span></section>
+    <footer class="site-footer section-width"><a class="wordmark" href="./">peco<span class="wordmark-dot">.</span></a><p>山野、慢车，和一点日常。<br>© <span id="copyright-year">2026</span> Peco</p><div><a href="/about/">公开信息</a><a href="/3.html">留句话</a><a href="/chat/">私人聊天 ↗</a></div></footer>
+  </div>
+</body>
+</html>

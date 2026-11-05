@@ -1,3 +1,7 @@
+/preview/forest-railway/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: no-cache
+
 /about/reports/*.pdf
   Content-Disposition: inline
   X-Content-Type-Options: nosniff
