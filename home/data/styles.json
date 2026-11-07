@@ -1,0 +1,811 @@
+{
+  "schema_version": "1.0",
+  "checked_date": "2026-11-07",
+  "budget_scope": "仅宜家家具与软装；硬装、定制柜和施工未报价",
+  "styles": [
+    {
+      "id": "default",
+      "name": "原方案",
+      "eyebrow": "ORIGINAL",
+      "tagline": "暖白 · 浅木 · 灰绿",
+      "summary": "保留最初的宜家搭配与浅色硬装，作为比较起点。",
+      "palette": {
+        "wall": "#efeee7",
+        "wood": "#c8ac89",
+        "tile": "#deded4",
+        "accent": "#9ba98d"
+      },
+      "architecture": {
+        "full": "assets/architecture.glb",
+        "cut": "assets/architecture-cut.glb"
+      },
+      "preview": "assets/overview.png",
+      "interior_preview": null,
+      "choices": {},
+      "ikea_total_cents": 3964973,
+      "hard_finishes": [
+        {
+          "id": "living_floor",
+          "label": "客餐厅地面",
+          "specification": "浅色哑光地砖；卧室浅木色地板。沿用首版材质示意。"
+        },
+        {
+          "id": "wall_paint",
+          "label": "墙面",
+          "specification": "暖白乳胶漆，电视墙灰绿点缀。"
+        },
+        {
+          "id": "custom_cabinet",
+          "label": "固定柜体",
+          "specification": "定制衣柜暖白平板门，厨卫浅色柜体；门扇浅木色。"
+        },
+        {
+          "id": "wet_tiles",
+          "label": "厨卫",
+          "specification": "浅色墙地面与洁具，沿用原平面布置。"
+        }
+      ],
+      "soft_groups": [
+        "KIVIK米灰沙发与BORGEBY圆茶几",
+        "灰绿GURLI靠垫与休闲毯",
+        "白色床头桌、浅木主卧床"
+      ]
+    },
+    {
+      "id": "forest_oak",
+      "name": "自然原木",
+      "eyebrow": "FOREST OAK",
+      "tagline": "木纹砖 · 木条饰面",
+      "summary": "浅橡木纹通铺、暖白墙面和灰绿点缀，木质感分布在地面、定制柜和小家具上。",
+      "palette": {
+        "wall": "#f0ece2",
+        "wood": "#c6a278",
+        "tile": "#c6a278",
+        "accent": "#6f7c60"
+      },
+      "architecture": {
+        "full": "assets/styles/forest_oak/architecture-full.glb",
+        "cut": "assets/styles/forest_oak/architecture-cut.glb"
+      },
+      "preview": "assets/styles/forest_oak/overview.webp",
+      "interior_preview": "assets/styles/forest_oak/living.webp",
+      "choices": {
+        "主卧_bedside_1": "ikea_nordkisa_bedside",
+        "主卧_bedside_2": "ikea_nordkisa_bedside",
+        "sofa_cushion_1": "ikea_gurli_unbleached_00598730",
+        "sofa_cushion_3": "ikea_gurli_unbleached_00598730",
+        "sofa_throw": "ikea_daggkapor_beige_00624593"
+      },
+      "ikea_total_cents": 4008973,
+      "hard_finishes": [
+        {
+          "id": "living_floor",
+          "label": "客餐厅及玄关地砖",
+          "status": "选材方向，待实物小样与现场深化",
+          "brand": null,
+          "sku": null,
+          "price_cny": null,
+          "specification": "200×1200mm浅橡木纹瓷砖，哑光，沿图面长向铺贴，约1/3错缝；同色浅米填缝。排版、伸缩缝和缝宽按选砖与现场要求复核。",
+          "render": {
+            "material": "wood_look_porcelain",
+            "tile_mm": [
+              200,
+              1200
+            ],
+            "layout": "one_third_stagger",
+            "direction": "plan_y",
+            "color": "#c6a278",
+            "roughness": 0.76
+          }
+        },
+        {
+          "id": "bedroom_floor",
+          "label": "三间卧室地面",
+          "status": "选材方向，待实物小样与现场深化",
+          "brand": null,
+          "sku": null,
+          "price_cny": null,
+          "specification": "延续200×1200mm浅橡木纹砖和相同走向，门槛处协调排版，强调连贯木色；不改变完成面高差假设。",
+          "render": {
+            "material": "wood_look_porcelain",
+            "tile_mm": [
+              200,
+              1200
+            ],
+            "layout": "one_third_stagger",
+            "direction": "plan_y",
+            "color": "#c6a278"
+          }
+        },
+        {
+          "id": "wall_paint",
+          "label": "墙面与顶面",
+          "status": "选材方向，待实物小样与现场深化",
+          "brand": null,
+          "sku": null,
+          "price_cny": null,
+          "specification": "墙面选低饱和暖白哑光乳胶漆，顶面比墙面更浅；灰绿仅用于主卧床头或儿童学习位的小幅点缀，不给成品家具改色。",
+          "render": {
+            "wall": "#f0ece2",
+            "ceiling": "#f7f5ef",
+            "accent_wall": "#a2aa95",
+            "accent_scope": "小面积可选"
+          }
+        },
+        {
+          "id": "wet_tiles",
+          "label": "厨房与两卫瓷砖",
+          "status": "选材方向，待实物小样与现场深化",
+          "brand": null,
+          "sku": null,
+          "price_cny": null,
+          "specification": "厨房地面600×600mm暖灰哑光砖，墙面300×600mm暖白砖横向对缝；卫生间地面300×300mm米灰防滑砖，墙面300×600mm浅米砖，淋浴地面按排水口找坡；防滑与防水细部待实物和施工深化。",
+          "render": {
+            "kitchen_floor": {
+              "tile_mm": [
+                600,
+                600
+              ],
+              "color": "#c9c5b8"
+            },
+            "kitchen_wall": {
+              "tile_mm": [
+                300,
+                600
+              ],
+              "color": "#ece7dc"
+            },
+            "bath_floor": {
+              "tile_mm": [
+                300,
+                300
+              ],
+              "color": "#bab5a8"
+            },
+            "bath_wall": {
+              "tile_mm": [
+                300,
+                600
+              ],
+              "color": "#e1d9c9"
+            }
+          }
+        },
+        {
+          "id": "custom_cabinet",
+          "label": "定制衣柜及厨卫柜饰面",
+          "status": "选材方向，待实物小样与现场深化",
+          "brand": null,
+          "sku": null,
+          "price_cny": null,
+          "specification": "衣柜以浅橡木纹平板门为主、暖白为辅，内柜浅木色；厨房地柜浅木、吊柜暖白。仅应用于定制/硬装柜体，BESTÅ、BILLY、HEMNES、TRONES保留真实白色SKU。",
+          "render": {
+            "custom_wood": "#c6a278",
+            "custom_paint": "#eee9df",
+            "wood_share": 0.65,
+            "handle": "细深灰拉手"
+          }
+        },
+        {
+          "id": "doors",
+          "label": "门与踢脚线",
+          "status": "选材方向，待实物小样与现场深化",
+          "brand": null,
+          "sku": null,
+          "price_cny": null,
+          "specification": "室内门选浅橡木纹平板门，门套同色；约60mm高木色明装踢脚线。厨房移门保持CAD开口，以暖灰细框和透光玻璃统一。",
+          "render": {
+            "door": "#c6a278",
+            "skirting_height_mm": 60,
+            "frame": "#817b70"
+          }
+        },
+        {
+          "id": "tv_wall",
+          "label": "电视墙",
+          "status": "选材方向，待实物小样与现场深化",
+          "brand": null,
+          "sku": null,
+          "price_cny": null,
+          "specification": "暖白平墙为主，电视墙图面右侧设置局部浅橡木竖向木条饰面；保持180cm白色BESTÅ电视柜。饰面厚度、插座与收口需现场深化。",
+          "render": {
+            "paint": "#f0ece2",
+            "panel": "#b9956d",
+            "panel_scope": "电视墙右侧局部"
+          }
+        },
+        {
+          "id": "lighting",
+          "label": "照明层次",
+          "status": "选材方向，待实物小样与现场深化",
+          "brand": null,
+          "sku": null,
+          "price_cny": null,
+          "specification": "保留已选宜家NYMÅNE、FADO与TERTIAL真实白色灯体及2700K配套光源；定制柜下局部3000K灯带作为硬装深化方向，品牌、功率和电路未选定，未计采购预算。",
+          "render": {
+            "ikea_light_kelvin": 2700,
+            "proposed_fixed_strip_kelvin": 3000
+          }
+        }
+      ],
+      "soft_groups": [
+        "主卧两侧换竹质床头桌",
+        "沙发原色棉靠垫两只，中央保留绿色",
+        "沙发毯改浅米色"
+      ],
+      "notes": [
+        "KIVIK米灰沙发与脚凳、BORGEBY桦木圆茶几、TIPHEDE黑/自然色地毯保留。",
+        "长辈房两个GILLERSBERG竹/白床头桌保留。"
+      ]
+    },
+    {
+      "id": "zen_wood",
+      "name": "日式素木",
+      "eyebrow": "QUIET WOOD",
+      "tagline": "木纹通铺 · 半高木墙",
+      "summary": "窄长素木纹、砂米墙面和竹质小家具，减少颜色种类，保留原户型的正常床和餐桌尺度。",
+      "palette": {
+        "wall": "#e9e4d8",
+        "wood": "#c2b391",
+        "tile": "#c2b391",
+        "accent": "#887c66"
+      },
+      "architecture": {
+        "full": "assets/styles/zen_wood/architecture-full.glb",
+        "cut": "assets/styles/zen_wood/architecture-cut.glb"
+      },
+      "preview": "assets/styles/zen_wood/overview.webp",
+      "interior_preview": "assets/styles/zen_wood/living.webp",
+      "choices": {
+        "living_coffee": "ikea_lisabo_coffee_90353064",
+        "主卧_bedside_1": "ikea_nordkisa_bedside",
+        "主卧_bedside_2": "ikea_nordkisa_bedside",
+        "长辈房_bedside_1": "ikea_nordkisa_bedside",
+        "长辈房_bedside_2": "ikea_nordkisa_bedside",
+        "sofa_cushion_1": "ikea_gurli_unbleached_00598730",
+        "sofa_cushion_2": "ikea_gurli_unbleached_00598730",
+        "sofa_cushion_3": "ikea_gurli_unbleached_00598730",
+        "sofa_throw": "ikea_daggkapor_beige_00624593"
+      },
+      "ikea_total_cents": 4062973,
+      "hard_finishes": [
+        {
+          "id": "living_floor",
+          "label": "客餐厅及玄关地砖",
+          "status": "选材方向，待实物小样与现场深化",
+          "brand": null,
+          "sku": null,
+          "price_cny": null,
+          "specification": "150×900mm灰调浅木纹哑光砖，沿图面长向1/2错缝，木纹低对比；细浅米填缝，缝宽及长砖平整度按选品与厂家建议复核。",
+          "render": {
+            "material": "wood_look_porcelain",
+            "tile_mm": [
+              150,
+              900
+            ],
+            "layout": "half_stagger",
+            "direction": "plan_y",
+            "color": "#c2b391",
+            "roughness": 0.85
+          }
+        },
+        {
+          "id": "bedroom_floor",
+          "label": "三间卧室地面",
+          "status": "选材方向，待实物小样与现场深化",
+          "brand": null,
+          "sku": null,
+          "price_cny": null,
+          "specification": "同系列150×900mm素木纹砖贯通，原三间床保持180/180/150cm床垫尺度；不引入抬高地台或榻榻米，避免改变通道与床下关系。",
+          "render": {
+            "material": "wood_look_porcelain",
+            "tile_mm": [
+              150,
+              900
+            ],
+            "layout": "half_stagger",
+            "direction": "plan_y",
+            "color": "#c2b391"
+          }
+        },
+        {
+          "id": "wall_paint",
+          "label": "墙面与顶面",
+          "status": "选材方向，待实物小样与现场深化",
+          "brand": null,
+          "sku": null,
+          "price_cny": null,
+          "specification": "墙面选砂米色哑光乳胶漆，主卧床头同色轻微肌理，顶面暖白；使用成品小样确认自然光下不偏黄。",
+          "render": {
+            "wall": "#e9e4d8",
+            "ceiling": "#f3f0e9",
+            "accent_wall": "#d7cdbb"
+          }
+        },
+        {
+          "id": "wet_tiles",
+          "label": "厨房与两卫瓷砖",
+          "status": "选材方向，待实物小样与现场深化",
+          "brand": null,
+          "sku": null,
+          "price_cny": null,
+          "specification": "厨房地面600×600mm浅灰米砖，挡水墙200×400mm暖白砖横向直铺；卫生间地面300×300mm灰褐防滑砖，墙面300×600mm砂米砖竖向对缝，局部台盆背墙可用100×300mm素面小砖。",
+          "render": {
+            "kitchen_floor": {
+              "tile_mm": [
+                600,
+                600
+              ],
+              "color": "#c4c0b3"
+            },
+            "kitchen_wall": {
+              "tile_mm": [
+                200,
+                400
+              ],
+              "color": "#eee9df"
+            },
+            "bath_floor": {
+              "tile_mm": [
+                300,
+                300
+              ],
+              "color": "#aaa495"
+            },
+            "bath_wall": {
+              "tile_mm": [
+                300,
+                600
+              ],
+              "color": "#dcd3c1"
+            }
+          }
+        },
+        {
+          "id": "custom_cabinet",
+          "label": "定制衣柜及厨卫柜饰面",
+          "status": "选材方向，待实物小样与现场深化",
+          "brand": null,
+          "sku": null,
+          "price_cny": null,
+          "specification": "定制衣柜选低对比浅白蜡木色平板门，细同色拉手，开放格限量；厨房柜门采用素木色与砂米色组合。成品宜家柜体原SKU白色不变。",
+          "render": {
+            "custom_wood": "#c2b391",
+            "custom_paint": "#e2daca",
+            "wood_share": 0.8,
+            "handle": "同色细拉手"
+          }
+        },
+        {
+          "id": "doors",
+          "label": "门与踢脚线",
+          "status": "选材方向，待实物小样与现场深化",
+          "brand": null,
+          "sku": null,
+          "price_cny": null,
+          "specification": "卧室门采用素木平板门与窄同色门套；约50mm高木色踢脚线，厨房移门沿用CAD形式，以浅灰框、透光玻璃收口。",
+          "render": {
+            "door": "#c2b391",
+            "skirting_height_mm": 50,
+            "frame": "#9c9687"
+          }
+        },
+        {
+          "id": "tv_wall",
+          "label": "电视墙",
+          "status": "选材方向，待实物小样与现场深化",
+          "brand": null,
+          "sku": null,
+          "price_cny": null,
+          "specification": "电视墙增加约1.05m高暖木护墙板和简洁木色收边，上部保持米白留白；保持白色BESTÅ电视柜，不加隔断、不遮挡窗洞。",
+          "render": {
+            "paint": "#ded4c2",
+            "panel": null,
+            "panel_scope": "无新增墙板"
+          }
+        },
+        {
+          "id": "lighting",
+          "label": "照明层次",
+          "status": "选材方向，待实物小样与现场深化",
+          "brand": null,
+          "sku": null,
+          "price_cny": null,
+          "specification": "保留宜家白色灯体及2700K光源，减少额外装饰灯；床头与阅读灯作为局部照明。可预留柜内3000K线性光源，待电气与柜体设计后确定。",
+          "render": {
+            "ikea_light_kelvin": 2700,
+            "proposed_fixed_strip_kelvin": 3000
+          }
+        }
+      ],
+      "soft_groups": [
+        "茶几改LISABO浅白蜡木",
+        "主卧与长辈房四个床头桌改竹质NORDKISA",
+        "三个靠垫改原色棉",
+        "沙发毯改浅米色"
+      ],
+      "notes": [
+        "保留KIVIK米灰沙发与脚凳、TIPHEDE黑/自然色平织地毯。",
+        "NORDKISA高67cm，台灯需同步放置在新桌面高度；主卧床侧余量较小须延续已有限定锚点校验。"
+      ]
+    },
+    {
+      "id": "cream_minimal",
+      "name": "奶油简约",
+      "eyebrow": "SOFT CREAM",
+      "tagline": "奶油大砖 · 圆角电视墙",
+      "summary": "奶油石纹大砖、暖白整墙与浅米长绒织物，保留浅木餐椅作为柔和对比。",
+      "palette": {
+        "wall": "#f2e9da",
+        "wood": "#d2b89a",
+        "tile": "#e7dcc8",
+        "accent": "#c9b99f"
+      },
+      "architecture": {
+        "full": "assets/styles/cream_minimal/architecture-full.glb",
+        "cut": "assets/styles/cream_minimal/architecture-cut.glb"
+      },
+      "preview": "assets/styles/cream_minimal/overview.webp",
+      "interior_preview": "assets/styles/cream_minimal/living.webp",
+      "choices": {
+        "living_coffee": "ikea_lack_coffee_70449906",
+        "sofa_cushion_1": "ikea_gurli_unbleached_00598730",
+        "sofa_cushion_2": "ikea_gurli_unbleached_00598730",
+        "sofa_cushion_3": "ikea_gurli_unbleached_00598730",
+        "sofa_throw": "ikea_daggkapor_beige_00624593",
+        "living_rug": "ikea_vindebak_rug_80507887"
+      },
+      "ikea_total_cents": 3946974,
+      "hard_finishes": [
+        {
+          "id": "living_floor",
+          "label": "客餐厅及玄关地砖",
+          "status": "选材方向，待实物小样与现场深化",
+          "brand": null,
+          "sku": null,
+          "price_cny": null,
+          "specification": "600×1200mm奶油米色细石纹瓷砖，柔光哑面，直线对缝，长边沿图面长向；采用近砖色填缝，避免高反差网格。",
+          "render": {
+            "material": "subtle_stone_porcelain",
+            "tile_mm": [
+              600,
+              1200
+            ],
+            "layout": "stacked",
+            "direction": "plan_y",
+            "color": "#e7dcc8",
+            "roughness": 0.62
+          }
+        },
+        {
+          "id": "bedroom_floor",
+          "label": "三间卧室地面",
+          "status": "选材方向，待实物小样与现场深化",
+          "brand": null,
+          "sku": null,
+          "price_cny": null,
+          "specification": "卧室改为200×1200mm浅奶油橡木纹砖，约1/3错缝，保留卧室与客餐厅的纹理区分；门口对齐完成面。",
+          "render": {
+            "material": "wood_look_porcelain",
+            "tile_mm": [
+              200,
+              1200
+            ],
+            "layout": "one_third_stagger",
+            "direction": "plan_y",
+            "color": "#d2b89a"
+          }
+        },
+        {
+          "id": "wall_paint",
+          "label": "墙面与顶面",
+          "status": "选材方向，待实物小样与现场深化",
+          "brand": null,
+          "sku": null,
+          "price_cny": null,
+          "specification": "墙面选奶油白哑光乳胶漆，顶面低饱和暖白；床头墙仅比主墙深一档，避免粉黄过重。色值为渲染近似，须用实物色卡确认。",
+          "render": {
+            "wall": "#f2e9da",
+            "ceiling": "#f8f3e9",
+            "accent_wall": "#e4d7c3"
+          }
+        },
+        {
+          "id": "wet_tiles",
+          "label": "厨房与两卫瓷砖",
+          "status": "选材方向，待实物小样与现场深化",
+          "brand": null,
+          "sku": null,
+          "price_cny": null,
+          "specification": "厨房地面600×600mm米灰哑光砖，墙面300×600mm奶白素砖横向对缝；卫生间地面300×300mm米灰防滑砖，墙面600×1200mm浅奶油石纹砖直铺，台盆背墙同色，不使用真实天然石性能假设。",
+          "render": {
+            "kitchen_floor": {
+              "tile_mm": [
+                600,
+                600
+              ],
+              "color": "#d3c9b6"
+            },
+            "kitchen_wall": {
+              "tile_mm": [
+                300,
+                600
+              ],
+              "color": "#f0e7d8"
+            },
+            "bath_floor": {
+              "tile_mm": [
+                300,
+                300
+              ],
+              "color": "#c1b5a2"
+            },
+            "bath_wall": {
+              "tile_mm": [
+                600,
+                1200
+              ],
+              "color": "#e9deca"
+            }
+          }
+        },
+        {
+          "id": "custom_cabinet",
+          "label": "定制衣柜及厨卫柜饰面",
+          "status": "选材方向，待实物小样与现场深化",
+          "brand": null,
+          "sku": null,
+          "price_cny": null,
+          "specification": "定制衣柜奶白平板门为主，少量浅橡木开放格；厨房柜门奶白、台面浅米细纹。宜家成品白柜继续保持白色，不用本方案色值重染。",
+          "render": {
+            "custom_wood": "#d2b89a",
+            "custom_paint": "#efe6d7",
+            "wood_share": 0.2,
+            "handle": "低存在感同色细拉手"
+          }
+        },
+        {
+          "id": "doors",
+          "label": "门与踢脚线",
+          "status": "选材方向，待实物小样与现场深化",
+          "brand": null,
+          "sku": null,
+          "price_cny": null,
+          "specification": "卧室奶白平板门、同色窄门套；约60mm高奶白踢脚线。保留标准门洞与直角墙体，不为效果图额外增加拱门。",
+          "render": {
+            "door": "#eee5d6",
+            "skirting_height_mm": 60,
+            "frame": "#b9af9f"
+          }
+        },
+        {
+          "id": "tv_wall",
+          "label": "电视墙",
+          "status": "选材方向，待实物小样与现场深化",
+          "brand": null,
+          "sku": null,
+          "price_cny": null,
+          "specification": "奶油白墙面上设置浅米色圆角饰板，角部半径约200mm；以柔和边缘形成层次，保持白色BESTÅ电视柜，不设置拱门或壁炉。",
+          "render": {
+            "paint": "#f2e9da",
+            "panel": "#e6d9c4",
+            "panel_scope": "平面局部细石纹饰板"
+          }
+        },
+        {
+          "id": "lighting",
+          "label": "照明层次",
+          "status": "选材方向，待实物小样与现场深化",
+          "brand": null,
+          "sku": null,
+          "price_cny": null,
+          "specification": "现有宜家灯体与2700K光源保留，奶油墙面负责柔化反射；固定柜下和电视墙局部3000K灯带仅作为预留方向，不模拟不存在的宜家灯具型号。",
+          "render": {
+            "ikea_light_kelvin": 2700,
+            "proposed_fixed_strip_kelvin": 3000
+          }
+        }
+      ],
+      "soft_groups": [
+        "茶几改LACK白色",
+        "三个靠垫改原色棉",
+        "沙发毯改浅米色",
+        "地毯改VINDEBÄK浅米长绒"
+      ],
+      "notes": [
+        "KIVIK沙发及脚凳仍为提伯勒比米色/灰色，不染成纯奶油色。",
+        "保留GILLERSBERG竹/白床头桌，维持与白色茶几的呼应。",
+        "VINDEBÄK范围195×133cm小于原地毯220×155cm；短边沿现有地毯短边，固定中心。"
+      ]
+    },
+    {
+      "id": "white_minimal",
+      "name": "木白极简",
+      "eyebrow": "WOOD & WHITE",
+      "tagline": "浅灰大砖 · 悬浮背板",
+      "summary": "浅灰大方砖与白墙构成清爽基底，灰色沙发、白色茶几和少量真实木色家具形成清楚层次。",
+      "palette": {
+        "wall": "#f4f3ee",
+        "wood": "#c9b596",
+        "tile": "#d7d8d4",
+        "accent": "#727778"
+      },
+      "architecture": {
+        "full": "assets/styles/white_minimal/architecture-full.glb",
+        "cut": "assets/styles/white_minimal/architecture-cut.glb"
+      },
+      "preview": "assets/styles/white_minimal/overview.webp",
+      "interior_preview": "assets/styles/white_minimal/living.webp",
+      "choices": {
+        "living_sofa": "ikea_parup_sofa_79389470",
+        "living_coffee": "ikea_lack_coffee_70449906",
+        "sofa_cushion_1": "ikea_gurli_white_40598728",
+        "sofa_cushion_2": "ikea_gurli_white_40598728",
+        "sofa_cushion_3": "ikea_gurli_white_40598728",
+        "sofa_throw": "ikea_daggkapor_beige_00624593"
+      },
+      "ikea_total_cents": 3869973,
+      "hard_finishes": [
+        {
+          "id": "living_floor",
+          "label": "客餐厅及玄关地砖",
+          "status": "选材方向，待实物小样与现场深化",
+          "brand": null,
+          "sku": null,
+          "price_cny": null,
+          "specification": "800×800mm浅灰细石纹哑光瓷砖，正铺对缝，浅灰填缝；客餐厅统一网格，排版起点以入口与主要墙线协调。",
+          "render": {
+            "material": "fine_stone_porcelain",
+            "tile_mm": [
+              800,
+              800
+            ],
+            "layout": "stacked",
+            "direction": "plan_axes",
+            "color": "#d7d8d4",
+            "roughness": 0.66
+          }
+        },
+        {
+          "id": "bedroom_floor",
+          "label": "三间卧室地面",
+          "status": "选材方向，待实物小样与现场深化",
+          "brand": null,
+          "sku": null,
+          "price_cny": null,
+          "specification": "200×1200mm浅灰橡木纹砖，沿图面长向约1/3错缝，木色比自然原木方案更浅、更少黄调。",
+          "render": {
+            "material": "wood_look_porcelain",
+            "tile_mm": [
+              200,
+              1200
+            ],
+            "layout": "one_third_stagger",
+            "direction": "plan_y",
+            "color": "#c9b596"
+          }
+        },
+        {
+          "id": "wall_paint",
+          "label": "墙面与顶面",
+          "status": "选材方向，待实物小样与现场深化",
+          "brand": null,
+          "sku": null,
+          "price_cny": null,
+          "specification": "墙面选中性偏暖白哑光乳胶漆，顶面同色浅档；不做大面积灰绿墙，灰色由PÄRUP真实灰色沙发承担。",
+          "render": {
+            "wall": "#f4f3ee",
+            "ceiling": "#faf9f4",
+            "accent_wall": null
+          }
+        },
+        {
+          "id": "wet_tiles",
+          "label": "厨房与两卫瓷砖",
+          "status": "选材方向，待实物小样与现场深化",
+          "brand": null,
+          "sku": null,
+          "price_cny": null,
+          "specification": "厨房地面600×600mm浅灰砖，墙面300×600mm白色砖横向对缝；卫生间地面300×300mm中浅灰防滑砖，墙面600×1200mm浅灰白砖，局部台盆背墙可用600×600mm同系砖。",
+          "render": {
+            "kitchen_floor": {
+              "tile_mm": [
+                600,
+                600
+              ],
+              "color": "#d0d2ce"
+            },
+            "kitchen_wall": {
+              "tile_mm": [
+                300,
+                600
+              ],
+              "color": "#f1f1eb"
+            },
+            "bath_floor": {
+              "tile_mm": [
+                300,
+                300
+              ],
+              "color": "#acb0ac"
+            },
+            "bath_wall": {
+              "tile_mm": [
+                600,
+                1200
+              ],
+              "color": "#e1e3de"
+            }
+          }
+        },
+        {
+          "id": "custom_cabinet",
+          "label": "定制衣柜及厨卫柜饰面",
+          "status": "选材方向，待实物小样与现场深化",
+          "brand": null,
+          "sku": null,
+          "price_cny": null,
+          "specification": "定制衣柜白色平板门，浅木内柜，局部木色开放格；厨房白色柜门配浅灰台面。保留宜家白色收纳柜和真实白蜡木餐椅，木纹不统一涂成假橡木色。",
+          "render": {
+            "custom_wood": "#c9b596",
+            "custom_paint": "#f0efea",
+            "wood_share": 0.15,
+            "handle": "细深灰拉手"
+          }
+        },
+        {
+          "id": "doors",
+          "label": "门与踢脚线",
+          "status": "选材方向，待实物小样与现场深化",
+          "brand": null,
+          "sku": null,
+          "price_cny": null,
+          "specification": "卧室白色平板门、白色门套与约50mm高白色踢脚线；厨房移门采用中灰细框和清透玻璃，仍保留CAD移门形式。",
+          "render": {
+            "door": "#efefea",
+            "skirting_height_mm": 50,
+            "frame": "#747a78"
+          }
+        },
+        {
+          "id": "tv_wall",
+          "label": "电视墙",
+          "status": "选材方向，待实物小样与现场深化",
+          "brand": null,
+          "sku": null,
+          "price_cny": null,
+          "specification": "白墙前设置薄悬浮浅灰背板和细阴缝，与白色BESTÅ柜、深色电视形成简洁层次；板厚、插座和走线待现场深化。",
+          "render": {
+            "paint": "#f4f3ee",
+            "panel": null,
+            "panel_scope": "无新增墙板"
+          }
+        },
+        {
+          "id": "lighting",
+          "label": "照明层次",
+          "status": "选材方向，待实物小样与现场深化",
+          "brand": null,
+          "sku": null,
+          "price_cny": null,
+          "specification": "宜家白色灯体与既有2700K光源保留，白墙保持清爽而不把真实商品灯色改成冷白；厨房工作面可预留独立3000K固定照明，具体型号与回路待深化。",
+          "render": {
+            "ikea_light_kelvin": 2700,
+            "proposed_fixed_strip_kelvin": 3000
+          }
+        }
+      ],
+      "soft_groups": [
+        "沙发改PÄRUP威索尔灰色",
+        "茶几改LACK白色",
+        "三个靠垫改GURLI白色",
+        "沙发毯改浅米色"
+      ],
+      "notes": [
+        "KIVIK米灰脚凳作为独立中性休闲脚凳保留，不伪装为PÄRUP同系列产品。",
+        "TIPHEDE黑/自然色地毯与STOPP防滑垫保留，增加细黑纹理。",
+        "GILLERSBERG竹/白床头桌保留。"
+      ]
+    }
+  ]
+}

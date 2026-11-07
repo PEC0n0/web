@@ -68,7 +68,7 @@ test('儿童120床原子更新床垫、床笠、被套、被芯和单枕，重�
 
 test('仅允许显式白名单；恢复存档丢弃未知实例、错误类型和跨家具商品', () => {
   const engine = create();
-  assert.equal(engine.instances.filter(item => engine.options(item.id).length > 1).length, 7);
+  assert.equal(engine.instances.filter(item => engine.options(item.id).length > 1).length, 12);
   assert.equal(engine.options('does-not-exist').length, 0);
   assert.equal(engine.getInstance('does-not-exist', {}), null);
 });
@@ -111,9 +111,9 @@ test('床头柜变高会抬升对应台灯；候选保持锚点和旋转，现�
   assert.equal(manifest.instances.find(item => item.id === '主卧_lamp_1').position[1], 0.56);
 });
 
-test('所有128种已检查组合预算都可计算；锚点或候选规格变化后停止套用空间结论', () => {
+test('原有7个位置的128种组合预算可计算；锚点或候选规格变化后停止套用空间结论', () => {
   const engine = create();
-  const ids = engine.instances.filter(item => engine.options(item.id).length > 1).map(item => item.id);
+  const ids = ['living_sofa','living_coffee','child_bed','主卧_bedside_1','主卧_bedside_2','长辈房_bedside_1','长辈房_bedside_2'];
   for (let mask = 0; mask < 128; mask += 1) {
     let state = engine.defaultState();
     ids.forEach((id, bit) => {

@@ -4,13 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#f4f2ec">
-  <meta name="description" content="Peco 的新家装修手记。转一转户型，试试不同的宜家家具，把喜欢的生活慢慢放进家里。">
+  <meta name="description" content="Peco 的新家装修手记。比较自然原木、日式素木、奶油简约与木白极简四套新方案，在线更换宜家家具，查看瓷砖、墙面和硬装搭配。">
   <title>我的新家 · 3D 装修 | Peco</title>
   <link rel="canonical" href="https://peco.ink/home/">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./style.css?v=20261107-1">
+  <link rel="stylesheet" href="./style.css?v=20261107-styles1">
   <script type="importmap">{"imports":{"three":"./vendor/three/build/three.module.min.js","three/addons/":"./vendor/three/examples/jsm/"}}</script>
-  <script type="module" src="./app.js?v=20261107-1"></script>
+  <script type="module" src="./app.js?v=20261107-styles1"></script>
 </head>
 <body>
   <a class="skip-link" href="#workspace">跳到装修预览</a>
@@ -21,9 +21,10 @@
   </header>
   <main>
     <section class="intro">
-      <div><p class="eyebrow"><i></i> A PLACE TO CALL HOME</p><h1>把家，<em>慢慢布置好。</em></h1><p class="intro-note">暖白、浅木与一点灰绿。转一转，看看未来生活的样子。</p></div>
+      <div><p class="eyebrow"><i></i> A PLACE TO CALL HOME</p><h1>一个家，<em>几种喜欢的样子。</em></h1><p class="intro-note">从原木的温润，到简约的留白。选一套风格，再慢慢搭配。</p></div>
       <button type="button" class="budget-summary" id="budget-button" aria-haspopup="dialog"><span>家具与软装参考预算 <span aria-hidden="true">↗</span></span><strong id="budget-total">¥39,649.73</strong><small id="budget-delta">含床垫、床品、窗帘和灯具</small></button>
     </section>
+    <section class="style-section" aria-label="选择装修风格"><div class="style-section-heading"><span class="eyebrow">FIND YOUR FEELING / 装修方案</span><span>每套搭配独立保存</span></div><div id="style-list" class="style-list"></div><div class="style-description"><div><strong id="active-style-name">原方案</strong><p id="active-style-summary"></p></div><button type="button" id="finishes-button">瓷砖、墙面与硬装选材 <span aria-hidden="true">↗</span></button></div></section>
     <section class="workspace" id="workspace" aria-label="三维装修工作台">
       <aside class="room-panel" aria-label="空间与家具选择">
         <div class="panel-heading"><span class="eyebrow">01 / 空间</span><span class="tiny-note">三居室</span></div>
@@ -31,10 +32,10 @@
         <div class="furniture-heading"><span class="eyebrow">02 / 家具</span><label class="swap-filter"><input id="replaceable-only" type="checkbox" checked> 可替换</label></div>
         <label class="search-box"><span aria-hidden="true">⌕</span><input id="furniture-search" type="search" placeholder="搜索家具或货号" aria-label="搜索家具或货号"></label>
         <div id="furniture-list" class="furniture-list" aria-label="家具列表"><p class="muted empty-list">正在整理家具…</p></div>
-        <div class="palette"><span class="swatch oak"></span><span class="swatch chalk"></span><span class="swatch sage"></span><div>温暖简约<small>WARM & SIMPLE</small></div></div>
+        <div class="palette" id="active-palette"></div>
       </aside>
       <div class="viewer-panel">
-        <div class="viewer-toolbar"><div class="view-modes" role="group" aria-label="视角"><button type="button" data-view="iso" class="active" aria-pressed="true">立体</button><button type="button" data-view="top" aria-pressed="false">俯视</button><button type="button" data-view="living" aria-pressed="false">客厅</button></div><label class="cut-toggle"><input id="cutaway" type="checkbox" checked><span>剖开墙体</span></label></div>
+        <div class="viewer-toolbar"><div class="view-modes" role="group" aria-label="视角"><button type="button" data-view="iso" class="active" aria-pressed="true">立体</button><button type="button" data-view="top" aria-pressed="false">俯视</button><button type="button" data-view="living" aria-pressed="false">客厅</button><button type="button" data-view="interior" aria-pressed="false">室内</button></div><label class="cut-toggle"><input id="cutaway" type="checkbox" checked><span>剖开墙体</span></label></div>
         <div class="viewport" id="viewport" aria-label="可拖动旋转、缩放并选择家具的三维户型" tabindex="0">
           <img id="preview-poster" src="./assets/overview.png" alt="暖白浅木色三居室装修方案轴测图" class="preview-poster">
           <div id="room-labels" class="room-labels" aria-hidden="true"></div>
@@ -42,16 +43,17 @@
           <div class="viewer-fallback" id="viewer-fallback" hidden><strong>先看看家的全貌</strong><p id="fallback-reason">当前设备暂时无法显示三维画面，仍可查看家具与预算。</p><button type="button" id="retry-viewer">重新加载三维</button><a href="./assets/floorplan.png" target="_blank" rel="noopener">打开俯视图 ↗</a></div>
         </div>
         <div class="viewer-bottom"><span id="view-hint"><span class="hint-dot"></span> 拖动旋转 · 滚轮缩放 · 点选家具</span><div class="zoom-controls"><button type="button" id="zoom-out" aria-label="缩小">−</button><button type="button" id="reset-view" aria-label="恢复全屋视角">⌂</button><button type="button" id="zoom-in" aria-label="放大">+</button><button type="button" id="fullscreen" aria-label="全屏查看">⛶</button></div></div>
-        <div class="viewer-caption"><span>滨江城 · 温暖简约方案</span><span>尺寸示意 · 层高暂按 2.8 m</span></div>
+        <div class="viewer-caption"><span id="viewer-style-caption">滨江城 · 原方案</span><span>尺寸示意 · 层高暂按 2.8 m</span></div>
       </div>
       <aside class="inspector" id="inspector" aria-label="所选家具详情"><div class="panel-heading"><span class="eyebrow">03 / 家具详情</span><span class="tiny-note">IKEA 宜家</span></div><div id="inspector-content"><p class="muted">点选模型或左侧列表中的一件家具，查看型号与搭配。</p></div></aside>
     </section>
-    <section class="design-footer"><p><span class="small-star">✦</span> 先试着搭配，再决定喜欢哪一种。<span class="footer-detail">支持沙发、茶几、床头柜与儿童床的备选切换。</span></p><div><button type="button" id="export-design">导出我的方案 <span aria-hidden="true">↓</span></button><label class="import-button" for="import-design">导入方案 <span aria-hidden="true">↑</span></label><input type="file" id="import-design" accept="application/json,.json" hidden><button type="button" id="reset-design">恢复初始方案</button></div></section>
+    <section class="design-footer"><p><span class="small-star">✦</span> 先试着搭配，再决定喜欢哪一种。<span class="footer-detail">沙发、茶几、床、靠垫与地毯，可按自己的喜好更换。</span></p><div><button type="button" id="export-design">导出全部方案 <span aria-hidden="true">↓</span></button><label class="import-button" for="import-design">导入方案 <span aria-hidden="true">↑</span></label><input type="file" id="import-design" accept="application/json,.json" hidden><button type="button" id="reset-design">重置当前搭配</button></div></section>
     <p class="page-note">选择保存在当前浏览器；可导出留存。衣柜按定制设计，厨卫与家电为布置示意。价格核对于 2026.11.07，购买时请以宜家官网为准。</p>
   </main>
   <dialog id="budget-dialog" class="budget-dialog"><div class="dialog-heading"><div><p class="eyebrow">THE LITTLE THINGS ADD UP</p><h2>把喜欢的，记在清单里。</h2></div><button type="button" data-close aria-label="关闭预算清单">×</button></div><p class="dialog-note">按采购包装与组合计算，包含未单独展示的床品、轨道和灯泡。不含定制衣柜、硬装、厨卫、家电、运输及安装。</p><div class="budget-dialog-total"><span>当前方案</span><strong id="dialog-total"></strong><button type="button" id="export-budget">导出采购清单 ↓</button></div><div class="table-scroll"><table><thead><tr><th>空间 / 商品</th><th>货号</th><th>数量</th><th>单价</th><th>小计</th></tr></thead><tbody id="budget-lines"></tbody></table></div></dialog>
-  <dialog id="about-dialog"><div class="dialog-heading"><div><p class="eyebrow">ABOUT THIS HOME</p><h2>关于这个家的方案</h2></div><button type="button" data-close aria-label="关闭方案说明">×</button></div><div class="about-copy"><p>根据 CAD 的「平面布置方案图」设计。主卧、长辈房、儿童房，连着开放的客餐厅和休闲阳台；暖白为底，浅木与灰绿点缀。</p><p>家具、床品、窗帘与灯具均选用宜家，详情保留具体货号和官方链接；衣柜按定制设计。为适配标准床架，儿童房改用 73 cm 学习桌，衣柜移至侧墙。该房间较紧，椅子收进桌下，取用衣柜时需移开座椅。</p><p>三维家具是按商品尺寸制作的简化模型，并非宜家官方三维资产。墙高暂按 2.8 m，衣柜高 2.6 m，门窗高度待实测；模型用于搭配预览，现场尺寸与通道还需复核。</p><p>当前可切换 7 个位置的 4 类家具；儿童床切换联动床垫与床品预算，床头柜切换同步调整台灯高度。替换家具保持真实尺寸，不能直接把网页预览当作安装确认。</p><p>预算为 2026 年 11 月 7 日官网标价参考，包含床垫、床品、灯泡、窗帘轨道及地毯防滑垫。价格、库存和送装费用以购买时页面为准。</p><p>方案仅保存在当前浏览器。导出文件可在另一台设备导入；恢复初始方案不会影响原始设计文件。</p></div></dialog>
-  <dialog id="reset-dialog" class="confirm-dialog"><h2>回到最初的搭配？</h2><p>将恢复全部家具的初始型号。你可以先导出当前方案留存。</p><div class="confirm-actions"><button type="button" data-close>保留当前方案</button><button type="button" id="confirm-reset" class="primary">恢复初始方案</button></div></dialog>
+  <dialog id="about-dialog"><div class="dialog-heading"><div><p class="eyebrow">ABOUT THIS HOME</p><h2>关于这个家的方案</h2></div><button type="button" data-close aria-label="关闭方案说明">×</button></div><div class="about-copy"><p>根据 CAD 的「平面布置方案图」设计。保留三间卧室、客餐厅与阳台的布局。原方案之外，新增自然原木、日式素木、奶油简约和木白极简四套方案，覆盖地砖、墙面、定制柜、门扇、电视墙及软装。</p><p>家具、床品、窗帘与灯具均选用宜家，详情保留具体货号和官方链接；衣柜按定制设计。为适配标准床架，儿童房改用 73 cm 学习桌，衣柜移至侧墙。该房间较紧，椅子收进桌下，取用衣柜时需移开座椅。</p><p>三维家具是按商品尺寸制作的简化模型，并非宜家官方三维资产。墙高暂按 2.8 m，衣柜高 2.6 m，门窗高度待实测；模型用于搭配预览，现场尺寸与通道还需复核。</p><p>当前可在 12 个位置切换家具与纺织品；儿童床切换联动床垫与床品预算，床头柜切换同步调整台灯高度，带防滑背衬的地毯会同步移除另购防滑垫。替换家具保持真实尺寸，不能直接把网页预览当作安装确认。</p><p>预算为 2026 年 11 月 7 日官网标价参考，包含床垫、床品、灯泡、窗帘轨道及地毯防滑垫。价格、库存和送装费用以购买时页面为准。</p><p>方案仅保存在当前浏览器。五套风格各自保存家具选择，导出文件可在另一台设备导入；重置仅影响当前风格。旧版方案可导入到「原方案」中。</p></div></dialog>
+  <dialog id="finishes-dialog" class="finishes-dialog"><div class="dialog-heading"><div><p class="eyebrow">MATERIALS & MOOD</p><h2 id="finishes-title">硬装与软装搭配</h2></div><button type="button" data-close aria-label="关闭选材清单">×</button></div><p class="dialog-note">硬装列出颜色、材质和规格方向，尚未选定品牌或施工报价；页面预算仅含宜家家具与软装。</p><div id="finishes-content"></div></dialog>
+  <dialog id="reset-dialog" class="confirm-dialog"><h2>重置这套风格的搭配？</h2><p>仅恢复当前风格的初始家具，其余风格的搭配会保留。你可以先导出全部方案留存。</p><div class="confirm-actions"><button type="button" data-close>保留当前方案</button><button type="button" id="confirm-reset" class="primary">重置当前搭配</button></div></dialog>
   <div class="toast" id="toast" role="status" hidden></div>
   <noscript><div class="noscript">开启 JavaScript 后可旋转户型和更换家具。你也可以直接查看<a href="./assets/floorplan.png">俯视布置图</a>。</div></noscript>
 </body>

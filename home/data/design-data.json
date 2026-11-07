@@ -786,11 +786,6 @@
       "warnings": []
     },
     "living_coffee": {
-      "allowed_product_ids": [
-        "ikea_borgeby_coffee_70449402",
-        "ikea_lack_coffee_70449906"
-      ],
-      "default_product_id": "ikea_borgeby_coffee_70449402",
       "position": [
         6.418,
         0,
@@ -802,6 +797,10 @@
         0,
         1.0
       ],
+      "allowed_product_ids": [
+        "ikea_lack_coffee_70449906",
+        "ikea_lisabo_coffee_90353064"
+      ],
       "validated_dimensions_m": {
         "ikea_borgeby_coffee_70449402": [
           0.7,
@@ -812,9 +811,189 @@
           0.9,
           0.55,
           0.45
+        ],
+        "ikea_lisabo_coffee_90353064": [
+          0.7,
+          0.7,
+          0.5
         ]
       },
-      "warnings": []
+      "warnings": [
+        "按现有固定位置和尺寸示意检查；实物厚度、颜色及通行仍需现场复核。"
+      ]
+    },
+    "sofa_cushion_1": {
+      "position": [
+        5.65,
+        0.51,
+        -3.92
+      ],
+      "quaternion": [
+        0,
+        0.0,
+        0,
+        1.0
+      ],
+      "allowed_product_ids": [
+        "ikea_gurli_unbleached_00598730",
+        "ikea_gurli_white_40598728"
+      ],
+      "validated_dimensions_m": {
+        "ikea_gurli_cushion_10598758": [
+          0.5,
+          0.12,
+          0.5
+        ],
+        "ikea_gurli_unbleached_00598730": [
+          0.5,
+          0.12,
+          0.5
+        ],
+        "ikea_gurli_white_40598728": [
+          0.5,
+          0.12,
+          0.5
+        ]
+      },
+      "warnings": [
+        "按现有固定位置和尺寸示意检查；实物厚度、颜色及通行仍需现场复核。"
+      ]
+    },
+    "sofa_cushion_2": {
+      "position": [
+        6.43,
+        0.51,
+        -3.92
+      ],
+      "quaternion": [
+        0,
+        0.0,
+        0,
+        1.0
+      ],
+      "allowed_product_ids": [
+        "ikea_gurli_unbleached_00598730",
+        "ikea_gurli_white_40598728"
+      ],
+      "validated_dimensions_m": {
+        "ikea_gurli_cushion_10598758": [
+          0.5,
+          0.12,
+          0.5
+        ],
+        "ikea_gurli_unbleached_00598730": [
+          0.5,
+          0.12,
+          0.5
+        ],
+        "ikea_gurli_white_40598728": [
+          0.5,
+          0.12,
+          0.5
+        ]
+      },
+      "warnings": [
+        "按现有固定位置和尺寸示意检查；实物厚度、颜色及通行仍需现场复核。"
+      ]
+    },
+    "sofa_cushion_3": {
+      "position": [
+        7.05,
+        0.51,
+        -3.92
+      ],
+      "quaternion": [
+        0,
+        0.0,
+        0,
+        1.0
+      ],
+      "allowed_product_ids": [
+        "ikea_gurli_unbleached_00598730",
+        "ikea_gurli_white_40598728"
+      ],
+      "validated_dimensions_m": {
+        "ikea_gurli_cushion_10598758": [
+          0.5,
+          0.12,
+          0.5
+        ],
+        "ikea_gurli_unbleached_00598730": [
+          0.5,
+          0.12,
+          0.5
+        ],
+        "ikea_gurli_white_40598728": [
+          0.5,
+          0.12,
+          0.5
+        ]
+      },
+      "warnings": [
+        "按现有固定位置和尺寸示意检查；实物厚度、颜色及通行仍需现场复核。"
+      ]
+    },
+    "sofa_throw": {
+      "position": [
+        5.72,
+        0.56,
+        -4.25
+      ],
+      "quaternion": [
+        0,
+        0.0,
+        0,
+        1.0
+      ],
+      "allowed_product_ids": [
+        "ikea_daggkapor_beige_00624593"
+      ],
+      "validated_dimensions_m": {
+        "ikea_daggkapor_throw_90602695": [
+          1.3,
+          1.7,
+          0.02
+        ],
+        "ikea_daggkapor_beige_00624593": [
+          0.65,
+          0.75,
+          0.025
+        ]
+      },
+      "warnings": [
+        "按现有固定位置和尺寸示意检查；实物厚度、颜色及通行仍需现场复核。"
+      ]
+    },
+    "living_rug": {
+      "position": [
+        6.6,
+        0.001,
+        -5.02
+      ],
+      "quaternion": [
+        0,
+        0.0,
+        0,
+        1.0
+      ],
+      "allowed_product_ids": [
+        "ikea_vindebak_rug_80507887"
+      ],
+      "validated_dimensions_m": {
+        "ikea_tiphede_rug_60470045": [
+          2.2,
+          1.55,
+          0.002
+        ],
+        "ikea_vindebak_rug_80507887": [
+          1.95,
+          1.33,
+          0.034
+        ]
+      },
+      "warnings": [
+        "按现有固定位置和尺寸示意检查；实物厚度、颜色及通行仍需现场复核。"
+      ]
     }
   },
   "support_rules": [
@@ -885,6 +1064,28 @@
         ],
         "note": "120cm床联动120cm床垫和床笠、150×200cm被套被芯，并改为单枕。"
       }
+    },
+    "living_rug": {
+      "ikea_vindebak_rug_80507887": {
+        "room": "客餐厅",
+        "remove": [
+          {
+            "product_id": "ikea_tiphede_rug_60470045",
+            "quantity": 1
+          },
+          {
+            "product_id": "ikea_stopp_filt_30183084",
+            "quantity": 1
+          }
+        ],
+        "add": [
+          {
+            "product_id": "ikea_vindebak_rug_80507887",
+            "quantity": 1
+          }
+        ],
+        "note": "VINDEBÄK自带防滑背衬，联动取消原STOPP FILT衬垫；换回原地毯时恢复。"
+      }
     }
   },
   "fit_audit": {
@@ -893,7 +1094,13 @@
     "room_containment": "passed",
     "solid_footprint_overlap": "passed",
     "expected_overlap": "儿童书桌椅收进桌下",
-    "limits": "按尺寸代理的固定锚点包围盒检查；不等于实物安装、公差、门扇动态或通行净宽已验证。"
+    "limits": "按尺寸代理的固定锚点包围盒检查；不等于实物安装、公差、门扇动态或通行净宽已验证。",
+    "additional_candidates": {
+      "coffee_lisabo": "与原圆茶几相同70×70cm占地",
+      "cushions": "沿用50×12×50cm填充外廓",
+      "throw": "沿用65×75cm折叠展示",
+      "rug": "195×133cm，占地包含在原220×155cm地毯内"
+    }
   },
   "general_warnings": [
     "按固定位置和记录的产品外廓校验；购买前仍需现场量尺。",

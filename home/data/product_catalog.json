@@ -2194,6 +2194,141 @@
         0.2
       ],
       "selected_quantity": 1
+    },
+    {
+      "product_id": "ikea_gurli_unbleached_00598730",
+      "category": "cushion_cover",
+      "name": "GURLI",
+      "name_cn": "格尔利 垫套",
+      "sku": "005.987.30",
+      "color": "原色（未漂白、未染色棉）",
+      "dimensions_m": [
+        0.5,
+        null,
+        0.5
+      ],
+      "price_cny": 29.99,
+      "url": "https://www.ikea.cn/cn/zh/p/gurli-cushion-cover-unbleached-00598730/",
+      "model_category": "cushion",
+      "model_dimensions_m": [
+        0.5,
+        0.12,
+        0.5
+      ],
+      "display_color_hex": "#e6dcc7",
+      "notes": "50×50cm，100%棉；垫芯另购，沿用现有INNER 402.621.94数量3，不重复增购。0.12m为填充后模型厚度假设，非垫套官方厚度。天然原色存在色差。",
+      "brand": "IKEA 宜家",
+      "checked_date": "2026-11-07",
+      "price_cents": 2999,
+      "pack_quantity": 1,
+      "availability": "按中国官网当前商品页面核实；未选择配送地区，库存未确认",
+      "geometry_status": "自建尺寸代理，非宜家官方三维资产",
+      "color_note": "display_color_hex为网页示意色，不是品牌色号；不得用此色覆盖其他SKU。",
+      "selection": "alternative",
+      "selected_quantity": 0
+    },
+    {
+      "product_id": "ikea_gurli_white_40598728",
+      "category": "cushion_cover",
+      "name": "GURLI",
+      "name_cn": "格尔利 垫套",
+      "sku": "405.987.28",
+      "color": "白色",
+      "dimensions_m": [
+        0.5,
+        null,
+        0.5
+      ],
+      "price_cny": 29.99,
+      "url": "https://www.ikea.cn/cn/zh/p/gurli-cushion-cover-white-40598728/",
+      "model_category": "cushion",
+      "model_dimensions_m": [
+        0.5,
+        0.12,
+        0.5
+      ],
+      "display_color_hex": "#f2f1eb",
+      "notes": "50×50cm，100%棉；垫芯另购，沿用现有INNER 402.621.94数量3，不重复增购。0.12m为填充后模型厚度假设。依据页面标题、已选规格和商品描述的白色，未采用页面设计师理念中泛用的未漂白文案。",
+      "brand": "IKEA 宜家",
+      "checked_date": "2026-11-07",
+      "price_cents": 2999,
+      "pack_quantity": 1,
+      "availability": "按中国官网当前商品页面核实；未选择配送地区，库存未确认",
+      "geometry_status": "自建尺寸代理，非宜家官方三维资产",
+      "color_note": "display_color_hex为网页示意色，不是品牌色号；不得用此色覆盖其他SKU。",
+      "selection": "alternative",
+      "selected_quantity": 0
+    },
+    {
+      "product_id": "ikea_daggkapor_beige_00624593",
+      "category": "throw",
+      "name": "DAGGKÅPOR",
+      "name_cn": "达格考帕 休闲毯",
+      "sku": "006.245.93",
+      "color": "浅米色（部分页面标题称淡米色）",
+      "dimensions_m": [
+        1.3,
+        1.7,
+        null
+      ],
+      "price_cny": 39.99,
+      "url": "https://www.ikea.cn/cn/zh/p/daggkapor-da-ge-kao-pa-xiu-xian-tan-dan-mi-se-00624593/",
+      "model_category": "throw",
+      "model_dimensions_m": [
+        0.65,
+        0.75,
+        0.025
+      ],
+      "display_color_hex": "#d4c7b1",
+      "notes": "展开130×170cm；模型沿用折叠姿态，折叠外形不是商品原始尺寸。材料表与详细描述为100%聚酯纤维（至少90%再生材料）；页面简介有棉料字样冲突，以详细材料表为准。",
+      "brand": "IKEA 宜家",
+      "checked_date": "2026-11-07",
+      "price_cents": 3999,
+      "pack_quantity": 1,
+      "availability": "按中国官网当前商品页面核实；未选择配送地区，库存未确认",
+      "geometry_status": "自建尺寸代理，非宜家官方三维资产",
+      "color_note": "display_color_hex为网页示意色，不是品牌色号；不得用此色覆盖其他SKU。",
+      "selection": "alternative",
+      "selected_quantity": 0
+    },
+    {
+      "product_id": "ikea_vindebak_rug_80507887",
+      "category": "rug",
+      "name": "VINDEBÄK",
+      "name_cn": "文德拜 长绒地毯",
+      "sku": "805.078.87",
+      "color": "浅米色/淡米色，双色混合纱线",
+      "dimensions_m": [
+        1.95,
+        1.33,
+        0.007
+      ],
+      "price_cny": 499,
+      "url": "https://www.ikea.cn/cn/zh/p/vindebaek-wen-de-bai-chang-rong-di-tan-dan-mi-se-80507887/",
+      "model_category": "rug",
+      "model_dimensions_m": [
+        1.95,
+        1.33,
+        0.034
+      ],
+      "display_color_hex": "#d4cbb7",
+      "verified_dimensions": {
+        "length_m": 1.95,
+        "width_m": 1.33,
+        "listed_thickness_m": 0.007,
+        "pile_length_m": 0.034
+      },
+      "has_anti_slip_backing": true,
+      "notes": "官方同时给厚度7mm与绒头长34mm，分开记录；模型0.034m仅作长绒视觉外廓示意，不改写官方厚度。带合成橡胶防滑背衬，无需再铺衬底；替换TIPHEDE时从采购清单移除STOPP FILT 301.830.84一块。不能水洗。",
+      "brand": "IKEA 宜家",
+      "checked_date": "2026-11-07",
+      "price_cents": 49900,
+      "pack_quantity": 1,
+      "availability": "按中国官网当前商品页面核实；未选择配送地区，库存未确认",
+      "geometry_status": "自建尺寸代理，非宜家官方三维资产",
+      "color_note": "display_color_hex为网页示意色，不是品牌色号；不得用此色覆盖其他SKU。",
+      "selection": "alternative",
+      "selected_quantity": 0
     }
   ]
 }
