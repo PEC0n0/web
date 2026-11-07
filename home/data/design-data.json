@@ -1,0 +1,902 @@
+{
+  "schema_version": "1.0",
+  "currency": "CNY",
+  "price_checked_date": "2026-11-07",
+  "base_total_cents": 3964973,
+  "bom": [
+    {
+      "product_id": "ikea_malm_180",
+      "room": "主卧",
+      "quantity": 1,
+      "role": "马尔姆 床架带床垫",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_slattum_180",
+      "room": "长辈房",
+      "quantity": 1,
+      "role": "斯拉图 软包床架含床头板套",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_slattum_150",
+      "room": "儿童房",
+      "quantity": 1,
+      "role": "斯拉图 软包床架含床头板套",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_vesteroy_180",
+      "room": "长辈房",
+      "quantity": 1,
+      "role": "180×200床垫",
+      "note": "主卧组合已含床垫，不重复计入。"
+    },
+    {
+      "product_id": "ikea_vesteroy_150",
+      "room": "儿童房",
+      "quantity": 1,
+      "role": "150×200床垫",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_gillersberg_bedside",
+      "room": "主卧",
+      "quantity": 1,
+      "role": "伊利施拜 床头桌",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_fado_lamp",
+      "room": "主卧",
+      "quantity": 1,
+      "role": "法多 台灯",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_gillersberg_bedside",
+      "room": "主卧",
+      "quantity": 1,
+      "role": "伊利施拜 床头桌",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_fado_lamp",
+      "room": "主卧",
+      "quantity": 1,
+      "role": "法多 台灯",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_gillersberg_bedside",
+      "room": "长辈房",
+      "quantity": 1,
+      "role": "伊利施拜 床头桌",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_fado_lamp",
+      "room": "长辈房",
+      "quantity": 1,
+      "role": "法多 台灯",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_gillersberg_bedside",
+      "room": "长辈房",
+      "quantity": 1,
+      "role": "伊利施拜 床头桌",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_fado_lamp",
+      "room": "长辈房",
+      "quantity": 1,
+      "role": "法多 台灯",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_solfibbla_240_beige",
+      "room": "主卧",
+      "quantity": 1,
+      "role": "双人被套枕套",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_dvala_180_sage",
+      "room": "主卧",
+      "quantity": 1,
+      "role": "180床笠",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_smasporre_240",
+      "room": "主卧",
+      "quantity": 1,
+      "role": "双人被芯",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_skogsfraken_pillow",
+      "room": "主卧",
+      "quantity": 2,
+      "role": "枕芯",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_solfibbla_240_beige",
+      "room": "长辈房",
+      "quantity": 1,
+      "role": "双人被套枕套",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_dvala_180_sage",
+      "room": "长辈房",
+      "quantity": 1,
+      "role": "180床笠",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_smasporre_240",
+      "room": "长辈房",
+      "quantity": 1,
+      "role": "双人被芯",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_skogsfraken_pillow",
+      "room": "长辈房",
+      "quantity": 2,
+      "role": "枕芯",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_solfibbla_dvala_150_bundle",
+      "room": "儿童房",
+      "quantity": 1,
+      "role": "150床被套枕套与床笠组合",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_smasporre_200",
+      "room": "儿童房",
+      "quantity": 1,
+      "role": "被芯",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_skogsfraken_pillow",
+      "room": "儿童房",
+      "quantity": 2,
+      "role": "枕芯",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_micke_105",
+      "room": "主卧",
+      "quantity": 1,
+      "role": "梳妆/阅读台",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_lisabo_chair_80457236",
+      "room": "主卧",
+      "quantity": 1,
+      "role": "利萨伯 餐椅",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_micke_73",
+      "room": "儿童房",
+      "quantity": 1,
+      "role": "73cm学习桌",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_orfjall_green",
+      "room": "儿童房",
+      "quantity": 1,
+      "role": "奥菲 转椅",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_tertial_lamp",
+      "room": "儿童房",
+      "quantity": 1,
+      "role": "特提亚 工作灯",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_kivik_sofa_59440592",
+      "room": "客餐厅",
+      "quantity": 1,
+      "role": "奇维 三人沙发",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_kivik_ottoman_79440497",
+      "room": "客餐厅",
+      "quantity": 1,
+      "role": "奇维 储物脚凳",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_borgeby_coffee_70449402",
+      "room": "客餐厅",
+      "quantity": 1,
+      "role": "伯格比 圆茶几",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_besta_tv_19299137",
+      "room": "客餐厅",
+      "quantity": 1,
+      "role": "贝达 带门电视柜",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_tiphede_rug_60470045",
+      "room": "客餐厅",
+      "quantity": 1,
+      "role": "平织地毯",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_stopp_filt_30183084",
+      "room": "客餐厅",
+      "quantity": 1,
+      "role": "地毯防滑垫",
+      "note": "按地毯尺寸裁剪，TIPHEDE官网配套要求。"
+    },
+    {
+      "product_id": "ikea_alhult_dining_00600766",
+      "room": "客餐厅",
+      "quantity": 1,
+      "role": "六人餐桌（展开状态）",
+      "note": "安装状态/展开尺寸，商品原始规格保留在目录。"
+    },
+    {
+      "product_id": "ikea_lisabo_chair_80457236",
+      "room": "客餐厅",
+      "quantity": 1,
+      "role": "利萨伯 餐椅",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_lisabo_chair_80457236",
+      "room": "客餐厅",
+      "quantity": 1,
+      "role": "利萨伯 餐椅",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_lisabo_chair_80457236",
+      "room": "客餐厅",
+      "quantity": 1,
+      "role": "利萨伯 餐椅",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_lisabo_chair_80457236",
+      "room": "客餐厅",
+      "quantity": 1,
+      "role": "利萨伯 餐椅",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_lisabo_chair_80457236",
+      "room": "客餐厅",
+      "quantity": 1,
+      "role": "利萨伯 餐椅",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_lisabo_chair_80457236",
+      "room": "客餐厅",
+      "quantity": 1,
+      "role": "利萨伯 餐椅",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_nymane_pendant_70503818",
+      "room": "客餐厅",
+      "quantity": 1,
+      "role": "纽墨奈 LED吊灯",
+      "note": "安装状态/展开尺寸，商品原始规格保留在目录。"
+    },
+    {
+      "product_id": "ikea_nymane_floor_30455485",
+      "room": "客餐厅",
+      "quantity": 1,
+      "role": "纽墨奈 3灯头落地灯",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_gurli_cushion_10598758",
+      "room": "客餐厅",
+      "quantity": 1,
+      "role": "格尔利 垫套",
+      "note": "安装状态/展开尺寸，商品原始规格保留在目录。"
+    },
+    {
+      "product_id": "ikea_inner_insert_40262194",
+      "room": "客餐厅",
+      "quantity": 1,
+      "role": "抱枕芯",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_gurli_cushion_10598758",
+      "room": "客餐厅",
+      "quantity": 1,
+      "role": "格尔利 垫套",
+      "note": "安装状态/展开尺寸，商品原始规格保留在目录。"
+    },
+    {
+      "product_id": "ikea_inner_insert_40262194",
+      "room": "客餐厅",
+      "quantity": 1,
+      "role": "抱枕芯",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_gurli_cushion_10598758",
+      "room": "客餐厅",
+      "quantity": 1,
+      "role": "格尔利 垫套",
+      "note": "安装状态/展开尺寸，商品原始规格保留在目录。"
+    },
+    {
+      "product_id": "ikea_inner_insert_40262194",
+      "room": "客餐厅",
+      "quantity": 1,
+      "role": "抱枕芯",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_daggkapor_throw_90602695",
+      "room": "客餐厅",
+      "quantity": 1,
+      "role": "沙发毯（折叠展示）",
+      "note": "安装状态/展开尺寸，商品原始规格保留在目录。"
+    },
+    {
+      "product_id": "ikea_hemnes_shoe_00169560",
+      "room": "玄关",
+      "quantity": 1,
+      "role": "汉尼斯 双门鞋柜",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_trones_80397308",
+      "room": "玄关",
+      "quantity": 3,
+      "role": "北侧鞋柜3列×2层",
+      "note": "每包2件，共6件，安装宽1.56m。"
+    },
+    {
+      "product_id": "ikea_billy_80_39545397",
+      "room": "家政储藏",
+      "quantity": 1,
+      "role": "毕利/奥克伯 全高实心门书柜",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_billy_80_39545397",
+      "room": "家政储藏",
+      "quantity": 1,
+      "role": "毕利/奥克伯 全高实心门书柜",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_billy_80_39545397",
+      "room": "家政储藏",
+      "quantity": 1,
+      "role": "毕利/奥克伯 全高实心门书柜",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_billy_80_39545397",
+      "room": "家政储藏",
+      "quantity": 1,
+      "role": "毕利/奥克伯 全高实心门书柜",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_billy_80_39545397",
+      "room": "家政储藏",
+      "quantity": 1,
+      "role": "毕利/奥克伯 全高实心门书柜",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_billy_40_99545399",
+      "room": "家政储藏",
+      "quantity": 1,
+      "role": "毕利/奥克伯 全高实心门书柜",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_besta_short_39221312",
+      "room": "休闲阳台",
+      "quantity": 1,
+      "role": "贝达 带门搁架单元",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_nammaro_chair_70510343",
+      "room": "休闲阳台",
+      "quantity": 1,
+      "role": "耐玛瑞 户外折叠椅",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_nammaro_chair_70510343",
+      "room": "休闲阳台",
+      "quantity": 1,
+      "role": "耐玛瑞 户外折叠椅",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_tarno_table_80165129",
+      "room": "休闲阳台",
+      "quantity": 1,
+      "role": "塔尔诺 户外桌",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_fejka_plant_60615246",
+      "room": "休闲阳台",
+      "quantity": 1,
+      "role": "菲卡 人造龟背竹盆栽",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_korsbarsbjork_pot_00591724",
+      "room": "休闲阳台",
+      "quantity": 1,
+      "role": "雪斯拜别 装饰用花盆",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_raskog_cart_40586792",
+      "room": "盥洗晾晒",
+      "quantity": 1,
+      "role": "拉斯克 手推车",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_annakajsa_curtain_60640566",
+      "room": "主卧",
+      "quantity": 2,
+      "role": "遮光帘",
+      "note": "每包2幅；按近2m窗宽、约2倍褶皱留量，3m高裁短。"
+    },
+    {
+      "product_id": "ikea_hilja_sheer_10430815",
+      "room": "主卧",
+      "quantity": 2,
+      "role": "纱帘",
+      "note": "每包2幅；按窗口分组，最终轨道测量后裁剪。"
+    },
+    {
+      "product_id": "ikea_vidga_double_79571676",
+      "room": "主卧",
+      "quantity": 2,
+      "role": "双轨模组",
+      "note": "1.4m模组×2，按实测裁接。"
+    },
+    {
+      "product_id": "ikea_annakajsa_curtain_60640566",
+      "room": "长辈房",
+      "quantity": 2,
+      "role": "遮光帘",
+      "note": "每包2幅；按近2m窗宽、约2倍褶皱留量，3m高裁短。"
+    },
+    {
+      "product_id": "ikea_hilja_sheer_10430815",
+      "room": "长辈房",
+      "quantity": 2,
+      "role": "纱帘",
+      "note": "每包2幅；按窗口分组，最终轨道测量后裁剪。"
+    },
+    {
+      "product_id": "ikea_vidga_double_79571676",
+      "room": "长辈房",
+      "quantity": 2,
+      "role": "双轨模组",
+      "note": "1.4m模组×2，按实测裁接。"
+    },
+    {
+      "product_id": "ikea_annakajsa_curtain_60640566",
+      "room": "儿童房",
+      "quantity": 2,
+      "role": "遮光帘",
+      "note": "每包2幅；按近2m窗宽、约2倍褶皱留量，3m高裁短。"
+    },
+    {
+      "product_id": "ikea_hilja_sheer_10430815",
+      "room": "儿童房",
+      "quantity": 2,
+      "role": "纱帘",
+      "note": "每包2幅；按窗口分组，最终轨道测量后裁剪。"
+    },
+    {
+      "product_id": "ikea_vidga_double_79571676",
+      "room": "儿童房",
+      "quantity": 2,
+      "role": "双轨模组",
+      "note": "1.4m模组×2，按实测裁接。"
+    },
+    {
+      "product_id": "ikea_hilja_sheer_10430815",
+      "room": "客餐厅",
+      "quantity": 5,
+      "role": "阳台长窗纱帘",
+      "note": "按长窗约6.6m、双幅总宽2.9m/包、约2倍褶皱估算。"
+    },
+    {
+      "product_id": "ikea_vidga_double_79571676",
+      "room": "客餐厅",
+      "quantity": 5,
+      "role": "阳台轨道模组",
+      "note": "按玻璃直线段裁接，窗角现场确定弯头。"
+    },
+    {
+      "product_id": "ikea_nymane_ceiling_20567558",
+      "room": "主卧",
+      "quantity": 1,
+      "role": "纽墨奈 LED吸顶灯",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_nymane_ceiling_20567558",
+      "room": "长辈房",
+      "quantity": 1,
+      "role": "纽墨奈 LED吸顶灯",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_nymane_ceiling_20567558",
+      "room": "儿童房",
+      "quantity": 1,
+      "role": "纽墨奈 LED吸顶灯",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_nymane_ceiling_20567558",
+      "room": "客餐厅",
+      "quantity": 1,
+      "role": "纽墨奈 LED吸顶灯",
+      "note": ""
+    },
+    {
+      "product_id": "ikea_solhetta_gu10_20584100",
+      "room": "客餐厅",
+      "quantity": 3,
+      "role": "落地灯GU10光源",
+      "note": "按NYMÅNE灯头数量配套。"
+    },
+    {
+      "product_id": "ikea_solhetta_e27_60591486",
+      "room": "全屋",
+      "quantity": 3,
+      "role": "E27暖白光源",
+      "note": "每包2颗，4盏FADO+1盏TERTIAL，余1颗备用。餐桌吊灯自带LED。"
+    }
+  ],
+  "replacement_rules": {
+    "child_bed": {
+      "allowed_product_ids": [
+        "ikea_slattum_150",
+        "ikea_slattum_120"
+      ],
+      "default_product_id": "ikea_slattum_150",
+      "position": [
+        7.351,
+        0,
+        -8.045
+      ],
+      "quaternion": [
+        0,
+        0.0,
+        0,
+        1.0
+      ],
+      "validated_dimensions_m": {
+        "ikea_slattum_150": [
+          1.54,
+          2.06,
+          0.85
+        ],
+        "ikea_slattum_120": [
+          1.24,
+          2.06,
+          0.85
+        ]
+      },
+      "warnings": [
+        "120cm方案同时更新床垫、床笠、被套被芯及单枕采购；当前床位中心保持不变。"
+      ]
+    },
+    "主卧_bedside_1": {
+      "allowed_product_ids": [
+        "ikea_gillersberg_bedside",
+        "ikea_nordkisa_bedside"
+      ],
+      "default_product_id": "ikea_gillersberg_bedside",
+      "position": [
+        0.9,
+        0,
+        -12.63
+      ],
+      "quaternion": [
+        0,
+        0.0,
+        0,
+        1.0
+      ],
+      "validated_dimensions_m": {
+        "ikea_gillersberg_bedside": [
+          0.385,
+          0.385,
+          0.56
+        ],
+        "ikea_nordkisa_bedside": [
+          0.4,
+          0.4,
+          0.67
+        ]
+      },
+      "warnings": [
+        "床头桌更换会同步调整台灯高度。",
+        "与床侧最小余量约24mm，需复核实物与墙面误差。"
+      ]
+    },
+    "主卧_bedside_2": {
+      "allowed_product_ids": [
+        "ikea_gillersberg_bedside",
+        "ikea_nordkisa_bedside"
+      ],
+      "default_product_id": "ikea_gillersberg_bedside",
+      "position": [
+        3.31,
+        0,
+        -12.63
+      ],
+      "quaternion": [
+        0,
+        0.0,
+        0,
+        1.0
+      ],
+      "validated_dimensions_m": {
+        "ikea_gillersberg_bedside": [
+          0.385,
+          0.385,
+          0.56
+        ],
+        "ikea_nordkisa_bedside": [
+          0.4,
+          0.4,
+          0.67
+        ]
+      },
+      "warnings": [
+        "床头桌更换会同步调整台灯高度。",
+        "与床侧最小余量约24mm，需复核实物与墙面误差。"
+      ]
+    },
+    "长辈房_bedside_1": {
+      "allowed_product_ids": [
+        "ikea_gillersberg_bedside",
+        "ikea_nordkisa_bedside"
+      ],
+      "default_product_id": "ikea_gillersberg_bedside",
+      "position": [
+        5.35,
+        0,
+        -12.63
+      ],
+      "quaternion": [
+        0,
+        0.0,
+        0,
+        1.0
+      ],
+      "validated_dimensions_m": {
+        "ikea_gillersberg_bedside": [
+          0.385,
+          0.385,
+          0.56
+        ],
+        "ikea_nordkisa_bedside": [
+          0.4,
+          0.4,
+          0.67
+        ]
+      },
+      "warnings": [
+        "床头桌更换会同步调整台灯高度。"
+      ]
+    },
+    "长辈房_bedside_2": {
+      "allowed_product_ids": [
+        "ikea_gillersberg_bedside",
+        "ikea_nordkisa_bedside"
+      ],
+      "default_product_id": "ikea_gillersberg_bedside",
+      "position": [
+        7.78,
+        0,
+        -12.63
+      ],
+      "quaternion": [
+        0,
+        0.0,
+        0,
+        1.0
+      ],
+      "validated_dimensions_m": {
+        "ikea_gillersberg_bedside": [
+          0.385,
+          0.385,
+          0.56
+        ],
+        "ikea_nordkisa_bedside": [
+          0.4,
+          0.4,
+          0.67
+        ]
+      },
+      "warnings": [
+        "床头桌更换会同步调整台灯高度。"
+      ]
+    },
+    "living_sofa": {
+      "allowed_product_ids": [
+        "ikea_kivik_sofa_59440592",
+        "ikea_parup_sofa_79389470"
+      ],
+      "default_product_id": "ikea_kivik_sofa_59440592",
+      "position": [
+        6.36,
+        0,
+        -4.2
+      ],
+      "quaternion": [
+        0,
+        0.0,
+        0,
+        1.0
+      ],
+      "validated_dimensions_m": {
+        "ikea_kivik_sofa_59440592": [
+          2.28,
+          0.95,
+          0.83
+        ],
+        "ikea_parup_sofa_79389470": [
+          2.06,
+          0.8,
+          0.86
+        ]
+      },
+      "warnings": []
+    },
+    "living_coffee": {
+      "allowed_product_ids": [
+        "ikea_borgeby_coffee_70449402",
+        "ikea_lack_coffee_70449906"
+      ],
+      "default_product_id": "ikea_borgeby_coffee_70449402",
+      "position": [
+        6.418,
+        0,
+        -5.36
+      ],
+      "quaternion": [
+        0,
+        0.0,
+        0,
+        1.0
+      ],
+      "validated_dimensions_m": {
+        "ikea_borgeby_coffee_70449402": [
+          0.7,
+          0.7,
+          0.42
+        ],
+        "ikea_lack_coffee_70449906": [
+          0.9,
+          0.55,
+          0.45
+        ]
+      },
+      "warnings": []
+    }
+  },
+  "support_rules": [
+    {
+      "instance_id": "主卧_lamp_1",
+      "support_instance_id": "主卧_bedside_1"
+    },
+    {
+      "instance_id": "主卧_lamp_2",
+      "support_instance_id": "主卧_bedside_2"
+    },
+    {
+      "instance_id": "长辈房_lamp_1",
+      "support_instance_id": "长辈房_bedside_1"
+    },
+    {
+      "instance_id": "长辈房_lamp_2",
+      "support_instance_id": "长辈房_bedside_2"
+    }
+  ],
+  "bundle_rules": {
+    "child_bed": {
+      "ikea_slattum_120": {
+        "room": "儿童房",
+        "remove": [
+          {
+            "product_id": "ikea_slattum_150",
+            "quantity": 1
+          },
+          {
+            "product_id": "ikea_vesteroy_150",
+            "quantity": 1
+          },
+          {
+            "product_id": "ikea_solfibbla_dvala_150_bundle",
+            "quantity": 1
+          },
+          {
+            "product_id": "ikea_smasporre_200",
+            "quantity": 1
+          },
+          {
+            "product_id": "ikea_skogsfraken_pillow",
+            "quantity": 1
+          }
+        ],
+        "add": [
+          {
+            "product_id": "ikea_slattum_120",
+            "quantity": 1
+          },
+          {
+            "product_id": "ikea_vesteroy_120",
+            "quantity": 1
+          },
+          {
+            "product_id": "ikea_dvala_120_sage",
+            "quantity": 1
+          },
+          {
+            "product_id": "ikea_solfibbla_150_green",
+            "quantity": 1
+          },
+          {
+            "product_id": "ikea_smasporre_150",
+            "quantity": 1
+          }
+        ],
+        "note": "120cm床联动120cm床垫和床笠、150×200cm被套被芯，并改为单枕。"
+      }
+    }
+  },
+  "fit_audit": {
+    "mode": "fixed-anchor-whitelist",
+    "combination_count": 128,
+    "room_containment": "passed",
+    "solid_footprint_overlap": "passed",
+    "expected_overlap": "儿童书桌椅收进桌下",
+    "limits": "按尺寸代理的固定锚点包围盒检查；不等于实物安装、公差、门扇动态或通行净宽已验证。"
+  },
+  "general_warnings": [
+    "按固定位置和记录的产品外廓校验；购买前仍需现场量尺。",
+    "门扇开启与实际通行未作动态模拟，儿童房需移椅取物。"
+  ]
+}

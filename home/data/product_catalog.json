@@ -1,0 +1,2199 @@
+{
+  "products": [
+    {
+      "product_id": "ikea_kivik_sofa_59440592",
+      "category": "sofa",
+      "name_cn": "奇维 三人沙发",
+      "name": "KIVIK",
+      "sku": "594.405.92",
+      "dimensions_m": [
+        2.28,
+        0.95,
+        0.83
+      ],
+      "price_cny": 2499,
+      "color": "提伯勒比 米色/灰色",
+      "url": "https://www.ikea.cn/cn/zh/p/kivik-qi-wei-san-ren-sha-fa-ti-bo-le-bi-mi-se-hui-se-59440592/",
+      "checked_date": "2026-11-07",
+      "brand": "IKEA 宜家",
+      "rooms": [
+        "客厅"
+      ],
+      "notes": "可拆洗布套；座高0.45m。三人直排+独立脚凳形成可调整的L形休闲位。",
+      "components": [
+        {
+          "sku": "105.193.65",
+          "name": "三人沙发框架",
+          "quantity": 1
+        },
+        {
+          "sku": "105.269.12",
+          "name": "三人沙发套",
+          "quantity": 1
+        }
+      ],
+      "model_category": "sofa",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        2.28,
+        0.95,
+        0.83
+      ],
+      "selected_quantity": 1,
+      "selection": "selected"
+    },
+    {
+      "product_id": "ikea_kivik_ottoman_79440497",
+      "category": "ottoman",
+      "name_cn": "奇维 储物脚凳",
+      "name": "KIVIK",
+      "sku": "794.404.97",
+      "dimensions_m": [
+        0.9,
+        0.7,
+        0.43
+      ],
+      "price_cny": 799,
+      "color": "提伯勒比 米色/灰色",
+      "url": "https://www.ikea.cn/cn/zh/p/kivik-qi-wei-chu-wu-jiao-deng-ti-bo-le-bi-mi-se-hui-se-s79440497/",
+      "checked_date": "2026-11-07",
+      "brand": "IKEA 宜家",
+      "rooms": [
+        "客厅"
+      ],
+      "notes": "与三人沙发同布料；根据CAD布置放沙发右侧，独立移动。",
+      "components": [
+        {
+          "sku": "305.193.69",
+          "name": "脚凳框架",
+          "quantity": 1
+        },
+        {
+          "sku": "805.269.04",
+          "name": "储物脚凳套",
+          "quantity": 1
+        }
+      ],
+      "model_category": "footstool",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        0.9,
+        0.7,
+        0.43
+      ],
+      "selected_quantity": 1,
+      "selection": "selected"
+    },
+    {
+      "product_id": "ikea_parup_sofa_79389470",
+      "category": "sofa",
+      "name_cn": "派如普 三人沙发",
+      "name": "PÄRUP",
+      "sku": "793.894.70",
+      "dimensions_m": [
+        2.06,
+        0.8,
+        0.86
+      ],
+      "price_cny": 1999,
+      "color": "威索尔 灰色",
+      "url": "https://www.ikea.cn/cn/zh/p/79389470/",
+      "checked_date": "2026-11-07",
+      "brand": "IKEA 宜家",
+      "rooms": [
+        "客厅"
+      ],
+      "notes": "较主选缩短0.22m、减深0.15m；可拆洗布套；座高0.47m。",
+      "alternative_for": "ikea_kivik_sofa_59440592",
+      "components": [
+        {
+          "sku": "104.937.18",
+          "name": "三人沙发框架",
+          "quantity": 1
+        },
+        {
+          "sku": "004.938.08",
+          "name": "三人沙发套",
+          "quantity": 1
+        }
+      ],
+      "model_category": "sofa",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        2.06,
+        0.8,
+        0.86
+      ],
+      "selected_quantity": 0,
+      "selection": "alternative"
+    },
+    {
+      "product_id": "ikea_lisabo_coffee_90353064",
+      "category": "coffee_table",
+      "name_cn": "利萨伯 茶几",
+      "name": "LISABO",
+      "sku": "903.530.64",
+      "dimensions_m": [
+        0.7,
+        0.7,
+        0.5
+      ],
+      "price_cny": 699,
+      "color": "白蜡木贴面",
+      "url": "https://www.ikea.cn/cn/zh/p/lisabo-coffee-table-ash-veneer-90353064/",
+      "checked_date": "2026-11-07",
+      "brand": "IKEA 宜家",
+      "rooms": [
+        "客厅"
+      ],
+      "notes": "方形圆角桌面，白蜡木贴面与实心桦木腿。",
+      "model_category": "coffee_table",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        0.7,
+        0.7,
+        0.5
+      ],
+      "selected_quantity": 0,
+      "selection": "alternative"
+    },
+    {
+      "product_id": "ikea_lack_coffee_70449906",
+      "category": "coffee_table",
+      "name_cn": "拉克 茶几",
+      "name": "LACK",
+      "sku": "704.499.06",
+      "dimensions_m": [
+        0.9,
+        0.55,
+        0.45
+      ],
+      "price_cny": 149,
+      "color": "白色",
+      "url": "https://www.ikea.cn/cn/zh/p/lack-la-ke-cha-ji-bai-se-70449906/",
+      "checked_date": "2026-11-07",
+      "brand": "IKEA 宜家",
+      "rooms": [
+        "客厅"
+      ],
+      "notes": "低预算替换；替换后宽度增加0.20m、深度减少0.15m。",
+      "alternative_for": "ikea_lisabo_coffee_90353064",
+      "model_category": "coffee_table",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        0.9,
+        0.55,
+        0.45
+      ],
+      "selected_quantity": 0,
+      "selection": "alternative"
+    },
+    {
+      "product_id": "ikea_besta_tv_19299137",
+      "category": "tv_unit",
+      "name_cn": "贝达 带门电视柜",
+      "name": "BESTÅ",
+      "sku": "192.991.37",
+      "dimensions_m": [
+        1.8,
+        0.42,
+        0.38
+      ],
+      "price_cny": 1079,
+      "color": "白色/拉维肯 白色",
+      "url": "https://www.ikea.cn/cn/zh/p/besta-tv-bench-with-doors-white-lappviken-white-19299137/",
+      "checked_date": "2026-11-07",
+      "brand": "IKEA 宜家",
+      "rooms": [
+        "客厅"
+      ],
+      "notes": "完整带门组合；按官网原高落地或壁挂，模型不添加未列支腿。",
+      "components": [
+        {
+          "sku": "902.945.26",
+          "name": "电视柜",
+          "quantity": 1
+        },
+        {
+          "sku": "703.526.83",
+          "name": "搁板",
+          "quantity": 3
+        },
+        {
+          "sku": "602.612.59",
+          "name": "阻尼/推进合叶",
+          "quantity": 3
+        },
+        {
+          "sku": "702.916.75",
+          "name": "LAPPVIKEN 门/抽屉前板",
+          "quantity": 3
+        }
+      ],
+      "model_category": "tv_unit",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        1.8,
+        0.42,
+        0.38
+      ],
+      "selected_quantity": 1,
+      "selection": "selected"
+    },
+    {
+      "product_id": "ikea_lisabo_dining_80365717",
+      "category": "dining_table",
+      "name_cn": "利萨伯 四人餐桌",
+      "name": "LISABO",
+      "sku": "803.657.17",
+      "dimensions_m": [
+        1.4,
+        0.78,
+        0.74
+      ],
+      "price_cny": 1299,
+      "color": "白蜡木贴面",
+      "url": "https://www.ikea.cn/cn/zh/p/80365717/",
+      "checked_date": "2026-11-07",
+      "brand": "IKEA 宜家",
+      "rooms": [
+        "餐厅"
+      ],
+      "notes": "官网明确供4人使用；仅作较紧凑备选，不标称6人餐桌。",
+      "alternative_for": "ikea_lisabo_dining_30563772",
+      "model_category": "dining_table",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        1.4,
+        0.78,
+        0.74
+      ],
+      "selected_quantity": 0,
+      "selection": "alternative"
+    },
+    {
+      "product_id": "ikea_lisabo_dining_30563772",
+      "category": "dining_table",
+      "name_cn": "利萨伯 六至八人餐桌",
+      "name": "LISABO",
+      "sku": "305.637.72",
+      "dimensions_m": [
+        2,
+        0.78,
+        0.74
+      ],
+      "price_cny": 1999,
+      "color": "白蜡木贴面",
+      "url": "https://www.ikea.cn/cn/zh/p/lisabo-li-sa-bo-zhuo-zi-bai-zha-mu-tie-mian-30563772/",
+      "checked_date": "2026-11-07",
+      "brand": "IKEA 宜家",
+      "rooms": [
+        "餐厅"
+      ],
+      "notes": "官网支持6至8人；须以CAD核实2m餐桌及抽椅通道后采用。",
+      "model_category": "dining_table",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        2,
+        0.78,
+        0.74
+      ],
+      "selected_quantity": 0,
+      "selection": "alternative"
+    },
+    {
+      "product_id": "ikea_lisabo_chair_80457236",
+      "category": "dining_chair",
+      "name_cn": "利萨伯 餐椅",
+      "name": "LISABO",
+      "sku": "804.572.36",
+      "dimensions_m": [
+        0.46,
+        0.51,
+        0.8
+      ],
+      "price_cny": 299,
+      "color": "白蜡木",
+      "url": "https://www.ikea.cn/cn/zh/p/lisabo-li-sa-bo-yi-zi-bai-zha-mu-80457236/",
+      "checked_date": "2026-11-07",
+      "brand": "IKEA 宜家",
+      "rooms": [
+        "餐厅"
+      ],
+      "notes": "座高0.45m；CAD六席配置使用6把。",
+      "model_category": "dining_chair",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        0.46,
+        0.51,
+        0.8
+      ],
+      "selected_quantity": 7,
+      "selection": "selected"
+    },
+    {
+      "product_id": "ikea_hemnes_shoe_00169560",
+      "category": "shoe_cabinet",
+      "name_cn": "汉尼斯 双门鞋柜",
+      "name": "HEMNES",
+      "sku": "001.695.60",
+      "dimensions_m": [
+        0.89,
+        0.3,
+        1.27
+      ],
+      "price_cny": 999,
+      "color": "白色",
+      "url": "https://www.ikea.cn/cn/zh/p/hemnes-han-ni-si-shuang-men-xie-gui-bai-se-00169560/",
+      "checked_date": "2026-11-07",
+      "brand": "IKEA 宜家",
+      "rooms": [
+        "玄关"
+      ],
+      "notes": "薄型鞋柜，按CAD核实入户门开启及柜门翻斗空间；需固定墙面。",
+      "model_category": "shoe_cabinet",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        0.89,
+        0.3,
+        1.27
+      ],
+      "selected_quantity": 1,
+      "selection": "selected"
+    },
+    {
+      "product_id": "ikea_tiphede_rug_60470045",
+      "category": "rug",
+      "name_cn": "提普赫德 平织地毯",
+      "name": "TIPHEDE",
+      "sku": "604.700.45",
+      "dimensions_m": [
+        2.2,
+        1.55,
+        0.002
+      ],
+      "price_cny": 149,
+      "color": "黑色/自然色",
+      "url": "https://www.ikea.cn/cn/zh/p/tiphede-rug-flatwoven-black-natural-60470045/",
+      "checked_date": "2026-11-07",
+      "brand": "IKEA 宜家",
+      "rooms": [
+        "客厅"
+      ],
+      "notes": "官网尺寸155×220cm；仅客厅，长边平行沙发。厚度未核实；另配防滑底衬。",
+      "model_category": "rug",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        2.2,
+        1.55,
+        0.002
+      ],
+      "selected_quantity": 1,
+      "selection": "selected"
+    },
+    {
+      "product_id": "ikea_hilja_sheer_10430815",
+      "category": "sheer_curtain",
+      "name_cn": "茜利亚 窗帘，2幅",
+      "name": "HILJA",
+      "sku": "104.308.15",
+      "dimensions_m": [
+        1.45,
+        null,
+        3
+      ],
+      "price_cny": 149,
+      "color": "白色",
+      "url": "https://www.ikea.cn/cn/en/p/hilja-1-pair-white-10430815/",
+      "checked_date": "2026-11-07",
+      "brand": "IKEA 宜家",
+      "rooms": [
+        "客厅",
+        "主卧",
+        "长辈房",
+        "儿童房"
+      ],
+      "notes": "已核实宜家中国英文官网。尺寸为单幅；每包2幅。3m成品先洗后裁短至现场净高。数量随窗宽及褶皱率核算。",
+      "pack_quantity": 2,
+      "quantity_basis": "每樘轨道宽×1.8至2.0 / 2.90m，向上取整为包数",
+      "model_category": "sheer",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        1.45,
+        0.1,
+        3
+      ],
+      "proxy_dimension_note": "未公布维度仅为模型占位假设；采购以dimensions_m和官网为准。",
+      "selected_quantity": 11,
+      "selection": "selected"
+    },
+    {
+      "product_id": "ikea_annakajsa_curtain_60640566",
+      "category": "curtain",
+      "name_cn": "安娜卡萨 窗帘，2幅",
+      "name": "ANNAKAJSA",
+      "sku": "606.405.66",
+      "dimensions_m": [
+        1.45,
+        null,
+        3
+      ],
+      "price_cny": 449,
+      "color": "米黄色/带打褶带",
+      "url": "https://www.ikea.cn/cn/zh/p/annakajsa-an-nuo-qia-sa-chuang-lian-2-fu-mi-huang-se-dai-da-zhe-dai-60640566/",
+      "checked_date": "2026-11-07",
+      "brand": "IKEA 宜家",
+      "rooms": [
+        "客厅",
+        "主卧",
+        "长辈房",
+        "儿童房"
+      ],
+      "notes": "避光面料能透过少量日光，不宣称完全遮光；每包2幅；先洗后裁短。",
+      "pack_quantity": 2,
+      "quantity_basis": "每樘轨道宽×1.8至2.0 / 2.90m，向上取整为包数",
+      "model_category": "curtain",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        1.45,
+        0.1,
+        3
+      ],
+      "proxy_dimension_note": "未公布维度仅为模型占位假设；采购以dimensions_m和官网为准。",
+      "selected_quantity": 6,
+      "selection": "selected"
+    },
+    {
+      "product_id": "ikea_vidga_double_79571676",
+      "category": "curtain_track",
+      "name_cn": "维德加 天花板窗帘轨道，双轨",
+      "name": "VIDGA",
+      "sku": "795.716.76",
+      "dimensions_m": [
+        1.4,
+        null,
+        null
+      ],
+      "price_cny": 200,
+      "color": "白色",
+      "url": "https://www.ikea.cn/cn/zh/p/vidga-wei-de-jia-tian-hua-ban-chuang-lian-gui-dao-shuang-gui-bai-se-s79571676/",
+      "checked_date": "2026-11-07",
+      "brand": "IKEA 宜家",
+      "rooms": [
+        "客厅",
+        "主卧",
+        "长辈房",
+        "儿童房"
+      ],
+      "notes": "每套为两条各1.4m横杆组成双轨，可拼接/切割；另配与基层适用的螺钉；数量须按窗宽核实。",
+      "components": [
+        {
+          "sku": "004.929.17",
+          "name": "单轨横杆140cm",
+          "quantity": 2
+        },
+        {
+          "sku": "005.860.77",
+          "name": "双轨天花板托架包装",
+          "quantity": 1
+        },
+        {
+          "sku": "004.830.03",
+          "name": "滑扣和挂钩24件套",
+          "quantity": 3
+        }
+      ],
+      "model_category": "curtain_rail",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        1.4,
+        0.03,
+        0.03
+      ],
+      "proxy_dimension_note": "未公布维度仅为模型占位假设；采购以dimensions_m和官网为准。",
+      "selected_quantity": 11,
+      "selection": "selected"
+    },
+    {
+      "product_id": "ikea_gurli_cushion_10598758",
+      "category": "cushion_cover",
+      "name_cn": "格尔利 垫套",
+      "name": "GURLI",
+      "sku": "105.987.58",
+      "dimensions_m": [
+        0.5,
+        null,
+        0.5
+      ],
+      "price_cny": 29.99,
+      "color": "绿色",
+      "url": "https://www.ikea.cn/cn/zh/p/gurli-cushion-cover-green-10598758/",
+      "checked_date": "2026-11-07",
+      "brand": "IKEA 宜家",
+      "rooms": [
+        "客厅"
+      ],
+      "notes": "官方颜色名称为绿色；50cm方形，垫芯另购。",
+      "model_category": "cushion",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        0.5,
+        0.12,
+        0.5
+      ],
+      "proxy_dimension_note": "未公布维度仅为模型占位假设；采购以dimensions_m和官网为准。",
+      "selected_quantity": 3,
+      "selection": "selected"
+    },
+    {
+      "product_id": "ikea_inner_insert_40262194",
+      "category": "cushion_insert",
+      "name_cn": "英内尔 垫芯",
+      "name": "INNER",
+      "sku": "402.621.94",
+      "dimensions_m": [
+        0.5,
+        null,
+        0.5
+      ],
+      "price_cny": 20,
+      "color": "白色",
+      "url": "https://www.ikea.cn/cn/en/p/inner-cushion-pad-white-soft-40262194/",
+      "checked_date": "2026-11-07",
+      "brand": "IKEA 宜家",
+      "rooms": [
+        "客厅"
+      ],
+      "notes": "搭配50×50cm GURLI垫套；填充厚度未提供。",
+      "model_category": "cushion",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        0.5,
+        0.12,
+        0.5
+      ],
+      "proxy_dimension_note": "未公布维度仅为模型占位假设；采购以dimensions_m和官网为准。",
+      "selected_quantity": 3,
+      "selection": "selected"
+    },
+    {
+      "product_id": "ikea_daggkapor_throw_90602695",
+      "category": "throw",
+      "name_cn": "达格考帕 休闲毯",
+      "name": "DAGGKÅPOR",
+      "sku": "906.026.95",
+      "dimensions_m": [
+        1.3,
+        1.7,
+        null
+      ],
+      "price_cny": 39.99,
+      "color": "绿色",
+      "url": "https://www.ikea.cn/cn/zh/p/daggkapor-throw-green-90602695/",
+      "checked_date": "2026-11-07",
+      "brand": "IKEA 宜家",
+      "rooms": [
+        "客厅"
+      ],
+      "notes": "按非会员价计；2026-10-01至2026-11-11官网会员价29.99元。",
+      "member_price_cny": 29.99,
+      "member_price_valid_until": "2026-11-11",
+      "model_category": "throw",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        1.3,
+        1.7,
+        0.02
+      ],
+      "proxy_dimension_note": "未公布维度仅为模型占位假设；采购以dimensions_m和官网为准。",
+      "selected_quantity": 1,
+      "selection": "selected"
+    },
+    {
+      "product_id": "ikea_nymane_floor_30455485",
+      "category": "floor_lamp",
+      "name_cn": "纽墨奈 3灯头落地灯",
+      "name": "NYMÅNE",
+      "sku": "304.554.85",
+      "dimensions_m": [
+        null,
+        null,
+        1.6
+      ],
+      "price_cny": 399,
+      "color": "白色",
+      "url": "https://www.ikea.cn/cn/zh/p/nymane-niu-mo-nai-30455485/",
+      "checked_date": "2026-11-07",
+      "brand": "IKEA 宜家",
+      "rooms": [
+        "客厅"
+      ],
+      "notes": "底座直径0.25m、灯罩直径0.07m；完整外伸宽/深未公布。另配3颗GU10灯泡。",
+      "additional_dimensions": {
+        "base_diameter_m": 0.25,
+        "shade_diameter_m": 0.07,
+        "cable_length_m": 2
+      },
+      "model_category": "floor_lamp",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        0.3,
+        0.3,
+        1.6
+      ],
+      "proxy_dimension_note": "未公布维度仅为模型占位假设；采购以dimensions_m和官网为准。",
+      "selected_quantity": 1,
+      "selection": "selected"
+    },
+    {
+      "product_id": "ikea_solhetta_gu10_20584100",
+      "category": "bulb",
+      "name_cn": "索海塔 LED灯泡GU10 345流明",
+      "name": "SOLHETTA",
+      "sku": "205.841.00",
+      "dimensions_m": [
+        0.05,
+        0.05,
+        null
+      ],
+      "price_cny": 19.99,
+      "color": "2700K暖白光/可调光",
+      "url": "https://www.ikea.cn/cn/zh/p/solhetta-suo-hai-ta-led-deng-pao-gu10-345-liu-ming-ke-diao-guang-de-20584100/",
+      "checked_date": "2026-11-07",
+      "brand": "IKEA 宜家",
+      "rooms": [
+        "客厅"
+      ],
+      "notes": "2.5W，CRI90，每包1件；3颗配客厅NYMÅNE落地灯。",
+      "model_category": "bulb",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        0.05,
+        0.05,
+        0.05
+      ],
+      "proxy_dimension_note": "未公布维度仅为模型占位假设；采购以dimensions_m和官网为准。",
+      "selected_quantity": 3,
+      "selection": "selected"
+    },
+    {
+      "product_id": "ikea_nymane_pendant_70503818",
+      "category": "pendant_light",
+      "name_cn": "纽墨奈 LED吊灯",
+      "name": "NYMÅNE",
+      "sku": "705.038.18",
+      "dimensions_m": [
+        0.38,
+        0.38,
+        null
+      ],
+      "price_cny": 299,
+      "color": "白色",
+      "url": "https://www.ikea.cn/cn/zh/p/70503818/",
+      "checked_date": "2026-11-07",
+      "brand": "IKEA 宜家",
+      "rooms": [
+        "餐厅"
+      ],
+      "notes": "直径0.38m，灯体高度未公布；线长1.4m；随附LED光源，11W/550lm。灯底暂设计距桌面0.70至0.80m。",
+      "additional_dimensions": {
+        "diameter_m": 0.38,
+        "cable_length_m": 1.4
+      },
+      "model_category": "pendant",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        0.38,
+        0.38,
+        0.8
+      ],
+      "proxy_dimension_note": "未公布维度仅为模型占位假设；采购以dimensions_m和官网为准。",
+      "selected_quantity": 1,
+      "selection": "selected"
+    },
+    {
+      "product_id": "ikea_nymane_ceiling_20567558",
+      "category": "ceiling_light",
+      "name_cn": "纽墨奈 LED吸顶灯",
+      "name": "NYMÅNE",
+      "sku": "205.675.58",
+      "dimensions_m": [
+        0.45,
+        0.45,
+        0.08
+      ],
+      "price_cny": 399,
+      "color": "白色",
+      "url": "https://www.ikea.cn/cn/zh/p/nymane-niu-mo-nai-led-xi-ding-deng-bai-se-20567558/",
+      "checked_date": "2026-11-07",
+      "brand": "IKEA 宜家",
+      "rooms": [
+        "客厅",
+        "主卧",
+        "长辈房",
+        "儿童房"
+      ],
+      "notes": "2700K/1800lm/CRI90；卧室各1盏，客厅可2盏分回路。最终照度与灯位结合现场设计；官网调光描述相互矛盾，不承诺调光。",
+      "model_category": "ceiling_light",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        0.45,
+        0.45,
+        0.08
+      ],
+      "selected_quantity": 4,
+      "selection": "selected"
+    },
+    {
+      "product_id": "ikea_nammaro_chair_70510343",
+      "category": "balcony_chair",
+      "name_cn": "耐玛瑞 户外折叠椅",
+      "name": "NÄMMARÖ",
+      "sku": "705.103.43",
+      "dimensions_m": [
+        0.49,
+        0.5,
+        0.81
+      ],
+      "price_cny": 299,
+      "color": "可折叠/着浅褐色漆",
+      "url": "https://www.ikea.cn/cn/zh/p/70510343/",
+      "checked_date": "2026-11-07",
+      "brand": "IKEA 宜家",
+      "rooms": [
+        "休闲阳台"
+      ],
+      "notes": "座高0.45m，适合休闲阳台；不用时可折叠。",
+      "model_category": "chair",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        0.49,
+        0.5,
+        0.81
+      ],
+      "selected_quantity": 2,
+      "selection": "selected"
+    },
+    {
+      "product_id": "ikea_fejka_plant_60615246",
+      "category": "plant",
+      "name_cn": "菲卡 人造龟背竹盆栽",
+      "name": "FEJKA",
+      "sku": "606.152.46",
+      "dimensions_m": [
+        null,
+        null,
+        0.9
+      ],
+      "price_cny": 199,
+      "color": "室内/户外 龟背竹",
+      "url": "https://www.ikea.cn/cn/zh/p/fejka-fei-qia-ren-zao-pen-zai-zhi-wu-shi-nei-hu-wai-gui-bei-zhu-60615246/",
+      "checked_date": "2026-11-07",
+      "brand": "IKEA 宜家",
+      "rooms": [
+        "客厅",
+        "休闲阳台"
+      ],
+      "notes": "植物高度0.90m、内盆直径0.19m；叶冠宽度未公布，不以包装尺寸充当商品尺寸。",
+      "additional_dimensions": {
+        "pot_diameter_m": 0.19
+      },
+      "model_category": "plant",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        0.45,
+        0.45,
+        0.9
+      ],
+      "proxy_dimension_note": "未公布维度仅为模型占位假设；采购以dimensions_m和官网为准。",
+      "selected_quantity": 1,
+      "selection": "selected"
+    },
+    {
+      "product_id": "ikea_korsbarsbjork_pot_00591724",
+      "category": "plant_pot",
+      "name_cn": "雪斯拜别 装饰用花盆",
+      "name": "KÖRSBÄRSBJÖRK",
+      "sku": "005.917.24",
+      "dimensions_m": [
+        0.3,
+        0.3,
+        0.26
+      ],
+      "price_cny": 99.99,
+      "color": "浅米灰色",
+      "url": "https://www.ikea.cn/cn/zh/p/koersbaersbjoerk-plant-pot-light-grey-beige-00591724/",
+      "checked_date": "2026-11-07",
+      "brand": "IKEA 宜家",
+      "rooms": [
+        "客厅",
+        "休闲阳台"
+      ],
+      "notes": "外径30cm/高度26cm；适配最大24cm内盆。仅限室内，阳台需封闭干燥环境。",
+      "model_category": "pot",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        0.3,
+        0.3,
+        0.26
+      ],
+      "selected_quantity": 1,
+      "selection": "selected"
+    },
+    {
+      "product_id": "ikea_raskog_cart_40586792",
+      "category": "utility_cart",
+      "name_cn": "拉斯克 手推车",
+      "name": "RÅSKOG",
+      "sku": "405.867.92",
+      "dimensions_m": [
+        0.28,
+        0.38,
+        0.61
+      ],
+      "price_cny": 149,
+      "color": "白色",
+      "url": "https://www.ikea.cn/cn/zh/p/raskog-la-si-ke-shou-tui-che-bai-se-40586792/",
+      "checked_date": "2026-11-07",
+      "brand": "IKEA 宜家",
+      "rooms": [
+        "家政储藏区"
+      ],
+      "notes": "小号28×38×61cm，家政储藏区可移动用品车；待核实净通道。",
+      "model_category": "storage",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        0.28,
+        0.38,
+        0.61
+      ],
+      "selected_quantity": 1,
+      "selection": "selected"
+    },
+    {
+      "checked_date": "2026-11-07",
+      "brand": "IKEA 宜家",
+      "product_id": "ikea_tarno_table_80165129",
+      "category": "balcony_table",
+      "name_cn": "塔尔诺 户外桌",
+      "name": "TÄRNÖ",
+      "sku": "801.651.29",
+      "dimensions_m": [
+        0.55,
+        0.54,
+        0.7
+      ],
+      "price_cny": 199,
+      "color": "黑色/着浅褐色漆",
+      "url": "https://www.ikea.cn/cn/zh/p/taernoe-ta-er-nuo-zhuo-zi-hu-wai-hei-se-zhao-qian-he-se-qi-80165129/",
+      "rooms": [
+        "休闲阳台"
+      ],
+      "notes": "两人小桌，实心相思木桌面、黑钢框；可折叠。",
+      "model_category": "balcony_table",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        0.55,
+        0.54,
+        0.7
+      ],
+      "selected_quantity": 1,
+      "selection": "selected"
+    },
+    {
+      "checked_date": "2026-11-07",
+      "brand": "IKEA 宜家",
+      "product_id": "ikea_rosentorp_dining_20589904",
+      "category": "dining_table",
+      "name_cn": "罗森托 伸缩型餐桌",
+      "name": "ROSENTORP",
+      "sku": "205.899.04",
+      "dimensions_m": [
+        1.55,
+        0.87,
+        0.75
+      ],
+      "extended_dimensions_m": [
+        2.15,
+        0.87,
+        0.75
+      ],
+      "price_cny": null,
+      "color": "白色",
+      "url": "https://www.ikea.cn/cn/zh/p/20589904/",
+      "rooms": [
+        "餐厅"
+      ],
+      "alternative_for": "ikea_lisabo_dining_30563772",
+      "notes": "备选伸缩桌，平时4席，拉长至2.15m后6席；直链可读但价格缓存较旧，与现行系列价不同，因此暂不录预算价格。",
+      "model_category": "dining_table",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        1.55,
+        0.87,
+        0.75
+      ],
+      "selected_quantity": 0,
+      "selection": "alternative"
+    },
+    {
+      "product_id": "ikea_billy_80_39545397",
+      "category": "utility_cabinet",
+      "name_cn": "毕利/奥克伯 全高实心门书柜",
+      "name": "BILLY / OXBERG",
+      "sku": "395.453.97",
+      "dimensions_m": [
+        0.8,
+        0.3,
+        2.02
+      ],
+      "price_cny": 799,
+      "color": "白色",
+      "url": "https://www.ikea.cn/cn/zh/p/billy-bi-li-oxberg-ao-ke-bo-shu-gui-dai-men-bai-se-s39545397/",
+      "checked_date": "2026-11-07",
+      "brand": "IKEA 宜家",
+      "rooms": [
+        "家政储藏区"
+      ],
+      "notes": "家政储藏柜采用5个80cm+1个40cm模块，合计4.40m；实心全高门，需固墙；中部固定搁板保留，不将其当作通高扫帚柜。",
+      "components": [
+        {
+          "sku": "005.220.47",
+          "name": "BILLY 书架80×28×202cm",
+          "quantity": 1
+        },
+        {
+          "sku": "405.608.91",
+          "name": "OXBERG 全高柜门",
+          "quantity": 2
+        }
+      ],
+      "model_category": "storage",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        0.8,
+        0.3,
+        2.02
+      ],
+      "selected_quantity": 5,
+      "selection": "selected"
+    },
+    {
+      "product_id": "ikea_billy_40_99545399",
+      "category": "utility_cabinet",
+      "name_cn": "毕利/奥克伯 全高实心门书柜",
+      "name": "BILLY / OXBERG",
+      "sku": "995.453.99",
+      "dimensions_m": [
+        0.4,
+        0.3,
+        2.02
+      ],
+      "price_cny": 499,
+      "color": "白色",
+      "url": "https://www.ikea.cn/cn/zh/p/billy-bi-li-oxberg-ao-ke-bo-shu-gui-dai-men-bai-se-s99545399/",
+      "checked_date": "2026-11-07",
+      "brand": "IKEA 宜家",
+      "rooms": [
+        "家政储藏区"
+      ],
+      "notes": "与80cm单元拼成4.40m家政柜；保留固定搁板。",
+      "components": [
+        {
+          "sku": "305.220.41",
+          "name": "BILLY 书架40×28×202cm",
+          "quantity": 1
+        },
+        {
+          "sku": "405.608.91",
+          "name": "OXBERG 全高柜门",
+          "quantity": 1
+        }
+      ],
+      "model_category": "storage",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        0.4,
+        0.3,
+        2.02
+      ],
+      "selected_quantity": 1,
+      "selection": "selected"
+    },
+    {
+      "product_id": "ikea_trones_80397308",
+      "category": "shoe_cabinet",
+      "name_cn": "强尼思 鞋柜/储藏，2件装",
+      "name": "TRONES",
+      "sku": "803.973.08",
+      "dimensions_m": [
+        0.52,
+        0.18,
+        0.39
+      ],
+      "price_cny": 149,
+      "color": "白色",
+      "url": "https://www.ikea.cn/cn/zh/p/80397308/",
+      "checked_date": "2026-11-07",
+      "brand": "IKEA 宜家",
+      "rooms": [
+        "玄关"
+      ],
+      "notes": "尺寸为每个柜；采购3包=6个，3列2行组合1.56×0.18×0.78m；商品包价149元，组合总价447元。逐个固定墙面。",
+      "pack_quantity": 2,
+      "quantity_unit": "包",
+      "placed_units": 6,
+      "arrangement_dimensions_m": [
+        1.56,
+        0.18,
+        0.78
+      ],
+      "model_category": "shoe_cabinet",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        0.52,
+        0.18,
+        0.39
+      ],
+      "selected_quantity": 3,
+      "selection": "selected"
+    },
+    {
+      "product_id": "ikea_borgeby_coffee_70449402",
+      "category": "coffee_table",
+      "name_cn": "伯格比 圆茶几",
+      "name": "BORGEBY",
+      "sku": "704.494.02",
+      "dimensions_m": [
+        0.7,
+        0.7,
+        0.42
+      ],
+      "price_cny": 599,
+      "color": "桦木贴面",
+      "url": "https://www.ikea.cn/cn/zh/p/borgeby-bo-ge-bi-cha-ji-hua-mu-tie-mian-70449402/",
+      "checked_date": "2026-11-07",
+      "brand": "IKEA 宜家",
+      "rooms": [
+        "客厅"
+      ],
+      "notes": "直径70cm、高42cm，边缘圆润；客厅主选圆桌，LISABO/LACK作为备选。",
+      "shape": "round",
+      "additional_dimensions": {
+        "diameter_m": 0.7
+      },
+      "model_category": "coffee_table",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        0.7,
+        0.7,
+        0.42
+      ],
+      "round": true,
+      "selected_quantity": 1,
+      "selection": "selected"
+    },
+    {
+      "product_id": "ikea_alhult_dining_00600766",
+      "category": "dining_table",
+      "name_cn": "阿胡特 伸缩型餐桌",
+      "name": "ÅLHULT",
+      "sku": "006.007.66",
+      "dimensions_m": [
+        1.2,
+        0.8,
+        0.75
+      ],
+      "price_cny": 1499,
+      "color": "米黄色/褐色",
+      "url": "https://www.ikea.cn/cn/zh/p/alhult-extendable-table-beige-brown-00600766/",
+      "checked_date": "2026-11-07",
+      "brand": "IKEA 宜家",
+      "rooms": [
+        "餐厅"
+      ],
+      "notes": "官网明确4人可扩展6人。CAD六席使用展开态1.70×0.80×0.75m；日常可收至1.20m。",
+      "extended_dimensions_m": [
+        1.7,
+        0.8,
+        0.75
+      ],
+      "model_default_state": "extended",
+      "model_category": "dining_table",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        1.2,
+        0.8,
+        0.75
+      ],
+      "selected_quantity": 1,
+      "selection": "selected"
+    },
+    {
+      "product_id": "ikea_solhetta_e27_60591486",
+      "category": "bulb",
+      "name_cn": "索海塔 E27 470流明LED灯泡，2件装",
+      "name": "SOLHETTA",
+      "sku": "605.914.86",
+      "dimensions_m": [
+        0.06,
+        0.06,
+        null
+      ],
+      "price_cny": 9.99,
+      "color": "球形乳白色/2700K暖白光",
+      "url": "https://www.ikea.cn/cn/zh/p/solhetta-suo-hai-ta-led-deng-pao-e27-470-liu-ming-qiu-xing-ru-bai-se-60591486/",
+      "checked_date": "2026-11-07",
+      "brand": "IKEA 宜家",
+      "rooms": [
+        "主卧",
+        "长辈房",
+        "儿童房"
+      ],
+      "notes": "每包2颗，2.9W、470lm、不可调光；用于E27灯座FADO或TERTIAL，包数按灯具数量向上取整。",
+      "pack_quantity": 2,
+      "quantity_unit": "包",
+      "model_category": "bulb",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        0.06,
+        0.06,
+        0.05
+      ],
+      "proxy_dimension_note": "未公布维度仅为模型占位假设；采购以dimensions_m和官网为准。",
+      "selected_quantity": 3,
+      "selection": "selected"
+    },
+    {
+      "product_id": "ikea_besta_short_39221312",
+      "category": "balcony_cabinet",
+      "name_cn": "贝达 带门搁架单元",
+      "name": "BESTÅ",
+      "sku": "392.213.12",
+      "dimensions_m": [
+        1.2,
+        0.42,
+        0.64
+      ],
+      "price_cny": 800,
+      "color": "白色/拉维肯 白色",
+      "url": "https://www.ikea.cn/cn/zh/p/besta-bei-da-dai-men-ge-jia-dan-yuan-bai-se-la-wei-ken-bai-se-s39221312/",
+      "checked_date": "2026-11-07",
+      "brand": "IKEA 宜家",
+      "rooms": [
+        "休闲阳台"
+      ],
+      "notes": "设计调整：阳台矮柜深度由CAD400mm调整为420mm，突出20mm；前方约900mm开放空间由主设计确认。封闭干燥阳台使用。落地需固墙，壁挂另购2根挂条。",
+      "components": [
+        {
+          "sku": "902.458.47",
+          "name": "BESTÅ 框架",
+          "quantity": 1
+        },
+        {
+          "sku": "302.916.77",
+          "name": "LAPPVIKEN 柜门",
+          "quantity": 2
+        },
+        {
+          "sku": "602.612.59",
+          "name": "BESTÅ 合叶",
+          "quantity": 2
+        },
+        {
+          "sku": "703.526.83",
+          "name": "BESTÅ 搁板",
+          "quantity": 2
+        }
+      ],
+      "design_adjustment": {
+        "selected_depth_m": 0.42,
+        "reason": "保留1.20m宽度，选用官方低柜组合；主设计接受深度增加20mm",
+        "cad_depth_m": 0.4,
+        "delta_depth_m": 0.02
+      },
+      "model_category": "storage",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        1.2,
+        0.42,
+        0.64
+      ],
+      "selected_quantity": 1,
+      "selection": "selected"
+    },
+    {
+      "product_id": "ikea_billy_low80_49528340",
+      "category": "balcony_cabinet",
+      "name_cn": "毕利/奥克伯 低柜80",
+      "name": "BILLY / OXBERG",
+      "sku": "495.283.40",
+      "dimensions_m": [
+        0.8,
+        0.3,
+        1.06
+      ],
+      "price_cny": 499,
+      "color": "白色",
+      "url": "https://www.ikea.cn/cn/zh/p/billy-bi-li-oxberg-ao-ke-bo-shu-gui-dai-men-bai-se-s49528340/",
+      "checked_date": "2026-11-07",
+      "brand": "IKEA 宜家",
+      "rooms": [
+        "休闲阳台"
+      ],
+      "notes": "与40cm低柜组合总宽1.20m、深.30m、高1.06m；封闭干燥阳台，需固墙。",
+      "components": [
+        {
+          "sku": "705.220.44",
+          "name": "BILLY 书架",
+          "quantity": 1
+        },
+        {
+          "sku": "602.756.85",
+          "name": "OXBERG 柜门",
+          "quantity": 2
+        }
+      ],
+      "model_category": "storage",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        0.8,
+        0.3,
+        1.06
+      ],
+      "selected_quantity": 0,
+      "selection": "alternative"
+    },
+    {
+      "product_id": "ikea_billy_low40_09528342",
+      "category": "balcony_cabinet",
+      "name_cn": "毕利/奥克伯 低柜40",
+      "name": "BILLY / OXBERG",
+      "sku": "095.283.42",
+      "dimensions_m": [
+        0.4,
+        0.3,
+        1.06
+      ],
+      "price_cny": 299,
+      "color": "白色",
+      "url": "https://www.ikea.cn/cn/zh/p/billy-bi-li-oxberg-ao-ke-bo-dai-men-shu-gui-bai-se-s09528342/",
+      "checked_date": "2026-11-07",
+      "brand": "IKEA 宜家",
+      "rooms": [
+        "休闲阳台"
+      ],
+      "notes": "与80cm低柜组合；需固墙。",
+      "components": [
+        {
+          "sku": "905.220.38",
+          "name": "BILLY 书架",
+          "quantity": 1
+        },
+        {
+          "sku": "602.756.85",
+          "name": "OXBERG 柜门",
+          "quantity": 1
+        }
+      ],
+      "model_category": "storage",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        0.4,
+        0.3,
+        1.06
+      ],
+      "selected_quantity": 0,
+      "selection": "alternative"
+    },
+    {
+      "product_id": "ikea_stopp_filt_30183084",
+      "category": "rug_underlay",
+      "name_cn": "STOPP FILT 施托普 费奥特 地毯防滑垫",
+      "name": "STOPP FILT",
+      "sku": "301.830.84",
+      "dimensions_m": [
+        2.35,
+        1.65,
+        null
+      ],
+      "price_cny": 79.99,
+      "url": "https://www.ikea.cn/cn/zh/p/stopp-filt-shi-tuo-pu-fei-ao-te-di-tan-fang-hua-dian-30183084/",
+      "color": "灰色",
+      "checked_date": "2026-11-07",
+      "notes": [
+        "TIPHEDE官网要求搭配；可裁剪至地毯下方。"
+      ],
+      "model_category": "rug_underlay",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        2.35,
+        1.65,
+        0.05
+      ],
+      "proxy_dimension_note": "未公布维度仅为模型占位假设；采购以dimensions_m和官网为准。",
+      "selected_quantity": 1,
+      "selection": "selected"
+    },
+    {
+      "product_id": "ikea_malm_180",
+      "category": "bed",
+      "name_cn": "马尔姆 床架带床垫",
+      "name": "MALM",
+      "sku": "195.578.00",
+      "dimensions_m": [
+        1.96,
+        2.09,
+        1
+      ],
+      "price_cny": 3798,
+      "url": "https://www.ikea.cn/cn/zh/p/malm-ma-er-mu-chuang-jia-dai-chuang-dian-bai-se-xiang-mu-tie-mian-wei-si-te-lu-yi-jia-ying-s19557800/",
+      "variant": "白色橡木贴面/韦斯特吕伊 加硬；180×200cm",
+      "rooms": [
+        "主卧室"
+      ],
+      "selection": "selected",
+      "verifiedAt": "2026-11-07",
+      "member_price_cny": 3498,
+      "promotion_end": "2026-11-11",
+      "budget_basis": "普通价3798；会员价3498有效期2026-10-14至2026-11-11；不叠算满减",
+      "mattress_size_m": [
+        1.8,
+        2
+      ],
+      "bundle_components": [
+        {
+          "sku": "302.631.13",
+          "name": "MALM 马尔姆 高床架",
+          "quantity": 1
+        },
+        {
+          "sku": "701.705.03",
+          "name": "SKORVA 斯科瓦 床中挺",
+          "quantity": 1
+        },
+        {
+          "sku": "801.631.73",
+          "name": "LURÖY 鲁瑞 床板架",
+          "quantity": 2
+        },
+        {
+          "sku": "004.701.14",
+          "name": "VESTERÖY 韦斯特吕伊 袋装弹簧床垫 加硬180×200",
+          "quantity": 1
+        }
+      ],
+      "notes": "整套已包含床架、床板、床中挺及床垫，不另计主卧床垫。床尾板38cm，床下21cm。",
+      "model_category": "bed",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        1.96,
+        2.09,
+        1
+      ],
+      "selected_quantity": 1
+    },
+    {
+      "product_id": "ikea_slattum_150",
+      "category": "bed",
+      "name_cn": "斯拉图 软包床架含床头板套",
+      "name": "SLATTUM",
+      "sku": "296.134.95",
+      "dimensions_m": [
+        1.54,
+        2.06,
+        0.85
+      ],
+      "price_cny": 899,
+      "url": "https://www.ikea.cn/cn/zh/p/29613495/",
+      "variant": "Vissle威索尔深灰色/Öreryd厄勒瑞灰色米色床头套；150×200cm",
+      "rooms": [
+        "儿童房"
+      ],
+      "selection": "selected",
+      "verifiedAt": "2026-11-07",
+      "mattress_size_m": [
+        1.5,
+        2
+      ],
+      "bundle_components": [
+        {
+          "sku": "805.712.46",
+          "name": "SLATTUM 斯拉图 软包床架",
+          "quantity": 1
+        },
+        {
+          "sku": "706.244.53",
+          "name": "SLATTUM 斯拉图 床头板垫套 灰色/米色",
+          "quantity": 1
+        }
+      ],
+      "notes": "含床板架和床中挺；床垫另配504.700.60。床尾板40cm，床下20cm。",
+      "model_category": "bed",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        1.54,
+        2.06,
+        0.85
+      ],
+      "selected_quantity": 1
+    },
+    {
+      "product_id": "ikea_slattum_120",
+      "category": "bed",
+      "name_cn": "斯拉图 软包床架",
+      "name": "SLATTUM",
+      "sku": "705.712.42",
+      "dimensions_m": [
+        1.24,
+        2.06,
+        0.85
+      ],
+      "price_cny": 699,
+      "url": "https://www.ikea.cn/cn/zh/p/slattum-si-la-tu-ruan-bao-chuang-jia-wei-suo-er-shen-hui-se-70571242/",
+      "variant": "威索尔深灰色；120×200cm",
+      "rooms": [
+        "儿童房"
+      ],
+      "selection": "alternative",
+      "verifiedAt": "2026-11-07",
+      "mattress_size_m": [
+        1.2,
+        2
+      ],
+      "notes": "含床板架；无需另购床中挺。床垫另配604.700.50。床尾板40cm。 CAD复核儿童床为150×200，本款仅保留为缩小床尺寸的替换候选。",
+      "alternative_to": "ikea_slattum_150",
+      "model_category": "bed",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        1.24,
+        2.06,
+        0.85
+      ],
+      "selected_quantity": 0
+    },
+    {
+      "product_id": "ikea_vesteroy_150",
+      "category": "mattress",
+      "name_cn": "韦斯特吕伊 袋装弹簧床垫",
+      "name": "VESTERÖY",
+      "sku": "504.700.60",
+      "dimensions_m": [
+        1.5,
+        2,
+        0.2
+      ],
+      "price_cny": 1499,
+      "url": "https://www.ikea.cn/cn/zh/p/50470060/?artType=ART",
+      "variant": "加硬/浅蓝色；150×200cm",
+      "rooms": [
+        "儿童房"
+      ],
+      "selection": "selected",
+      "verifiedAt": "2026-11-07",
+      "notes": "硬度为设计候选，购买前按使用者实际试躺选择。",
+      "model_category": "mattress",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        1.5,
+        2,
+        0.2
+      ],
+      "selected_quantity": 1
+    },
+    {
+      "product_id": "ikea_vesteroy_120",
+      "category": "mattress",
+      "name_cn": "韦斯特吕伊 袋装弹簧床垫",
+      "name": "VESTERÖY",
+      "sku": "604.700.50",
+      "dimensions_m": [
+        1.2,
+        2,
+        0.2
+      ],
+      "price_cny": 999,
+      "url": "https://www.ikea.cn/cn/zh/p/vesteroey-wei-si-te-lu-yi-dai-zhuang-dan-huang-chuang-dian-jia-ying-qian-lan-se-60470050/",
+      "variant": "加硬/浅蓝色；120×200cm",
+      "rooms": [
+        "儿童房"
+      ],
+      "selection": "alternative",
+      "verifiedAt": "2026-11-07",
+      "notes": " CAD复核儿童床为150×200，本款仅保留为缩小床尺寸的替换候选。",
+      "alternative_to": "ikea_vesteroy_150",
+      "model_category": "mattress",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        1.2,
+        2,
+        0.2
+      ],
+      "selected_quantity": 0
+    },
+    {
+      "product_id": "ikea_gillersberg_bedside",
+      "category": "bedside",
+      "name_cn": "伊利施拜 床头桌",
+      "name": "GILLERSBERG",
+      "sku": "406.179.20",
+      "dimensions_m": [
+        0.385,
+        0.385,
+        0.56
+      ],
+      "price_cny": 179,
+      "url": "https://www.ikea.cn/cn/zh/p/gillersberg-yi-li-shi-bai-chuang-tou-zhuo-zhu-bai-se-40617920/",
+      "variant": "竹/白色；标称39×39×56cm",
+      "rooms": [
+        "主卧室",
+        "长辈房",
+        "儿童房"
+      ],
+      "selection": "selected",
+      "verifiedAt": "2026-11-07",
+      "notes": "精确商品尺寸38.5×38.5×56cm；避免以标称39cm作为精度依据。",
+      "model_category": "nightstand",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        0.385,
+        0.385,
+        0.56
+      ],
+      "selected_quantity": 4
+    },
+    {
+      "product_id": "ikea_nordkisa_bedside",
+      "category": "bedside",
+      "name_cn": "诺德希萨 床头桌",
+      "name": "NORDKISA",
+      "sku": "404.476.78",
+      "dimensions_m": [
+        0.4,
+        0.4,
+        0.67
+      ],
+      "price_cny": 399,
+      "url": "https://www.ikea.cn/cn/zh/p/nordkisa-bedside-table-bamboo-40447678/",
+      "variant": "竹；40×40cm",
+      "rooms": [
+        "主卧室",
+        "长辈房"
+      ],
+      "selection": "alternative",
+      "verifiedAt": "2026-11-07",
+      "alternative_to": "ikea_gillersberg_bedside",
+      "notes": "带抽屉，较高67cm；替换时核对床垫顶面高度。",
+      "model_category": "nightstand",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        0.4,
+        0.4,
+        0.67
+      ],
+      "selected_quantity": 0
+    },
+    {
+      "product_id": "ikea_micke_105",
+      "category": "desk",
+      "name_cn": "米克 书桌",
+      "name": "MICKE",
+      "sku": "803.542.76",
+      "dimensions_m": [
+        1.05,
+        0.5,
+        0.75
+      ],
+      "price_cny": 699,
+      "url": "https://www.ikea.cn/cn/zh/p/micke-desk-white-80354276/",
+      "variant": "白色；105×50cm",
+      "rooms": [
+        "儿童房"
+      ],
+      "selection": "selected",
+      "verifiedAt": "2026-11-07",
+      "notes": "储物单元可装左侧或右侧。",
+      "model_category": "desk",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        1.05,
+        0.5,
+        0.75
+      ],
+      "selected_quantity": 1
+    },
+    {
+      "product_id": "ikea_micke_73",
+      "category": "desk",
+      "name_cn": "米克 书桌",
+      "name": "MICKE",
+      "sku": "803.542.81",
+      "dimensions_m": [
+        0.73,
+        0.5,
+        0.75
+      ],
+      "price_cny": 399,
+      "url": "https://www.ikea.cn/cn/zh/p/micke-mi-ke-shu-zhuo-bai-se-80354281/",
+      "variant": "白色；73×50cm",
+      "rooms": [
+        "儿童房",
+        "主卧室"
+      ],
+      "selection": "selected",
+      "verifiedAt": "2026-11-07",
+      "alternative_to": "ikea_micke_105",
+      "notes": "小空间替换候选，可兼作梳妆桌。",
+      "model_category": "desk",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        0.73,
+        0.5,
+        0.75
+      ],
+      "selected_quantity": 1
+    },
+    {
+      "product_id": "ikea_orfjall_green",
+      "category": "desk_chair",
+      "name_cn": "奥菲 转椅",
+      "name": "ÖRFJÄLL",
+      "sku": "196.021.38",
+      "dimensions_m": [
+        0.68,
+        0.68,
+        0.94
+      ],
+      "price_cny": 399,
+      "url": "https://www.ikea.cn/cn/zh/p/oerfjaell-swivel-chair-white-vissle-green-19602138/",
+      "variant": "白色/威索尔绿色",
+      "rooms": [
+        "儿童房"
+      ],
+      "selection": "selected",
+      "verifiedAt": "2026-11-07",
+      "notes": "完整转椅组合，非仅椅面。最大高94cm；座高46–58cm；实际使用需额外拉椅净空。",
+      "bundle_components": [
+        {
+          "sku": "406.073.46",
+          "name": "ÖRFJÄLL 奥菲 椅面",
+          "quantity": 1
+        },
+        {
+          "sku": "104.342.67",
+          "name": "ÖRFJÄLL 奥菲 椅框架，转动",
+          "quantity": 1
+        }
+      ],
+      "model_category": "desk_chair",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        0.68,
+        0.68,
+        0.94
+      ],
+      "selected_quantity": 1
+    },
+    {
+      "product_id": "ikea_fado_lamp",
+      "category": "table_lamp",
+      "name_cn": "法多 台灯",
+      "name": "FADO",
+      "sku": "400.963.74",
+      "dimensions_m": [
+        0.25,
+        0.25,
+        0.24
+      ],
+      "price_cny": 99.99,
+      "url": "https://www.ikea.cn/cn/zh/p/fado-fa-duo-tai-deng-bai-se-40096374/",
+      "variant": "白色玻璃；直径25cm",
+      "rooms": [
+        "主卧室",
+        "长辈房"
+      ],
+      "selection": "selected",
+      "verifiedAt": "2026-11-07",
+      "notes": "灯泡另购；建议宜家E27乳白LED，光色选2700K。",
+      "model_category": "table_lamp",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        0.25,
+        0.25,
+        0.24
+      ],
+      "selected_quantity": 4
+    },
+    {
+      "product_id": "ikea_tertial_lamp",
+      "category": "desk_lamp",
+      "name_cn": "特提亚 工作灯",
+      "name": "TERTIAL",
+      "sku": "203.557.21",
+      "dimensions_m": [
+        null,
+        null,
+        null
+      ],
+      "price_cny": 79.99,
+      "url": "https://www.ikea.cn/cn/zh/p/tertial-te-ti-ya-bai-se-20355721/",
+      "variant": "白色",
+      "rooms": [
+        "儿童房"
+      ],
+      "selection": "selected",
+      "verifiedAt": "2026-11-07",
+      "verified_dimensions": {
+        "shade_diameter_m": 0.17,
+        "cable_length_m": 1.5,
+        "max_clamp_m": 0.06
+      },
+      "notes": "灯臂可调，无固定总体占地；灯罩直径17cm、线长1.5m、夹持上限60mm；建模姿态为示意。E27灯泡另购。",
+      "model_category": "table_lamp",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        0.25,
+        0.25,
+        0.55
+      ],
+      "proxy_dimension_note": "未公布维度仅为模型占位假设；采购以dimensions_m和官网为准。",
+      "selected_quantity": 1
+    },
+    {
+      "product_id": "ikea_solfibbla_240_beige",
+      "category": "bedding",
+      "name_cn": "索菲布拉 被套和2个枕套",
+      "name": "SOLFIBBLA",
+      "sku": "406.109.47",
+      "dimensions_m": [
+        2.4,
+        2.2,
+        null
+      ],
+      "price_cny": 199,
+      "url": "https://www.ikea.cn/cn/zh/p/solfibbla-suo-fei-bu-la-bei-tao-he-2-ge-zhen-tao-bai-se-mi-huang-se-tiao-wen-40610947/",
+      "variant": "白色米黄色条纹；被套240×220cm，枕套50×80cm×2",
+      "rooms": [
+        "主卧室",
+        "长辈房"
+      ],
+      "selection": "selected",
+      "verifiedAt": "2026-11-07",
+      "notes": "仅被套/枕套，另配被芯和枕芯。尺寸为展开尺寸，铺床悬垂形态为示意。",
+      "recommended_quantity": 2,
+      "model_category": "bedding",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        2.4,
+        2.2,
+        0.05
+      ],
+      "proxy_dimension_note": "未公布维度仅为模型占位假设；采购以dimensions_m和官网为准。",
+      "selected_quantity": 2
+    },
+    {
+      "product_id": "ikea_solfibbla_dvala_150_bundle",
+      "category": "bedding",
+      "name_cn": "索菲布拉/代芙拉 床上用品6件套",
+      "name": "SOLFIBBLA / DVALA",
+      "sku": "121241295",
+      "dimensions_m": [
+        2,
+        2.3,
+        null
+      ],
+      "price_cny": 268.98,
+      "url": "https://www.ikea.cn/cn/zh/p/121241295/",
+      "variant": "白绿条纹被套/灰绿色床笠枕套；200×230/150×200/50×80cm",
+      "rooms": [
+        "儿童房"
+      ],
+      "selection": "selected",
+      "verifiedAt": "2026-11-07",
+      "bundle_components": [
+        {
+          "sku": "706.112.76",
+          "name": "SOLFIBBLA 索菲布拉 被套和2个枕套 白色/绿色条纹",
+          "quantity": 1
+        },
+        {
+          "sku": "805.496.32",
+          "name": "DVALA 代芙拉 床笠 灰绿色150×200",
+          "quantity": 1
+        },
+        {
+          "sku": "005.496.69",
+          "name": "DVALA 代芙拉 枕套 灰绿色50×80 双件包装",
+          "quantity": 1
+        }
+      ],
+      "notes": "组合含床笠、被套及枕套；不含被芯枕芯；不重复计床笠。dimensions为被套展开尺寸。",
+      "recommended_quantity": 1,
+      "model_category": "bedding",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        2,
+        2.3,
+        0.05
+      ],
+      "proxy_dimension_note": "未公布维度仅为模型占位假设；采购以dimensions_m和官网为准。",
+      "selected_quantity": 1
+    },
+    {
+      "product_id": "ikea_solfibbla_150_green",
+      "category": "bedding",
+      "name_cn": "索菲布拉 被套和枕套",
+      "name": "SOLFIBBLA",
+      "sku": "006.112.89",
+      "dimensions_m": [
+        1.5,
+        2,
+        null
+      ],
+      "price_cny": 99.99,
+      "url": "https://www.ikea.cn/cn/zh/p/solfibbla-suo-fei-bu-la-bei-tao-he-zhen-tao-bai-se-lu-se-tiao-wen-00611289/",
+      "variant": "白色绿色条纹；被套150×200cm，枕套50×80cm",
+      "rooms": [
+        "儿童房"
+      ],
+      "selection": "alternative",
+      "verifiedAt": "2026-11-07",
+      "notes": " CAD复核儿童床为150×200，本款仅保留为缩小床尺寸的替换候选。",
+      "model_category": "bedding",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        1.5,
+        2,
+        0.05
+      ],
+      "proxy_dimension_note": "未公布维度仅为模型占位假设；采购以dimensions_m和官网为准。",
+      "selected_quantity": 0
+    },
+    {
+      "product_id": "ikea_skogsfraken_pillow",
+      "category": "pillow",
+      "name_cn": "希古法 低枕",
+      "name": "SKOGSFRÄKEN",
+      "sku": "506.272.16",
+      "dimensions_m": [
+        0.8,
+        0.5,
+        null
+      ],
+      "price_cny": 59.99,
+      "url": "https://www.ikea.cn/cn/zh/p/50627216/",
+      "variant": "白色；50×80cm",
+      "rooms": [
+        "主卧室",
+        "长辈房",
+        "儿童房"
+      ],
+      "selection": "selected",
+      "verifiedAt": "2026-11-07",
+      "notes": "高度/软硬最终按使用者调整；官方未给充盈厚度，模型厚度为示意。",
+      "model_category": "pillow",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        0.8,
+        0.5,
+        0.05
+      ],
+      "proxy_dimension_note": "未公布维度仅为模型占位假设；采购以dimensions_m和官网为准。",
+      "selected_quantity": 6
+    },
+    {
+      "product_id": "ikea_dvala_180_sage",
+      "category": "fitted_sheet",
+      "name_cn": "代芙拉 床笠",
+      "name": "DVALA",
+      "sku": "705.496.37",
+      "dimensions_m": [
+        1.8,
+        2,
+        null
+      ],
+      "price_cny": 99.99,
+      "url": "https://www.ikea.cn/cn/zh/p/dvala-dai-fu-la-chuang-li-hui-lu-se-70549637/",
+      "variant": "灰绿色；180×200cm",
+      "rooms": [
+        "主卧室",
+        "长辈房"
+      ],
+      "selection": "selected",
+      "verifiedAt": "2026-11-07",
+      "group": "bedding_completion",
+      "notes": "适合厚度不超过26cm的床垫；厚度不作为布料实体尺寸。",
+      "recommended_quantity": 2,
+      "model_category": "fitted_sheet",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        1.8,
+        2,
+        0.05
+      ],
+      "proxy_dimension_note": "未公布维度仅为模型占位假设；采购以dimensions_m和官网为准。",
+      "selected_quantity": 2
+    },
+    {
+      "product_id": "ikea_dvala_120_sage",
+      "category": "fitted_sheet",
+      "name_cn": "代芙拉 床笠",
+      "name": "DVALA",
+      "sku": "605.496.28",
+      "dimensions_m": [
+        1.2,
+        2,
+        null
+      ],
+      "price_cny": 69.99,
+      "url": "https://www.ikea.cn/cn/zh/p/dvala-dai-fu-la-chuang-li-hui-lu-se-60549628/",
+      "variant": "灰绿色；120×200cm",
+      "rooms": [
+        "儿童房"
+      ],
+      "selection": "alternative",
+      "verifiedAt": "2026-11-07",
+      "group": "bedding_completion",
+      "notes": "适合厚度不超过26cm的床垫。 CAD复核儿童床为150×200，本款仅保留为缩小床尺寸的替换候选。",
+      "model_category": "fitted_sheet",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        1.2,
+        2,
+        0.05
+      ],
+      "proxy_dimension_note": "未公布维度仅为模型占位假设；采购以dimensions_m和官网为准。",
+      "selected_quantity": 0
+    },
+    {
+      "product_id": "ikea_smasporre_240",
+      "category": "duvet",
+      "name_cn": "思莫斯伯 暖被",
+      "name": "SMÅSPORRE",
+      "sku": "204.579.89",
+      "dimensions_m": [
+        2.4,
+        2.2,
+        null
+      ],
+      "price_cny": 249,
+      "url": "https://www.ikea.cn/cn/zh/p/smasporre-si-mo-si-bo-nuan-bei-20457989/",
+      "variant": "白色；暖被240×220cm",
+      "rooms": [
+        "主卧室",
+        "长辈房"
+      ],
+      "selection": "selected",
+      "verifiedAt": "2026-11-07",
+      "group": "bedding_completion",
+      "notes": "暖被7.5TOG；可按当地季节改同尺寸保暖等级。",
+      "recommended_quantity": 2,
+      "model_category": "duvet",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        2.4,
+        2.2,
+        0.05
+      ],
+      "proxy_dimension_note": "未公布维度仅为模型占位假设；采购以dimensions_m和官网为准。",
+      "selected_quantity": 2
+    },
+    {
+      "product_id": "ikea_smasporre_200",
+      "category": "duvet",
+      "name_cn": "思莫斯伯 特暖被",
+      "name": "SMÅSPORRE",
+      "sku": "504.584.35",
+      "dimensions_m": [
+        2,
+        2.3,
+        null
+      ],
+      "price_cny": 249,
+      "url": "https://www.ikea.cn/cn/zh/p/smasporre-si-mo-si-bo-te-nuan-bei-50458435/",
+      "variant": "白色；特暖被200×230cm",
+      "rooms": [
+        "儿童房"
+      ],
+      "selection": "selected",
+      "verifiedAt": "2026-11-07",
+      "group": "bedding_completion",
+      "notes": "12TOG冬被；按当地季节和使用者保暖需求调整。",
+      "model_category": "duvet",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        2,
+        2.3,
+        0.05
+      ],
+      "proxy_dimension_note": "未公布维度仅为模型占位假设；采购以dimensions_m和官网为准。",
+      "selected_quantity": 1
+    },
+    {
+      "product_id": "ikea_smasporre_150",
+      "category": "duvet",
+      "name_cn": "思莫斯伯 暖被",
+      "name": "SMÅSPORRE",
+      "sku": "504.579.78",
+      "dimensions_m": [
+        1.5,
+        2,
+        null
+      ],
+      "price_cny": 99.99,
+      "url": "https://www.ikea.cn/cn/zh/p/smasporre-si-mo-si-bo-nuan-bei-50457978/",
+      "variant": "白色；暖被150×200cm",
+      "rooms": [
+        "儿童房"
+      ],
+      "selection": "alternative",
+      "verifiedAt": "2026-11-07",
+      "group": "bedding_completion",
+      "notes": " CAD复核儿童床为150×200，本款仅保留为缩小床尺寸的替换候选。",
+      "model_category": "duvet",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        1.5,
+        2,
+        0.05
+      ],
+      "proxy_dimension_note": "未公布维度仅为模型占位假设；采购以dimensions_m和官网为准。",
+      "selected_quantity": 0
+    },
+    {
+      "product_id": "ikea_slattum_180",
+      "category": "bed",
+      "name_cn": "斯拉图 软包床架含床头板套",
+      "name": "SLATTUM",
+      "sku": "996.134.92",
+      "dimensions_m": [
+        1.84,
+        2.06,
+        0.85
+      ],
+      "price_cny": 1099,
+      "url": "https://www.ikea.cn/cn/zh/p/slattum-si-la-tu-ruan-bao-chuang-jia-vissle-wei-suo-er-shen-hui-se-sui-fu-chuang-tou-ban-tao-oereryd-e-le-rui-hui-se-mi-se-s99613492/",
+      "variant": "Vissle威索尔深灰色/Öreryd厄勒瑞灰色米色床头套；180×200cm",
+      "rooms": [
+        "长辈房"
+      ],
+      "selection": "selected",
+      "verifiedAt": "2026-11-07",
+      "mattress_size_m": [
+        1.8,
+        2
+      ],
+      "bundle_components": [
+        {
+          "sku": "205.712.49",
+          "name": "SLATTUM 斯拉图 软包床架 深灰180×200",
+          "quantity": 1
+        },
+        {
+          "sku": "006.244.61",
+          "name": "SLATTUM 斯拉图 床头板垫套 灰色/米色180",
+          "quantity": 1
+        }
+      ],
+      "notes": "含床板架及床中挺；另配004.701.14床垫。组合网页长度200cm与同页组件205.712.49独立商品页206cm冲突；采用床架组件较大外廓206cm做放置校验。",
+      "dimensions_source_url": "https://www.ikea.cn/cn/zh/p/slattum-si-la-tu-ruan-bao-chuang-jia-wei-suo-er-shen-hui-se-20571249/",
+      "model_category": "bed",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        1.84,
+        2.06,
+        0.85
+      ],
+      "selected_quantity": 1
+    },
+    {
+      "product_id": "ikea_vesteroy_180",
+      "category": "mattress",
+      "name_cn": "韦斯特吕伊 袋装弹簧床垫",
+      "name": "VESTERÖY",
+      "sku": "004.701.14",
+      "dimensions_m": [
+        1.8,
+        2,
+        0.2
+      ],
+      "price_cny": 1799,
+      "url": "https://www.ikea.cn/cn/zh/p/vesteroey-wei-si-te-lu-yi-dai-zhuang-dan-huang-chuang-dian-jia-ying-qian-lan-se-00470114/",
+      "variant": "加硬/浅蓝色；180×200cm",
+      "rooms": [
+        "长辈房"
+      ],
+      "selection": "selected",
+      "verifiedAt": "2026-11-07",
+      "notes": "长辈房床垫单独计价；主卧MALM组合已含相同床垫，不能重复采购。",
+      "model_category": "mattress",
+      "geometry_status": "尺寸代理模型，非宜家官方三维资产",
+      "asset_origin": "footprint centre at floor level; Blender Z-up; glTF Y-up",
+      "model_dimensions_m": [
+        1.8,
+        2,
+        0.2
+      ],
+      "selected_quantity": 1
+    }
+  ]
+}
