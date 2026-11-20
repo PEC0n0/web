@@ -29,3 +29,11 @@
 /api/blog/*
   X-Content-Type-Options: nosniff
   Referrer-Policy: no-referrer
+
+/art/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: no-store
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: no-referrer
+  Content-Security-Policy: default-src 'self'; connect-src https://api.github.com; img-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'

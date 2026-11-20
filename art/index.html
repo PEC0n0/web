@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="theme-color" content="#40364c">
+  <title>卡面素材 · Peco</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/art/style.css">
+  <script src="/art/upload.js" type="module"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a href="/" class="brand">peco<span>.</span></a>
+    <a href="https://github.com/PEC0n0/art" target="_blank" rel="noreferrer">GitHub 仓库 ↗</a>
+  </header>
+  <main>
+    <h1>卡面素材</h1>
+    <p class="intro">更新 <strong>PEC0n0/art</strong> 中的参考图。</p>
+    <form id="upload-form" autocomplete="off">
+      <fieldset id="upload-fields">
+        <div class="field">
+          <label for="destination">更新位置</label>
+          <select id="destination">
+            <option value="pose">动作参考/</option>
+            <option value="style">稳固画风/</option>
+            <option value="palette">色调、色温、滤镜参考.png</option>
+            <option value="character">设定图.jpg</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="images">选择图片</label>
+          <input id="images" type="file" accept="image/png,image/jpeg,image/webp,image/gif" multiple required aria-describedby="file-hint">
+          <p id="file-hint" class="hint"></p>
+          <ul id="selected-files" aria-label="本次写入的文件" hidden></ul>
+        </div>
+        <label class="check" id="replace-option">
+          <input id="replace-folder" type="checkbox" checked>
+          移除该目录中本次未选中的旧图
+        </label>
+        <div class="field">
+          <label for="token">GitHub 访问令牌</label>
+          <input id="token" type="password" required spellcheck="false" autocapitalize="none" aria-describedby="token-hint">
+          <p id="token-hint" class="hint">使用仅授权 <strong>art</strong> 仓库、<strong>Contents: Read and write</strong> 的细粒度令牌。令牌只在此页面打开期间使用。<a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noreferrer">创建令牌 ↗</a></p>
+        </div>
+        <button type="submit">更新 GitHub 素材</button>
+      </fieldset>
+      <div class="feedback">
+        <p id="status" role="status"></p>
+        <a id="commit-link" target="_blank" rel="noreferrer" hidden>查看提交 ↗</a>
+      </div>
+    </form>
+    <noscript><p>请开启 JavaScript 后上传图片。</p></noscript>
+  </main>
+</body>
+</html>
